@@ -1,0 +1,182 @@
+//Responsive sizing
+@media only screen {body {font-size: 45px;}} //Monitor L
+@media only screen and (max-width: 600px) {body {font-size: 35px;}} //Monitor MD
+@media only screen and (max-width: 450px) {body {font-size: 25px;}} //Monitor SM
+@import url('https://fonts.googleapis.com/css?family=Viga');
+//Variables
+$dark: rgba(25, 25, 25, 1);
+$light: rgba(235, 235, 235, 1);
+$border-width: 10px;
+
+//Page formatting
+body {
+  font-family: 'Viga';
+  height: 100vh;
+  width: 100vw;
+  min-width: 300px;
+  max-width: 100%;
+  padding: 30px;
+  background-color: $dark;
+  color: $light;
+  text-align: center;
+  //Absolute centering
+  .center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  //Column area formatting
+  .col-sm-6, .col-sm-4, .ifAI {
+    line-height: 1; 
+    padding: 8px;
+  }
+  //Final button row
+  .last-row {margin-top: 20px;}
+  //General button styling
+  .btn {
+    position: relative;
+    width: 100%;
+    background-color: transparent;
+    color: $light;
+    border: 2px solid $light;
+    transition: all 0.25s;
+    &.enable,
+    &:focus {
+      background: $light;
+      color: $dark;
+    }
+    &[tabindex="-1"] {
+      padding: 0;
+      text-align: left;
+      &:focus {
+        background-color: transparent;
+        color: $light;
+      }
+    }
+  }
+}
+
+//Main menu styling
+.select {
+  max-width: 600px;
+  width: 90%;
+  //Game title
+  h1 {font-size: 150%;} 
+  //Button Caption
+  h5 {
+    font-size: 70%;
+    padding: 25px 0 5px 0;
+  }
+  //Name inputs
+  input[type="text"] {
+    padding: 6px 8px;
+    width: 70%;
+    background-color: transparent;
+    outline: none;
+    border: 0;
+    transition: all 0.25s;
+    color: $light;
+    &:active, &:focus {
+      background: $light;
+      color: $dark;
+    }
+    &::placeholder {opacity: 0.7;}
+  }
+  //X, O, colour buttons
+  .btn-float {
+    position: absolute;
+    height: 100%;
+    bottom: 0;
+    width: 10%;
+    border-left: 1px solid $light;
+    &.enable {
+      border-left: 1px solid $dark;
+      color: $dark;
+      background-color: $light;
+    }
+    &.x-select {right: 20%;}
+    &.o-select {right: 10%;}
+    &.color-sample {
+      right: 0%;
+      border: 0;
+      &#pcolor-1 {background-color: lightcoral;}
+      &#pcolor-2 {background-color: skyblue;}
+    }
+  }
+}
+//Game screen styling
+.game {
+  max-width: 500px;
+  margin: 0 auto;
+  height: 100%;
+  width: 100%;
+  padding: 10px;
+  position: relative;
+  //Game text display
+  .display {
+    font-size: 100%; 
+    padding: 20px;
+    transition: all 0.5s;
+  }
+  //TicTacToe board
+  .board {
+    overflow: hidden;
+    position: inherit;
+    //Cell holder
+    table {
+      height: calc(100% + #{$border-width}*2);
+      width: calc(100% + #{$border-width}*2);
+      border-collapse: separate;
+      border-spacing: $border-width;
+      background-color: $light;
+      justify-content: center;
+      margin: -$border-width;
+    }
+    //3x3 grid cell
+    .cell {
+      transition: all 1s;
+      background-color: $dark;
+      text-align: center;
+      position: relative;
+      &:hover {cursor: pointer;}
+      &.disabled {
+        background-color: $dark;
+        &:hover {cursor: auto;}
+      }
+    }
+  }
+}
+
+//O's styling
+.nought {
+  transition: all 0.5s;
+  height: 0;
+  width: 0;
+  opacity: 0;
+  border-radius: 100%;
+  border: $border-width*1.5 solid;
+  &.appear {
+    height: 80%;
+    width: 80%;
+    opacity: 1;
+  }
+}
+//X's styling
+.cross {
+  transition: all 0.5s;
+  position: relative;
+  opacity: 0;
+  .cross-bar {
+    position: absolute;
+    width: 90%;
+    height: $border-width*1.5;
+    background-color: inherit;
+    &.c1 {transform: translate(-50%, -50%) rotate(45deg);}
+    &.c2 {transform: translate(-50%, -50%) rotate(135deg);}
+  }
+  &.appear {
+    transform: rotate(180deg);
+    opacity: 1;
+  }
+}
