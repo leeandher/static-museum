@@ -203,15 +203,7 @@
     <!--ARTICLE SECTION-->
     <div class="section" id="archive">
       <div class="content">
-        <div class="flex-group">
-          <?php
-
-            $blog_data = DB::getAllBlogData();
-
-            foreach ($blog_data as $article) {
-              $post = new Article($article);
-              $post->preview (); } ?>
-        </div>
+        <div class="flex-group"></div>
         <div id="error">No results, sorry!</div>
       </div>
     </div>
