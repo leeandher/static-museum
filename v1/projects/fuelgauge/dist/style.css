@@ -15,7 +15,7 @@
   }
 }
 body {
-  background: #192021 url(https://goo.gl/46Q9wn) no-repeat center center fixed;
+  background: #192021 url('../static/mountain.jpg') no-repeat center center fixed;
   background-size: cover;
   font-family: "Roboto";
   height: 100vh;
