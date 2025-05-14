@@ -439,12 +439,7 @@
             <h4>Thank you for your consideration!</h4>
           </div>
           <!--CONTACT FORM-->
-          <form
-            class="round flex-item"
-            id="visitor-form"
-            method="post"
-            action="/redirect.php"
-          >
+          <form class="round flex-item" id="visitor-form" method="post">
             <div class="subheading">I'll get back to you ASAP.</div>
             <label class="text" for="visitor-name">Name:</label>
             <input
@@ -453,6 +448,7 @@
               id="visitor-name"
               autocomplete="name"
               required
+              disabled
             />
             <label class="text" for="visitor-email">Email address:</label>
             <input
@@ -461,9 +457,16 @@
               id="visitor-email"
               autocomplete="email"
               required
+              disabled
             />
             <label class="text" for="visitor-sub">Subject:</label>
-            <input type="text" name="subject" id="visitor-sub" required />
+            <input
+              type="text"
+              name="subject"
+              id="visitor-sub"
+              required
+              disabled
+            />
             <label class="text" for="visitor-msg">Message:</label>
             <textarea
               rows="5"
@@ -472,10 +475,11 @@
               id="visitor-msg"
               required
               data-gramm="false"
+              disabled
             ></textarea>
             <div class="flex-group">
-              <button class="flex-item" type="reset">Clear</button>
-              <button class="flex-item" type="submit">Send</button>
+              <button class="flex-item" type="reset" disabled>Clear</button>
+              <button class="flex-item" type="submit" disabled>Send</button>
             </div>
           </form>
         </div>
