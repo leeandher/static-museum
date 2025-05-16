@@ -1,7 +1,4 @@
 node_modules/
 
-# Eleventy
 _site/
-
-# CRA
 build/
