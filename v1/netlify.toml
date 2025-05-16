@@ -1,0 +1,3 @@
+[build]
+command = "pnpm run v1:build"
+publish = "v1/_site"

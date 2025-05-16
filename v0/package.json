@@ -1,0 +1,9 @@
+{
+  "name": "v0",
+  "private": true,
+  "scripts": {
+    "dev": "eleventy --serve --input=. --output=./_site",
+    "build": "eleventy --input=. --output=./_site"
+  },
+  "type": "module"
+}

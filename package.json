@@ -1,15 +1,13 @@
 {
   "name": "static-museum",
-  "version": "1.0.0",
-  "description": "collection of some old stuff",
-  "main": "index.js",
-  "scripts": {
-    "dev": "eleventy --serve"
-  },
-  "type": "module",
-  "author": "leander.xyz",
-  "license": "ISC",
+  "private": true,
   "packageManager": "pnpm@10.7.1",
+  "scripts": {
+    "v0:dev": "pnpm --filter v0 dev",
+    "v0:build": "pnpm --filter v0 build",
+    "v1:dev": "pnpm --filter v1 dev",
+    "v1:build": "pnpm --filter v1 build"
+  },
   "dependencies": {
     "@11ty/eleventy": "^3.1.0"
   }
