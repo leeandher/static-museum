@@ -1,0 +1,35 @@
+{
+  "name": "reduxstagram",
+  "version": "2.0.0",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/leeandher/Reduxstagram"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "raven-js": "3.27.0",
+    "react": "15.0.2",
+    "react-addons-css-transition-group": "15.0.2",
+    "react-dom": "15.0.2",
+    "react-redux": "4.4.5",
+    "react-router": "2.4.0",
+    "react-router-redux": "4.0.8",
+    "react-scripts": "2.1.8",
+    "redux": "4.0.1"
+  },
+  "scripts": {
+    "start": "SKIP_PREFLIGHT_CHECK=true react-scripts --openssl-legacy-provider start",
+    "build": "SKIP_PREFLIGHT_CHECK=true react-scripts --openssl-legacy-provider build",
+    "eject": "SKIP_PREFLIGHT_CHECK=true react-scripts --openssl-legacy-provider eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}

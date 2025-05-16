@@ -1,0 +1,3 @@
+[build]
+command = "pnpm run redux:build"
+publish = "reduxstagram/build"

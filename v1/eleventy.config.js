@@ -3,6 +3,6 @@ export default function config(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("resume/**/*");
   eleventyConfig.addPassthroughCopy("resources/**/*");
   eleventyConfig.addPassthroughCopy({
-    "../shared/dock.js": "shared/dock.js",
+    "../_shared/dock.js": "shared/dock.js",
   });
 }

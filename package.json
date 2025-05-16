@@ -6,9 +6,9 @@
     "v0:dev": "pnpm --filter v0 dev",
     "v0:build": "pnpm --filter v0 build",
     "v1:dev": "pnpm --filter v1 dev",
-    "v1:build": "pnpm --filter v1 build"
+    "v1:build": "pnpm --filter v1 build",
+    "redux:dev": "pnpm --filter reduxstagram start",
+    "redux:build": "pnpm --filter reduxstagram build"
   },
-  "dependencies": {
-    "@11ty/eleventy": "^3.1.0"
-  }
+  "type": "module"
 }
