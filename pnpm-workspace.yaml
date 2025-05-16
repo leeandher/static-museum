@@ -1,7 +1,9 @@
 packages:
   - v0
   - v1
+  - conway
   - reduxstagram
 onlyBuiltDependencies:
   - core-js
   - fsevents
+  - node-sass

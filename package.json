@@ -8,7 +8,9 @@
     "v1:dev": "pnpm --filter v1 dev",
     "v1:build": "pnpm --filter v1 build",
     "redux:dev": "pnpm --filter reduxstagram start",
-    "redux:build": "pnpm --filter reduxstagram build"
+    "redux:build": "pnpm --filter reduxstagram build",
+    "conway:dev": "pnpm --filter conway start",
+    "conway:build": "pnpm --filter conway build"
   },
   "type": "module"
 }
