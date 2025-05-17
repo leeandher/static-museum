@@ -1,0 +1,3 @@
+[build]
+command = "pnpm run space:build"
+publish = "space-shooter/_site"

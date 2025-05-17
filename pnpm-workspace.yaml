@@ -6,6 +6,7 @@ packages:
   - md-prevuer
   - bgcg
   - fyi
+  - space-shooter
 onlyBuiltDependencies:
   - '@parcel/watcher'
   - core-js
