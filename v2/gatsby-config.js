@@ -1,5 +1,10 @@
-/* eslint-disable no-useless-escape */
-module.exports = {
+import { fileURLToPath } from "url";
+import { dirname, join } from "path";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+export default {
   siteMetadata: {
     title: `leander.xyz`,
     siteUrl: `https://leander.xyz`,
@@ -22,7 +27,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `assets`,
-        path: `${__dirname}/static/assets`,
+        path: join(__dirname, `static/assets`),
       },
     },
     {
@@ -46,7 +51,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `blog`,
-        path: `${__dirname}/src/pages/blog`,
+        path: join(__dirname, `src/pages/blog`),
         ignore: [`**/*\.js`],
       },
     },
@@ -54,7 +59,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `notes`,
-        path: `${__dirname}/src/pages/notes`,
+        path: join(__dirname, `src/pages/notes`),
         ignore: [`**/*\.js`],
       },
     },
@@ -62,13 +67,12 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `projects`,
-        path: `${__dirname}/src/pages/projects`,
+        path: join(__dirname, `src/pages/projects`),
         ignore: [`**/*\.js`],
       },
     },
-    // SEO
+
     `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-sitemap`,
-    `gatsby-plugin-offline`,
+    `gatsby-plugin-pnpm`,
   ],
 };

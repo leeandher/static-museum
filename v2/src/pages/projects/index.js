@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 import styled from "styled-components"
-import marked from "marked"
+import {marked} from "marked"
 
 import Page from "../../components/Page"
 import Hero from "../../components/Hero"
@@ -125,7 +125,7 @@ export const projectsQuery = graphql`
   query {
     allMarkdownRemark(
       filter: { frontmatter: { type: { eq: "projects" } } }
-      sort: { fields: [frontmatter___date], order: ASC }
+      sort: {frontmatter: {date: ASC}}
     ) {
       nodes {
         id

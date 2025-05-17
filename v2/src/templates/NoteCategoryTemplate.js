@@ -55,7 +55,7 @@ const NoteCategoryTemplate = ({ data, location }) => {
   const { html } = markdownRemark
   const { distinct: noteTitles } = allFile
   const noteTitleSlugs = noteTitles.map(
-    noteTitle => `${location.pathname}/${slugify(noteTitle, { lower: true })}`
+    noteTitle => `${location.pathname}${slugify(noteTitle, { lower: true })}`
   )
   return (
     <Page accentKey="green" bgDesign="bubbles" seoProfile="notes-page">
@@ -103,7 +103,7 @@ export const noteQuery = graphql`
         name: { ne: "README" }
       }
     ) {
-      distinct(field: name)
+      distinct(field: {name: SELECT})
     }
   }
 `

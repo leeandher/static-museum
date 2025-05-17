@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import marked from "marked"
+import {marked} from "marked"
 import { graphql } from "gatsby"
 
 import Page from "../components/Page"
@@ -232,7 +232,7 @@ export const showcaseQuery = graphql`
       filter: {
         frontmatter: { showcase: { eq: true }, type: { eq: "projects" } }
       }
-      sort: { fields: [frontmatter___date], order: DESC }
+      sort: {frontmatter: {date: DESC}}
     ) {
       nodes {
         frontmatter {

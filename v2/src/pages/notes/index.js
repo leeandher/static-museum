@@ -83,7 +83,7 @@ export default Notes
 export const notesQuery = graphql`
   {
     allFile(filter: { sourceInstanceName: { eq: "notes" } }) {
-      distinct(field: relativeDirectory)
+      distinct(field: {relativeDirectory: SELECT})
     }
   }
 `

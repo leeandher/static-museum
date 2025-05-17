@@ -1,5 +1,5 @@
-import React from "react"
-import PropTypes from "prop-types"
+import React from "react";
+import PropTypes from "prop-types";
 
 export default class HTML extends React.Component {
   render() {
@@ -10,7 +10,7 @@ export default class HTML extends React.Component {
       bodyAttributes,
       body,
       postBodyComponents,
-    } = this.props
+    } = this.props;
     return (
       <html {...htmlAttributes} style={{ background: "#0F0F0F" }} lang="en">
         <head>
@@ -21,10 +21,6 @@ export default class HTML extends React.Component {
           <meta
             name="viewport"
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
-          />
-          <meta
-            name="google-site-verification"
-            content="iQUwI23P8VDioDG1W0VTsUDZVoj-CSgRu7aPvbUIQsU"
           />
           <link
             href="https://fonts.googleapis.com/css?family=Rubik:300,400,500,700,900"
@@ -46,7 +42,7 @@ export default class HTML extends React.Component {
           {postBodyComponents}
         </body>
       </html>
-    )
+    );
   }
 }
 
@@ -57,4 +53,4 @@ HTML.propTypes = {
   preBodyComponents: PropTypes.array,
   body: PropTypes.string,
   postBodyComponents: PropTypes.array,
-}
+};

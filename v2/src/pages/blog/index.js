@@ -86,7 +86,7 @@ export const blogPostsQuery = graphql`
   query {
     allMarkdownRemark(
       filter: { frontmatter: { type: { eq: "blog" }, archive: { eq: false } } }
-      sort: { fields: [frontmatter___date], order: DESC }
+      sort: {frontmatter: {date: DESC}}
     ) {
       nodes {
         timeToRead

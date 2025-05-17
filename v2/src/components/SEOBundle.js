@@ -1,11 +1,11 @@
-import React from "react"
-import { Helmet } from "react-helmet"
-import { withPrefix } from "gatsby"
-import { Location } from "@reach/router"
+import React from "react";
+import { Helmet } from "react-helmet";
+import { withPrefix } from "gatsby";
+import { Location } from "@reach/router";
 
-import seo from "../data/seo.json"
+import seo from "../data/seo.json";
 
-const DEFAULT_IMAGE = "https://dev.leander.xyz/icons/logo-s.png"
+const DEFAULT_IMAGE = "https://dev.leander.xyz/icons/logo-s.png";
 
 const SEOBundle = ({
   description,
@@ -14,9 +14,9 @@ const SEOBundle = ({
   title,
   theme,
 }) => {
-  const seoTitle = title != null ? title : seo[profile].title
+  const seoTitle = title != null ? title : seo[profile].title;
   const seoDescription =
-    description != null ? description : seo[profile].description
+    description != null ? description : seo[profile].description;
   return (
     <Location>
       {({ location: { href: url } }) => (
@@ -64,7 +64,7 @@ const SEOBundle = ({
         </Helmet>
       )}
     </Location>
-  )
-}
+  );
+};
 
-export default SEOBundle
+export default SEOBundle;

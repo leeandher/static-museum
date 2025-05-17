@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { graphql, Link } from "gatsby"
-import marked from "marked"
+import {marked} from "marked"
 
 import Button from "../components/Button"
 import Hero from "../components/Hero"
@@ -167,7 +167,7 @@ export const SHOWCASE_QUERY = graphql`
   query {
     allMarkdownRemark(
       filter: { frontmatter: { showcase: { eq: true } } }
-      sort: { fields: [frontmatter___date], order: DESC }
+      sort: {frontmatter: {date: DESC}}
     ) {
       nodes {
         frontmatter {

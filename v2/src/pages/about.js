@@ -1,18 +1,18 @@
-import React from "react"
-import styled from "styled-components"
-import marked from "marked"
+import React from "react";
+import styled from "styled-components";
+import { marked } from "marked";
 
-import Hero from "../components/Hero"
-import Page from "../components/Page"
-import MainWrapper from "../components/MainWrapper"
-import { Default, Skewed } from "../components/PageSections"
+import Hero from "../components/Hero";
+import Page from "../components/Page";
+import MainWrapper from "../components/MainWrapper";
+import { Default, Skewed } from "../components/PageSections";
 
-import FAQ from "../components/page-specific/About/FAQ"
-import SuperItem from "../components/page-specific/About/SuperItem"
+import FAQ from "../components/page-specific/About/FAQ";
+import SuperItem from "../components/page-specific/About/SuperItem";
 
-import aboutData from "../data/about.json"
+import aboutData from "../data/about.json";
 
-import { themer } from "../styles/helpers"
+import { themer } from "../styles/helpers";
 
 const Questions = styled(Skewed)`
   padding: 10rem 0 3rem 0;
@@ -20,7 +20,7 @@ const Questions = styled(Skewed)`
   &:before {
     background: ${themer("shade.lightest")};
   }
-`
+`;
 
 const HeyThere = styled(Skewed)`
   padding: 3rem 0 15rem;
@@ -28,7 +28,7 @@ const HeyThere = styled(Skewed)`
   &:before {
     background: ${themer("shade.lightest")};
   }
-`
+`;
 
 const Superlatives = styled(Default)`
   color: ${themer("shade.lightest")};
@@ -36,14 +36,14 @@ const Superlatives = styled(Default)`
     padding: 0.5rem;
     color: ${themer("shade.lightest")};
   }
-`
+`;
 
 const SuperWrapper = styled(MainWrapper)`
   display: grid;
   padding: 0;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   grid-gap: 2rem 2rem;
-`
+`;
 
 const About = () => {
   return (
@@ -103,7 +103,7 @@ const About = () => {
         </MainWrapper>
       </Questions>
     </Page>
-  )
-}
+  );
+};
 
-export default About
+export default About;

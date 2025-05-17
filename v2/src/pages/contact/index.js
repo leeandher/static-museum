@@ -1,17 +1,17 @@
-import React from "react"
-import styled from "styled-components"
-import marked from "marked"
+import React from "react";
+import styled from "styled-components";
+import { marked } from "marked";
 
-import Page from "../../components/Page"
-import MainWrapper from "../../components/MainWrapper"
-import Button from "../../components/Button"
-import Hero from "../../components/Hero"
-import { Skewed } from "../../components/PageSections"
+import Page from "../../components/Page";
+import MainWrapper from "../../components/MainWrapper";
+import Button from "../../components/Button";
+import Hero from "../../components/Hero";
+import { Skewed } from "../../components/PageSections";
 
-import { encode } from "../../helpers"
-import { themer } from "../../styles/helpers"
+import { encode } from "../../helpers";
+import { themer } from "../../styles/helpers";
 
-import contactData from "../../data/contact.json"
+import contactData from "../../data/contact.json";
 
 const Form = styled.form`
   min-width: 280px;
@@ -47,21 +47,21 @@ const Form = styled.form`
       outline: 0;
     }
   }
-`
+`;
 
 const ContactForm = styled(MainWrapper)`
   background: ${themer("shade.lightest")};
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
-`
+`;
 
 const Information = styled.div`
   padding: 1.5rem;
   min-width: 280px;
   flex: 1;
   margin-bottom: 3rem;
-`
+`;
 
 const ContactFormWrapper = styled(Skewed)`
   padding: 10rem 0 5rem 0;
@@ -69,26 +69,26 @@ const ContactFormWrapper = styled(Skewed)`
   &:before {
     background: ${themer("shade.lightest")};
   }
-`
+`;
 
 class Contact extends React.Component {
-  state = {}
+  state = {};
 
-  handleChange = e => {
-    this.setState({ [e.target.name]: e.target.value })
-  }
+  handleChange = (e) => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
 
   /* eslint-disable no-alert */
-  handleSubmit = e => {
-    e.preventDefault()
+  handleSubmit = (e) => {
+    e.preventDefault();
     fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: encode({ "form-name": "contact", ...this.state }),
     })
       .then(() => alert("Success!"))
-      .catch(error => alert(error))
-  }
+      .catch((error) => alert(error));
+  };
   /* eslint-enable no-alert */
 
   render() {
@@ -158,8 +158,8 @@ class Contact extends React.Component {
           </ContactForm>
         </ContactFormWrapper>
       </Page>
-    )
+    );
   }
 }
 
-export default Contact
+export default Contact;
