@@ -1,0 +1,3 @@
+[build]
+command = "pnpm run bgcg:build"
+publish = "bgcg/build"

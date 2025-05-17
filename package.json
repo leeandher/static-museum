@@ -12,7 +12,9 @@
     "conway:dev": "pnpm --filter conway start",
     "conway:build": "pnpm --filter conway build",
     "md:dev": "pnpm --filter md-prevuer dev",
-    "md:build": "pnpm --filter md-prevuer build"
+    "md:build": "pnpm --filter md-prevuer build",
+    "bgcg:dev": "pnpm --filter bgcg start",
+    "bgcg:build": "pnpm --filter bgcg build"
   },
   "type": "module"
 }

@@ -4,11 +4,14 @@ packages:
   - reduxstagram
   - conway
   - md-prevuer
+  - bgcg
 onlyBuiltDependencies:
   - '@parcel/watcher'
   - core-js
+  - core-js-pure
   - ejs
+  - es5-ext
   - esbuild
   - fsevents
-  - node-sass
+  - styled-components
   - yorkie
