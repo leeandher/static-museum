@@ -9,6 +9,7 @@ packages:
   - space-shooter
   - catch-of-the-day
   - stacker-news
+  - v2
 onlyBuiltDependencies:
   - '@parcel/watcher'
   - core-js
@@ -17,5 +18,8 @@ onlyBuiltDependencies:
   - es5-ext
   - esbuild
   - fsevents
+  - gatsby
+  - gatsby-cli
+  - gatsby-telemetry
   - styled-components
   - yorkie

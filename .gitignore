@@ -1,7 +1,20 @@
 node_modules/
 
+# vite
 dist/
+
+# eleventy
 _site/
+
+# react-scripts
 build/
 
+# gatsby
+.cache/
+v2/public/
+
+# unity 
 !space-shooter/Build/
+
+# mac
+.DS_Store
