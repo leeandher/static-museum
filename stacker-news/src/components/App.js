@@ -29,9 +29,17 @@ class App extends Component {
             <Route component={Lost} />
           </Switch>
         </div>
-        <footer>
-          Lovingly based on:{" "}
-          <a href="https://news.ycombinator.com">HackerNews</a>
+        <footer style={{ display: "flex", justifyContent: "space-between" }}>
+          <div>
+            Lovingly based on:{" "}
+            <a href="https://news.ycombinator.com">HackerNews</a>
+          </div>
+          <div
+            style={{ textDecoration: "underline", cursor: "pointer" }}
+            onClick={() => localStorage.clear()}
+          >
+            Clear Local
+          </div>
         </footer>
       </main>
     );

@@ -5,12 +5,10 @@ import { LINKS_PER_PAGE } from "../constants";
 
 class LinkList extends Component {
   state = {
-    isNewPage: this.props.location.pathname.includes("new"),
     page: parseInt(this.props.match.params.page) || 1,
   };
 
-  _getLinksToRender = (links) => {
-    const { page } = this.state;
+  _getLinksToRender = (links, page) => {
     if (this.props.location.pathname.includes("new")) {
       return links.slice((page - 1) * LINKS_PER_PAGE, page * LINKS_PER_PAGE);
     }
@@ -32,7 +30,8 @@ class LinkList extends Component {
   };
 
   render() {
-    const { isNewPage, page } = this.state;
+    const isNewPage = this.props.location.pathname.includes("new");
+    const page = isNewPage ? this.state.page : 1;
     const links = this.props.backend.getFeed({
       orderDesc: isNewPage,
       page,
@@ -52,7 +51,7 @@ class LinkList extends Component {
       );
     }
 
-    const linksToRender = this._getLinksToRender(links);
+    const linksToRender = this._getLinksToRender(links, page);
     const pageIndex = page ? (page - 1) * LINKS_PER_PAGE : 0;
 
     return (
