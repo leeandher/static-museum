@@ -31,14 +31,16 @@ class App extends Component {
         </div>
         <footer style={{ display: "flex", justifyContent: "space-between" }}>
           <div>
-            Lovingly based on:{" "}
-            <a href="https://news.ycombinator.com">HackerNews</a>
+            based on: <a href="https://news.ycombinator.com">HackerNews</a>
           </div>
           <div
             style={{ textDecoration: "underline", cursor: "pointer" }}
-            onClick={() => localStorage.clear()}
+            onClick={() => {
+              localStorage.clear();
+              window.location.reload();
+            }}
           >
-            Clear Local
+            Reset Data
           </div>
         </footer>
       </main>

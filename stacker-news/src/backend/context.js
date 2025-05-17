@@ -3,6 +3,16 @@ import { INITIAL_LINKS } from "./data";
 
 const BackendContext = React.createContext();
 
+const initialLinks = INITIAL_LINKS.map((link, index) => {
+  return {
+    ...link,
+    id: index + 1,
+    createdAt: new Date(
+      Date.now() - 1000 * 60 * Math.random() * 150
+    ).toISOString(),
+  };
+});
+
 export const withBackend = (WrappedComponent) => {
   return class withBackend extends Component {
     static contextType = BackendContext;
@@ -18,7 +28,7 @@ export class BackendProvider extends Component {
     const savedLinks = localStorage.getItem("links");
     const savedUser = localStorage.getItem("user");
     this.state = {
-      links: savedLinks ? JSON.parse(savedLinks) : INITIAL_LINKS,
+      links: savedLinks ? JSON.parse(savedLinks) : initialLinks,
       user: savedUser ? JSON.parse(savedUser) : null,
     };
   }
