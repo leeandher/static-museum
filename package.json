@@ -2,6 +2,10 @@
   "name": "static-museum",
   "private": true,
   "packageManager": "pnpm@10.7.1",
+  "engines": {
+    "pnpm": "10.7.1",
+    "node": "23.10.0"
+  },
   "scripts": {
     "v0:dev": "pnpm --filter v0 dev",
     "v0:build": "pnpm --filter v0 build",

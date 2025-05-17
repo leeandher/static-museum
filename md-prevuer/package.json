@@ -2,6 +2,10 @@
   "name": "md-prevuer",
   "version": "1.0.0",
   "private": true,
+  "engines": {
+    "pnpm": "10.7.1",
+    "node": "23.10.0"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build"
