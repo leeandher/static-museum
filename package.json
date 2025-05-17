@@ -22,7 +22,9 @@
     "fyi:dev": "pnpm --filter fyi dev",
     "fyi:build": "pnpm --filter fyi build",
     "space:dev": "pnpm --filter space-shooter dev",
-    "space:build": "pnpm --filter space-shooter build"
+    "space:build": "pnpm --filter space-shooter build",
+    "catch:dev": "pnpm --filter catch-of-the-day dev",
+    "catch:build": "pnpm --filter catch-of-the-day build"
   },
   "type": "module"
 }

@@ -7,6 +7,7 @@ packages:
   - bgcg
   - fyi
   - space-shooter
+  - catch-of-the-day
 onlyBuiltDependencies:
   - '@parcel/watcher'
   - core-js
