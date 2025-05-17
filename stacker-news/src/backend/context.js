@@ -28,7 +28,7 @@ export class BackendProvider extends Component {
       localStorage.setItem("links", JSON.stringify(this.state.links));
     }
     if (prevState.user !== this.state.user) {
-      localStorage.setItem("user", this.state.user);
+      localStorage.setItem("user", JSON.stringify(this.state.user));
     }
   }
 

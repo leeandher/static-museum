@@ -89,6 +89,9 @@ input {
 .pointer {
   margin: 0 30px 10px 2px;
 }
+.pointer {
+  text-decoration: underline;
+}
 .click:hover {
   cursor: pointer;
 }

@@ -9,40 +9,26 @@ class LinkList extends Component {
     page: parseInt(this.props.match.params.page) || 1,
   };
 
-  componentDidMount() {
-    this._generatePage(this.state.page);
-  }
-
   _getLinksToRender = (links) => {
+    const { page } = this.state;
     if (this.props.location.pathname.includes("new")) {
-      return links;
+      return links.slice((page - 1) * LINKS_PER_PAGE, page * LINKS_PER_PAGE);
     }
     const rankedLinks = links.slice();
     rankedLinks.sort((l1, l2) => l2.votes.length - l1.votes.length);
-    return rankedLinks;
+    return rankedLinks.slice(0, LINKS_PER_PAGE);
   };
 
   _previousPage = () => {
     if (this.state.page > 1) {
-      const previousPage = this.state.page - 1;
-      this._generatePage(previousPage);
+      this.setState({ page: this.state.page - 1 });
     }
   };
 
   _nextPage = (links) => {
     if (this.state.page <= links.length / LINKS_PER_PAGE) {
-      const nextPage = this.state.page + 1;
-      this._generatePage(nextPage);
+      this.setState({ page: this.state.page + 1 });
     }
-  };
-
-  _generatePage = (page) => {
-    this.props.history.push(`/new/${page}`);
-    this.setState({
-      page,
-      skip: this.state.isNewPage ? (page - 1) * LINKS_PER_PAGE : 0,
-      first: this.state.isNewPage ? LINKS_PER_PAGE : 100,
-    });
   };
 
   render() {
@@ -76,10 +62,21 @@ class LinkList extends Component {
         ))}
         {isNewPage && (
           <div className="flex ml4 mv3 gray pagination">
-            <div className="pointer mr2" onClick={this._previousPage}>
+            <div
+              className="pointer mr2"
+              style={{ textDecoration: page === 1 ? "none" : "underline" }}
+              onClick={this._previousPage}
+            >
               previous
             </div>
-            <div className="pointer" onClick={() => this._nextPage(links)}>
+            <div
+              className="pointer"
+              onClick={() => this._nextPage(links)}
+              style={{
+                textDecoration:
+                  linksToRender.length < LINKS_PER_PAGE ? "none" : "underline",
+              }}
+            >
               next
             </div>
           </div>

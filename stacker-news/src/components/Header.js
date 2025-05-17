@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { withRouter } from "react-router";
 import { withBackend } from "../backend/context";
 
-const Header = ({ history }) => {
+const Header = ({ history, backend }) => {
   return (
     <header className="flex pa1 justify-between nowrap orange head">
       <div className="flex flex-fixed black">
@@ -26,11 +26,11 @@ const Header = ({ history }) => {
         </Link>
       </div>
       <div className="flex flex-fixed">
-        {this.props.backend.user ? (
+        {backend.user ? (
           <span
             className="logout black"
             onClick={() => {
-              this.props.backend.logout();
+              backend.logout();
               history.push("/new/1");
             }}
           >
