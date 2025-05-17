@@ -5,29 +5,23 @@ import Inventory from "./Inventory";
 import Order from "./Order";
 import sampleFishes from "../sample-fishes";
 import Fish from "./Fish";
-import base from "../base";
 
 class App extends React.Component {
   /* Component State */
   state = {
     fishes: {},
-    order: {}
+    order: {},
   };
 
   /* PropType Validation */
   static propTypes = {
-    match: PropTypes.object.isRequired
+    match: PropTypes.object.isRequired,
   };
 
   /* Lifecycle Methods */
 
   componentDidMount() {
     const { params } = this.props.match;
-    //Sync state with Firebase
-    this.ref = base.syncState(`${params.storeId}/fishes`, {
-      context: this,
-      state: "fishes"
-    });
     //Retrieve orders from local storage
     const localStorageRef = localStorage.getItem(params.storeId);
     if (localStorageRef) this.setState({ order: JSON.parse(localStorageRef) });
@@ -39,11 +33,6 @@ class App extends React.Component {
     localStorage.setItem(params.storeId, JSON.stringify(this.state.order));
   }
 
-  componentWillUnmount() {
-    //Remove firebase listener on unmount
-    base.removeBinding(this.ref);
-  }
-
   /* Custom Functions */
 
   //General Structure for Custom Functions
@@ -51,7 +40,7 @@ class App extends React.Component {
   //2. Perform processes
   //3. Set state to copy
 
-  addFish = fish => {
+  addFish = (fish) => {
     const fishes = { ...this.state.fishes };
     fishes[`fish${Date.now()}`] = fish;
     this.setState({ fishes });
@@ -63,9 +52,8 @@ class App extends React.Component {
     this.setState({ fishes });
   };
 
-  deleteFish = key => {
+  deleteFish = (key) => {
     const fishes = { ...this.state.fishes };
-    //Make it null to mirror deletion to Firebase
     fishes[key] = null;
     this.setState({ fishes });
   };
@@ -74,15 +62,14 @@ class App extends React.Component {
     this.setState({ fishes: sampleFishes });
   };
 
-  addToOrder = key => {
+  addToOrder = (key) => {
     const order = { ...this.state.order };
     order[key] = order[key] + 1 || 1;
     this.setState({ order });
   };
 
-  removeFromOrder = key => {
+  removeFromOrder = (key) => {
     const order = { ...this.state.order };
-    //Delete it since order does not mirror to Firebase
     delete order[key];
     this.setState({ order });
   };
@@ -94,7 +81,7 @@ class App extends React.Component {
         <div className="menu">
           <Header tagline="Fresh Seafood Market" />
           <ul className="fishes">
-            {Object.keys(this.state.fishes).map(key => (
+            {Object.keys(this.state.fishes).map((key) => (
               <Fish
                 key={key}
                 details={this.state.fishes[key]}

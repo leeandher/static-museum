@@ -1,12 +1,10 @@
-import React from "react"
-import { Link } from "react-router-dom"
-import PropTypes from "prop-types"
-import AddFishForm from "./AddFishForm"
-import EditFishForm from "./EditFishForm"
-import Login from "./Login"
-import Logout from "./Logout"
-import firebase from "firebase"
-import base from "../base"
+import React from "react";
+import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
+import AddFishForm from "./AddFishForm";
+import EditFishForm from "./EditFishForm";
+import Login from "./Login";
+import Logout from "./Logout";
 
 class Inventory extends React.Component {
   static propTypes = {
@@ -15,70 +13,29 @@ class Inventory extends React.Component {
     deleteFish: PropTypes.func.isRequired,
     loadSampleFishes: PropTypes.func.isRequired,
     storeId: PropTypes.string.isRequired,
-  }
+  };
 
   state = {
     uid: null,
     owner: null,
-  }
-
-  componentDidMount() {
-    //On mount, ask Firebase to check out the user (if they are logged in)
-    firebase.auth().onAuthStateChanged(user => {
-      //If so, handle authentication with the stored user authData
-      if (user) {
-        this.authHandler({ user })
-      }
-    })
-  }
-
-  authenticate = provider => {
-    const authProvider = new firebase.auth[`${provider}AuthProvider`]()
-    firebase
-      .auth()
-      .signInWithPopup(authProvider)
-      .then(this.authHandler)
-  }
+  };
 
   anonAuthenticate = () => {
-    firebase
-      .auth()
-      .signInAnonymously()
-      .then(this.authHandler)
-  }
-
-  authHandler = async authData => {
-    //The authData contains user data of the current sign-on
-    //1. Look up the store in the Firebase DB
-    const store = await base.fetch(this.props.storeId, { context: this })
-    //2. Claim the store if there is no owner
-    if (!store.owner) {
-      await base.post(`${this.props.storeId}/owner`, {
-        data: authData.user.uid,
-      })
-    }
-    //3. Reflect the current user in the Inventory component state
     this.setState({
-      uid: authData.user.uid,
-      owner: store.owner || authData.user.uid,
-    })
-  }
+      uid: "anonymous",
+      owner: "anonymous",
+    });
+  };
 
   logout = async () => {
-    await firebase.auth().signOut()
-    this.setState({ uid: null })
-  }
+    this.setState({ uid: null, owner: null });
+  };
 
   render() {
     //Checking the credentials can yield three situations
     //1. If the user isn't logged in, prompt it
     if (!this.state.uid) {
-      return (
-        <Login
-          authenticate={this.authenticate}
-          anonAuthenticate={this.anonAuthenticate}
-        />
-      )
+      return <Login anonAuthenticate={this.anonAuthenticate} />;
     }
 
     //2. If the user is not the owner, prevent inventory changes
@@ -91,7 +48,7 @@ class Inventory extends React.Component {
           </p>
           <Logout logout={this.logout} />
         </div>
-      )
+      );
     }
 
     //3. If the user is the owner, render the inventory
@@ -99,7 +56,7 @@ class Inventory extends React.Component {
       <div className="inventory">
         <h2>Inventory</h2>
         <Logout logout={this.logout} />
-        {Object.keys(this.props.fishes).map(key => (
+        {Object.keys(this.props.fishes).map((key) => (
           <EditFishForm
             key={key}
             index={key}
@@ -113,8 +70,8 @@ class Inventory extends React.Component {
           Load Sample Fishes
         </button>
       </div>
-    )
+    );
   }
 }
 
-export default Inventory
+export default Inventory;
