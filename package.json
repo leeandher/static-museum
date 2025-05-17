@@ -18,7 +18,9 @@
     "md:dev": "pnpm --filter md-prevuer dev",
     "md:build": "pnpm --filter md-prevuer build",
     "bgcg:dev": "pnpm --filter bgcg start",
-    "bgcg:build": "pnpm --filter bgcg build"
+    "bgcg:build": "pnpm --filter bgcg build",
+    "fyi:dev": "pnpm --filter fyi dev",
+    "fyi:build": "pnpm --filter fyi build"
   },
   "type": "module"
 }

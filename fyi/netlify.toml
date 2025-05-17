@@ -1,0 +1,3 @@
+[build]
+command = "pnpm run fyi:build"
+publish = "fyi/build"

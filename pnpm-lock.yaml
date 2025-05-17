@@ -72,6 +72,43 @@ importers:
         specifier: 1.89.0
         version: 1.89.0
 
+  fyi:
+    dependencies:
+      core-js:
+        specifier: 2.6.5
+        version: 2.6.5
+      lodash:
+        specifier: 4.17.15
+        version: 4.17.15
+      register-service-worker:
+        specifier: 1.6.2
+        version: 1.6.2
+      vue:
+        specifier: 2.6.10
+        version: 2.6.10
+      vue-class-component:
+        specifier: 7.0.2
+        version: 7.0.2
+      vue-clipboard2:
+        specifier: 0.3.1
+        version: 0.3.1
+      vue-property-decorator:
+        specifier: 8.1.0
+        version: 8.1.0
+    devDependencies:
+      typescript:
+        specifier: 3.4.3
+        version: 3.4.3
+      vite:
+        specifier: 6.0.6
+        version: 6.0.6(@types/node@22.15.18)(less@3.9.0)(sass@1.89.0)
+      vite-plugin-vue2:
+        specifier: 2.0.3
+        version: 2.0.3(babel-core@6.26.3)(handlebars@4.7.8)(lodash@4.17.15)(nunjucks@3.2.4(chokidar@3.6.0))(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(vite@6.0.6(@types/node@22.15.18)(less@3.9.0)(sass@1.89.0))(vue-template-compiler@2.6.10)(vue@2.6.10)
+      vue-template-compiler:
+        specifier: 2.6.10
+        version: 2.6.10
+
   md-prevuer:
     dependencies:
       core-js:
@@ -2666,6 +2703,9 @@ packages:
   cli-width@2.2.1:
     resolution: {integrity: sha512-GRMWDxpOB6Dgk2E5Uo+3eEBvtOOlimMmpbFiKuLFnQzYDavtLFY3K5ona41jgN/WdRZtG7utuVSVTL4HbZHGkw==}
 
+  clipboard@2.0.11:
+    resolution: {integrity: sha512-C+0bbOqkezLIsmWSvlsXS0Q0bmkugu7jcfMIACB+RDEntIzQIkdr148we28AfSloQLRdZlYL/QYyrq05j/3Faw==}
+
   cliui@4.1.0:
     resolution: {integrity: sha512-4FG+RSG9DL7uEwRUZXZn3SS34DiDPfzP0VOiEwtUWlE+AR2EIg+hSyvrIgUUfhdgR/UkAeW2QHgeP+hWrXs7jQ==}
 
@@ -3493,6 +3533,9 @@ packages:
   delayed-stream@1.0.0:
     resolution: {integrity: sha512-ZySD7Nf91aLB0RxL4KGrKHBXl7Eds1DAmEdcoVawXnLD7SDhpNgtuII2aAkg7a7QS41jxPSZ17p4VdGnMHk3MQ==}
     engines: {node: '>=0.4.0'}
+
+  delegate@3.2.0:
+    resolution: {integrity: sha512-IofjkYBZaZivn0V8nnsMJGBr4jVLxHDheKSW88PyxS5QC4Vo9ZbZVvhzlSxY87fVq3STR6r+4cGepyHkcWOQSw==}
 
   depd@1.1.2:
     resolution: {integrity: sha512-7emPTl6Dpo6JRXOXjLRxck+FlLRX5847cLKEn00PLAgc3g2hTZZgr+e4c2v6QpSmLeFP3n5yUo7ft6avBK/5jQ==}
@@ -4480,6 +4523,9 @@ packages:
   globby@8.0.2:
     resolution: {integrity: sha512-yTzMmKygLp8RUpG1Ymu2VXPSJQZjNAZPD4ywgYEaG7e4tBJeUQBO8OpXrf1RCNcEs5alsoJYPAMiIHP0cmeC7w==}
     engines: {node: '>=4'}
+
+  good-listener@1.2.2:
+    resolution: {integrity: sha512-goW1b+d9q/HIwbVYZzZ6SsTr4IgE+WA44A0GmPIQstuOrgsFcT7VEJ48nmr9GaRtNu0XTKacFLGnBPAM6Afouw==}
 
   gopd@1.2.0:
     resolution: {integrity: sha512-ZUKRh6/kUFoAiTAtTYPZJ3hw9wNxx+BIBOijnlG9PnrJsCcSjs1wyyD6vJpaYtgnzDrKYRSqf3OO6Rfa93xsRg==}
@@ -5781,6 +5827,9 @@ packages:
 
   lodash.uniq@4.5.0:
     resolution: {integrity: sha512-xfBaXQd9ryd9dlSDvnvI0lvxfLJlYAZzXomUYzLKtUeOQvOP5piqAWuGtrhWeqaXK9hhoM/iyJc5AV+XfsX3HQ==}
+
+  lodash@4.17.15:
+    resolution: {integrity: sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==}
 
   lodash@4.17.21:
     resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
@@ -7492,6 +7541,9 @@ packages:
     resolution: {integrity: sha512-H66BPQMrv+V16t8xtmq+UC0CBpiTBA60V8ibS1QVReIp8T1z8hwFxqcGzm9K6lgsN7sB5edVH8a+ze6Fqm4weA==}
     engines: {node: '>=4'}
 
+  register-service-worker@1.6.2:
+    resolution: {integrity: sha512-I8L87fX2TK29LDx+wgyOUh2BJ3rDIRC1FtRZEHeP3rivzDv6p1DDZLGGtPucqjEkm45+2crtFIFssEWv56+9Wg==}
+
   regjsgen@0.8.0:
     resolution: {integrity: sha512-RvwtGe3d7LvWiDQXeQw8p5asZUmfU1G/l6WbUXeHta7Y2PEIvBTwH6E2EfmYUK8pxcxEdEmaomqyp0vZZ7C+3Q==}
 
@@ -7762,6 +7814,9 @@ packages:
 
   select-hose@2.0.0:
     resolution: {integrity: sha512-mEugaLK+YfkijB4fx0e6kImuJdCIt2LxCRcbEYPqRGCs4F2ogyfZU5IAZRdjCP8JPq2AtdNoC/Dux63d9Kiryg==}
+
+  select@1.1.2:
+    resolution: {integrity: sha512-OwpTSOfy6xSs1+pwcNrv0RBMOzI39Lp3qQKUTPVVPRjCdNa5JH/oPRiqsesIskK8TVgmRiHwO4KXlV2Li9dANA==}
 
   selfsigned@1.10.14:
     resolution: {integrity: sha512-lkjaiAye+wBZDCBsu5BGi0XiLRxeUlsGod5ZP924CRSEoGuZAw/f7y9RKu28rwTfiHVhdavhB0qH0INV6P1lEA==}
@@ -8313,6 +8368,9 @@ packages:
   timsort@0.3.0:
     resolution: {integrity: sha512-qsdtZH+vMoCARQtyod4imc2nIJwg9Cc7lPRrw9CzF8ZKR0khdr8+2nX80PBhET3tcyTtJDxAffGh2rXH4tyU8A==}
 
+  tiny-emitter@2.1.0:
+    resolution: {integrity: sha512-NB6Dk1A9xgQPMoGqC5CVXn123gWyte215ONT5Pp5a0yt4nlEoO1ZWeCwpncaekPHXO60i47ihFnZPiRPjRMq4Q==}
+
   tinycolor2@1.6.0:
     resolution: {integrity: sha512-XPaBkWQJdsf3pLKJV9p4qN/S+fm2Oj8AIPo1BTUhg5oxkvm9+SVEGFdhyOz7tTdUTfvxMiAs4sp6/eZO2Ew+pw==}
 
@@ -8448,6 +8506,11 @@ packages:
 
   typedarray@0.0.6:
     resolution: {integrity: sha512-/aCDEGatGvZ2BIk+HmLf4ifCJFwvKFNb9/JeZPMulfgFracn9QFcAf5GO8B/mweUjSoblS5In0cWhqpfs/5PQA==}
+
+  typescript@3.4.3:
+    resolution: {integrity: sha512-FFgHdPt4T/duxx6Ndf7hwgMZZjZpB+U0nMNGVCYPq0rEzWKjEDobm4J6yb3CS7naZ0yURFqdw9Gwc7UOh/P9oQ==}
+    engines: {node: '>=4.2.0'}
+    hasBin: true
 
   typescript@5.8.3:
     resolution: {integrity: sha512-p1diW6TqL9L07nNxvRMM7hMMw4c5XOo/1ibL4aAIGmSAt9slTE1Xgw5KWuof2uTOvCg9BY7ZRi+GaF+7sfgPeQ==}
@@ -8671,6 +8734,15 @@ packages:
 
   vm-browserify@1.1.2:
     resolution: {integrity: sha512-2ham8XPWTONajOR0ohOKOHXkm3+gaBmGut3SRuu75xLd/RRaY6vqgh8NBYYk7+RW3u5AtzPQZG8F10LHkl0lAQ==}
+
+  vue-class-component@7.0.2:
+    resolution: {integrity: sha512-8xw/wkZI2tgHcwvkSRC1ax7GeP1CG27wKhedvOAdjdASm05VU4RijGsCYti6s6CzBioBL5BQUmntQQTCsp1wnQ==}
+
+  vue-clipboard2@0.3.1:
+    resolution: {integrity: sha512-H5S/agEDj0kXjUb5GP2c0hCzIXWRBygaWLN3NEFsaI9I3uWin778SFEMt8QRXiPG+7anyjqWiw2lqcxWUSfkYg==}
+
+  vue-property-decorator@8.1.0:
+    resolution: {integrity: sha512-TUWpbadApSW/sx9hlbrUq092ULm4E3RkL5X4fFhkiJ88/Y99lVubjh3bd3VbFQ8JRlKaTeqMOKaFHQRzWBCFPg==}
 
   vue-template-babel-compiler@1.2.0:
     resolution: {integrity: sha512-CScBSX1/wCdmmZ/Lvj/63p2CCVTS0FMj0F69VRBo73CuJrjvPAPGmeNJ7D/cwt/VS2PduowRWbO8N4Zh4Z3b0g==}
@@ -9240,7 +9312,7 @@ snapshots:
       convert-source-map: 1.9.0
       debug: 4.4.1(supports-color@5.5.0)
       json5: 2.2.3
-      lodash: 4.17.21
+      lodash: 4.17.15
       resolve: 1.22.10
       semver: 5.7.2
       source-map: 0.5.7
@@ -9281,7 +9353,7 @@ snapshots:
       debug: 4.4.1(supports-color@5.5.0)
       gensync: 1.0.0-beta.2
       json5: 2.2.3
-      lodash: 4.17.21
+      lodash: 4.17.15
       resolve: 1.22.10
       semver: 5.7.2
       source-map: 0.5.7
@@ -11291,9 +11363,7 @@ snapshots:
       source-map: 0.6.1
       string-length: 2.0.0
     transitivePeerDependencies:
-      - bufferutil
       - supports-color
-      - utf-8-validate
 
   '@jest/source-map@24.9.0':
     dependencies:
@@ -11766,7 +11836,7 @@ snapshots:
       eslint-visitor-keys: 1.3.0
       glob: 7.2.3
       is-glob: 4.0.3
-      lodash: 4.17.21
+      lodash: 4.17.15
       semver: 7.7.2
       tsutils: 3.21.0(typescript@5.8.3)
     optionalDependencies:
@@ -11849,6 +11919,73 @@ snapshots:
       camelcase: 5.3.1
     transitivePeerDependencies:
       - supports-color
+
+  '@vue/component-compiler-utils@3.3.0(babel-core@6.26.3)(handlebars@4.7.8)(lodash@4.17.15)(nunjucks@3.2.4(chokidar@3.6.0))(react-dom@16.14.0(react@16.14.0))(react@16.14.0)':
+    dependencies:
+      consolidate: 0.15.1(babel-core@6.26.3)(handlebars@4.7.8)(lodash@4.17.15)(nunjucks@3.2.4(chokidar@3.6.0))(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
+      hash-sum: 1.0.2
+      lru-cache: 4.1.5
+      merge-source-map: 1.1.0
+      postcss: 7.0.39
+      postcss-selector-parser: 6.1.2
+      source-map: 0.6.1
+      vue-template-es2015-compiler: 1.9.1
+    optionalDependencies:
+      prettier: 2.8.8
+    transitivePeerDependencies:
+      - arc-templates
+      - atpl
+      - babel-core
+      - bracket-template
+      - coffee-script
+      - dot
+      - dust
+      - dustjs-helpers
+      - dustjs-linkedin
+      - eco
+      - ect
+      - ejs
+      - haml-coffee
+      - hamlet
+      - hamljs
+      - handlebars
+      - hogan.js
+      - htmling
+      - jade
+      - jazz
+      - jqtpl
+      - just
+      - liquid-node
+      - liquor
+      - lodash
+      - marko
+      - mote
+      - mustache
+      - nunjucks
+      - plates
+      - pug
+      - qejs
+      - ractive
+      - razor-tmpl
+      - react
+      - react-dom
+      - slm
+      - squirrelly
+      - swig
+      - swig-templates
+      - teacup
+      - templayed
+      - then-jade
+      - then-pug
+      - tinyliquid
+      - toffee
+      - twig
+      - twing
+      - underscore
+      - vash
+      - velocityjs
+      - walrus
+      - whiskers
 
   '@vue/component-compiler-utils@3.3.0(babel-core@6.26.3)(handlebars@4.7.8)(lodash@4.17.21)(nunjucks@3.2.4(chokidar@3.6.0))(react-dom@16.14.0(react@16.14.0))(react@16.14.0)':
     dependencies:
@@ -12436,7 +12573,7 @@ snapshots:
 
   async@2.6.4:
     dependencies:
-      lodash: 4.17.21
+      lodash: 4.17.15
 
   async@3.2.6: {}
 
@@ -12485,7 +12622,7 @@ snapshots:
       convert-source-map: 1.9.0
       debug: 2.6.9(supports-color@5.5.0)
       json5: 0.5.1
-      lodash: 4.17.21
+      lodash: 4.17.15
       minimatch: 3.1.2
       path-is-absolute: 1.0.1
       private: 0.1.8
@@ -12532,7 +12669,7 @@ snapshots:
       babel-types: 6.26.0
       detect-indent: 4.0.0
       jsesc: 1.3.0
-      lodash: 4.17.21
+      lodash: 4.17.15
       source-map: 0.5.7
       trim-right: 1.0.1
 
@@ -12775,7 +12912,7 @@ snapshots:
       babel-runtime: 6.26.0
       core-js: 2.6.5
       home-or-tmp: 2.0.0
-      lodash: 4.17.21
+      lodash: 4.17.15
       mkdirp: 0.5.6
       source-map-support: 0.4.18
     transitivePeerDependencies:
@@ -12792,7 +12929,7 @@ snapshots:
       babel-traverse: 6.26.0
       babel-types: 6.26.0
       babylon: 6.18.0
-      lodash: 4.17.21
+      lodash: 4.17.15
     transitivePeerDependencies:
       - supports-color
 
@@ -12806,7 +12943,7 @@ snapshots:
       debug: 2.6.9(supports-color@5.5.0)
       globals: 9.18.0
       invariant: 2.2.4
-      lodash: 4.17.21
+      lodash: 4.17.15
     transitivePeerDependencies:
       - supports-color
 
@@ -12814,7 +12951,7 @@ snapshots:
     dependencies:
       babel-runtime: 6.26.0
       esutils: 2.0.3
-      lodash: 4.17.21
+      lodash: 4.17.15
       to-fast-properties: 1.0.3
 
   babylon@6.18.0: {}
@@ -13332,6 +13469,12 @@ snapshots:
 
   cli-width@2.2.1: {}
 
+  clipboard@2.0.11:
+    dependencies:
+      good-listener: 1.2.2
+      select: 1.1.2
+      tiny-emitter: 2.1.0
+
   cliui@4.1.0:
     dependencies:
       string-width: 2.1.1
@@ -13479,6 +13622,17 @@ snapshots:
 
   console-browserify@1.2.0: {}
 
+  consolidate@0.15.1(babel-core@6.26.3)(handlebars@4.7.8)(lodash@4.17.15)(nunjucks@3.2.4(chokidar@3.6.0))(react-dom@16.14.0(react@16.14.0))(react@16.14.0):
+    dependencies:
+      bluebird: 3.7.2
+    optionalDependencies:
+      babel-core: 6.26.3
+      handlebars: 4.7.8
+      lodash: 4.17.15
+      nunjucks: 3.2.4(chokidar@3.6.0)
+      react: 16.14.0
+      react-dom: 16.14.0(react@16.14.0)
+
   consolidate@0.15.1(babel-core@6.26.3)(handlebars@4.7.8)(lodash@4.17.21)(nunjucks@3.2.4(chokidar@3.6.0))(react-dom@16.14.0(react@16.14.0))(react@16.14.0):
     dependencies:
       bluebird: 3.7.2
@@ -13486,6 +13640,17 @@ snapshots:
       babel-core: 6.26.3
       handlebars: 4.7.8
       lodash: 4.17.21
+      nunjucks: 3.2.4(chokidar@3.6.0)
+      react: 16.14.0
+      react-dom: 16.14.0(react@16.14.0)
+
+  consolidate@0.16.0(babel-core@6.26.3)(handlebars@4.7.8)(lodash@4.17.15)(nunjucks@3.2.4(chokidar@3.6.0))(react-dom@16.14.0(react@16.14.0))(react@16.14.0):
+    dependencies:
+      bluebird: 3.7.2
+    optionalDependencies:
+      babel-core: 6.26.3
+      handlebars: 4.7.8
+      lodash: 4.17.15
       nunjucks: 3.2.4(chokidar@3.6.0)
       react: 16.14.0
       react-dom: 16.14.0(react@16.14.0)
@@ -13982,6 +14147,8 @@ snapshots:
 
   delayed-stream@1.0.0: {}
 
+  delegate@3.2.0: {}
+
   depd@1.1.2: {}
 
   depd@2.0.0: {}
@@ -14429,12 +14596,12 @@ snapshots:
   eslint-plugin-flowtype@2.50.1(eslint@5.16.0):
     dependencies:
       eslint: 5.16.0
-      lodash: 4.17.21
+      lodash: 4.17.15
 
   eslint-plugin-flowtype@4.6.0(eslint@5.16.0):
     dependencies:
       eslint: 5.16.0
-      lodash: 4.17.21
+      lodash: 4.17.15
 
   eslint-plugin-import@2.14.0(eslint@5.16.0):
     dependencies:
@@ -14445,7 +14612,7 @@ snapshots:
       eslint-import-resolver-node: 0.3.9
       eslint-module-utils: 2.12.0(@typescript-eslint/parser@2.34.0(eslint@5.16.0)(typescript@5.8.3))(eslint-import-resolver-node@0.3.9)(eslint@5.16.0)
       has: 1.0.4
-      lodash: 4.17.21
+      lodash: 4.17.15
       minimatch: 3.1.2
       read-pkg-up: 2.0.0
       resolve: 1.22.10
@@ -14582,7 +14749,7 @@ snapshots:
       js-yaml: 3.14.1
       json-stable-stringify-without-jsonify: 1.0.1
       levn: 0.3.0
-      lodash: 4.17.21
+      lodash: 4.17.15
       minimatch: 3.1.2
       mkdirp: 0.5.6
       natural-compare: 1.4.0
@@ -15314,6 +15481,10 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
+  good-listener@1.2.2:
+    dependencies:
+      delegate: 3.2.0
+
   gopd@1.2.0: {}
 
   graceful-fs@4.2.11: {}
@@ -15508,7 +15679,7 @@ snapshots:
       '@types/tapable': 1.0.2
       html-minifier: 3.5.21
       loader-utils: 1.4.2
-      lodash: 4.17.21
+      lodash: 4.17.15
       pretty-error: 2.1.2
       tapable: 1.1.3
       util.promisify: 1.0.0
@@ -15518,7 +15689,7 @@ snapshots:
     dependencies:
       html-minifier-terser: 5.1.1
       loader-utils: 1.4.2
-      lodash: 4.17.21
+      lodash: 4.17.15
       pretty-error: 2.1.2
       tapable: 1.1.3
       util.promisify: 1.0.0
@@ -15563,7 +15734,7 @@ snapshots:
     dependencies:
       http-proxy: 1.18.1(debug@3.2.7(supports-color@5.5.0))
       is-glob: 4.0.3
-      lodash: 4.17.21
+      lodash: 4.17.15
       micromatch: 3.1.10(supports-color@5.5.0)
     transitivePeerDependencies:
       - debug
@@ -15573,7 +15744,7 @@ snapshots:
     dependencies:
       http-proxy: 1.18.1(debug@4.4.1(supports-color@6.1.0))
       is-glob: 4.0.3
-      lodash: 4.17.21
+      lodash: 4.17.15
       micromatch: 3.1.10(supports-color@6.1.0)
     transitivePeerDependencies:
       - debug
@@ -15699,7 +15870,7 @@ snapshots:
       cli-width: 2.2.1
       external-editor: 3.1.0
       figures: 2.0.0
-      lodash: 4.17.21
+      lodash: 4.17.15
       mute-stream: 0.0.7
       run-async: 2.4.1
       rxjs: 6.6.7
@@ -15715,7 +15886,7 @@ snapshots:
       cli-width: 2.2.1
       external-editor: 3.1.0
       figures: 2.0.0
-      lodash: 4.17.21
+      lodash: 4.17.15
       mute-stream: 0.0.7
       run-async: 2.4.1
       rxjs: 6.6.7
@@ -15731,7 +15902,7 @@ snapshots:
       cli-width: 2.2.1
       external-editor: 3.1.0
       figures: 3.2.0
-      lodash: 4.17.21
+      lodash: 4.17.15
       mute-stream: 0.0.8
       run-async: 2.4.1
       rxjs: 6.6.7
@@ -16439,9 +16610,7 @@ snapshots:
       pretty-format: 24.9.0
       throat: 4.1.0
     transitivePeerDependencies:
-      - bufferutil
       - supports-color
-      - utf-8-validate
 
   jest-leak-detector@23.6.0:
     dependencies:
@@ -16964,7 +17133,7 @@ snapshots:
 
   last-call-webpack-plugin@3.0.0:
     dependencies:
-      lodash: 4.17.21
+      lodash: 4.17.15
       webpack-sources: 1.4.3
 
   lazy-cache@0.2.7: {}
@@ -17106,6 +17275,8 @@ snapshots:
   lodash.throttle@4.1.1: {}
 
   lodash.uniq@4.5.0: {}
+
+  lodash@4.17.15: {}
 
   lodash@4.17.21: {}
 
@@ -18832,7 +19003,7 @@ snapshots:
       classnames: 2.2.6
       draft-js: 0.10.5(react-dom@16.6.3(react@16.6.3))(react@16.6.3)
       immutable: 3.7.6
-      lodash: 4.17.21
+      lodash: 4.17.15
       prop-types: 15.8.1
       react: 16.6.3
       react-dom: 16.6.3(react@16.6.3)
@@ -18858,7 +19029,7 @@ snapshots:
       create-react-class: 15.7.0
       dom-scroll-into-view: 1.2.1
       hoist-non-react-statics: 3.3.2
-      lodash: 4.17.21
+      lodash: 4.17.15
       prop-types: 15.8.1
       rc-util: 4.21.1
       react-is: 16.13.1
@@ -18955,7 +19126,7 @@ snapshots:
     dependencies:
       babel-runtime: 6.26.0
       classnames: 2.2.6
-      lodash: 4.17.21
+      lodash: 4.17.15
       prop-types: 15.8.1
 
   rc-switch@1.9.2(react-dom@16.6.3(react@16.6.3))(react@16.6.3):
@@ -18971,7 +19142,7 @@ snapshots:
       babel-runtime: 6.26.0
       classnames: 2.2.6
       component-classes: 1.2.6
-      lodash: 4.17.21
+      lodash: 4.17.15
       mini-store: 2.0.0
       prop-types: 15.8.1
       rc-util: 4.21.1
@@ -18984,7 +19155,7 @@ snapshots:
       '@ant-design/create-react-context': 0.2.6(prop-types@15.8.1)(react@16.6.3)
       babel-runtime: 6.26.0
       classnames: 2.2.6
-      lodash: 4.17.21
+      lodash: 4.17.15
       prop-types: 15.8.1
       raf: 3.4.1
       rc-hammerjs: 0.6.10
@@ -19230,7 +19401,7 @@ snapshots:
     dependencies:
       hoist-non-react-statics: 1.2.0
       invariant: 2.2.4
-      lodash: 4.17.21
+      lodash: 4.17.15
       loose-envify: 1.4.0
       react: 15.0.2
       redux: 4.0.1
@@ -19642,6 +19813,8 @@ snapshots:
       unicode-match-property-ecmascript: 2.0.0
       unicode-match-property-value-ecmascript: 2.2.0
 
+  register-service-worker@1.6.2: {}
+
   regjsgen@0.8.0: {}
 
   regjsparser@0.12.0:
@@ -19973,6 +20146,8 @@ snapshots:
       kind-of: 6.0.3
 
   select-hose@2.0.0: {}
+
+  select@1.1.2: {}
 
   selfsigned@1.10.14:
     dependencies:
@@ -20669,7 +20844,7 @@ snapshots:
   table@5.4.6:
     dependencies:
       ajv: 6.12.6
-      lodash: 4.17.21
+      lodash: 4.17.15
       slice-ansi: 2.1.0
       string-width: 3.1.0
 
@@ -20762,6 +20937,8 @@ snapshots:
       setimmediate: 1.0.5
 
   timsort@0.3.0: {}
+
+  tiny-emitter@2.1.0: {}
 
   tinycolor2@1.6.0: {}
 
@@ -20893,6 +21070,8 @@ snapshots:
       reflect.getprototypeof: 1.0.10
 
   typedarray@0.0.6: {}
+
+  typescript@3.4.3: {}
 
   typescript@5.8.3: {}
 
@@ -21053,6 +21232,96 @@ snapshots:
       core-util-is: 1.0.2
       extsprintf: 1.3.0
 
+  vite-plugin-vue2@2.0.3(babel-core@6.26.3)(handlebars@4.7.8)(lodash@4.17.15)(nunjucks@3.2.4(chokidar@3.6.0))(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(vite@6.0.6(@types/node@22.15.18)(less@3.9.0)(sass@1.89.0))(vue-template-compiler@2.6.10)(vue@2.6.10):
+    dependencies:
+      '@babel/core': 7.27.1
+      '@babel/parser': 7.27.2
+      '@babel/plugin-proposal-class-properties': 7.18.6(@babel/core@7.27.1)
+      '@babel/plugin-proposal-decorators': 7.27.1(@babel/core@7.27.1)
+      '@babel/plugin-proposal-nullish-coalescing-operator': 7.18.6(@babel/core@7.27.1)
+      '@babel/plugin-proposal-object-rest-spread': 7.20.7(@babel/core@7.27.1)
+      '@babel/plugin-proposal-optional-chaining': 7.21.0(@babel/core@7.27.1)
+      '@babel/plugin-transform-arrow-functions': 7.27.1(@babel/core@7.27.1)
+      '@babel/plugin-transform-block-scoping': 7.27.1(@babel/core@7.27.1)
+      '@babel/plugin-transform-computed-properties': 7.27.1(@babel/core@7.27.1)
+      '@babel/plugin-transform-destructuring': 7.27.1(@babel/core@7.27.1)
+      '@babel/plugin-transform-parameters': 7.27.1(@babel/core@7.27.1)
+      '@babel/plugin-transform-spread': 7.27.1(@babel/core@7.27.1)
+      '@babel/plugin-transform-typescript': 7.27.1(@babel/core@7.27.1)
+      '@rollup/pluginutils': 4.2.1
+      '@vue/babel-helper-vue-jsx-merge-props': 1.4.0
+      '@vue/babel-preset-jsx': 1.4.0(@babel/core@7.27.1)(vue@2.6.10)
+      '@vue/component-compiler-utils': 3.3.0(babel-core@6.26.3)(handlebars@4.7.8)(lodash@4.17.15)(nunjucks@3.2.4(chokidar@3.6.0))(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
+      consolidate: 0.16.0(babel-core@6.26.3)(handlebars@4.7.8)(lodash@4.17.15)(nunjucks@3.2.4(chokidar@3.6.0))(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
+      debug: 4.4.1(supports-color@5.5.0)
+      fs-extra: 10.1.0
+      hash-sum: 2.0.0
+      magic-string: 0.26.7
+      prettier: 2.8.8
+      querystring: 0.2.1
+      rollup: 2.79.2
+      slash: 3.0.0
+      source-map: 0.7.4
+      vite: 6.0.6(@types/node@22.15.18)(less@3.9.0)(sass@1.89.0)
+      vue-template-babel-compiler: 1.2.0(vue-template-compiler@2.6.10)
+      vue-template-compiler: 2.6.10
+    transitivePeerDependencies:
+      - arc-templates
+      - atpl
+      - babel-core
+      - bracket-template
+      - coffee-script
+      - dot
+      - dust
+      - dustjs-helpers
+      - dustjs-linkedin
+      - eco
+      - ect
+      - ejs
+      - haml-coffee
+      - hamlet
+      - hamljs
+      - handlebars
+      - hogan.js
+      - htmling
+      - jade
+      - jazz
+      - jqtpl
+      - just
+      - liquid-node
+      - liquor
+      - lodash
+      - marko
+      - mote
+      - mustache
+      - nunjucks
+      - plates
+      - pug
+      - qejs
+      - ractive
+      - razor-tmpl
+      - react
+      - react-dom
+      - slm
+      - squirrelly
+      - supports-color
+      - swig
+      - swig-templates
+      - teacup
+      - templayed
+      - then-jade
+      - then-pug
+      - tinyliquid
+      - toffee
+      - twig
+      - twing
+      - underscore
+      - vash
+      - velocityjs
+      - vue
+      - walrus
+      - whiskers
+
   vite-plugin-vue2@2.0.3(babel-core@6.26.3)(handlebars@4.7.8)(lodash@4.17.21)(nunjucks@3.2.4(chokidar@3.6.0))(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(vite@6.0.6(@types/node@22.15.18)(less@3.9.0)(sass@1.89.0))(vue-template-compiler@2.6.10)(vue@2.6.10):
     dependencies:
       '@babel/core': 7.27.1
@@ -21155,6 +21424,16 @@ snapshots:
       sass: 1.89.0
 
   vm-browserify@1.1.2: {}
+
+  vue-class-component@7.0.2: {}
+
+  vue-clipboard2@0.3.1:
+    dependencies:
+      clipboard: 2.0.11
+
+  vue-property-decorator@8.1.0:
+    dependencies:
+      vue-class-component: 7.0.2
 
   vue-template-babel-compiler@1.2.0(vue-template-compiler@2.6.10):
     dependencies:
@@ -21338,14 +21617,14 @@ snapshots:
   webpack-manifest-plugin@2.0.4(webpack@4.28.3):
     dependencies:
       fs-extra: 7.0.1
-      lodash: 4.17.21
+      lodash: 4.17.15
       tapable: 1.1.3
       webpack: 4.28.3
 
   webpack-manifest-plugin@2.2.0(webpack@4.42.0):
     dependencies:
       fs-extra: 7.0.1
-      lodash: 4.17.21
+      lodash: 4.17.15
       object.entries: 1.1.9
       tapable: 1.1.3
       webpack: 4.42.0

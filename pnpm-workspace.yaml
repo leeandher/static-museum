@@ -5,6 +5,7 @@ packages:
   - conway
   - md-prevuer
   - bgcg
+  - fyi
 onlyBuiltDependencies:
   - '@parcel/watcher'
   - core-js
