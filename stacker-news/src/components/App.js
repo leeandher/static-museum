@@ -7,13 +7,10 @@ import CreateLink from "./CreateLink";
 import Login from "./Login";
 import Search from "./Search";
 import Lost from "./Lost";
-
-import { AUTH_TOKEN } from "../constants";
+import { withBackend } from "../backend/context";
 
 class App extends Component {
   render() {
-    const authToken = localStorage.getItem(AUTH_TOKEN);
-
     return (
       <main className="center basis">
         <Header />
@@ -23,7 +20,7 @@ class App extends Component {
             <Route
               exact
               path="/create"
-              component={authToken ? CreateLink : Login}
+              component={this.props.backend.user ? CreateLink : Login}
             />
             <Route exact path="/login" component={Login} />
             <Route exact path="/search" component={Search} />
@@ -41,4 +38,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withBackend(App);

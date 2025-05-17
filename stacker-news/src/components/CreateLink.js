@@ -1,50 +1,10 @@
 import React, { Component } from "react";
-
-import { Mutation } from "react-apollo";
-import gql from "graphql-tag";
-
-import { FEED_QUERY } from "./LinkList";
-import { LINKS_PER_PAGE } from "../constants";
-
-const POST_MUTATION = gql`
-  mutation PostMutation($description: String!, $url: String!) {
-    postLink(description: $description, url: $url) {
-      id
-      createdAt
-      url
-      description
-    }
-  }
-`;
+import { withBackend } from "../backend/context";
 
 class CreateLink extends Component {
   state = {
     description: "",
-    url: ""
-  };
-
-  _handleUpdate = (store, { data: { postLink } }) => {
-    const first = LINKS_PER_PAGE;
-    const skip = 0;
-    const orderBy = "createdAt_DESC";
-    const data = store.readQuery({
-      query: FEED_QUERY,
-      variables: {
-        first,
-        skip,
-        orderBy
-      }
-    });
-    data.feed.links.unshift(postLink);
-    store.writeQuery({
-      query: FEED_QUERY,
-      data,
-      variables: {
-        first,
-        skip,
-        orderBy
-      }
-    });
+    url: "",
   };
 
   render() {
@@ -57,7 +17,7 @@ class CreateLink extends Component {
             type="text"
             name="description"
             value={description}
-            onChange={e => this.setState({ description: e.target.value })}
+            onChange={(e) => this.setState({ description: e.target.value })}
             placeholder="description"
             autoComplete="off"
           />
@@ -65,28 +25,25 @@ class CreateLink extends Component {
             type="text"
             name="url"
             value={url}
-            onChange={e => this.setState({ url: e.target.value })}
+            onChange={(e) => this.setState({ url: e.target.value })}
             placeholder="url"
             autoComplete="off"
           />
         </div>
         <div className="flex mt3">
-          <Mutation
-            mutation={POST_MUTATION}
-            variables={{ description, url }}
-            onCompleted={() => this.props.history.push("/new/1")}
-            update={this._handleUpdate}
+          <button
+            className="pointer button"
+            onClick={() => {
+              this.props.backend.createLink(description, url);
+              this.props.history.push("/new/1");
+            }}
           >
-            {postMutation => (
-              <button className="pointer button" onClick={postMutation}>
-                submit
-              </button>
-            )}
-          </Mutation>
+            submit
+          </button>
         </div>
       </>
     );
   }
 }
 
-export default CreateLink;
+export default withBackend(CreateLink);

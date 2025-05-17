@@ -1,11 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { withRouter } from "react-router";
-
-import { AUTH_TOKEN } from "../constants";
+import { withBackend } from "../backend/context";
 
 const Header = ({ history }) => {
-  const authToken = localStorage.getItem(AUTH_TOKEN);
   return (
     <header className="flex pa1 justify-between nowrap orange head">
       <div className="flex flex-fixed black">
@@ -28,11 +26,11 @@ const Header = ({ history }) => {
         </Link>
       </div>
       <div className="flex flex-fixed">
-        {authToken ? (
+        {this.props.backend.user ? (
           <span
             className="logout black"
             onClick={() => {
-              localStorage.removeItem(AUTH_TOKEN);
+              this.props.backend.logout();
               history.push("/new/1");
             }}
           >
@@ -47,4 +45,4 @@ const Header = ({ history }) => {
     </header>
   );
 };
-export default withRouter(Header);
+export default withRouter(withBackend(Header));
