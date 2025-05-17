@@ -1,9 +1,9 @@
 //Control Variables
 var bgArr = [
-  "../static/office.jpg", //Office
-  "../static/classroom.jpg", //Classroom
-  "../static/lecture-hall.jpg", //Lecture hall
-  "../static/lab.jpg", //Lab
+  "./static/office.jpg", //Office
+  "./static/classroom.jpg", //Classroom
+  "./static/lecture-hall.jpg", //Lecture hall
+  "./static/lab.jpg", //Lab
 ]; //Array of background images
 var userInput = ""; // Users input number
 var numStr = ""; //Calculated input number

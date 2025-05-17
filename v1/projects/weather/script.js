@@ -73,22 +73,22 @@ function setBackground(type) {
   switch (type) {
     case "Mist":
     case "Drizzle":
-      $("body").css("background-image", "url('../static/drizzle.jpg')");
+      $("body").css("background-image", "url('./static/drizzle.jpg')");
       break;
     case "Clouds":
-      $("body").css("background-image", "url('../static/clouds.jpg')");
+      $("body").css("background-image", "url('./static/clouds.jpg')");
       break;
     case "Rain":
-      $("body").css("background-image", "url('../static/rain.jpg')");
+      $("body").css("background-image", "url('./static/rain.jpg')");
       break;
     case "Snow":
-      $("body").css("background-image", "url('../static/snow.jpg')");
+      $("body").css("background-image", "url('./static/snow.jpg')");
       break;
     case "Clear":
-      $("body").css("background-image", "url('../static/clear.jpg')");
+      $("body").css("background-image", "url('./static/clear.jpg')");
       break;
     case "Thunderstorm":
-      $("body").css("background-image", "url('../static/thunderstorm.jpg')");
+      $("body").css("background-image", "url('./static/thunderstorm.jpg')");
       break;
   }
 }
