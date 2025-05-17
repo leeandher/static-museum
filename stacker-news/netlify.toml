@@ -1,0 +1,3 @@
+[build]
+command = "pnpm run stacker:build"
+publish = "stacker-news/build"
