@@ -1,0 +1,3 @@
+[build]
+command = "pnpm run md:build"
+publish = "md-prevuer/dist"

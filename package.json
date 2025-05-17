@@ -10,7 +10,9 @@
     "redux:dev": "pnpm --filter reduxstagram start",
     "redux:build": "pnpm --filter reduxstagram build",
     "conway:dev": "pnpm --filter conway start",
-    "conway:build": "pnpm --filter conway build"
+    "conway:build": "pnpm --filter conway build",
+    "md:dev": "pnpm --filter md-prevuer dev",
+    "md:build": "pnpm --filter md-prevuer build"
   },
   "type": "module"
 }

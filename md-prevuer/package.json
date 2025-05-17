@@ -1,0 +1,21 @@
+{
+  "name": "md-prevuer",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "core-js": "2.6.5",
+    "file-saver": "2.0.2",
+    "marked": "0.6.2",
+    "vue": "2.6.10"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "5.2.0",
+    "vite": "6.0.6",
+    "vite-plugin-vue2": "2.0.3",
+    "vue-template-compiler": "2.6.10"
+  }
+}
