@@ -86,7 +86,7 @@ importers:
         version: 3.9.0
       less-loader:
         specifier: 4.1.0
-        version: 4.1.0(less@3.9.0)(webpack@4.28.3)
+        version: 4.1.0(less@3.9.0)(webpack@4.42.0)
       react-app-rewired:
         specifier: 2.1.1
         version: 2.1.1(react-scripts@2.1.8(eslint@5.16.0)(react@16.6.3)(typescript@5.8.3))
@@ -194,6 +194,60 @@ importers:
       '@11ty/eleventy':
         specifier: 3.1.0
         version: 3.1.0
+
+  stacker-news:
+    dependencies:
+      apollo-boost:
+        specifier: 0.1.23
+        version: 0.1.23(graphql@14.0.2)
+      apollo-cache-inmemory:
+        specifier: 1.6.3
+        version: 1.6.3(graphql@14.0.2)
+      apollo-client:
+        specifier: 2.6.4
+        version: 2.6.4(graphql@14.0.2)
+      apollo-link:
+        specifier: 1.2.13
+        version: 1.2.13(graphql@14.0.2)
+      apollo-link-context:
+        specifier: 1.0.12
+        version: 1.0.12(graphql@14.0.2)
+      apollo-link-http:
+        specifier: 1.5.15
+        version: 1.5.15(graphql@14.0.2)
+      apollo-link-ws:
+        specifier: 1.0.12
+        version: 1.0.12(graphql@14.0.2)(subscriptions-transport-ws@0.9.15(graphql@14.0.2))
+      apollo-utilities:
+        specifier: 1.3.2
+        version: 1.3.2(graphql@14.0.2)
+      graphql:
+        specifier: 14.0.2
+        version: 14.0.2
+      graphql-tag:
+        specifier: 2.10.0
+        version: 2.10.0(graphql@14.0.2)
+      react:
+        specifier: 16.7.0
+        version: 16.7.0
+      react-apollo:
+        specifier: 2.3.3
+        version: 2.3.3(apollo-client@2.6.4(graphql@14.0.2))(graphql@14.0.2)(react-dom@16.7.0(react@16.7.0))(react@16.7.0)
+      react-dom:
+        specifier: 16.7.0
+        version: 16.7.0(react@16.7.0)
+      react-router:
+        specifier: 4.3.1
+        version: 4.3.1(react@16.7.0)
+      react-router-dom:
+        specifier: 4.3.1
+        version: 4.3.1(react@16.7.0)
+      react-scripts:
+        specifier: ^3.0.1
+        version: 3.4.1(eslint@5.16.0)(react@16.7.0)(sass@1.89.0)(typescript@5.8.3)(vue-template-compiler@2.6.10)
+      subscriptions-transport-ws:
+        specifier: 0.9.15
+        version: 0.9.15(graphql@14.0.2)
 
   v0:
     dependencies:
@@ -1739,6 +1793,9 @@ packages:
   '@types/yargs@15.0.19':
     resolution: {integrity: sha512-2XUaGVmyQjgyAZldf0D0c14vvo/yv0MhQBSTJcejMMaitsn3nxCB6TmH4G0ZQf+uxROOa9mpanoSm8h6SG/1ZA==}
 
+  '@types/zen-observable@0.8.7':
+    resolution: {integrity: sha512-LKzNTjj+2j09wAo/vvVjzgw5qckJJzhdGgWHW7j69QIGdq/KnZrMAMIHQiWGl3Ccflh5/CudBAntTPYdprPltA==}
+
   '@typescript-eslint/eslint-plugin@2.34.0':
     resolution: {integrity: sha512-4zY3Z88rEE99+CNvTbXSyovv2z9PNOVffTWD2W8QF5s2prBQtwN2zadqERcrHpcR7O/+KMI3fcTAmUUhK/iQcQ==}
     engines: {node: ^8.10.0 || ^10.13.0 || >=11.10.1}
@@ -1940,6 +1997,12 @@ packages:
   '@webassemblyjs/wast-printer@1.8.5':
     resolution: {integrity: sha512-w0U0pD4EhlnvRyeJzBqaVSJAo9w/ce7/WPogeXLzGkO6hzhr4GnQIZ4W4uUt5b9ooAaXPtnXlj0gzsXEOUNYMg==}
 
+  '@wry/context@0.4.4':
+    resolution: {integrity: sha512-LrKVLove/zw6h2Md/KZyWxIkFM6AoyKp71OqpH9Hiip1csjPVoD3tPxlbQUNxEnHENks3UGgNpSBCAfq9KWuag==}
+
+  '@wry/equality@0.1.11':
+    resolution: {integrity: sha512-mwEVBDUVODlsQQ5dfuLUS5/Tf7jqUKyhKYHmVi4fPB6bDMOfWvUPJmKgS1Z7Za/sOI3vzWt4+O7yCiL/70MogA==}
+
   '@xtuc/ieee754@1.2.0':
     resolution: {integrity: sha512-DX8nKgqcGwsc0eJSqYt5lwP4DH5FlHnmuWWBRy7X0NcaGR0ZtuyeESgMwTYVEtxmsNGY+qit4QYT/MIYTOTPeA==}
 
@@ -2094,6 +2157,75 @@ packages:
   anymatch@3.1.3:
     resolution: {integrity: sha512-KMReFUr0B4t+D+OBkjR3KYqvocp2XaSzO55UcB6mgQMd3KbcE+mWTyvVV7D/zsdEbNnV6acZUutkiHQXvTr1Rw==}
     engines: {node: '>= 8'}
+
+  apollo-boost@0.1.23:
+    resolution: {integrity: sha512-yQr1Ph3DEVvU7XeQhAh+6p2wZ++azxgGAtwXc+D5EP1CHU0HMVfVgtj1M0CDO1z14SZgQbrurQ60bgiyquoiVg==}
+    peerDependencies:
+      graphql: ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0
+
+  apollo-cache-inmemory@1.6.3:
+    resolution: {integrity: sha512-S4B/zQNSuYc0M/1Wq8dJDTIO9yRgU0ZwDGnmlqxGGmFombOZb9mLjylewSfQKmjNpciZ7iUIBbJ0mHlPJTzdXg==}
+    peerDependencies:
+      graphql: 0.11.7 || ^0.12.0 || ^0.13.0 || ^14.0.0
+
+  apollo-cache@1.3.2:
+    resolution: {integrity: sha512-+KA685AV5ETEJfjZuviRTEImGA11uNBp/MJGnaCvkgr+BYRrGLruVKBv6WvyFod27WEB2sp7SsG8cNBKANhGLg==}
+
+  apollo-cache@1.3.5:
+    resolution: {integrity: sha512-1XoDy8kJnyWY/i/+gLTEbYLnoiVtS8y7ikBr/IfmML4Qb+CM7dEEbIUOjnY716WqmZ/UpXIxTfJsY7rMcqiCXA==}
+    peerDependencies:
+      graphql: ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0
+
+  apollo-client@2.6.4:
+    resolution: {integrity: sha512-oWOwEOxQ9neHHVZrQhHDbI6bIibp9SHgxaLRVPoGvOFy7OH5XUykZE7hBQAVxq99tQjBzgytaZffQkeWo1B4VQ==}
+    peerDependencies:
+      graphql: ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0
+
+  apollo-link-context@1.0.12:
+    resolution: {integrity: sha512-gb4UptV9O6Kp3i5b2TlDEfPSL2LG//mTSb3zyuR5U2cAzu/huw98f1CCxcjUKTrlIMsQuE6G/hbaThDxnoIThQ==}
+
+  apollo-link-error@1.1.13:
+    resolution: {integrity: sha512-jAZOOahJU6bwSqb2ZyskEK1XdgUY9nkmeclCrW7Gddh1uasHVqmoYc4CKdb0/H0Y1J9lvaXKle2Wsw/Zx1AyUg==}
+
+  apollo-link-http-common@0.2.16:
+    resolution: {integrity: sha512-2tIhOIrnaF4UbQHf7kjeQA/EmSorB7+HyJIIrUjJOKBgnXwuexi8aMecRlqTIDWcyVXCeqLhUnztMa6bOH/jTg==}
+    peerDependencies:
+      graphql: ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0
+
+  apollo-link-http@1.5.15:
+    resolution: {integrity: sha512-epZFhCKDjD7+oNTVK3P39pqWGn4LEhShAoA1Q9e2tDrBjItNfviiE33RmcLcCURDYyW5JA6SMgdODNI4Is8tvQ==}
+    peerDependencies:
+      graphql: ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0
+
+  apollo-link-state@0.4.2:
+    resolution: {integrity: sha512-xMPcAfuiPVYXaLwC6oJFIZrKgV3GmdO31Ag2eufRoXpvT0AfJZjdaPB4450Nu9TslHRePN9A3quxNueILlQxlw==}
+    peerDependencies:
+      apollo-link: ^1.0.0
+
+  apollo-link-ws@1.0.12:
+    resolution: {integrity: sha512-BjbskhfuuIgk9e4XHdrqmjxkY+RkD1tuerrs4PLiPTkJYcQrvA8t27lGBSrDUKHWH4esCdhQF1UhKPwhlouEHw==}
+    peerDependencies:
+      subscriptions-transport-ws: ^0.9.0
+
+  apollo-link@1.2.13:
+    resolution: {integrity: sha512-+iBMcYeevMm1JpYgwDEIDt/y0BB7VWyvlm/7x+TIPNLHCTCMgcEgDuW5kH86iQZWo0I7mNwQiTOz+/3ShPFmBw==}
+    peerDependencies:
+      graphql: ^0.11.3 || ^0.12.3 || ^0.13.0 || ^14.0.0
+
+  apollo-link@1.2.14:
+    resolution: {integrity: sha512-p67CMEFP7kOG1JZ0ZkYZwRDa369w5PIjtMjvrQd/HnIV8FRsHRqLqK+oAZQnFa1DDdZtOtHTi+aMIW6EatC2jg==}
+    peerDependencies:
+      graphql: ^0.11.3 || ^0.12.3 || ^0.13.0 || ^14.0.0 || ^15.0.0
+
+  apollo-utilities@1.3.2:
+    resolution: {integrity: sha512-JWNHj8XChz7S4OZghV6yc9FNnzEXj285QYp/nLNh943iObycI5GTDO3NGR9Dth12LRrSFMeDOConPfPln+WGfg==}
+    peerDependencies:
+      graphql: ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0
+
+  apollo-utilities@1.3.4:
+    resolution: {integrity: sha512-pk2hiWrCXMAy2fRPwEyhvka+mqwzeP60Jr1tRYi5xru+3ko94HI9o6lK0CT33/w4RDlxWchmdhDCrvdr+pHCig==}
+    peerDependencies:
+      graphql: ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0
 
   append-transform@0.4.0:
     resolution: {integrity: sha512-Yisb7ew0ZEyDtRYQ+b+26o9KbiYPFxwcsxKzbssigzRRMJ9LpExPVUg6Fos7eP7yP3q7///tzze4nm4lTptPBw==}
@@ -2427,6 +2559,9 @@ packages:
   babylon@6.18.0:
     resolution: {integrity: sha512-q/UEjfGJ2Cm3oKV71DJz9d25TPnq5rhBVL2Q4fA5wcC3jcrdn7+SssEybFIxwAvvP+YCsCYNKughoF33GxgycQ==}
     hasBin: true
+
+  backo2@1.0.2:
+    resolution: {integrity: sha512-zj6Z6M7Eq+PBZ7PQxl5NT665MvJdAkzp0f60nAJ+sLaSCBPMwVak5ZegFbgVCzFcCJTKFoMizvM5Ld7+JrRJHA==}
 
   balanced-match@1.0.2:
     resolution: {integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==}
@@ -4095,6 +4230,9 @@ packages:
   event-emitter@0.3.5:
     resolution: {integrity: sha512-D9rRn9y7kLPnJ+hMq7S/nhvoKwwvVJahBi2BPmx3bvbsEdK3W9ii8cBSGjP+72/LnM4n6fo3+dkCX5FeTQruXA==}
 
+  eventemitter3@3.1.2:
+    resolution: {integrity: sha512-tvtQIeLVHjDkJYnzf2dgVMxfuSGJeM/7UCG17TT4EumTfNtF+0nebF/4zWOIkCreAbtNqhGEboB6BWrwqNaw4Q==}
+
   eventemitter3@4.0.7:
     resolution: {integrity: sha512-8guHBZCwKnFhYdHr2ysuRWErTwhoN2X8XELRlrRwpmfeY2jjuUN4taQMsULKUVo1K4DvZl+0pgfyoysHxvmvEw==}
 
@@ -4210,8 +4348,14 @@ packages:
   fb-watchman@2.0.2:
     resolution: {integrity: sha512-p5161BqbuCaSnB8jIbzQHOlpgsPmK5rJVDfDKO91Axs5NC1uu3HRQm6wt9cd9/+GtQQIO53JdGXXoyDpTAsgYA==}
 
+  fbjs-css-vars@1.0.2:
+    resolution: {integrity: sha512-b2XGFAFdWZWg0phtAWLHCk836A1Xann+I+Dgd3Gk64MHKZO44FfoD1KxyvbSh0qZsIoXQGGlVztIY+oitJPpRQ==}
+
   fbjs@0.8.18:
     resolution: {integrity: sha512-EQaWFK+fEPSoibjNy8IxUtaFOMXcWsY0JaVrQoZR9zC8N2Ygf9iDITPWjUTVIax95b6I742JFLqASHfsag/vKA==}
+
+  fbjs@1.0.0:
+    resolution: {integrity: sha512-MUgcMEJaFhCaF1QtWGnmq9ZDRAzECTCRAF7O6UZIlAlkTs1SasiX9aP0Iw7wfD2mJ7wDTNfg2w7u5fSCwJk1OA==}
 
   fdir@6.4.4:
     resolution: {integrity: sha512-1NZP+GK4GfuAv3PqKvxQRDMjdSRZjnkq7KfhlNrCNNlZ0ygQFpebfrnfnq/W7fpUnAv9aGWmY1zKx7FYL3gwhg==}
@@ -4567,6 +4711,20 @@ packages:
 
   graceful-fs@4.2.11:
     resolution: {integrity: sha512-RbJ5/jmFcNNCcDV5o9eTnBLJ/HszWV0P73bc+Ff4nS/rJj+YaS6IGyiOL0VoBYX+l1Wrl3k63h/KrH+nhJ0XvQ==}
+
+  graphql-anywhere@4.2.8:
+    resolution: {integrity: sha512-bKeJJoY9JyWMAiz5isKrtYUdIUBOBiXUOrA9CQgs9Drh9itFtxhWndQH4UBuYfrMticum6Oj1uQ6iSvZk94cMQ==}
+    peerDependencies:
+      graphql: '>= 0.11.0'
+
+  graphql-tag@2.10.0:
+    resolution: {integrity: sha512-9FD6cw976TLLf9WYIUPCaaTpniawIjHWZSwIRZSjrfufJamcXbVVYfN2TWvJYbw0Xf2JjYbl1/f2+wDnBVw3/w==}
+    peerDependencies:
+      graphql: ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0
+
+  graphql@14.0.2:
+    resolution: {integrity: sha512-gUC4YYsaiSJT1h40krG3J+USGlwhzNTXSb4IOZljn9ag5Tj+RkoXrWp+Kh7WyE3t1NCfab5kzCuxBIvOMERMXw==}
+    engines: {node: '>= 6.x'}
 
   gray-matter@4.0.3:
     resolution: {integrity: sha512-5v6yZd4JK3eMI3FqqCouswVqwugaA9r4dNZB1wwcmrD02QkV5H0y7XBQW8QwQqEaZY1pM9aqORSORhJRdNK44Q==}
@@ -5361,6 +5519,9 @@ packages:
     resolution: {integrity: sha512-uu1F/L1o5Y6LzPVSVZXNOoD/KXpJue9aeLRd0sM9uMXfZvzomB0WxVamWb5ue8kA2vVWEmW7EG+A5n3f1kqHKg==}
     engines: {node: '>=6'}
 
+  iterall@1.3.0:
+    resolution: {integrity: sha512-QZ9qOMdF+QLHxy1QIpUHUU1D5pS2CG2P69LF6L6CPjPYA/XMOmKV3PZpawHoAjHNyB0swdVTRxdYT4tbBbxqwg==}
+
   jest-changed-files@23.4.2:
     resolution: {integrity: sha512-EyNhTAUWEfwnK0Is/09LxoqNDOn7mU7S3EHskG52djOFS/z+IT0jT3h3Ql61+dklcG7bJJitIWEMB4Sp1piHmA==}
 
@@ -5842,6 +6003,13 @@ packages:
 
   lodash.flow@3.5.0:
     resolution: {integrity: sha512-ff3BX/tSioo+XojX4MOsOMhJw0nZoUEF011LX8g8d3gvjVbxd89cCio4BCXronjxcTUIJUoqKEUA+n4CqvvRPw==}
+
+  lodash.flowright@3.5.0:
+    resolution: {integrity: sha512-YxTYuodkvyINbDInmFcGGvkQwoAuoGUYosqstRTr5eq63GQt7WQ2xFU0wG1UfdbKYPwevd3zWDd6ybEE2g6qvA==}
+
+  lodash.isequal@4.5.0:
+    resolution: {integrity: sha512-pDo3lu8Jhfjqls6GkMgpahsF9kCyayhgykjyLMNFTKWrpVdAQtYyB4muAMWozBB4ig/dtWAmsMxLEI8wuz+DYQ==}
+    deprecated: This package is deprecated. Use require('node:util').isDeepStrictEqual instead.
 
   lodash.kebabcase@4.1.1:
     resolution: {integrity: sha512-N8XRTIMMqqDgSy4VLKPnJ/+hpGZN+PHQiJnSenYqPaVV/NCqEogTnAdZLQiGKhxX+JCs8waWq2t1XHWKOmlY8g==}
@@ -6393,6 +6561,9 @@ packages:
   opn@5.5.0:
     resolution: {integrity: sha512-PqHpggC9bLV0VeWcdKhkpxY+3JTzetLSqTCWL/z/tFIbI6G8JCjondXklT1JinczLz2Xib62sSp0T/gKT4KksA==}
     engines: {node: '>=4'}
+
+  optimism@0.10.3:
+    resolution: {integrity: sha512-9A5pqGoQk49H6Vhjb9kPgAeeECfUDF6aIICbMDL23kDLStBn1MWk3YvcZ4xWF9CsSf6XEgvRLkXy4xof/56vVw==}
 
   optimize-css-assets-webpack-plugin@5.0.1:
     resolution: {integrity: sha512-Rqm6sSjWtx9FchdP0uzTQDc7GXDKnwVEGoSxjezPkzMewx7gEWE9IMUYKmigTRC4U3RaNSwYVnUDLuIdtTpm0A==}
@@ -7348,6 +7519,14 @@ packages:
     peerDependencies:
       react: ^15.0.2
 
+  react-apollo@2.3.3:
+    resolution: {integrity: sha512-y4CwwmJjp0De/An7vrvEWOJ27lxmS/SXT8z22I8aOEBC2wzdcavDPjKzeLYJKs+hv1MGS3h84PSwFtlU4Em/bA==}
+    peerDependencies:
+      apollo-client: ^2.3.8
+      graphql: ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0
+      react: ^15.0.0 || ^16.0.0
+      react-dom: ^15.0.0 || ^16.0.0
+
   react-app-polyfill@0.2.2:
     resolution: {integrity: sha512-mAYn96B/nB6kWG87Ry70F4D4rsycU43VYTj3ZCbKP+SLJXwC0x6YCbwcICh3uW8/C9s1VgP197yx+w7SCWeDdQ==}
     engines: {node: '>=6'}
@@ -7407,6 +7586,11 @@ packages:
     peerDependencies:
       react: ^16.6.3
 
+  react-dom@16.7.0:
+    resolution: {integrity: sha512-D0Ufv1ExCAmF38P2Uh1lwpminZFRXEINJe53zRAbm4KPwSyd6DY/uDoS0Blj9jvPpn1+wivKpZYc8aAAN/nAkg==}
+    peerDependencies:
+      react: ^16.0.0
+
   react-error-overlay@5.1.6:
     resolution: {integrity: sha512-X1Y+0jR47ImDVr54Ab6V9eGk0Hnu7fVWGeHQSOXHf/C2pF9c6uy3gef8QUeuUiWlNb0i08InPSE5a/KJzNzw1Q==}
 
@@ -7439,6 +7623,11 @@ packages:
 
   react-router-dom@4.2.2:
     resolution: {integrity: sha512-cHMFC1ZoLDfEaMFoKTjN7fry/oczMgRt5BKfMAkTu5zEuJvUiPp1J8d0eXSVTnBh6pxlbdqDhozunOOLtmKfPA==}
+    peerDependencies:
+      react: '>=15'
+
+  react-router-dom@4.3.1:
+    resolution: {integrity: sha512-c/MlywfxDdCp7EnB7YfPMOfMD3tOtIjrQlj/CKfNMBxdmpJP8xcz5P/UAFn3JbnQCNUxsHyVVqllF9LhgVyFCA==}
     peerDependencies:
       react: '>=15'
 
@@ -7505,6 +7694,10 @@ packages:
 
   react@16.6.3:
     resolution: {integrity: sha512-zCvmH2vbEolgKxtqXL2wmGCUxUyNheYn/C+PD1YAjfxHC54+MhdruyhO7QieQrYsYeTxrn93PM2y0jRH1zEExw==}
+    engines: {node: '>=0.10.0'}
+
+  react@16.7.0:
+    resolution: {integrity: sha512-StCz3QY8lxTb5cl2HJxjwLFOXPIFQp+p+hxQfc8WE0QiLfCtIlKj8/+5tjjKm8uSTlAW+fCPaavGFS06V9Ar3A==}
     engines: {node: '>=0.10.0'}
 
   read-pkg-up@1.0.1:
@@ -7863,6 +8056,9 @@ packages:
 
   scheduler@0.11.3:
     resolution: {integrity: sha512-i9X9VRRVZDd3xZw10NY5Z2cVMbdYg6gqFecfj79USv1CFN+YrJ3gIPRKf1qlY+Sxly4djoKdfx1T+m9dnRB8kQ==}
+
+  scheduler@0.12.0:
+    resolution: {integrity: sha512-t7MBR28Akcp4Jm+QoR63XgAi9YgCUmgvDHqf5otgAj4QvdoBE4ImCX0ffehefePPG+aitiYHp0g/mW6s4Tp+dw==}
 
   scheduler@0.18.0:
     resolution: {integrity: sha512-agTSHR1Nbfi6ulI0kYNK0203joW2Y5W4po4l+v03tOoiJKpTBbxpNhWDvqc/4IcOw+KLmSiQLTasZ4cab2/UWQ==}
@@ -8334,6 +8530,12 @@ packages:
   stylis@3.5.4:
     resolution: {integrity: sha512-8/3pSmthWM7lsPBKv7NXkzn2Uc9W7NotcwGNpJaa3k7WMM1XDCA4MgT5k/8BIexd5ydZdboXtU90XH9Ec4Bv/Q==}
 
+  subscriptions-transport-ws@0.9.15:
+    resolution: {integrity: sha512-f9eBfWdHsePQV67QIX+VRhf++dn1adyC/PZHP6XI5AfKnZ4n0FW+v5omxwdHVpd4xq2ZijaHEcmlQrhBY79ZWQ==}
+    deprecated: The `subscriptions-transport-ws` package is no longer maintained. We recommend you use `graphql-ws` instead. For help migrating Apollo software to `graphql-ws`, see https://www.apollographql.com/docs/apollo-server/data/subscriptions/#switching-from-subscriptions-transport-ws    For general help using `graphql-ws`, see https://github.com/enisdenjo/graphql-ws/blob/master/README.md
+    peerDependencies:
+      graphql: ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.1 || ^14.0.2
+
   supports-color@2.0.0:
     resolution: {integrity: sha512-KKNVtd6pCYgPIKU4cp2733HWYCpplQhddZLBUryaAHou723x+FRzQ5Df824Fj+IyyuiQTRoub4SnIFfIcrp70g==}
     engines: {node: '>=0.8.0'}
@@ -8513,6 +8715,12 @@ packages:
 
   tryer@1.0.1:
     resolution: {integrity: sha512-c3zayb8/kWWpycWYg87P71E1S1ZL6b6IJxfb5fvsUgsf0S2MVGaDhDXXjDMpdCpfWXqptc+4mXwmiy1ypXqRAA==}
+
+  ts-invariant@0.3.3:
+    resolution: {integrity: sha512-UReOKsrJFGC9tUblgSRWo+BsVNbEd77Cl6WiV/XpMlkifXwNIJbknViCucHvVZkXSC/mcWeRnIGdY7uprcwvdQ==}
+
+  ts-invariant@0.4.4:
+    resolution: {integrity: sha512-uEtWkFM/sdZvRNNDL3Ehu4WVpwaulhwQszV8mrtcdeE8nN00BV9mAmQ88RkrBhFgl9gMgvjJLAQcZbnPXI9mlA==}
 
   ts-pnp@1.1.6:
     resolution: {integrity: sha512-CrG5GqAAzMT7144Cl+UIFP7mz/iIhiy+xQ6GGcnjTezhALT02uPMRw7tgDSESgB5MsfKt55+GPWw4ir1kVtMIQ==}
@@ -9244,6 +9452,12 @@ packages:
 
   yargs@13.3.2:
     resolution: {integrity: sha512-AX3Zw5iPruN5ie6xGRIDgqkT+ZhnRlZMLMHAs8tg7nRruy2Nb+i5o9bwghAogtM08q1dpr2LVoS8KSTMYpWXUw==}
+
+  zen-observable-ts@0.8.21:
+    resolution: {integrity: sha512-Yj3yXweRc8LdRMrCC8nIc4kkjWecPAUVh0TI0OUrWXx6aX790vLcDlWca6I4vsyCGH3LpWxq0dJRcMOFoVqmeg==}
+
+  zen-observable@0.8.15:
+    resolution: {integrity: sha512-PQ2PC7R9rslx84ndNBZB/Dkv8V8fZEpk83RLgXtYd0fwUgEjseMn1Dgajh2x6S8QbZAFa9p2qVCEuYZNgve0dQ==}
 
 snapshots:
 
@@ -11888,6 +12102,8 @@ snapshots:
     dependencies:
       '@types/yargs-parser': 21.0.3
 
+  '@types/zen-observable@0.8.7': {}
+
   '@typescript-eslint/eslint-plugin@2.34.0(@typescript-eslint/parser@2.34.0(eslint@5.16.0)(typescript@5.8.3))(eslint@5.16.0)(typescript@5.8.3)':
     dependencies:
       '@typescript-eslint/experimental-utils': 2.34.0(eslint@5.16.0)(typescript@5.8.3)
@@ -12329,6 +12545,15 @@ snapshots:
       '@webassemblyjs/wast-parser': 1.8.5
       '@xtuc/long': 4.2.2
 
+  '@wry/context@0.4.4':
+    dependencies:
+      '@types/node': 22.15.18
+      tslib: 1.14.1
+
+  '@wry/equality@0.1.11':
+    dependencies:
+      tslib: 1.14.1
+
   '@xtuc/ieee754@1.2.0': {}
 
   '@xtuc/long@4.2.1': {}
@@ -12523,6 +12748,127 @@ snapshots:
     dependencies:
       normalize-path: 3.0.0
       picomatch: 2.3.1
+
+  apollo-boost@0.1.23(graphql@14.0.2):
+    dependencies:
+      apollo-cache: 1.3.5(graphql@14.0.2)
+      apollo-cache-inmemory: 1.6.3(graphql@14.0.2)
+      apollo-client: 2.6.4(graphql@14.0.2)
+      apollo-link: 1.2.13(graphql@14.0.2)
+      apollo-link-error: 1.1.13(graphql@14.0.2)
+      apollo-link-http: 1.5.15(graphql@14.0.2)
+      apollo-link-state: 0.4.2(apollo-link@1.2.13(graphql@14.0.2))(graphql@14.0.2)
+      graphql: 14.0.2
+      graphql-tag: 2.10.0(graphql@14.0.2)
+
+  apollo-cache-inmemory@1.6.3(graphql@14.0.2):
+    dependencies:
+      apollo-cache: 1.3.5(graphql@14.0.2)
+      apollo-utilities: 1.3.2(graphql@14.0.2)
+      graphql: 14.0.2
+      optimism: 0.10.3
+      ts-invariant: 0.4.4
+      tslib: 1.14.1
+
+  apollo-cache@1.3.2(graphql@14.0.2):
+    dependencies:
+      apollo-utilities: 1.3.2(graphql@14.0.2)
+      tslib: 1.14.1
+    transitivePeerDependencies:
+      - graphql
+
+  apollo-cache@1.3.5(graphql@14.0.2):
+    dependencies:
+      apollo-utilities: 1.3.4(graphql@14.0.2)
+      graphql: 14.0.2
+      tslib: 1.14.1
+
+  apollo-client@2.6.4(graphql@14.0.2):
+    dependencies:
+      '@types/zen-observable': 0.8.7
+      apollo-cache: 1.3.2(graphql@14.0.2)
+      apollo-link: 1.2.13(graphql@14.0.2)
+      apollo-utilities: 1.3.2(graphql@14.0.2)
+      graphql: 14.0.2
+      symbol-observable: 1.2.0
+      ts-invariant: 0.4.4
+      tslib: 1.14.1
+      zen-observable: 0.8.15
+
+  apollo-link-context@1.0.12(graphql@14.0.2):
+    dependencies:
+      apollo-link: 1.2.13(graphql@14.0.2)
+    transitivePeerDependencies:
+      - graphql
+
+  apollo-link-error@1.1.13(graphql@14.0.2):
+    dependencies:
+      apollo-link: 1.2.14(graphql@14.0.2)
+      apollo-link-http-common: 0.2.16(graphql@14.0.2)
+      tslib: 1.14.1
+    transitivePeerDependencies:
+      - graphql
+
+  apollo-link-http-common@0.2.16(graphql@14.0.2):
+    dependencies:
+      apollo-link: 1.2.14(graphql@14.0.2)
+      graphql: 14.0.2
+      ts-invariant: 0.4.4
+      tslib: 1.14.1
+
+  apollo-link-http@1.5.15(graphql@14.0.2):
+    dependencies:
+      apollo-link: 1.2.13(graphql@14.0.2)
+      apollo-link-http-common: 0.2.16(graphql@14.0.2)
+      graphql: 14.0.2
+      tslib: 1.14.1
+
+  apollo-link-state@0.4.2(apollo-link@1.2.13(graphql@14.0.2))(graphql@14.0.2):
+    dependencies:
+      apollo-link: 1.2.13(graphql@14.0.2)
+      apollo-utilities: 1.3.2(graphql@14.0.2)
+      graphql-anywhere: 4.2.8(graphql@14.0.2)
+    transitivePeerDependencies:
+      - graphql
+
+  apollo-link-ws@1.0.12(graphql@14.0.2)(subscriptions-transport-ws@0.9.15(graphql@14.0.2)):
+    dependencies:
+      apollo-link: 1.2.13(graphql@14.0.2)
+      subscriptions-transport-ws: 0.9.15(graphql@14.0.2)
+    transitivePeerDependencies:
+      - graphql
+
+  apollo-link@1.2.13(graphql@14.0.2):
+    dependencies:
+      apollo-utilities: 1.3.2(graphql@14.0.2)
+      graphql: 14.0.2
+      ts-invariant: 0.4.4
+      tslib: 1.14.1
+      zen-observable-ts: 0.8.21
+
+  apollo-link@1.2.14(graphql@14.0.2):
+    dependencies:
+      apollo-utilities: 1.3.2(graphql@14.0.2)
+      graphql: 14.0.2
+      ts-invariant: 0.4.4
+      tslib: 1.14.1
+      zen-observable-ts: 0.8.21
+
+  apollo-utilities@1.3.2(graphql@14.0.2):
+    dependencies:
+      '@wry/equality': 0.1.11
+      fast-json-stable-stringify: 2.1.0
+      graphql: 14.0.2
+      ts-invariant: 0.4.4
+      tslib: 1.14.1
+
+  apollo-utilities@1.3.4(graphql@14.0.2):
+    dependencies:
+      '@wry/equality': 0.1.11
+      fast-json-stable-stringify: 2.1.0
+      graphql: 14.0.2
+      ts-invariant: 0.4.4
+      tslib: 1.14.1
 
   append-transform@0.4.0:
     dependencies:
@@ -13049,6 +13395,8 @@ snapshots:
       to-fast-properties: 1.0.3
 
   babylon@6.18.0: {}
+
+  backo2@1.0.2: {}
 
   balanced-match@1.0.2: {}
 
@@ -14909,6 +15257,8 @@ snapshots:
       d: 1.0.2
       es5-ext: 0.10.64
 
+  eventemitter3@3.1.2: {}
+
   eventemitter3@4.0.7: {}
 
   eventlistener@0.0.1: {}
@@ -15171,9 +15521,22 @@ snapshots:
     dependencies:
       bser: 2.1.1
 
+  fbjs-css-vars@1.0.2: {}
+
   fbjs@0.8.18:
     dependencies:
       core-js: 1.2.7
+      isomorphic-fetch: 2.2.1
+      loose-envify: 1.4.0
+      object-assign: 4.1.1
+      promise: 7.3.1
+      setimmediate: 1.0.5
+      ua-parser-js: 0.7.40
+
+  fbjs@1.0.0:
+    dependencies:
+      core-js: 2.6.5
+      fbjs-css-vars: 1.0.2
       isomorphic-fetch: 2.2.1
       loose-envify: 1.4.0
       object-assign: 4.1.1
@@ -15588,6 +15951,21 @@ snapshots:
   gopd@1.2.0: {}
 
   graceful-fs@4.2.11: {}
+
+  graphql-anywhere@4.2.8(graphql@14.0.2):
+    dependencies:
+      apollo-utilities: 1.3.4(graphql@14.0.2)
+      graphql: 14.0.2
+      ts-invariant: 0.3.3
+      tslib: 2.8.1
+
+  graphql-tag@2.10.0(graphql@14.0.2):
+    dependencies:
+      graphql: 14.0.2
+
+  graphql@14.0.2:
+    dependencies:
+      iterall: 1.3.0
 
   gray-matter@4.0.3:
     dependencies:
@@ -16445,6 +16823,8 @@ snapshots:
     dependencies:
       html-escaper: 2.0.2
 
+  iterall@1.3.0: {}
+
   jest-changed-files@23.4.2:
     dependencies:
       throat: 4.1.0
@@ -17259,13 +17639,13 @@ snapshots:
 
   left-pad@1.3.0: {}
 
-  less-loader@4.1.0(less@3.9.0)(webpack@4.28.3):
+  less-loader@4.1.0(less@3.9.0)(webpack@4.42.0):
     dependencies:
       clone: 2.1.2
       less: 3.9.0
       loader-utils: 1.4.2
       pify: 3.0.0
-      webpack: 4.28.3
+      webpack: 4.42.0
 
   less@3.9.0:
     dependencies:
@@ -17367,6 +17747,10 @@ snapshots:
   lodash.debounce@4.0.8: {}
 
   lodash.flow@3.5.0: {}
+
+  lodash.flowright@3.5.0: {}
+
+  lodash.isequal@4.5.0: {}
 
   lodash.kebabcase@4.1.1: {}
 
@@ -18025,6 +18409,10 @@ snapshots:
   opn@5.5.0:
     dependencies:
       is-wsl: 1.1.0
+
+  optimism@0.10.3:
+    dependencies:
+      '@wry/context': 0.4.4
 
   optimize-css-assets-webpack-plugin@5.0.1(webpack@4.28.3):
     dependencies:
@@ -19383,6 +19771,19 @@ snapshots:
     dependencies:
       react: 15.0.2
 
+  react-apollo@2.3.3(apollo-client@2.6.4(graphql@14.0.2))(graphql@14.0.2)(react-dom@16.7.0(react@16.7.0))(react@16.7.0):
+    dependencies:
+      apollo-client: 2.6.4(graphql@14.0.2)
+      fbjs: 1.0.0
+      graphql: 14.0.2
+      hoist-non-react-statics: 3.3.2
+      invariant: 2.2.4
+      lodash.flowright: 3.5.0
+      lodash.isequal: 4.5.0
+      prop-types: 15.6.0
+      react: 16.7.0
+      react-dom: 16.7.0(react@16.7.0)
+
   react-app-polyfill@0.2.2:
     dependencies:
       core-js: 2.6.4
@@ -19511,6 +19912,14 @@ snapshots:
       react: 16.6.3
       scheduler: 0.11.3
 
+  react-dom@16.7.0(react@16.7.0):
+    dependencies:
+      loose-envify: 1.4.0
+      object-assign: 4.1.1
+      prop-types: 15.8.1
+      react: 16.7.0
+      scheduler: 0.12.0
+
   react-error-overlay@5.1.6: {}
 
   react-error-overlay@6.1.0: {}
@@ -19558,6 +19967,16 @@ snapshots:
       react-router: 4.3.1(react@16.3.0-alpha.1)
       warning: 3.0.0
 
+  react-router-dom@4.3.1(react@16.7.0):
+    dependencies:
+      history: 4.10.1
+      invariant: 2.2.4
+      loose-envify: 1.4.0
+      prop-types: 15.8.1
+      react: 16.7.0
+      react-router: 4.3.1(react@16.7.0)
+      warning: 4.0.3
+
   react-router-redux@4.0.8: {}
 
   react-router@2.4.0(react@15.0.2):
@@ -19577,6 +19996,17 @@ snapshots:
       path-to-regexp: 1.9.0
       prop-types: 15.8.1
       react: 16.3.0-alpha.1
+      warning: 4.0.3
+
+  react-router@4.3.1(react@16.7.0):
+    dependencies:
+      history: 4.10.1
+      hoist-non-react-statics: 2.5.5
+      invariant: 2.2.4
+      loose-envify: 1.4.0
+      path-to-regexp: 1.9.0
+      prop-types: 15.8.1
+      react: 16.7.0
       warning: 4.0.3
 
   react-scripts@2.1.8(eslint@5.16.0)(react@15.0.2)(typescript@5.8.3):
@@ -19837,6 +20267,78 @@ snapshots:
       - webpack-cli
       - webpack-command
 
+  react-scripts@3.4.1(eslint@5.16.0)(react@16.7.0)(sass@1.89.0)(typescript@5.8.3)(vue-template-compiler@2.6.10):
+    dependencies:
+      '@babel/core': 7.9.0
+      '@svgr/webpack': 4.3.3
+      '@typescript-eslint/eslint-plugin': 2.34.0(@typescript-eslint/parser@2.34.0(eslint@5.16.0)(typescript@5.8.3))(eslint@5.16.0)(typescript@5.8.3)
+      '@typescript-eslint/parser': 2.34.0(eslint@5.16.0)(typescript@5.8.3)
+      babel-eslint: 10.1.0(eslint@5.16.0)
+      babel-jest: 24.9.0(@babel/core@7.9.0)
+      babel-loader: 8.1.0(@babel/core@7.9.0)(webpack@4.42.0)
+      babel-plugin-named-asset-import: 0.3.8(@babel/core@7.9.0)
+      babel-preset-react-app: 9.1.2
+      camelcase: 5.3.1
+      case-sensitive-paths-webpack-plugin: 2.3.0
+      css-loader: 3.4.2(webpack@4.42.0)
+      dotenv: 8.2.0
+      dotenv-expand: 5.1.0
+      eslint: 5.16.0
+      eslint-config-react-app: 5.2.1(@typescript-eslint/eslint-plugin@2.34.0(@typescript-eslint/parser@2.34.0(eslint@5.16.0)(typescript@5.8.3))(eslint@5.16.0)(typescript@5.8.3))(@typescript-eslint/parser@2.34.0(eslint@5.16.0)(typescript@5.8.3))(babel-eslint@10.1.0(eslint@5.16.0))(eslint-plugin-flowtype@4.6.0(eslint@5.16.0))(eslint-plugin-import@2.20.1(@typescript-eslint/parser@2.34.0(eslint@5.16.0)(typescript@5.8.3))(eslint@5.16.0))(eslint-plugin-jsx-a11y@6.2.3(eslint@5.16.0))(eslint-plugin-react-hooks@1.7.0(eslint@5.16.0))(eslint-plugin-react@7.19.0(eslint@5.16.0))(eslint@5.16.0)(typescript@5.8.3)
+      eslint-loader: 3.0.3(eslint@5.16.0)(webpack@4.42.0)
+      eslint-plugin-flowtype: 4.6.0(eslint@5.16.0)
+      eslint-plugin-import: 2.20.1(@typescript-eslint/parser@2.34.0(eslint@5.16.0)(typescript@5.8.3))(eslint@5.16.0)
+      eslint-plugin-jsx-a11y: 6.2.3(eslint@5.16.0)
+      eslint-plugin-react: 7.19.0(eslint@5.16.0)
+      eslint-plugin-react-hooks: 1.7.0(eslint@5.16.0)
+      file-loader: 4.3.0(webpack@4.42.0)
+      fs-extra: 8.1.0
+      html-webpack-plugin: 4.0.0-beta.11(webpack@4.42.0)
+      identity-obj-proxy: 3.0.0
+      jest: 24.9.0
+      jest-environment-jsdom-fourteen: 1.0.1
+      jest-resolve: 24.9.0
+      jest-watch-typeahead: 0.4.2
+      mini-css-extract-plugin: 0.9.0(webpack@4.42.0)
+      optimize-css-assets-webpack-plugin: 5.0.3(webpack@4.42.0)
+      pnp-webpack-plugin: 1.6.4(typescript@5.8.3)
+      postcss-flexbugs-fixes: 4.1.0
+      postcss-loader: 3.0.0
+      postcss-normalize: 8.0.1
+      postcss-preset-env: 6.7.0
+      postcss-safe-parser: 4.0.1
+      react: 16.7.0
+      react-app-polyfill: 1.0.6
+      react-dev-utils: 10.2.1(eslint@5.16.0)(typescript@5.8.3)(vue-template-compiler@2.6.10)(webpack@4.42.0)
+      resolve: 1.15.0
+      resolve-url-loader: 3.1.1
+      sass-loader: 8.0.2(sass@1.89.0)(webpack@4.42.0)
+      semver: 6.3.0
+      style-loader: 0.23.1
+      terser-webpack-plugin: 2.3.5(webpack@4.42.0)
+      ts-pnp: 1.1.6(typescript@5.8.3)
+      url-loader: 2.3.0(file-loader@4.3.0(webpack@4.42.0))(webpack@4.42.0)
+      webpack: 4.42.0
+      webpack-dev-server: 3.10.3(webpack@4.42.0)
+      webpack-manifest-plugin: 2.2.0(webpack@4.42.0)
+      workbox-webpack-plugin: 4.3.1(webpack@4.42.0)
+    optionalDependencies:
+      fsevents: 2.1.2
+      typescript: 5.8.3
+    transitivePeerDependencies:
+      - bluebird
+      - bufferutil
+      - eslint-import-resolver-typescript
+      - eslint-import-resolver-webpack
+      - fibers
+      - node-sass
+      - sass
+      - supports-color
+      - utf-8-validate
+      - vue-template-compiler
+      - webpack-cli
+      - webpack-command
+
   react-slick@0.23.2(react-dom@16.6.3(react@16.6.3))(react@16.6.3):
     dependencies:
       classnames: 2.2.6
@@ -19891,6 +20393,13 @@ snapshots:
       object-assign: 4.1.1
       prop-types: 15.8.1
       scheduler: 0.11.3
+
+  react@16.7.0:
+    dependencies:
+      loose-envify: 1.4.0
+      object-assign: 4.1.1
+      prop-types: 15.8.1
+      scheduler: 0.12.0
 
   read-pkg-up@1.0.1:
     dependencies:
@@ -20342,6 +20851,11 @@ snapshots:
       xmlchars: 2.2.0
 
   scheduler@0.11.3:
+    dependencies:
+      loose-envify: 1.4.0
+      object-assign: 4.1.1
+
+  scheduler@0.12.0:
     dependencies:
       loose-envify: 1.4.0
       object-assign: 4.1.1
@@ -21031,6 +21545,18 @@ snapshots:
 
   stylis@3.5.4: {}
 
+  subscriptions-transport-ws@0.9.15(graphql@14.0.2):
+    dependencies:
+      backo2: 1.0.2
+      eventemitter3: 3.1.2
+      graphql: 14.0.2
+      iterall: 1.3.0
+      symbol-observable: 1.2.0
+      ws: 5.2.4
+    transitivePeerDependencies:
+      - bufferutil
+      - utf-8-validate
+
   supports-color@2.0.0: {}
 
   supports-color@3.2.3:
@@ -21248,6 +21774,14 @@ snapshots:
   trim-right@1.0.1: {}
 
   tryer@1.0.1: {}
+
+  ts-invariant@0.3.3:
+    dependencies:
+      tslib: 1.14.1
+
+  ts-invariant@0.4.4:
+    dependencies:
+      tslib: 1.14.1
 
   ts-pnp@1.1.6(typescript@5.8.3):
     optionalDependencies:
@@ -22346,3 +22880,10 @@ snapshots:
       which-module: 2.0.1
       y18n: 4.0.3
       yargs-parser: 13.1.2
+
+  zen-observable-ts@0.8.21:
+    dependencies:
+      tslib: 1.14.1
+      zen-observable: 0.8.15
+
+  zen-observable@0.8.15: {}

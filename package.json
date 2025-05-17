@@ -24,7 +24,9 @@
     "space:dev": "pnpm --filter space-shooter dev",
     "space:build": "pnpm --filter space-shooter build",
     "catch:dev": "pnpm --filter catch-of-the-day dev",
-    "catch:build": "pnpm --filter catch-of-the-day build"
+    "catch:build": "pnpm --filter catch-of-the-day build",
+    "stacker:dev": "pnpm --filter stacker-news start",
+    "stacker:build": "pnpm --filter stacker-news build"
   },
   "type": "module"
 }

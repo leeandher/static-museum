@@ -8,6 +8,7 @@ packages:
   - fyi
   - space-shooter
   - catch-of-the-day
+  - stacker-news
 onlyBuiltDependencies:
   - '@parcel/watcher'
   - core-js
