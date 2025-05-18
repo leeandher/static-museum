@@ -2,7 +2,7 @@
 type: projects
 showcase: false
 slug: catch-of-the-day
-title: Catch of the Day (EOL)
+title: Catch of the Day
 description: >-
   The first React app I've ever built, emulating an online fish market. You can
   even login with Twitter/Github and start your own store!
@@ -17,9 +17,6 @@ tech:
   - css-transitions
   - prop-types
 date: 2018-10-15T02:27:27.851Z
----
-**EOL:** Just FYI, this project isn't being maintained anymore, so certain Firebase functionality probably won't work. The app can still be visited/explored but may not work as intended!
-
 ---
 
 This single-page application mocks up a fish market online store, letting you change descriptions, load samples, add to your cart and more. It is all done using a Firebase real-time database so anyone can make and share stores with each other!

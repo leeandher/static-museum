@@ -6,7 +6,7 @@ title: Space Shooter
 description: "A simple demo game I built while trying to learn Unity along with C#. It was exported to use the Unity Web Player via WebGL and honestly, I gotta say it looks pretty spicy - \U0001F680\U0001F4A5\U0001F60A"
 image: /assets/project__space-shooter.png
 repo: 'https://github.com/leeandher/Unity-Tutorials/tree/master/Space%20Shooter'
-link: 'https://unity.leander.xyz/space-shooter/'
+link: 'https://space-shooter.leander.xyz/'
 tech:
   - Unity 3D
   - 'C#'

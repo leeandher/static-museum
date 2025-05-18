@@ -2,7 +2,7 @@
 type: projects
 showcase: true
 slug: now-thats-delicious
-title: Now That's Delicious (EOL)
+title: Now That's Delicious
 description: "A catalog of delicious restaurants for you to view, review and add to! It's built with Node, and serves templated views directly from the server! \U0001F374\U0001F957Hope you're hungry\U0001F95E\U0001F357"
 image: /assets/project__now-thats-delicious.png
 repo: 'https://github.com/leeandher/Now-Thats-Delicious/'
@@ -14,9 +14,6 @@ tech:
   - mvc
   - ssr
 date: 2018-11-11T03:59:55.643Z
----
-**EOL:** Just FYI, this project isn't being maintained anymore, so certain AWS S3 functionality (like image upload) is probably busted. The app can still be visited/explored but may not work as intended!
-
 ---
 
 Hey there, and welcome to the repository for _Now That's Delicious!_ This project is a single page application I developed in an attempt to learn how to use JavaScript to create the backend of a site! It takes advantage of **Node**, **Express**, and **MongoDB**, and definitely keeps true to traditional **MVC** design principals.

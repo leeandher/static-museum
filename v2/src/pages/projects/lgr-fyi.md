@@ -2,7 +2,7 @@
 type: projects
 showcase: true
 slug: lgr-fyi
-title: lgr.fyi (EOL)
+title: lgr.fyi
 description: "You know how sometimes, links are like way too long and ugly for you to even want to click them. Well I had that problem too, and spent far too long building a web app for a solution. Gotta say though, this guy is pretty nice \U0001F44C\U0001F44C."
 image: /assets/project__lgr-fyi.png
 repo: 'https://github.com/leeandher/lgr-fyi'
@@ -15,10 +15,6 @@ tech:
   - node
   - express
 date: 2019-09-19T04:34:22.881Z
----
-
-**EOL:** Just FYI, this project isn't being maintained anymore, so certain Firebase functionality probably won't work. The app can still be visited/explored but may not work as intended!
-
 ---
 
 Welcome to [lgr.fyi](https://lgr.fyi)! It's a simple, open-source, Link Shortener that I developed while I was learning Node.js. I later scrapped that build and tried to re-engineer it completely, making a bunch of UI changes as well as changing some stuff about how it was deployed. The final product is pretty nifty if I do say so myself. 
