@@ -59,7 +59,7 @@ const Easter = styled.small`
   text-align: right;
 `;
 
-const Footer = ({ handleToggle, showSideBar }) => {
+const Footer = ({ handleToggle, $showSideBar }) => {
   const copyrightYears = getCopyrightYearsFrom(2019);
   return (
     <StyledFooter>

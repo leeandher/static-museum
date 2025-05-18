@@ -1,9 +1,9 @@
-import React from "react"
-import styled from "styled-components"
+import React from "react";
+import styled from "styled-components";
 
-import { themer } from "../../../styles/helpers"
+import { themer } from "../../../styles/helpers";
 
-const Wrapper = styled.div``
+const Wrapper = styled.div``;
 
 const Details = styled.details`
   padding: 2rem;
@@ -34,7 +34,7 @@ const Details = styled.details`
       transform: translateY(0px);
     }
   }
-`
+`;
 const Summary = styled.summary`
   padding: 1rem;
   font-weight: 600;
@@ -58,9 +58,9 @@ const Summary = styled.summary`
   &:hover {
     outline: 0;
   }
-`
+`;
 
-const FAQ = ({ answer, children, question, ...props }) => {
+const FrequentlyAskedQuestions = ({ answer, children, question, ...props }) => {
   return (
     <Wrapper {...props}>
       <Details>
@@ -68,7 +68,7 @@ const FAQ = ({ answer, children, question, ...props }) => {
         {children}
       </Details>
     </Wrapper>
-  )
-}
+  );
+};
 
-export default FAQ
+export default FrequentlyAskedQuestions;

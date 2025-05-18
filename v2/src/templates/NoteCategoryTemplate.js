@@ -1,11 +1,11 @@
-import React from "react"
-import { graphql, Link } from "gatsby"
-import slugify from "slugify"
-import styled from "styled-components"
+import React from "react";
+import { graphql, Link } from "gatsby";
+import slugify from "slugify";
+import styled from "styled-components";
 
-import Page from "../components/Page"
-import AnchorLink from "../components/AnchorLink"
-import InnerLink from "../components/page-specific/Media/InnerLink"
+import Page from "../components/Page";
+import AnchorLink from "../components/AnchorLink";
+import InnerLink from "../components/page-specific/Media/InnerLink";
 
 import {
   ContentWrapper,
@@ -13,9 +13,9 @@ import {
   MediaHeader,
   MediaSection,
   MediaPostContent,
-} from "../components/page-specific/Media"
+} from "../components/page-specific/Media";
 
-import { themer } from "../styles/helpers"
+import { themer } from "../styles/helpers";
 
 const PageLink = styled(Link)`
   padding: 2rem;
@@ -40,23 +40,24 @@ const PageLink = styled(Link)`
     height: 10%;
     top: 90%;
   }
-  &:hover, &:focus, &:active {
+  &:hover,
+  &:focus,
+  &:active {
     letter-spacing: 2px;
     &:before {
-      
-    top: 0%;
-    transform: skew(-45deg) translate(90%);
+      top: 0%;
+      transform: skew(-45deg) translate(90%);
     }
   }
-`
+`;
 
 const NoteCategoryTemplate = ({ data, location }) => {
-  const { markdownRemark, allFile } = data
-  const { html } = markdownRemark
-  const { distinct: noteTitles } = allFile
+  const { markdownRemark, allFile } = data;
+  const { html } = markdownRemark;
+  const { distinct: noteTitles } = allFile;
   const noteTitleSlugs = noteTitles.map(
-    noteTitle => `${location.pathname}${slugify(noteTitle, { lower: true })}`
-  )
+    (noteTitle) => `${location.pathname}${slugify(noteTitle, { lower: true })}`
+  );
   return (
     <Page accentKey="green" bgDesign="bubbles" seoProfile="notes-page">
       <MediaHeader>
@@ -87,13 +88,13 @@ const NoteCategoryTemplate = ({ data, location }) => {
         </ContentWrapper>
       </MediaSection>
     </Page>
-  )
-}
+  );
+};
 
-export default NoteCategoryTemplate
+export default NoteCategoryTemplate;
 
 export const noteQuery = graphql`
-  query($absolutePath: String!, $relativeDirectory: String!) {
+  query ($absolutePath: String!, $relativeDirectory: String!) {
     markdownRemark(fileAbsolutePath: { eq: $absolutePath }) {
       html
     }
@@ -103,7 +104,7 @@ export const noteQuery = graphql`
         name: { ne: "README" }
       }
     ) {
-      distinct(field: {name: SELECT})
+      distinct(field: { name: SELECT })
     }
   }
-`
+`;

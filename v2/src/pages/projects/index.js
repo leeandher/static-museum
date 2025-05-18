@@ -1,19 +1,19 @@
-import React from "react"
-import { graphql } from "gatsby"
-import styled from "styled-components"
-import {marked} from "marked"
+import React from "react";
+import { graphql } from "gatsby";
+import styled from "styled-components";
+import { marked } from "marked";
 
-import Page from "../../components/Page"
-import Hero from "../../components/Hero"
-import MainWrapper from "../../components/MainWrapper"
-import WhipStack from "../../components/WhipStack"
-import Carousel from "../../components/Carousel"
-import ShowItem from "../../components/ShowItem"
-import { Default, Skewed } from "../../components/PageSections"
+import Page from "../../components/Page";
+import Hero from "../../components/Hero";
+import MainWrapper from "../../components/MainWrapper";
+import WhipStack from "../../components/WhipStack";
+import Carousel from "../../components/Carousel";
+import ShowItem from "../../components/ShowItem";
+import { Default, Skewed } from "../../components/PageSections";
 
-import { media, themer } from "../../styles/helpers"
+import { media, themer } from "../../styles/helpers";
 
-import projectsData from "../../data/projects.json"
+import projectsData from "../../data/projects.json";
 
 const StackSection = styled(Skewed)`
   padding: 10rem 0 3rem 0;
@@ -32,12 +32,12 @@ const StackSection = styled(Skewed)`
   position: relative;
   overflow-x: hidden;
   overflow-y: hidden;
-`
+`;
 
 const QueueSection = styled(Default)`
   color: ${themer("shade.lightest")};
   padding-bottom: 10rem;
-`
+`;
 
 const OtherSection = styled(Skewed)`
   padding: 3rem 0 15rem;
@@ -45,27 +45,27 @@ const OtherSection = styled(Skewed)`
   &:before {
     background: ${themer("shade.lightest")};
   }
-`
+`;
 
 const StylishShowItem = styled(ShowItem)`
   background: ${themer("shade.lighter")};
   box-shadow: 0 1.5rem 1.5rem ${themer("shade.darkest")} inset;
-`
+`;
 
 const Projects = ({ data }) => {
-  const { allMarkdownRemark } = data
-  const { nodes } = allMarkdownRemark
+  const { allMarkdownRemark } = data;
+  const { nodes } = allMarkdownRemark;
   const projectProps = nodes.map(({ frontmatter, id, excerpt }) => ({
     id,
     excerpt,
     ...frontmatter,
-  }))
+  }));
   return (
     <Page accentKey="orange" bgDesign="mesh" seoProfile="projects-page">
-      <Hero height="50vh" expanding>
+      <Hero height="50vh" $expanding>
         <h1>Shenanigans</h1>
       </Hero>
-      <StackSection skew="4deg">
+      <StackSection $skew="4deg">
         <h2 className="title">
           Projects<code>.Stack</code>
         </h2>
@@ -92,7 +92,7 @@ const Projects = ({ data }) => {
             .slice()
             .reverse()
             .map(({ slug, ...showItemProps }) => {
-              const showCaseLink = `/projects/${slug}`
+              const showCaseLink = `/projects/${slug}`;
               return (
                 <StylishShowItem
                   key={showCaseLink}
@@ -100,11 +100,11 @@ const Projects = ({ data }) => {
                   type="projects"
                   {...showItemProps}
                 />
-              )
+              );
             })}
         </Carousel>
       </QueueSection>
-      <OtherSection skew="-4deg">
+      <OtherSection $skew="-4deg">
         <h2 className="title">Other Neat Stuff</h2>
         <MainWrapper>
           <div
@@ -116,16 +116,16 @@ const Projects = ({ data }) => {
         </MainWrapper>
       </OtherSection>
     </Page>
-  )
-}
+  );
+};
 
-export default Projects
+export default Projects;
 
 export const projectsQuery = graphql`
   query {
     allMarkdownRemark(
       filter: { frontmatter: { type: { eq: "projects" } } }
-      sort: {frontmatter: {date: ASC}}
+      sort: { frontmatter: { date: ASC } }
     ) {
       nodes {
         id
@@ -143,4 +143,4 @@ export const projectsQuery = graphql`
       }
     }
   }
-`
+`;

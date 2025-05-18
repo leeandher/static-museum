@@ -1,14 +1,14 @@
-import React from "react"
-import styled from "styled-components"
-import { graphql } from "gatsby"
+import React from "react";
+import styled from "styled-components";
+import { graphql } from "gatsby";
 
-import Page from "../../components/Page"
-import Hero from "../../components/Hero"
-import MainWrapper from "../../components/MainWrapper"
+import Page from "../../components/Page";
+import Hero from "../../components/Hero";
+import MainWrapper from "../../components/MainWrapper";
 
-import MediaLink from "../../components/page-specific/Media/MediaLink"
+import MediaLink from "../../components/page-specific/Media/MediaLink";
 
-import { themer } from "../../styles/helpers"
+import { themer } from "../../styles/helpers";
 
 const YearWrapper = styled.section`
   h2.year {
@@ -29,26 +29,26 @@ const YearWrapper = styled.section`
     flex-flow: row wrap;
     justify-content: left;
   }
-`
+`;
 
 const Blog = ({ data }) => {
-  const { allMarkdownRemark } = data
-  const { nodes: blogPosts } = allMarkdownRemark
-  const blogPostsByYear = {}
-  blogPosts.forEach(post => {
-    const blogYear = new Date(post.frontmatter.date).getFullYear()
+  const { allMarkdownRemark } = data;
+  const { nodes: blogPosts } = allMarkdownRemark;
+  const blogPostsByYear = {};
+  blogPosts.forEach((post) => {
+    const blogYear = new Date(post.frontmatter.date).getFullYear();
     blogPostsByYear[blogYear] = blogPostsByYear[blogYear]
       ? [...blogPostsByYear[blogYear], post]
-      : [post]
-  })
+      : [post];
+  });
   const sortedPosts = Object.entries(blogPostsByYear).sort(
     ([yearStringA], [yearStringB]) => {
-      return parseInt(yearStringB) - parseInt(yearStringA)
+      return parseInt(yearStringB) - parseInt(yearStringA);
     }
-  )
+  );
   return (
     <Page accentKey="yellow" bgDesign="bubbles" seoProfile="blog-page">
-      <Hero expanding height="50vh">
+      <Hero $expanding height="50vh">
         <h1>
           MyBlog<code>.md</code>
         </h1>
@@ -77,16 +77,16 @@ const Blog = ({ data }) => {
         </main>
       </MainWrapper>
     </Page>
-  )
-}
+  );
+};
 
-export default Blog
+export default Blog;
 
 export const blogPostsQuery = graphql`
   query {
     allMarkdownRemark(
       filter: { frontmatter: { type: { eq: "blog" }, archive: { eq: false } } }
-      sort: {frontmatter: {date: DESC}}
+      sort: { frontmatter: { date: DESC } }
     ) {
       nodes {
         timeToRead
@@ -102,4 +102,4 @@ export const blogPostsQuery = graphql`
       }
     }
   }
-`
+`;

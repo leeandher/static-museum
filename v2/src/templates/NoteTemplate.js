@@ -1,10 +1,10 @@
-import React from "react"
-import { graphql } from "gatsby"
-import slugify from "slugify"
+import React from "react";
+import { graphql } from "gatsby";
+import slugify from "slugify";
 
-import Page from "../components/Page"
-import Button from "../components/Button"
-import InnerLink from "../components/page-specific/Media/InnerLink"
+import Page from "../components/Page";
+import Button from "../components/Button";
+import InnerLink from "../components/page-specific/Media/InnerLink";
 
 import {
   ContentWrapper,
@@ -13,18 +13,18 @@ import {
   MediaSection,
   ScrollProgress,
   MediaPostContent,
-} from "../components/page-specific/Media"
+} from "../components/page-specific/Media";
 
 const NoteTemplate = ({ data, pageContext }) => {
-  const { markdownRemark, site } = data
-  const { html } = markdownRemark
-  const { absolutePath, relativeDirectory: parentCategory } = pageContext
+  const { markdownRemark, site } = data;
+  const { html } = markdownRemark;
+  const { absolutePath, relativeDirectory: parentCategory } = pageContext;
   const parentCategorySlug = slugify(`${parentCategory}`, {
     lower: true,
-  })
+  });
   const editLinkLocation = `${
     site.siteMetadata.repository
-  }/blob/live/${absolutePath.slice(absolutePath.indexOf("src/pages/notes"))}`
+  }/blob/live/${absolutePath.slice(absolutePath.indexOf("src/pages/notes"))}`;
   return (
     <Page
       accentKey={parentCategorySlug}
@@ -49,13 +49,13 @@ const NoteTemplate = ({ data, pageContext }) => {
         </ContentWrapper>
       </MediaSection>
     </Page>
-  )
-}
+  );
+};
 
-export default NoteTemplate
+export default NoteTemplate;
 
 export const noteQuery = graphql`
-  query($absolutePath: String!) {
+  query ($absolutePath: String!) {
     site {
       siteMetadata {
         repository
@@ -65,4 +65,4 @@ export const noteQuery = graphql`
       html
     }
   }
-`
+`;

@@ -1,7 +1,7 @@
-import React from "react"
-import styled, { css } from "styled-components"
+import React from "react";
+import styled, { css } from "styled-components";
 
-import { themer } from "../styles/helpers"
+import { themer } from "../styles/helpers";
 
 const StyledToggler = styled.button`
   height: 0;
@@ -22,7 +22,7 @@ const StyledToggler = styled.button`
     height: 50px;
     width: 50px;
   }
-`
+`;
 const Bars = styled.div`
   height: 100%;
   width: 100%;
@@ -37,8 +37,8 @@ const Bars = styled.div`
       margin-top: 20%;
     }
   }
-  ${({ showSideBar }) => {
-    if (showSideBar) {
+  ${({ $showSideBar }) => {
+    if ($showSideBar) {
       return css`
         #bt {
           transform: translateY(250%) rotate(315deg);
@@ -49,19 +49,19 @@ const Bars = styled.div`
         #bb {
           transform: translateY(-250%) rotate(-315deg);
         }
-      `
+      `;
     }
   }}
-`
+`;
 
-const Toggler = ({ handleToggle, showSideBar }) => (
+const Toggler = ({ handleToggle, $showSideBar }) => (
   <StyledToggler onClick={handleToggle}>
-    <Bars showSideBar={showSideBar}>
+    <Bars $showSideBar={$showSideBar}>
       <div id="bt" />
       <div id="bm" />
       <div id="bb" />
     </Bars>
   </StyledToggler>
-)
+);
 
-export default Toggler
+export default Toggler;

@@ -7,7 +7,7 @@ import Page from "../components/Page";
 import MainWrapper from "../components/MainWrapper";
 import { Default, Skewed } from "../components/PageSections";
 
-import FAQ from "../components/page-specific/About/FAQ";
+import FrequentlyAskedQuestions from "../components/page-specific/About/FAQ";
 import SuperItem from "../components/page-specific/About/SuperItem";
 
 import aboutData from "../data/about.json";
@@ -48,10 +48,10 @@ const SuperWrapper = styled(MainWrapper)`
 const About = () => {
   return (
     <Page accentKey="red" bgDesign="snow" seoProfile="about-page">
-      <Hero expanding height="50vh">
+      <Hero $expanding height="50vh">
         <h1>All About Me</h1>
       </Hero>
-      <HeyThere skew="-4deg">
+      <HeyThere $skew="-4deg">
         <h2 className="title">Hey there!</h2>
         <MainWrapper>
           <p
@@ -87,7 +87,7 @@ const About = () => {
           ))}
         </SuperWrapper>
       </Superlatives>
-      <Questions skew="4deg">
+      <Questions $skew="4deg">
         <MainWrapper maxWidth="960px">
           <h2 className="title">FAQs</h2>
           <h3 className="subtitle">
@@ -96,9 +96,9 @@ const About = () => {
             this is just where I talk about myself )
           </h3>
           {aboutData.faqs.map(({ question, answer }, i) => (
-            <FAQ question={question} key={i}>
+            <FrequentlyAskedQuestions question={question} key={i}>
               <span dangerouslySetInnerHTML={{ __html: marked(answer) }} />
-            </FAQ>
+            </FrequentlyAskedQuestions>
           ))}
         </MainWrapper>
       </Questions>

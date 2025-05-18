@@ -1,6 +1,5 @@
 import React from "react";
 import { Helmet } from "react-helmet";
-import { withPrefix } from "gatsby";
 import { Location } from "@reach/router";
 
 import seo from "../data/seo.json";

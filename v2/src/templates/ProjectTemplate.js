@@ -1,12 +1,12 @@
-import React from "react"
-import { graphql, Link } from "gatsby"
-import { FaCode, FaLink } from "react-icons/fa"
-import styled from "styled-components"
+import React from "react";
+import { graphql, Link } from "gatsby";
+import { FaCode, FaLink } from "react-icons/fa";
+import styled from "styled-components";
 
-import Page from "../components/Page"
-import Tag from "../components/Tag"
-import Button from "../components/Button"
-import AnchorLink from "../components/AnchorLink"
+import Page from "../components/Page";
+import Tag from "../components/Tag";
+import Button from "../components/Button";
+import AnchorLink from "../components/AnchorLink";
 
 import {
   ContentWrapper,
@@ -16,17 +16,17 @@ import {
   MediaPostContent,
   MediaPreContent,
   MediaSection,
-} from "../components/page-specific/Media"
+} from "../components/page-specific/Media";
 
 const ProjectHeader = styled.div`
   display: flex;
   justify-content: space-between;
-`
+`;
 
 const ProjectTemplate = ({ data }) => {
-  const { markdownRemark } = data
-  const { frontmatter, html } = markdownRemark
-  const { date, title, repo, link, tech, image } = frontmatter
+  const { markdownRemark } = data;
+  const { frontmatter, html } = markdownRemark;
+  const { date, title, repo, link, tech, image } = frontmatter;
   return (
     <Page
       accentKey={title}
@@ -68,20 +68,20 @@ const ProjectTemplate = ({ data }) => {
           <MediaBanner src={image} alt={title} title={title} />
           <MediaContent dangerouslySetInnerHTML={{ __html: html }} />
           <MediaPostContent>
-            {tech.map(techName => (
+            {tech.map((techName) => (
               <Tag tag={techName} key={Math.random()} />
             ))}
           </MediaPostContent>
         </ContentWrapper>
       </MediaSection>
     </Page>
-  )
-}
+  );
+};
 
-export default ProjectTemplate
+export default ProjectTemplate;
 
 export const projectQuery = graphql`
-  query($slug: String!) {
+  query ($slug: String!) {
     markdownRemark(
       frontmatter: { slug: { eq: $slug }, type: { eq: "projects" } }
     ) {
@@ -96,4 +96,4 @@ export const projectQuery = graphql`
       }
     }
   }
-`
+`;

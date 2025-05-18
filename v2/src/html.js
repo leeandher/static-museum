@@ -13,7 +13,7 @@ export default function HTML(props) {
   } = props;
 
   const data = useStaticQuery(graphql`
-    query {
+    query DOCK_QUERY {
       file(base: { eq: "dock.js" }) {
         publicURL
       }

@@ -11,6 +11,9 @@ export default {
     repository: `https://github.com/leeandher/leander.xyz`,
     description: `The complete portfolio of Leander Rodrigues, a Toronto-based full-stack web developer and undergrad Engineer at the University of Waterloo.`,
   },
+  flags: {
+    DEV_SSR: true,
+  },
   plugins: [
     // Styling
     {

@@ -1,9 +1,9 @@
-import React from "react"
-import { graphql } from "gatsby"
+import React from "react";
+import { graphql } from "gatsby";
 
-import Page from "../components/Page"
-import Tag from "../components/Tag"
-import InnerLink from "../components/page-specific/Media/InnerLink"
+import Page from "../components/Page";
+import Tag from "../components/Tag";
+import InnerLink from "../components/page-specific/Media/InnerLink";
 
 import {
   ContentWrapper,
@@ -14,12 +14,12 @@ import {
   MediaPreContent,
   MediaSection,
   ScrollProgress,
-} from "../components/page-specific/Media"
+} from "../components/page-specific/Media";
 
 const BlogPostTemplate = ({ data }) => {
-  const { siteUrl } = data.site.siteMetadata
-  const { frontmatter, html } = data.markdownRemark
-  const { date, description, image, tags, title } = frontmatter
+  const { siteUrl } = data.site.siteMetadata;
+  const { frontmatter, html } = data.markdownRemark;
+  const { date, description, image, tags, title } = frontmatter;
 
   return (
     <Page
@@ -46,20 +46,20 @@ const BlogPostTemplate = ({ data }) => {
           <MediaBanner src={image} alt={title} title={title} />
           <MediaContent dangerouslySetInnerHTML={{ __html: html }} />
           <MediaPostContent>
-            {tags.map(tag => (
+            {tags.map((tag) => (
               <Tag tag={tag} key={Math.random()} />
             ))}
           </MediaPostContent>
         </ContentWrapper>
       </MediaSection>
     </Page>
-  )
-}
+  );
+};
 
-export default BlogPostTemplate
+export default BlogPostTemplate;
 
 export const blogPostQuery = graphql`
-  query($slug: String!) {
+  query ($slug: String!) {
     site {
       siteMetadata {
         siteUrl
@@ -76,4 +76,4 @@ export const blogPostQuery = graphql`
       }
     }
   }
-`
+`;

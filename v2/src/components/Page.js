@@ -1,22 +1,22 @@
-import React from "react"
-import styled, { css, ThemeProvider } from "styled-components"
-import Konami from "react-konami"
+import React from "react";
+import styled, { css, ThemeProvider } from "styled-components";
+import Konami from "react-konami";
 
-import GlobalStyles from "../styles/GlobalStyles"
-import { palette } from "../styles/palette"
+import GlobalStyles from "../styles/GlobalStyles";
+import { palette } from "../styles/palette";
 
-import Nav from "./Nav"
-import Footer from "./Footer"
-import SEOBundle from "./SEOBundle"
-import ParticleBackground from "./ParticleBackground"
+import Nav from "./Nav";
+import Footer from "./Footer";
+import SEOBundle from "./SEOBundle";
+import ParticleBackground from "./ParticleBackground";
 
-import { genComputedProperty } from "../helpers"
-import { themer } from "../styles/helpers"
+import { genComputedProperty } from "../helpers";
+import { themer } from "../styles/helpers";
 
 const StyledPage = styled.div`
   margin-top: ${themer("constants.navBarHeight")};
-  ${({ egged }) => {
-    if (!egged) return
+  ${({ $egged }) => {
+    if (!$egged) return;
     return css`
       @keyframes colorize {
         0% {
@@ -27,26 +27,26 @@ const StyledPage = styled.div`
         }
       }
       animation: colorize infinite forwards 2s linear;
-    `
+    `;
   }}
-`
+`;
 
 class Page extends React.Component {
   state = {
-    egged: false,
-    showSideBar: false,
-  }
+    $egged: false,
+    $showSideBar: false,
+  };
 
   toggleNav = () => {
-    const { showSideBar } = this.state
-    this.setState({ showSideBar: !showSideBar })
-  }
+    const { $showSideBar } = this.state;
+    this.setState({ $showSideBar: !$showSideBar });
+  };
 
   onKonami = () => {
-    this.setState({ egged: true })
+    this.setState({ $egged: true });
     // eslint-disable-next-line no-alert
-    alert("Do you taste the rainbow?")
-  }
+    alert("Do you taste the rainbow?");
+  };
 
   render() {
     const {
@@ -58,14 +58,14 @@ class Page extends React.Component {
       seoProfile,
       seoTitle,
       seoDescription,
-    } = this.props
-    const { egged, showSideBar } = this.state
+    } = this.props;
+    const { $egged, $showSideBar } = this.state;
     const theme = {
       accent: Object.prototype.hasOwnProperty.call(palette.color, accentKey)
         ? palette.color[accentKey]
         : genComputedProperty(accentKey, palette.color, true),
       ...palette,
-    }
+    };
     return (
       <>
         <SEOBundle
@@ -77,16 +77,16 @@ class Page extends React.Component {
         />
         <GlobalStyles theme={theme} />
         <ThemeProvider theme={theme}>
-          <StyledPage egged={egged}>
+          <StyledPage $egged={$egged}>
             {bgDesign !== "none" && (
               <ParticleBackground
                 design={bgDesign}
                 color={bgColor || theme.accent}
-                egged={egged}
+                $egged={$egged}
               />
             )}
             <Nav
-              showSideBar={showSideBar}
+              $showSideBar={$showSideBar}
               handleToggle={this.toggleNav}
               accent={theme.accent}
             />
@@ -96,8 +96,8 @@ class Page extends React.Component {
           </StyledPage>
         </ThemeProvider>
       </>
-    )
+    );
   }
 }
 
-export default Page
+export default Page;

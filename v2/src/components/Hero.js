@@ -1,7 +1,7 @@
-import React from "react"
-import styled from "styled-components"
+import React from "react";
+import styled from "styled-components";
 
-import { media, themer } from "../styles/helpers"
+import { media, themer } from "../styles/helpers";
 
 const Header = styled.header`
   min-height: ${({ height }) => height || "100vh"};
@@ -26,19 +26,19 @@ const Header = styled.header`
     color: ${themer("shade.darkest")};
     ${({ theme }) => theme.transition.default("all")};
     &:hover {
-      ${({ expanding }) => (expanding ? "letter-spacing: 0.5rem;" : "")}
+      ${({ $expanding }) => ($expanding ? "letter-spacing: 0.5rem;" : "")}
     }
   }
   p {
     font-size: 2rem;
     margin: 0;
   }
-`
+`;
 
 const Hero = ({ children, ...props }) => (
   <Header {...props}>
     <div>{children}</div>
   </Header>
-)
+);
 
-export default Hero
+export default Hero;

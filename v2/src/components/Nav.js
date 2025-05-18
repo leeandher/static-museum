@@ -1,12 +1,12 @@
-import React from "react"
-import styled, { css } from "styled-components"
-import { Link } from "gatsby"
+import React from "react";
+import styled, { css } from "styled-components";
+import { Link } from "gatsby";
 
-import NavLink from "./NavLink"
-import Toggler from "./Toggler"
-import Logo from "./icons/Logo"
+import NavLink from "./NavLink";
+import Toggler from "./Toggler";
+import Logo from "./icons/Logo";
 
-import { themer } from "../styles/helpers"
+import { themer } from "../styles/helpers";
 
 const StyledNav = styled.nav`
   display: flex;
@@ -31,26 +31,26 @@ const StyledNav = styled.nav`
     justify-content: flex-start;
     transform: translateX(0%);
     transition: transform 0.25s cubic-bezier(0.075, 0.82, 0.165, 1);
-    ${({ showSideBar }) => {
-      if (!showSideBar) {
+    ${({ $showSideBar }) => {
+      if (!$showSideBar) {
         return css`
           transform: translateX(-100%);
           overflow: hidden;
-        `
+        `;
       }
     }};
   }
-`
+`;
 
 const StyledLogo = styled(Logo)`
   padding: 1rem;
   margin: 0 3rem;
-`
+`;
 
-const Nav = ({ accent, handleToggle, showSideBar }) => {
+const Nav = ({ accent, handleToggle, $showSideBar }) => {
   return (
     <>
-      <StyledNav showSideBar={showSideBar || false}>
+      <StyledNav $showSideBar={$showSideBar || false}>
         <Link to="/">
           <StyledLogo accent={accent} size={60} />
         </Link>
@@ -73,9 +73,12 @@ const Nav = ({ accent, handleToggle, showSideBar }) => {
           <span>Contact</span>
         </NavLink>
       </StyledNav>
-      <Toggler showSideBar={showSideBar || false} handleToggle={handleToggle} />
+      <Toggler
+        $showSideBar={$showSideBar || false}
+        handleToggle={handleToggle}
+      />
     </>
-  )
-}
+  );
+};
 
-export default Nav
+export default Nav;

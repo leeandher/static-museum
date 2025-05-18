@@ -94,10 +94,10 @@ class Contact extends React.Component {
   render() {
     return (
       <Page accentKey="purple" bgDesign="mesh" seoProfile="contact-page">
-        <Hero expanding height="50vh">
+        <Hero $expanding height="50vh">
           <h1>Reach Out</h1>
         </Hero>
-        <ContactFormWrapper skew="4deg">
+        <ContactFormWrapper $skew="4deg">
           <h2 className="title">Drop me a line!</h2>
           <ContactForm>
             <Information

@@ -1,26 +1,26 @@
-import React from "react"
-import styled from "styled-components"
-import { graphql, Link } from "gatsby"
-import {marked} from "marked"
+import React from "react";
+import styled from "styled-components";
+import { graphql, Link } from "gatsby";
+import { marked } from "marked";
 
-import Button from "../components/Button"
-import Hero from "../components/Hero"
-import Page from "../components/Page"
-import Carousel from "../components/Carousel"
-import ShowItem from "../components/ShowItem"
-import MainWrapper from "../components/MainWrapper"
-import { Default, Skewed } from "../components/PageSections"
+import Button from "../components/Button";
+import Hero from "../components/Hero";
+import Page from "../components/Page";
+import Carousel from "../components/Carousel";
+import ShowItem from "../components/ShowItem";
+import MainWrapper from "../components/MainWrapper";
+import { Default, Skewed } from "../components/PageSections";
 
-import Typer from "../components/page-specific/Home/Typer"
-import QuoteCard from "../components/page-specific/Home/QuoteCard"
+import Typer from "../components/page-specific/Home/Typer";
+import QuoteCard from "../components/page-specific/Home/QuoteCard";
 
-import { themer } from "../styles/helpers"
+import { themer } from "../styles/helpers";
 
-import homeData from "../data/home.json"
+import homeData from "../data/home.json";
 
 const MainHero = styled(Hero)`
   margin-top: -${themer("constants.navBarHeight")};
-`
+`;
 
 const Introduction = styled(Skewed)`
   padding: 10rem 0 3rem 0;
@@ -50,17 +50,17 @@ const Introduction = styled(Skewed)`
       background: ${themer("shade.darkest")};
     }
   }
-`
+`;
 
 const Director = styled(Default)`
   color: ${themer("shade.lightest")};
   padding-top: 2rem;
-`
+`;
 
 const PanelWrapper = styled(MainWrapper)`
   display: flex;
   flex-flow: row wrap;
-`
+`;
 
 const Showcase = styled(Skewed)`
   padding: 3rem 0 15rem;
@@ -68,15 +68,15 @@ const Showcase = styled(Skewed)`
   &:before {
     background: ${themer("shade.lightest")};
   }
-`
+`;
 
 const Home = ({ data }) => {
-  const { allMarkdownRemark } = data
-  const { nodes: showcaseItems } = allMarkdownRemark
+  const { allMarkdownRemark } = data;
+  const { nodes: showcaseItems } = allMarkdownRemark;
 
   return (
     <Page accentKey="teal" bgDesign="space" seoProfile="home-page">
-      <MainHero expanding>
+      <MainHero $expanding>
         <p>Hi there, My name is</p>
         <h1>
           <span>Leander Rodrigues</span>
@@ -87,7 +87,7 @@ const Home = ({ data }) => {
           <Typer descriptors={homeData.descriptors} />
         </h2>
       </MainHero>
-      <Introduction skew="4deg">
+      <Introduction $skew="4deg">
         <MainWrapper>
           <h2 className="title">"Who are you again?"</h2>
           <div
@@ -135,7 +135,7 @@ const Home = ({ data }) => {
           />
         </PanelWrapper>
       </Director>
-      <Showcase skew="-4deg">
+      <Showcase $skew="-4deg">
         <h2 className="title">"Help me, I can't decide!"</h2>
         <h3 className="subtitle">
           I've picked a few goodies out,
@@ -145,7 +145,7 @@ const Home = ({ data }) => {
         <Carousel>
           {showcaseItems.map(
             ({ frontmatter: { slug, type, ...showItemProps } }) => {
-              const showCaseLink = `/${type}/${slug}`
+              const showCaseLink = `/${type}/${slug}`;
               return (
                 <ShowItem
                   key={showCaseLink}
@@ -154,20 +154,20 @@ const Home = ({ data }) => {
                   includeType
                   {...showItemProps}
                 />
-              )
+              );
             }
           )}
         </Carousel>
       </Showcase>
     </Page>
-  )
-}
+  );
+};
 
 export const SHOWCASE_QUERY = graphql`
   query {
     allMarkdownRemark(
       filter: { frontmatter: { showcase: { eq: true } } }
-      sort: {frontmatter: {date: DESC}}
+      sort: { frontmatter: { date: DESC } }
     ) {
       nodes {
         frontmatter {
@@ -180,6 +180,6 @@ export const SHOWCASE_QUERY = graphql`
       }
     }
   }
-`
+`;
 
-export default Home
+export default Home;
