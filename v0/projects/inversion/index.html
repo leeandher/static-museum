@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Inversion</title>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/processing.js/1.4.8/processing.min.js"></script>
+    <link rel="icon" type="image/png" href="./favicon.png" />
+  </head>
+  <style>
+    body {
+      overflow: hidden;
+      background: #000;
+    }
+    canvas {
+      margin: 100px auto 0;
+      display: block;
+      height: 400px !important;
+      width: 400px !important;
+    }
+  </style>
+  <body>
+    <canvas id="canvas"></canvas>
+    <script>
+      var canvas = document.getElementById("canvas");
+      var processing = new Processing(canvas, function (processing) {
+        processing.size(400, 400);
+        processing.background(0xfff);
+
+        var mouseIsPressed = false;
+        processing.mousePressed = function () {
+          mouseIsPressed = true;
+        };
+        processing.mouseReleased = function () {
+          mouseIsPressed = false;
+        };
+
+        var keyIsPressed = false;
+        processing.keyPressed = function () {
+          keyIsPressed = true;
+        };
+        processing.keyReleased = function () {
+          keyIsPressed = false;
+        };
+
+        // use degrees rather than radians in rotate function
+        var rotateFn = processing.rotate;
+        processing.rotate = function (angle) {
+          rotateFn(processing.radians(angle));
+        };
+
+        with (processing) {
+          var gameStart = false;
+          // Variable to start the game.
+
+          var gameWin = false;
+          // Variable to check whether or not the game has been won.
+
+          var health = 400;
+          // Variable to determine the health of the user.
+
+          var release = false;
+          // Variable to help with a mouse-clicking function.
+
+          var spawnTime = 0;
+          // Variable to determine the spawn time of the enemies.
+
+          var enemyCount = 0;
+          // Variable counting the amount of enemies spawned.
+
+          var enemiesKilled = 0;
+          // Variable counting the amount of enemies killed by the user.
+
+          var shotCount = 0;
+          // Variable to count the amount of shots taken by the user.
+
+          var fadeIn = 0;
+          // Variable to be faded.
+
+          /** Variables **/
+
+          var colours = [
+            color(0, 255, 0),
+            color(130, 255, 0),
+            color(255, 255, 0),
+            color(255, 175, 0),
+            color(255, 0, 0),
+          ];
+          // Array of colours that change depending on the health of the user.
+
+          var fadedColours = [
+            color(0, 255, 0, 50),
+            color(130, 255, 0, 50),
+            color(255, 255, 0, 50),
+            color(255, 175, 0, 50),
+            color(255, 0, 0, 50),
+          ];
+          // Array of the previous colours, but faded.
+
+          /** Arrays **/
+
+          var drawCursor = function () {
+            var cursorColour = color(255, 0, 0);
+
+            //Top Cursor
+            if (mouseY < 200) {
+              noCursor();
+              noFill();
+              stroke(cursorColour);
+              ellipse(mouseX, mouseY, 15, 15);
+              noStroke();
+              noFill();
+              ellipse(mouseX, mouseY, 10, 10);
+              fill(cursorColour);
+              stroke(cursorColour);
+              strokeWeight(2);
+              line(mouseX - 12, mouseY, mouseX + 12, mouseY);
+              line(mouseX, mouseY - 12, mouseX, mouseY + 12);
+              noStroke();
+
+              //Bottom Cursor
+            } else {
+              noCursor();
+              noFill();
+              stroke(cursorColour);
+              ellipse(mouseX + 400 - mouseX * 2, mouseY, 15, 15);
+              noStroke();
+              noFill();
+              ellipse(mouseX + 400 - mouseX * 2, mouseY, 10, 10);
+              fill(cursorColour);
+              stroke(cursorColour);
+              strokeWeight(2);
+              line(
+                mouseX + 400 - mouseX * 2 - 12,
+                mouseY,
+                mouseX + 400 - mouseX * 2 + 12,
+                mouseY
+              );
+              line(
+                mouseX + 400 - mouseX * 2,
+                mouseY - 12,
+                mouseX + 400 - mouseX * 2,
+                mouseY + 12
+              );
+              noStroke();
+            }
+          };
+          // Function that draws the new cursor. This function is important because the cursor changes as it goes under the 200 mark of the Y-Axis. It's complicated but completely necessary.
+
+          var drawRealCursor = function () {
+            var cursorColour = color(255, 0, 0);
+
+            noCursor();
+            noFill();
+            stroke(cursorColour);
+            strokeWeight(2);
+            ellipse(mouseX, mouseY, 15, 15);
+            noFill();
+            fill(cursorColour);
+            stroke(cursorColour);
+            line(mouseX - 12, mouseY, mouseX + 12, mouseY);
+            line(mouseX, mouseY - 12, mouseX, mouseY + 12);
+            noStroke();
+          };
+          // Function that draws a regular working cursor instead of the ingame reversal cursor.
+
+          var healthBar = function () {
+            var healthColour;
+
+            if (health >= 350) {
+              healthColour = colours[0];
+            } else if (health >= 300) {
+              healthColour = colours[1];
+            } else if (health >= 200) {
+              healthColour = colours[2];
+            } else if (health >= 100) {
+              healthColour = colours[3];
+            } else if (health >= 0) {
+              healthColour = colours[4];
+            }
+
+            fill(healthColour);
+            rectMode(CENTER);
+            rect(200, 200, health, 5);
+
+            fill(255, 255, 255, 25);
+            textAlign(CENTER, CENTER);
+            textSize(230);
+            text(health, 200, 200);
+          };
+          // Function to both draw the watermark of health and the health bar running accross the center of the screen. It is the target point of the enemies and changes after being shot.
+
+          var border = function () {
+            var healthColour;
+
+            if (health >= 350) {
+              healthColour = colours[0];
+            } else if (health >= 300) {
+              healthColour = colours[1];
+            } else if (health >= 200) {
+              healthColour = colours[2];
+            } else if (health >= 100) {
+              healthColour = colours[3];
+            } else if (health >= 0) {
+              healthColour = colours[4];
+            }
+
+            fill(healthColour);
+
+            rectMode(CORNER);
+
+            rect(0, 0, 400, 5);
+            rect(0, 0, 5, 400);
+
+            rect(0, 395, 400, 5);
+            rect(395, 0, 5, 400);
+
+            rectMode(CENTER);
+          };
+          // Function that draws the outside borders that change colour depending on the health of the user.
+
+          var backing = function () {
+            var healthColour;
+
+            background(0);
+
+            if (health >= 350) {
+              healthColour = fadedColours[0];
+            } else if (health >= 300) {
+              healthColour = fadedColours[1];
+            } else if (health >= 200) {
+              healthColour = fadedColours[2];
+            } else if (health >= 100) {
+              healthColour = fadedColours[3];
+            } else if (health >= 0) {
+              healthColour = fadedColours[4];
+            }
+
+            fill(healthColour);
+            rect(200, 200, 400, 400);
+          };
+          // Function that draws the dark faded background that also changes colour depending on the health of the user.
+
+          var fadeTo = function (c1, c2, c3) {
+            fill(c1, c2, c3, fadeIn);
+            noStroke();
+            rect(200, 200, 400, 400);
+            fadeIn += 5;
+          };
+          // Function that fades to a certain colour.
+
+          var instructions = function () {
+            background(0, 0, 0);
+            noStroke();
+            border();
+            textSize(15);
+            textAlign(CENTER, CENTER);
+            text(
+              "This game is very simple.\n\nIt simply requires the mouse to play.\n\nThe mouse controls two different cursors;\n\n a regular cursor, above the halfway point,\n\n and an inverted cursor below the point.\n\nClick on the upper half of the screen to shoot upwards\n\n and click on the bottom half to shoot downwards.\n\n\n You can do it. It's simply inversion.",
+              200,
+              200
+            );
+          };
+          // Function that displays the instructions to the user.
+
+          var gamestart = function () {
+            if (!gameStart) {
+              background(0);
+              noStroke();
+              border();
+
+              var cursorColour = color(255, 0, 0);
+              var X = 307;
+              var Y = 109;
+
+              noFill();
+              strokeWeight(4);
+              stroke(cursorColour);
+              ellipse(X, Y, 35, 35);
+              noStroke();
+              noFill();
+              ellipse(X, Y, 10, 10);
+              fill(cursorColour);
+              stroke(cursorColour);
+              line(X - 25, Y, X + 25, Y);
+              line(X, Y - 25, X, Y + 25);
+              noStroke();
+              noFill();
+
+              fill(0, 255, 0);
+              textAlign(CENTER, CENTER);
+
+              textSize(90);
+              text("Inversi  n", 200, 100);
+
+              textSize(10);
+              text("Originally Written By: Leander Rodrigues", 105, 16);
+
+              //RESET
+              textSize(18);
+              noFill();
+              strokeWeight(3);
+              stroke(0, 255, 0);
+
+              if (mouseX > 70 && mouseX < 330 && mouseY > 170 && mouseY < 210) {
+                stroke(255, 255, 255);
+              }
+              rect(200, 190, 260, 40);
+
+              if (mouseX > 70 && mouseX < 330 && mouseY > 170 && mouseY < 210) {
+                fill(255, 255, 255);
+                if (mouseIsPressed) {
+                  gameStart = true;
+                }
+              }
+              text("Play", 200, 190);
+
+              //COLOUR RESET
+              stroke(0, 255, 0);
+              fill(0, 255, 0);
+              noFill();
+
+              if (mouseX > 70 && mouseX < 330 && mouseY > 240 && mouseY < 280) {
+                stroke(255, 255, 255);
+              }
+              rect(200, 260, 260, 40);
+              text("Instructions", 200, 260);
+
+              if (mouseX > 70 && mouseX < 330 && mouseY > 240 && mouseY < 280) {
+                fill(255, 255, 255);
+                text("Instructions", 200, 260);
+                if (mouseIsPressed) {
+                  instructions();
+                }
+              }
+
+              drawRealCursor();
+            }
+          };
+          // Function that displays the start screen of the game.
+
+          var gameover = function () {
+            if (health <= 0) {
+              fadeTo(0, 0, 0);
+
+              var cursorColour = color(255, 0, 0);
+              var X = 234;
+              var Y = 104;
+
+              noFill();
+              strokeWeight(4);
+              stroke(cursorColour);
+              ellipse(X, Y, 35, 35);
+              noStroke();
+              noFill();
+              ellipse(X, Y, 10, 10);
+              fill(cursorColour);
+              stroke(cursorColour);
+              line(X - 25, Y, X + 25, Y);
+              line(X, Y - 25, X, Y + 25);
+              noStroke();
+              noFill();
+
+              textAlign(CENTER, CENTER);
+              textSize(60);
+              fill(255, 0, 0);
+              text("GAME    VER", 200, 105);
+              if (shotCount !== 0) {
+                text(round((enemiesKilled / shotCount) * 100) + "%", 200, 186);
+              } else if (shotCount <= 0) {
+                text("0%", 200, 186);
+              } else if (shotCount >= 100) {
+                text("100%", 200, 186);
+              }
+              textSize(12);
+              text("Accuracy", 200, 223);
+              text("Enemies Killed:", 120, 260);
+              text("Shots Fired:", 280, 260);
+              textSize(40);
+              text(enemiesKilled, 120, 290);
+              text(shotCount, 280, 290);
+
+              fill(255, 0, 0);
+              textSize(11);
+              text(
+                "You tried. Not well, but you tried. Just like, do better next time.",
+                200,
+                380
+              );
+
+              drawRealCursor();
+            }
+          };
+          // Function that shows the ending screen of the game.
+
+          var gameWin = function () {
+            if (!gameWin) {
+              fadeTo(0, 0, 0);
+              fill(0, 255, 0);
+
+              textSize(95);
+              text("WINNER", 200, 105);
+
+              textSize(40);
+              if (shotCount !== 0) {
+                text(round((enemiesKilled / shotCount) * 100) + "%", 200, 211);
+              } else if (shotCount <= 0) {
+                text("0%", 200, 186);
+              } else if (shotCount >= 100) {
+                text("100%", 200, 186);
+              }
+              textSize(12);
+              text("Accuracy", 200, 223);
+              text("Enemies Killed:", 120, 260);
+              text("Shots Fired:", 280, 260);
+              textSize(40);
+              text(enemiesKilled, 120, 290);
+              text(shotCount, 280, 290);
+
+              fill(0, 255, 0);
+              textSize(11);
+              text("How long did you spend trying?", 200, 380);
+
+              drawRealCursor();
+            }
+          };
+
+          /** Functions **/
+
+          var bullets = [];
+          var BulletLocation = function (x, y) {
+            this.x = x;
+            this.y = y;
+            this.speed = 10;
+          };
+          BulletLocation.prototype.draw = function () {
+            fill(255);
+            rectMode(CENTER);
+            rect(this.x, this.y, 3, 3);
+          };
+          BulletLocation.prototype.fire = function () {
+            if (this.y < 200) {
+              this.y -= this.speed;
+            } else {
+              this.y += this.speed;
+            }
+          };
+          // Object that gets filled with information about the location, speed and abilities of the user bullets
+
+          var enemyBullets = [];
+          var EnemyBulletLocations = function (x, y) {
+            this.x = x;
+            this.y = y;
+          };
+          EnemyBulletLocations.prototype.draw = function () {
+            if (this.y !== 200) {
+              fill(255, 0, 0);
+              rectMode(CENTER);
+              if (this.y < 200) {
+                rect(this.x - 10, this.y + 5, 2, 7);
+                rect(this.x + 10, this.y + 5, 2, 7);
+              } else {
+                rect(this.x + 10, this.y - 5, 2, 7);
+                rect(this.x - 10, this.y - 5, 2, 7);
+              }
+            } else {
+              noFill();
+              rectMode(CENTER);
+              rect(this.x, this.y, 1, 1);
+            }
+          };
+          EnemyBulletLocations.prototype.fire = function () {
+            if (this.y < 199) {
+              this.y += 7;
+            } else if (this.y > 201) {
+              this.y -= 7;
+            }
+          };
+          EnemyBulletLocations.prototype.damage = function () {
+            if (
+              (this.y < 200 && this.y > 180 && health !== 0) ||
+              (this.y > 200 && this.y < 230 && health !== 0)
+            ) {
+              health -= 4;
+            }
+          };
+          // Object that gets filled with information about the location, speed and abilities of the enemy bullets
+
+          var enemies = [];
+          var EnemyClass = function (x, y) {
+            this.x = x;
+            this.y = y;
+            this.speed = 1;
+            this.shotCount = 0;
+            this.timeToShot = 0;
+            this.dead = false;
+            this.explosion = false;
+          };
+          EnemyClass.prototype.draw = function () {
+            if (this.y < 200) {
+              if (this.dead === false) {
+                fill(232, 232, 232);
+                rectMode(CENTER);
+                rect(this.x - 10, this.y - 2, 10, 15);
+                rect(this.x + 10, this.y - 2, 10, 15);
+                rect(this.x - 11, this.y + 3, 3, 15);
+                rect(this.x + 10, this.y + 3, 3, 15);
+                fill(0, 240, 255);
+                rect(this.x, this.y - 10, 50, 15);
+                fill(5, 75, 255);
+                triangle(
+                  this.x,
+                  this.y - 10,
+                  this.x - 27,
+                  this.y,
+                  this.x + 27,
+                  this.y
+                );
+                triangle(
+                  this.x - 30,
+                  this.y - 15,
+                  this.x - 30,
+                  this.y + 5,
+                  this.x - 17,
+                  this.y
+                );
+                triangle(
+                  this.x + 30,
+                  this.y - 15,
+                  this.x + 30,
+                  this.y + 5,
+                  this.x + 17,
+                  this.y
+                );
+                triangle(
+                  this.x - 27,
+                  this.y - 9,
+                  this.x - 37,
+                  this.y - 18,
+                  this.x,
+                  this.y - 23
+                );
+                triangle(
+                  this.x + 27,
+                  this.y - 9,
+                  this.x + 37,
+                  this.y - 18,
+                  this.x,
+                  this.y - 23
+                );
+                triangle(
+                  this.x,
+                  this.y - 13,
+                  this.x - 13,
+                  this.y - 17,
+                  this.x + 13,
+                  this.y - 17
+                );
+                triangle(
+                  this.x,
+                  this.y - 26,
+                  this.x - 17,
+                  this.y - 16,
+                  this.x + 17,
+                  this.y - 16
+                );
+              }
+            } else {
+              if (this.dead === false) {
+                fill(232, 232, 232);
+                rectMode(CENTER);
+                rect(this.x - 10, this.y + 2, 10, 15);
+                rect(this.x + 10, this.y + 2, 10, 15);
+                rect(this.x - 11, this.y - 3, 3, 15);
+                rect(this.x + 10, this.y - 3, 3, 15);
+                fill(0, 240, 255);
+                rect(this.x, this.y + 10, 50, 15);
+                fill(5, 75, 255);
+                triangle(
+                  this.x,
+                  this.y + 10,
+                  this.x - 27,
+                  this.y,
+                  this.x + 27,
+                  this.y
+                );
+                triangle(
+                  this.x - 30,
+                  this.y + 15,
+                  this.x - 30,
+                  this.y - 5,
+                  this.x - 17,
+                  this.y
+                );
+                triangle(
+                  this.x + 30,
+                  this.y + 15,
+                  this.x + 30,
+                  this.y - 5,
+                  this.x + 17,
+                  this.y
+                );
+                triangle(
+                  this.x - 27,
+                  this.y + 9,
+                  this.x - 37,
+                  this.y + 18,
+                  this.x,
+                  this.y + 23
+                );
+                triangle(
+                  this.x + 27,
+                  this.y + 9,
+                  this.x + 37,
+                  this.y + 18,
+                  this.x,
+                  this.y + 23
+                );
+                triangle(
+                  this.x,
+                  this.y + 13,
+                  this.x - 13,
+                  this.y + 17,
+                  this.x + 13,
+                  this.y + 17
+                );
+                triangle(
+                  this.x,
+                  this.y + 26,
+                  this.x - 17,
+                  this.y + 16,
+                  this.x + 17,
+                  this.y + 16
+                );
+              }
+            }
+
+            for (var i = 0; i < enemyBullets.length; i++) {
+              enemyBullets[i].draw();
+              enemyBullets[i].fire();
+            }
+          };
+          EnemyClass.prototype.attack = function () {
+            if (this.y < 130) {
+              this.y += this.speed;
+            } else if (this.y === 130 || this.y === 270) {
+              this.timeToShot++;
+              if (
+                (this.shotCount !== 5 && this.timeToShot === 30) ||
+                (this.shotCount !== 5 && this.timeToShot === 60) ||
+                (this.shotCount !== 5 && this.timeToShot === 90) ||
+                (this.shotCount !== 5 && this.timeToShot === 120) ||
+                (this.shotCount !== 5 && this.timeToShot === 150)
+              ) {
+                enemyBullets.push(new EnemyBulletLocations(this.x, this.y));
+                this.shotCount++;
+              }
+            } else if (this.y > 270) {
+              this.y -= this.speed;
+            }
+
+            for (var i = 0; i < enemyBullets.length; i++) {
+              enemyBullets[i].draw();
+              enemyBullets[i].fire();
+              enemyBullets[i].damage();
+            }
+          };
+          EnemyClass.prototype.explode = function () {
+            if (!this.explosion) {
+              if (this.y < 200) {
+                fill(255, 0, 0);
+                ellipse(this.x, this.y - 7, 50, 50);
+                fill(255, 150, 0);
+                ellipse(this.x, this.y - 7, 40, 40);
+                fill(255, 255, 0);
+                ellipse(this.x, this.y - 7, 30, 30);
+                enemiesKilled++;
+                this.explosion = true;
+              } else {
+                fill(255, 0, 0);
+                ellipse(this.x, this.y + 7, 50, 50);
+                fill(255, 150, 0);
+                ellipse(this.x, this.y + 7, 40, 40);
+                fill(255, 255, 0);
+                ellipse(this.x, this.y + 7, 30, 30);
+                enemiesKilled++;
+                this.explosion = true;
+              }
+            }
+          };
+          EnemyClass.prototype.checkForDeath = function (value1) {
+            if (this.y < 200) {
+              if (
+                bullets[value1].y < 200 &&
+                bullets[value1].y < this.y + 5 &&
+                bullets[value1].y > this.y - 25 &&
+                bullets[value1].x < this.x + 37 &&
+                bullets[value1].x > this.x - 37
+              ) {
+                this.dead = true;
+                this.explode();
+              }
+            } else {
+              if (
+                bullets[value1].y > 200 &&
+                bullets[value1].y > this.y - 5 &&
+                bullets[value1].y < this.y + 25 &&
+                bullets[value1].x < this.x + 37 &&
+                bullets[value1].x > this.x - 37
+              ) {
+                this.dead = true;
+                this.explode();
+              }
+            }
+          };
+          var spawnTimer = function () {
+            var healthColour;
+
+            if (health >= 350) {
+              healthColour = fadedColours[0];
+            } else if (health >= 300) {
+              healthColour = fadedColours[1];
+            } else if (health >= 200) {
+              healthColour = fadedColours[2];
+            } else if (health >= 100) {
+              healthColour = fadedColours[3];
+            } else if (health >= 0) {
+              healthColour = fadedColours[4];
+            }
+
+            //Level 1
+            if (enemyCount < 20 && health > 0) {
+              spawnTime++;
+
+              textAlign(CENTER, CENTER);
+              textSize(90);
+              fill(healthColour);
+              text("LEVEL 1", 200, 65);
+              pushMatrix();
+              rotate(3.14);
+              text("LEVEL 1", -200, -335);
+              popMatrix();
+
+              if (spawnTime === 90) {
+                enemies.push(new EnemyClass(random(30, 370), -20));
+                enemies.push(new EnemyClass(random(30, 370), 420));
+                fill(255, 0, 0);
+                enemyCount += 2;
+                spawnTime = 0;
+              }
+            }
+
+            //Level 2
+            else if (enemyCount < 50 && health > 0) {
+              spawnTime++;
+
+              textAlign(CENTER, CENTER);
+              textSize(90);
+              fill(healthColour);
+              text("LEVEL 2", 200, 65);
+              pushMatrix();
+              rotate(3.14);
+              text("LEVEL 2", -200, -335);
+              popMatrix();
+
+              if (spawnTime === 60) {
+                enemies.push(new EnemyClass(random(30, 370), -20));
+                enemies.push(new EnemyClass(random(30, 370), 420));
+                enemyCount += 2;
+                spawnTime = 0;
+              }
+
+              //Level 3
+            } else if (enemyCount < 100 && health > 0) {
+              spawnTime++;
+
+              textAlign(CENTER, CENTER);
+              textSize(90);
+              fill(healthColour);
+              text("LEVEL 3", 200, 65);
+              pushMatrix();
+              rotate(3.14);
+              text("LEVEL 3", -200, -335);
+              popMatrix();
+
+              if (spawnTime >= 60) {
+                enemies.push(new EnemyClass(random(30, 370), -20));
+                enemies.push(new EnemyClass(random(30, 370), 420));
+                enemies.push(new EnemyClass(random(30, 370), -20));
+                enemies.push(new EnemyClass(random(30, 370), 420));
+                enemyCount += 4;
+                spawnTime = 0;
+              }
+
+              //Level 4
+            } else if (enemyCount < 150 && health > 0) {
+              spawnTime++;
+
+              textAlign(CENTER, CENTER);
+              textSize(90);
+              fill(healthColour);
+              text("LEVEL 4", 200, 65);
+              pushMatrix();
+              rotate(3.14);
+              text("LEVEL 4", -200, -335);
+              popMatrix();
+
+              if (spawnTime >= 45) {
+                enemies.push(new EnemyClass(random(30, 370), -20));
+                enemies.push(new EnemyClass(random(30, 370), 420));
+                enemies.push(new EnemyClass(random(30, 370), -20));
+                enemies.push(new EnemyClass(random(30, 370), 420));
+                enemyCount += 4;
+                spawnTime = 0;
+              }
+
+              //Level 5
+            } else if (enemyCount < 250 && health > 0) {
+              spawnTime++;
+
+              textAlign(CENTER, CENTER);
+              textSize(90);
+              fill(healthColour);
+              text("LEVEL 5", 200, 65);
+              pushMatrix();
+              rotate(3.14);
+              text("LEVEL 5", -200, -335);
+              popMatrix();
+
+              if (spawnTime >= 15) {
+                enemies.push(new EnemyClass(random(30, 370), -20));
+                enemies.push(new EnemyClass(random(30, 370), 420));
+                enemies.push(new EnemyClass(random(30, 370), -20));
+                enemies.push(new EnemyClass(random(30, 370), 420));
+                enemyCount += 4;
+                spawnTime = 0;
+              }
+            } else if (enemyCount >= 250 && health > 0) {
+              gameWin = true;
+            }
+          };
+          // Object that draws the enemies and operates their functions
+
+          var PaddleClass = function (y, w, h, colour) {
+            this.y = y;
+            this.w = w;
+            this.h = h;
+            this.colour = colour;
+          };
+          PaddleClass.prototype.gun = function () {
+            fill(175);
+            if (this.y < 200) {
+              var xReq = mouseX;
+              rect(xReq, this.y - this.h / 4, this.w / 2, this.h);
+              rect(xReq, this.y - this.h / 2, this.w / 10, this.h - 1);
+            } else {
+              var xReq = mouseX + 400 - mouseX * 2;
+              rect(xReq, this.y + this.h / 4 - 1, this.w / 2, this.h);
+              rect(xReq, this.y + this.h / 2 - 1, this.w / 10, this.h);
+            }
+
+            if (!mouseIsPressed) {
+              release = true;
+            }
+
+            if (mouseIsPressed && release) {
+              if (mouseY < 200) {
+                bullets.push(new BulletLocation(mouseX, this.y - 10));
+                shotCount++;
+                release = false;
+              }
+              if (mouseY > 200) {
+                bullets.push(
+                  new BulletLocation(mouseX + 400 - mouseX * 2, this.y + 60)
+                );
+                shotCount++;
+                release = false;
+              }
+            }
+          };
+          PaddleClass.prototype.draw = function () {
+            var xReq;
+
+            this.gun();
+
+            if (health >= 350) {
+              this.colour = colours[0];
+            } else if (health >= 300) {
+              this.colour = colours[1];
+            } else if (health >= 200) {
+              this.colour = colours[2];
+            } else if (health >= 100) {
+              this.colour = colours[3];
+            } else if (health >= 50) {
+              this.colour = colours[4];
+            }
+
+            fill(this.colour);
+            noStroke();
+            rectMode(CENTER);
+            if (this.y < 200) {
+              xReq = mouseX;
+            } else {
+              xReq = mouseX + 400 - mouseX * 2;
+            }
+            rect(xReq, this.y, this.w, this.h);
+          };
+          var topPaddle = new PaddleClass(175, 50, 10, color(0, 255, 0));
+          var bottomPaddle = new PaddleClass(225, 50, 10, color(0, 255, 0));
+          // Object to draw and operate the paddles. These are controlled by the mouse and are inverted under the y-axis
+
+          var enemySpawn = function () {
+            for (var j = 0; j < bullets.length; j++) {
+              bullets[j].fire(2);
+              bullets[j].draw();
+              if (bullets.length > 10) {
+                bullets.splice(0, 1);
+              }
+            }
+
+            for (var i = 0; i < enemies.length; i++) {
+              for (var j = 0; j < bullets.length; j++) {
+                enemies[i].checkForDeath(j);
+              }
+              if (!enemies[i].dead) {
+                enemies[i].attack();
+                enemies[i].draw();
+              }
+              if (enemies.length > 50) {
+                enemies.splice(0, 1);
+              }
+            }
+          };
+          // Function simplifies calling a large group of object functions to reduce the size of the draw loop.
+
+          /** Object-Oriented Design **/
+
+          var draw = function () {
+            gamestart();
+
+            //GAMEPLAY
+            if (health > 0 && gameStart) {
+              //BACKGROUND
+              backing();
+
+              //PADDLES
+              topPaddle.draw();
+              bottomPaddle.draw();
+
+              //ENEMY
+              spawnTimer();
+              enemySpawn();
+
+              //UTILITES
+              healthBar();
+              drawCursor();
+            }
+
+            gameover();
+            gameWin();
+            border();
+          };
+
+          /** Infinite Loop **/
+        }
+        if (typeof draw !== "undefined") processing.draw = draw;
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,1694 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Concentration</title>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/processing.js/1.4.8/processing.min.js"></script>
+    <link rel="icon" type="image/png" href="./favicon.png" />
+  </head>
+  <style>
+    body {
+      overflow: hidden;
+      background: linear-gradient(
+        to right,
+        rgba(85, 190, 255),
+        rgba(255, 153, 0)
+      );
+    }
+    canvas {
+      border: 1px solid #000;
+      margin: 100px auto 0;
+      display: block;
+      height: 400px !important;
+      width: 400px !important;
+    }
+  </style>
+  <body>
+    <canvas id="canvas"></canvas>
+    <script>
+      var canvas = document.getElementById("canvas");
+      var processing = new Processing(canvas, function (processing) {
+        processing.size(400, 400);
+        processing.background(0xfff);
+
+        var mouseIsPressed = false;
+        processing.mousePressed = function () {
+          mouseIsPressed = true;
+        };
+        processing.mouseReleased = function () {
+          mouseIsPressed = false;
+        };
+
+        var keyIsPressed = false;
+        processing.keyPressed = function () {
+          keyIsPressed = true;
+        };
+        processing.keyReleased = function () {
+          keyIsPressed = false;
+        };
+
+        // use degrees rather than radians in rotate function
+        var rotateFn = processing.rotate;
+        processing.rotate = function (angle) {
+          rotateFn(processing.radians(angle));
+        };
+
+        with (processing) {
+          //////////////////////////////////////////////////////////////////////////////
+          //                                                                          //
+          //     _____                            _             _   _                 //
+          //    /  __ \                          | |           | | (_)                //
+          //    | /  \/ ___  _ __   ___ ___ _ __ | |_ _ __ __ _| |_ _  ___  _ __      //
+          //    | |    / _ \| '_ \ / __/ _ \ '_ \| __| '__/ _` | __| |/ _ \| '_ \     //
+          //    | \__/\ (_) | | | | (_|  __/ | | | |_| | | (_| | |_| | (_) | | | |    //
+          //     \____/\___/|_| |_|\___\___|_| |_|\__|_|  \__,_|\__|_|\___/|_| |_|    //
+          //                                                                          //
+          //                                                                          //
+          //                  Originally Written By: Leander Rodrigues                //
+          //                                                                          //
+          //                                                                          //
+          //////////////////////////////////////////////////////////////////////////////
+
+          //VARIABLES
+
+          var instructions = false;
+          //variable that controls the instructions page
+
+          var scorePoint = false;
+          //variable to indicate whether or not a point should be scored
+
+          var losePoint = false;
+          //variable to indicate whether or not a point should be lost
+
+          var gameStart = false;
+          //variable to start the game
+
+          var gameOver = false;
+          //variable to end the game
+
+          var gameOverText = "placeholder";
+          //variable that controls the difficulty at the end of the game
+
+          var pause = false;
+          //variable to pause the game
+
+          var speed = 0;
+          //variable to indicate speed. It starts off at 0 to be later changed as per difficulty
+
+          var difficulty = "placeholder";
+          //variable to indicate difficulty
+
+          var score = 0;
+          //starting score variable
+
+          var bestScore = 0;
+          //variable to indicate the best score
+
+          var scoreReq = 0;
+          //required score variable. It starts off at 0 to be later changed as per difficulty
+
+          var resetCount = -1;
+          //counts the amount of times the game has been restarted/reset
+
+          var fadeIn = 0;
+          var fade = 1;
+          //variables which aid in fading the gameover and pause screens
+
+          var leftTileColour = color(0, 150, 255, 150);
+          var rightTileColour = color(255, 153, 0, 150);
+          //colours of scored tiles
+
+          //ARRAYS
+
+          var leftPositions = [
+            { x: 0, y: 0 },
+            { x: 0, y: 80 },
+            { x: 0, y: 160 },
+            { x: 0, y: 240 },
+            { x: 0, y: 320 },
+            { x: 0, y: 400 },
+            { x: 50, y: 0 },
+            { x: 50, y: 80 },
+            { x: 50, y: 160 },
+            { x: 50, y: 240 },
+            { x: 50, y: 320 },
+            { x: 50, y: 400 },
+            { x: 100, y: 0 },
+            { x: 100, y: 80 },
+            { x: 100, y: 160 },
+            { x: 100, y: 240 },
+            { x: 100, y: 320 },
+            { x: 100, y: 400 },
+          ];
+          var rightPositions = [
+            { x: 250, y: 0 },
+            { x: 250, y: 80 },
+            { x: 250, y: 160 },
+            { x: 250, y: 240 },
+            { x: 250, y: 320 },
+            { x: 250, y: 400 },
+            { x: 300, y: 0 },
+            { x: 300, y: 80 },
+            { x: 300, y: 160 },
+            { x: 300, y: 240 },
+            { x: 300, y: 320 },
+            { x: 300, y: 400 },
+            { x: 350, y: 0 },
+            { x: 350, y: 80 },
+            { x: 350, y: 160 },
+            { x: 350, y: 240 },
+            { x: 350, y: 320 },
+            { x: 350, y: 400 },
+          ];
+          //arrays that are used for the background sliding tiles
+
+          var LRN = [
+            ceil(random(-1, 2)),
+            ceil(random(-1, 2)),
+            ceil(random(-1, 2)),
+            ceil(random(-1, 2)),
+            ceil(random(-1, 2)),
+
+            ceil(random(-1, 2)),
+            ceil(random(-1, 2)),
+            ceil(random(-1, 2)),
+            ceil(random(-1, 2)),
+            ceil(random(-1, 2)),
+            //10
+            ceil(random(-1, 2)),
+            ceil(random(-1, 2)),
+            ceil(random(-1, 2)),
+            ceil(random(-1, 2)),
+            ceil(random(-1, 2)),
+
+            ceil(random(-1, 2)),
+            ceil(random(-1, 2)),
+            ceil(random(-1, 2)),
+            ceil(random(-1, 2)),
+            ceil(random(-1, 2)),
+            //20
+            ceil(random(-1, 2)),
+            ceil(random(-1, 2)),
+            ceil(random(-1, 2)),
+            ceil(random(-1, 2)),
+            ceil(random(-1, 2)),
+
+            ceil(random(-1, 2)),
+            ceil(random(-1, 2)),
+            ceil(random(-1, 2)),
+            ceil(random(-1, 2)),
+            ceil(random(-1, 2)),
+            //30
+            ceil(random(-1, 2)),
+            ceil(random(-1, 2)),
+            ceil(random(-1, 2)),
+            ceil(random(-1, 2)),
+            ceil(random(-1, 2)),
+
+            ceil(random(-1, 2)),
+            ceil(random(-1, 2)),
+            ceil(random(-1, 2)),
+            ceil(random(-1, 2)),
+            ceil(random(-1, 2)),
+            //40
+            ceil(random(-1, 2)),
+            ceil(random(-1, 2)),
+            ceil(random(-1, 2)),
+            ceil(random(-1, 2)),
+            ceil(random(-1, 2)),
+
+            ceil(random(-1, 2)),
+            ceil(random(-1, 2)),
+            ceil(random(-1, 2)),
+            ceil(random(-1, 2)),
+            ceil(random(-1, 2)),
+            //50
+            ceil(random(-1, 2)),
+            ceil(random(-1, 2)),
+            ceil(random(-1, 2)),
+            ceil(random(-1, 2)),
+            ceil(random(-1, 2)),
+
+            ceil(random(-1, 2)),
+            ceil(random(-1, 2)),
+            ceil(random(-1, 2)),
+            ceil(random(-1, 2)),
+            ceil(random(-1, 2)),
+            //60
+            ceil(random(-1, 2)),
+            ceil(random(-1, 2)),
+            ceil(random(-1, 2)),
+            ceil(random(-1, 2)),
+            ceil(random(-1, 2)),
+
+            ceil(random(-1, 2)),
+            ceil(random(-1, 2)),
+            ceil(random(-1, 2)),
+            ceil(random(-1, 2)),
+            ceil(random(-1, 2)),
+            //70
+            ceil(random(-1, 2)),
+            ceil(random(-1, 2)),
+            ceil(random(-1, 2)),
+            ceil(random(-1, 2)),
+            ceil(random(-1, 2)),
+
+            ceil(random(-1, 2)),
+            ceil(random(-1, 2)),
+            ceil(random(-1, 2)),
+            ceil(random(-1, 2)),
+            ceil(random(-1, 2)),
+            //80
+          ];
+          var RRN = [
+            ceil(random(2, 5)),
+            ceil(random(2, 5)),
+            ceil(random(2, 5)),
+            ceil(random(2, 5)),
+            ceil(random(2, 5)),
+
+            ceil(random(2, 5)),
+            ceil(random(2, 5)),
+            ceil(random(2, 5)),
+            ceil(random(2, 5)),
+            ceil(random(2, 5)),
+            //10
+            ceil(random(2, 5)),
+            ceil(random(2, 5)),
+            ceil(random(2, 5)),
+            ceil(random(2, 5)),
+            ceil(random(2, 5)),
+
+            ceil(random(2, 5)),
+            ceil(random(2, 5)),
+            ceil(random(2, 5)),
+            ceil(random(2, 5)),
+            ceil(random(2, 5)),
+            //20
+            ceil(random(2, 5)),
+            ceil(random(2, 5)),
+            ceil(random(2, 5)),
+            ceil(random(2, 5)),
+            ceil(random(2, 5)),
+
+            ceil(random(2, 5)),
+            ceil(random(2, 5)),
+            ceil(random(2, 5)),
+            ceil(random(2, 5)),
+            ceil(random(2, 5)),
+            //30
+            ceil(random(2, 5)),
+            ceil(random(2, 5)),
+            ceil(random(2, 5)),
+            ceil(random(2, 5)),
+            ceil(random(2, 5)),
+
+            ceil(random(2, 5)),
+            ceil(random(2, 5)),
+            ceil(random(2, 5)),
+            ceil(random(2, 5)),
+            ceil(random(2, 5)),
+            //40
+            ceil(random(2, 5)),
+            ceil(random(2, 5)),
+            ceil(random(2, 5)),
+            ceil(random(2, 5)),
+            ceil(random(2, 5)),
+
+            ceil(random(2, 5)),
+            ceil(random(2, 5)),
+            ceil(random(2, 5)),
+            ceil(random(2, 5)),
+            ceil(random(2, 5)),
+            //50
+            ceil(random(2, 5)),
+            ceil(random(2, 5)),
+            ceil(random(2, 5)),
+            ceil(random(2, 5)),
+            ceil(random(2, 5)),
+
+            ceil(random(2, 5)),
+            ceil(random(2, 5)),
+            ceil(random(2, 5)),
+            ceil(random(2, 5)),
+            ceil(random(2, 5)),
+            //60
+            ceil(random(2, 5)),
+            ceil(random(2, 5)),
+            ceil(random(2, 5)),
+            ceil(random(2, 5)),
+            ceil(random(2, 5)),
+
+            ceil(random(2, 5)),
+            ceil(random(2, 5)),
+            ceil(random(2, 5)),
+            ceil(random(2, 5)),
+            ceil(random(2, 5)),
+            //70
+            ceil(random(2, 5)),
+            ceil(random(2, 5)),
+            ceil(random(2, 5)),
+            ceil(random(2, 5)),
+            ceil(random(2, 5)),
+
+            ceil(random(2, 5)),
+            ceil(random(2, 5)),
+            ceil(random(2, 5)),
+            ceil(random(2, 5)),
+            ceil(random(2, 5)),
+            //80
+          ];
+          //array to randomize the tile selected for a score
+
+          var xScoreSlots = [
+            0, //A Colomn
+            50, //S Colomn
+            100, //D Colomn
+            250, //J Colomn
+            300, //K Colomn
+            350, //L Colomn
+          ];
+          //the x-coordinates for the scored tiles that will be picked from at random
+
+          var keyCodes = [
+            97, //A
+            115, //S
+            100, //D
+            106, //J
+            107, //K
+            108, //L
+          ];
+          //the key codes that must be pressed
+
+          var bestScore = [
+            0, //Easy
+            0, //Medium
+            0, //Hard
+            0, //Wizard
+          ];
+          //best score value array
+
+          var leftScorePositions = [
+            { x: xScoreSlots[LRN[0]], y: -80 * 1 },
+            { x: xScoreSlots[LRN[1]], y: -80 * 3 },
+            { x: xScoreSlots[LRN[2]], y: -80 * 5 },
+            { x: xScoreSlots[LRN[3]], y: -80 * 7 },
+            { x: xScoreSlots[LRN[4]], y: -80 * 9 },
+            { x: xScoreSlots[LRN[5]], y: -80 * 11 },
+            { x: xScoreSlots[LRN[6]], y: -80 * 13 },
+            { x: xScoreSlots[LRN[7]], y: -80 * 15 },
+            { x: xScoreSlots[LRN[8]], y: -80 * 17 },
+            { x: xScoreSlots[LRN[9]], y: -80 * 19 },
+            //10
+            { x: xScoreSlots[LRN[10]], y: -80 * 21 },
+            { x: xScoreSlots[LRN[11]], y: -80 * 23 },
+            { x: xScoreSlots[LRN[12]], y: -80 * 25 },
+            { x: xScoreSlots[LRN[13]], y: -80 * 27 },
+            { x: xScoreSlots[LRN[14]], y: -80 * 29 },
+            { x: xScoreSlots[LRN[15]], y: -80 * 31 },
+            { x: xScoreSlots[LRN[16]], y: -80 * 33 },
+            { x: xScoreSlots[LRN[17]], y: -80 * 35 },
+            { x: xScoreSlots[LRN[18]], y: -80 * 37 },
+            { x: xScoreSlots[LRN[19]], y: -80 * 39 },
+            //20
+            { x: xScoreSlots[LRN[20]], y: -80 * 41 },
+            { x: xScoreSlots[LRN[21]], y: -80 * 43 },
+            { x: xScoreSlots[LRN[22]], y: -80 * 45 },
+            { x: xScoreSlots[LRN[23]], y: -80 * 47 },
+            { x: xScoreSlots[LRN[24]], y: -80 * 49 },
+            { x: xScoreSlots[LRN[25]], y: -80 * 51 },
+            { x: xScoreSlots[LRN[26]], y: -80 * 53 },
+            { x: xScoreSlots[LRN[27]], y: -80 * 55 },
+            { x: xScoreSlots[LRN[28]], y: -80 * 57 },
+            { x: xScoreSlots[LRN[29]], y: -80 * 59 },
+            //30
+            { x: xScoreSlots[LRN[30]], y: -80 * 61 },
+            { x: xScoreSlots[LRN[31]], y: -80 * 63 },
+            { x: xScoreSlots[LRN[32]], y: -80 * 65 },
+            { x: xScoreSlots[LRN[33]], y: -80 * 67 },
+            { x: xScoreSlots[LRN[34]], y: -80 * 69 },
+            { x: xScoreSlots[LRN[35]], y: -80 * 71 },
+            { x: xScoreSlots[LRN[36]], y: -80 * 73 },
+            { x: xScoreSlots[LRN[37]], y: -80 * 75 },
+            { x: xScoreSlots[LRN[38]], y: -80 * 77 },
+            { x: xScoreSlots[LRN[39]], y: -80 * 79 },
+            //40
+            { x: xScoreSlots[LRN[40]], y: -80 * 81 },
+            { x: xScoreSlots[LRN[41]], y: -80 * 83 },
+            { x: xScoreSlots[LRN[42]], y: -80 * 85 },
+            { x: xScoreSlots[LRN[43]], y: -80 * 87 },
+            { x: xScoreSlots[LRN[44]], y: -80 * 89 },
+            { x: xScoreSlots[LRN[45]], y: -80 * 91 },
+            { x: xScoreSlots[LRN[46]], y: -80 * 93 },
+            { x: xScoreSlots[LRN[47]], y: -80 * 95 },
+            { x: xScoreSlots[LRN[48]], y: -80 * 97 },
+            { x: xScoreSlots[LRN[49]], y: -80 * 99 },
+            //50
+            { x: xScoreSlots[LRN[50]], y: -80 * 101 },
+            { x: xScoreSlots[LRN[51]], y: -80 * 103 },
+            { x: xScoreSlots[LRN[52]], y: -80 * 105 },
+            { x: xScoreSlots[LRN[53]], y: -80 * 107 },
+            { x: xScoreSlots[LRN[54]], y: -80 * 109 },
+            { x: xScoreSlots[LRN[55]], y: -80 * 111 },
+            { x: xScoreSlots[LRN[56]], y: -80 * 113 },
+            { x: xScoreSlots[LRN[57]], y: -80 * 115 },
+            { x: xScoreSlots[LRN[58]], y: -80 * 117 },
+            { x: xScoreSlots[LRN[59]], y: -80 * 119 },
+            //60
+            { x: xScoreSlots[LRN[60]], y: -80 * 121 },
+            { x: xScoreSlots[LRN[61]], y: -80 * 123 },
+            { x: xScoreSlots[LRN[62]], y: -80 * 125 },
+            { x: xScoreSlots[LRN[63]], y: -80 * 127 },
+            { x: xScoreSlots[LRN[64]], y: -80 * 129 },
+            { x: xScoreSlots[LRN[65]], y: -80 * 131 },
+            { x: xScoreSlots[LRN[66]], y: -80 * 133 },
+            { x: xScoreSlots[LRN[67]], y: -80 * 135 },
+            { x: xScoreSlots[LRN[68]], y: -80 * 137 },
+            { x: xScoreSlots[LRN[69]], y: -80 * 139 },
+            //70
+            { x: xScoreSlots[LRN[70]], y: -80 * 141 },
+            { x: xScoreSlots[LRN[71]], y: -80 * 143 },
+            { x: xScoreSlots[LRN[72]], y: -80 * 145 },
+            { x: xScoreSlots[LRN[73]], y: -80 * 147 },
+            { x: xScoreSlots[LRN[74]], y: -80 * 149 },
+            { x: xScoreSlots[LRN[75]], y: -80 * 151 },
+            { x: xScoreSlots[LRN[76]], y: -80 * 153 },
+            { x: xScoreSlots[LRN[77]], y: -80 * 155 },
+            { x: xScoreSlots[LRN[78]], y: -80 * 157 },
+            { x: xScoreSlots[LRN[79]], y: -80 * 159 },
+            //80
+          ];
+          var rightScorePositions = [
+            { x: xScoreSlots[RRN[0]], y: -80 * 2 },
+            { x: xScoreSlots[RRN[1]], y: -80 * 4 },
+            { x: xScoreSlots[RRN[2]], y: -80 * 6 },
+            { x: xScoreSlots[RRN[3]], y: -80 * 8 },
+            { x: xScoreSlots[RRN[4]], y: -80 * 10 },
+            { x: xScoreSlots[RRN[5]], y: -80 * 12 },
+            { x: xScoreSlots[RRN[6]], y: -80 * 14 },
+            { x: xScoreSlots[RRN[7]], y: -80 * 16 },
+            { x: xScoreSlots[RRN[8]], y: -80 * 18 },
+            { x: xScoreSlots[RRN[9]], y: -80 * 20 },
+            //10
+            { x: xScoreSlots[RRN[10]], y: -80 * 22 },
+            { x: xScoreSlots[RRN[11]], y: -80 * 24 },
+            { x: xScoreSlots[RRN[12]], y: -80 * 26 },
+            { x: xScoreSlots[RRN[13]], y: -80 * 28 },
+            { x: xScoreSlots[RRN[14]], y: -80 * 30 },
+            { x: xScoreSlots[RRN[15]], y: -80 * 32 },
+            { x: xScoreSlots[RRN[16]], y: -80 * 34 },
+            { x: xScoreSlots[RRN[17]], y: -80 * 36 },
+            { x: xScoreSlots[RRN[18]], y: -80 * 38 },
+            { x: xScoreSlots[RRN[19]], y: -80 * 40 },
+            //20
+            { x: xScoreSlots[RRN[20]], y: -80 * 42 },
+            { x: xScoreSlots[RRN[21]], y: -80 * 44 },
+            { x: xScoreSlots[RRN[22]], y: -80 * 46 },
+            { x: xScoreSlots[RRN[23]], y: -80 * 48 },
+            { x: xScoreSlots[RRN[24]], y: -80 * 50 },
+            { x: xScoreSlots[RRN[25]], y: -80 * 52 },
+            { x: xScoreSlots[RRN[26]], y: -80 * 54 },
+            { x: xScoreSlots[RRN[27]], y: -80 * 56 },
+            { x: xScoreSlots[RRN[28]], y: -80 * 58 },
+            { x: xScoreSlots[RRN[29]], y: -80 * 60 },
+            //30
+            { x: xScoreSlots[RRN[30]], y: -80 * 62 },
+            { x: xScoreSlots[RRN[31]], y: -80 * 64 },
+            { x: xScoreSlots[RRN[32]], y: -80 * 66 },
+            { x: xScoreSlots[RRN[33]], y: -80 * 68 },
+            { x: xScoreSlots[RRN[34]], y: -80 * 70 },
+            { x: xScoreSlots[RRN[35]], y: -80 * 72 },
+            { x: xScoreSlots[RRN[36]], y: -80 * 74 },
+            { x: xScoreSlots[RRN[37]], y: -80 * 76 },
+            { x: xScoreSlots[RRN[38]], y: -80 * 78 },
+            { x: xScoreSlots[RRN[39]], y: -80 * 80 },
+            //40
+            { x: xScoreSlots[RRN[40]], y: -80 * 82 },
+            { x: xScoreSlots[RRN[41]], y: -80 * 84 },
+            { x: xScoreSlots[RRN[42]], y: -80 * 86 },
+            { x: xScoreSlots[RRN[43]], y: -80 * 88 },
+            { x: xScoreSlots[RRN[44]], y: -80 * 90 },
+            { x: xScoreSlots[RRN[45]], y: -80 * 92 },
+            { x: xScoreSlots[RRN[46]], y: -80 * 94 },
+            { x: xScoreSlots[RRN[47]], y: -80 * 96 },
+            { x: xScoreSlots[RRN[48]], y: -80 * 98 },
+            { x: xScoreSlots[RRN[49]], y: -80 * 100 },
+            //50
+            { x: xScoreSlots[RRN[50]], y: -80 * 102 },
+            { x: xScoreSlots[RRN[51]], y: -80 * 104 },
+            { x: xScoreSlots[RRN[52]], y: -80 * 106 },
+            { x: xScoreSlots[RRN[53]], y: -80 * 108 },
+            { x: xScoreSlots[RRN[54]], y: -80 * 110 },
+            { x: xScoreSlots[RRN[55]], y: -80 * 112 },
+            { x: xScoreSlots[RRN[56]], y: -80 * 114 },
+            { x: xScoreSlots[RRN[57]], y: -80 * 116 },
+            { x: xScoreSlots[RRN[58]], y: -80 * 118 },
+            { x: xScoreSlots[RRN[59]], y: -80 * 120 },
+            //60
+            { x: xScoreSlots[RRN[60]], y: -80 * 122 },
+            { x: xScoreSlots[RRN[61]], y: -80 * 124 },
+            { x: xScoreSlots[RRN[62]], y: -80 * 126 },
+            { x: xScoreSlots[RRN[63]], y: -80 * 128 },
+            { x: xScoreSlots[RRN[64]], y: -80 * 130 },
+            { x: xScoreSlots[RRN[65]], y: -80 * 132 },
+            { x: xScoreSlots[RRN[66]], y: -80 * 134 },
+            { x: xScoreSlots[RRN[67]], y: -80 * 136 },
+            { x: xScoreSlots[RRN[68]], y: -80 * 138 },
+            { x: xScoreSlots[RRN[69]], y: -80 * 140 },
+            //70
+            { x: xScoreSlots[RRN[70]], y: -80 * 142 },
+            { x: xScoreSlots[RRN[71]], y: -80 * 144 },
+            { x: xScoreSlots[RRN[72]], y: -80 * 146 },
+            { x: xScoreSlots[RRN[73]], y: -80 * 148 },
+            { x: xScoreSlots[RRN[74]], y: -80 * 150 },
+            { x: xScoreSlots[RRN[75]], y: -80 * 152 },
+            { x: xScoreSlots[RRN[76]], y: -80 * 154 },
+            { x: xScoreSlots[RRN[77]], y: -80 * 156 },
+            { x: xScoreSlots[RRN[78]], y: -80 * 158 },
+            { x: xScoreSlots[RRN[79]], y: -80 * 160 },
+            //80
+          ];
+          //array used to define the height at which the scored tiles must fall from
+
+          //FUNCTIONS
+
+          var fadeTo = function (c1, c2, c3) {
+            if (gameOver) {
+              speed = 0;
+              fill(c1, c2, c3, fadeIn);
+              noStroke();
+              rect(0, 0, 400, 400);
+              fadeIn += fade;
+            }
+          };
+          //function to fade canvas to a certain screen/colour
+
+          var scroll = function (array) {
+            for (var i = 0; i < array.length; i++) {
+              strokeWeight(2);
+              stroke(0, 0, 0);
+              rect(array[i].x, array[i].y, 50, 80);
+              array[i].y += speed;
+              if (array[i].y > 400) {
+                array[i].y = -(80 - speed);
+                scorePoint = false;
+                losePoint = false;
+              }
+            }
+          };
+          //function to scroll the background tiles
+
+          var leftPoints = function (i) {
+            if (
+              leftScorePositions[i].y + 40 > 270 &&
+              leftScorePositions[i].y + 40 < 370 &&
+              keyIsPressed &&
+              key.code === keyCodes[LRN[i]]
+            ) {
+              if (scorePoint === false) {
+                score += 2;
+                scorePoint = true;
+              }
+            } else if (
+              leftScorePositions[i].y + 40 > 270 &&
+              leftScorePositions[i].y + 40 < 370 &&
+              keyIsPressed &&
+              key.code !== keyCodes[RRN[i]] &&
+              key.code !== keyCodes[LRN[i]]
+            ) {
+              if (losePoint === false) {
+                score--;
+                losePoint = true;
+              }
+            }
+          };
+
+          var rightPoints = function (i) {
+            if (
+              rightScorePositions[i].y + 40 > 270 &&
+              rightScorePositions[i].y + 40 < 370 &&
+              keyIsPressed &&
+              key.code === keyCodes[RRN[i]]
+            ) {
+              if (scorePoint === false) {
+                score += 2;
+                scorePoint = true;
+              }
+            } else if (
+              rightScorePositions[i].y + 40 > 270 &&
+              rightScorePositions[i].y + 40 < 370 &&
+              keyIsPressed &&
+              key.code !== keyCodes[RRN[i]] &&
+              key.code !== keyCodes[LRN[i]]
+            ) {
+              if (losePoint === false) {
+                score--;
+                losePoint = true;
+              }
+            }
+          };
+          //functions to determine whether or not the proper key was pressed on the proper tile. This is wear the points are taken away or given.
+
+          var checkForAllPoints = function () {
+            //left tiles points
+            leftPoints(0);
+            leftPoints(1);
+            leftPoints(2);
+            leftPoints(3);
+            leftPoints(4);
+            leftPoints(5);
+            leftPoints(6);
+            leftPoints(7);
+            leftPoints(8);
+            leftPoints(9);
+            leftPoints(10);
+            leftPoints(11);
+            leftPoints(12);
+            leftPoints(13);
+            leftPoints(14);
+            leftPoints(15);
+            leftPoints(16);
+            leftPoints(17);
+            leftPoints(18);
+            leftPoints(19);
+            leftPoints(20);
+            leftPoints(21);
+            leftPoints(22);
+            leftPoints(23);
+            leftPoints(24);
+            leftPoints(25);
+            leftPoints(26);
+            leftPoints(27);
+            leftPoints(28);
+            leftPoints(29);
+            leftPoints(30);
+            leftPoints(31);
+            leftPoints(32);
+            leftPoints(33);
+            leftPoints(34);
+            leftPoints(35);
+            leftPoints(36);
+            leftPoints(37);
+            leftPoints(38);
+            leftPoints(39);
+            leftPoints(40);
+            leftPoints(41);
+            leftPoints(42);
+            leftPoints(43);
+            leftPoints(44);
+            leftPoints(45);
+            leftPoints(46);
+            leftPoints(47);
+            leftPoints(48);
+            leftPoints(49);
+            leftPoints(50);
+            leftPoints(51);
+            leftPoints(52);
+            leftPoints(53);
+            leftPoints(54);
+            leftPoints(55);
+            leftPoints(56);
+            leftPoints(57);
+            leftPoints(58);
+            leftPoints(59);
+            leftPoints(60);
+            leftPoints(61);
+            leftPoints(62);
+            leftPoints(63);
+            leftPoints(64);
+            leftPoints(65);
+            leftPoints(66);
+            leftPoints(67);
+            leftPoints(68);
+            leftPoints(69);
+            leftPoints(70);
+            leftPoints(71);
+            leftPoints(72);
+            leftPoints(73);
+            leftPoints(74);
+            leftPoints(75);
+            leftPoints(76);
+            leftPoints(77);
+            leftPoints(78);
+            leftPoints(79);
+
+            //right tiles points
+            rightPoints(0);
+            rightPoints(1);
+            rightPoints(2);
+            rightPoints(3);
+            rightPoints(4);
+            rightPoints(5);
+            rightPoints(6);
+            rightPoints(7);
+            rightPoints(8);
+            rightPoints(9);
+            rightPoints(10);
+            rightPoints(11);
+            rightPoints(12);
+            rightPoints(13);
+            rightPoints(14);
+            rightPoints(15);
+            rightPoints(16);
+            rightPoints(17);
+            rightPoints(18);
+            rightPoints(19);
+            rightPoints(20);
+            rightPoints(21);
+            rightPoints(22);
+            rightPoints(23);
+            rightPoints(24);
+            rightPoints(25);
+            rightPoints(26);
+            rightPoints(27);
+            rightPoints(28);
+            rightPoints(29);
+            rightPoints(30);
+            rightPoints(31);
+            rightPoints(32);
+            rightPoints(33);
+            rightPoints(34);
+            rightPoints(35);
+            rightPoints(36);
+            rightPoints(37);
+            rightPoints(38);
+            rightPoints(39);
+            rightPoints(40);
+            rightPoints(41);
+            rightPoints(42);
+            rightPoints(43);
+            rightPoints(44);
+            rightPoints(45);
+            rightPoints(46);
+            rightPoints(47);
+            rightPoints(48);
+            rightPoints(49);
+            rightPoints(50);
+            rightPoints(51);
+            rightPoints(52);
+            rightPoints(53);
+            rightPoints(54);
+            rightPoints(55);
+            rightPoints(56);
+            rightPoints(57);
+            rightPoints(58);
+            rightPoints(59);
+            rightPoints(60);
+            rightPoints(61);
+            rightPoints(62);
+            rightPoints(63);
+            rightPoints(64);
+            rightPoints(65);
+            rightPoints(66);
+            rightPoints(67);
+            rightPoints(68);
+            rightPoints(69);
+            rightPoints(70);
+            rightPoints(71);
+            rightPoints(72);
+            rightPoints(73);
+            rightPoints(74);
+            rightPoints(75);
+            rightPoints(76);
+            rightPoints(77);
+            rightPoints(78);
+            rightPoints(79);
+          };
+          //function that checks for the points, determining whether or not the user should receive or lose points. This function is not entirely necessary, but it simplifies the next function immensely.
+
+          var scoreScroll = function (array) {
+            for (var i = 0; i < array.length; i++) {
+              strokeWeight(2);
+              stroke(0, 0, 0);
+              rect(array[i].x, array[i].y, 50, 80);
+              array[i].y += speed;
+              checkForAllPoints();
+            }
+          };
+          //function to scroll the scored tiles
+
+          var keyText = function (colour, txt, x) {
+            fill(colour);
+            rect(x - 20, 290, 40, 60);
+            fill(0, 0, 0);
+            textAlign(CENTER, CENTER);
+            textSize(45);
+            text(txt, x, 320);
+          };
+          //function to write the labels on pressed keys
+
+          var textLabels = function (size, txt, x, y) {
+            fill(0, 0, 0);
+            textAlign(CENTER, CENTER);
+            textSize(size);
+            text(txt, x, y);
+          };
+          //function to write black labels/text
+
+          var whiteTextLabels = function (size, txt, x, y) {
+            fill(255, 255, 255);
+            textAlign(CENTER, CENTER);
+            textSize(size);
+            text(txt, x, y);
+          };
+          //function to write white labels/text
+
+          var displayInstructions = function () {
+            //DISPLAYING THE INSTRUCTIONS
+            background(255, 255, 255);
+            for (var i = 0; i < 15; i++) {
+              noStroke();
+              fill(
+                lerpColor(color(255, 255, 255), color(255, 153, 0), i * 0.05)
+              );
+              rect(45 - 5 * i, 0, 5, 400);
+              rect(350 + 5 * i, 0, 5, 400);
+            }
+            textLabels(18, "This game is very simple.", 200, 45);
+            textLabels(18, "Just press the corresponding key in time", 200, 80);
+            textLabels(18, "with the falling tile.", 200, 100);
+            textLabels(
+              18,
+              "You receive 2 points for a properly clicked tile.",
+              200,
+              135
+            );
+            textLabels(
+              18,
+              "If you press the wrong key, you will lose 1 point.",
+              200,
+              170
+            );
+            textLabels(18, "Good Luck.", 200, 205);
+            textLabels(18, "You will need to concentrate.", 200, 240);
+            textLabels(10, "Make sure you have caps lock off.", 200, 350);
+            textAlign(CENTER, CENTER);
+
+            //THE 'BACK' BUTTON
+            // ENLARGING THE 'BACK' BUTTON
+            if (mouseX > 170 && mouseX < 230 && mouseY > 305 && mouseY < 335) {
+              fill(255, 255, 255);
+              noStroke();
+              rect(150, 305, 100, 30);
+              fill(255, 0, 0);
+              textSize(25);
+            } else {
+              fill(255, 255, 255);
+              noStroke();
+              rect(150, 305, 100, 30);
+              fill(255, 0, 0);
+              textSize(18);
+            }
+            text("BACK", 200, 320);
+
+            //CLICKING THE 'BACK' BUTTON
+            if (
+              mouseX > 170 &&
+              mouseX < 230 &&
+              mouseY > 305 &&
+              mouseY < 335 &&
+              mouseIsPressed
+            ) {
+              instructions = false;
+            }
+          };
+          //function to simplify displaying the instructions
+
+          var reset = function () {
+            score = 0;
+            resetCount++;
+            leftPositions = [
+              { x: 0, y: 0 },
+              { x: 0, y: 80 },
+              { x: 0, y: 160 },
+              { x: 0, y: 240 },
+              { x: 0, y: 320 },
+              { x: 0, y: 400 },
+              { x: 50, y: 0 },
+              { x: 50, y: 80 },
+              { x: 50, y: 160 },
+              { x: 50, y: 240 },
+              { x: 50, y: 320 },
+              { x: 50, y: 400 },
+              { x: 100, y: 0 },
+              { x: 100, y: 80 },
+              { x: 100, y: 160 },
+              { x: 100, y: 240 },
+              { x: 100, y: 320 },
+              { x: 100, y: 400 },
+            ];
+            rightPositions = [
+              { x: 250, y: 0 },
+              { x: 250, y: 80 },
+              { x: 250, y: 160 },
+              { x: 250, y: 240 },
+              { x: 250, y: 320 },
+              { x: 250, y: 400 },
+              { x: 300, y: 0 },
+              { x: 300, y: 80 },
+              { x: 300, y: 160 },
+              { x: 300, y: 240 },
+              { x: 300, y: 320 },
+              { x: 300, y: 400 },
+              { x: 350, y: 0 },
+              { x: 350, y: 80 },
+              { x: 350, y: 160 },
+              { x: 350, y: 240 },
+              { x: 350, y: 320 },
+              { x: 350, y: 400 },
+            ];
+            leftScorePositions = [
+              { x: xScoreSlots[LRN[0]], y: -80 * 1 },
+              { x: xScoreSlots[LRN[1]], y: -80 * 3 },
+              { x: xScoreSlots[LRN[2]], y: -80 * 5 },
+              { x: xScoreSlots[LRN[3]], y: -80 * 7 },
+              { x: xScoreSlots[LRN[4]], y: -80 * 9 },
+              { x: xScoreSlots[LRN[5]], y: -80 * 11 },
+              { x: xScoreSlots[LRN[6]], y: -80 * 13 },
+              { x: xScoreSlots[LRN[7]], y: -80 * 15 },
+              { x: xScoreSlots[LRN[8]], y: -80 * 17 },
+              { x: xScoreSlots[LRN[9]], y: -80 * 19 },
+              //10
+              { x: xScoreSlots[LRN[10]], y: -80 * 21 },
+              { x: xScoreSlots[LRN[11]], y: -80 * 23 },
+              { x: xScoreSlots[LRN[12]], y: -80 * 25 },
+              { x: xScoreSlots[LRN[13]], y: -80 * 27 },
+              { x: xScoreSlots[LRN[14]], y: -80 * 29 },
+              { x: xScoreSlots[LRN[15]], y: -80 * 31 },
+              { x: xScoreSlots[LRN[16]], y: -80 * 33 },
+              { x: xScoreSlots[LRN[17]], y: -80 * 35 },
+              { x: xScoreSlots[LRN[18]], y: -80 * 37 },
+              { x: xScoreSlots[LRN[19]], y: -80 * 39 },
+              //20
+              { x: xScoreSlots[LRN[20]], y: -80 * 41 },
+              { x: xScoreSlots[LRN[21]], y: -80 * 43 },
+              { x: xScoreSlots[LRN[22]], y: -80 * 45 },
+              { x: xScoreSlots[LRN[23]], y: -80 * 47 },
+              { x: xScoreSlots[LRN[24]], y: -80 * 49 },
+              { x: xScoreSlots[LRN[25]], y: -80 * 51 },
+              { x: xScoreSlots[LRN[26]], y: -80 * 53 },
+              { x: xScoreSlots[LRN[27]], y: -80 * 55 },
+              { x: xScoreSlots[LRN[28]], y: -80 * 57 },
+              { x: xScoreSlots[LRN[29]], y: -80 * 59 },
+              //30
+              { x: xScoreSlots[LRN[30]], y: -80 * 61 },
+              { x: xScoreSlots[LRN[31]], y: -80 * 63 },
+              { x: xScoreSlots[LRN[32]], y: -80 * 65 },
+              { x: xScoreSlots[LRN[33]], y: -80 * 67 },
+              { x: xScoreSlots[LRN[34]], y: -80 * 69 },
+              { x: xScoreSlots[LRN[35]], y: -80 * 71 },
+              { x: xScoreSlots[LRN[36]], y: -80 * 73 },
+              { x: xScoreSlots[LRN[37]], y: -80 * 75 },
+              { x: xScoreSlots[LRN[38]], y: -80 * 77 },
+              { x: xScoreSlots[LRN[39]], y: -80 * 79 },
+              //40
+              { x: xScoreSlots[LRN[40]], y: -80 * 81 },
+              { x: xScoreSlots[LRN[41]], y: -80 * 83 },
+              { x: xScoreSlots[LRN[42]], y: -80 * 85 },
+              { x: xScoreSlots[LRN[43]], y: -80 * 87 },
+              { x: xScoreSlots[LRN[44]], y: -80 * 89 },
+              { x: xScoreSlots[LRN[45]], y: -80 * 91 },
+              { x: xScoreSlots[LRN[46]], y: -80 * 93 },
+              { x: xScoreSlots[LRN[47]], y: -80 * 95 },
+              { x: xScoreSlots[LRN[48]], y: -80 * 97 },
+              { x: xScoreSlots[LRN[49]], y: -80 * 99 },
+              //50
+              { x: xScoreSlots[LRN[50]], y: -80 * 101 },
+              { x: xScoreSlots[LRN[51]], y: -80 * 103 },
+              { x: xScoreSlots[LRN[52]], y: -80 * 105 },
+              { x: xScoreSlots[LRN[53]], y: -80 * 107 },
+              { x: xScoreSlots[LRN[54]], y: -80 * 109 },
+              { x: xScoreSlots[LRN[55]], y: -80 * 111 },
+              { x: xScoreSlots[LRN[56]], y: -80 * 113 },
+              { x: xScoreSlots[LRN[57]], y: -80 * 115 },
+              { x: xScoreSlots[LRN[58]], y: -80 * 117 },
+              { x: xScoreSlots[LRN[59]], y: -80 * 119 },
+              //60
+              { x: xScoreSlots[LRN[60]], y: -80 * 121 },
+              { x: xScoreSlots[LRN[61]], y: -80 * 123 },
+              { x: xScoreSlots[LRN[62]], y: -80 * 125 },
+              { x: xScoreSlots[LRN[63]], y: -80 * 127 },
+              { x: xScoreSlots[LRN[64]], y: -80 * 129 },
+              { x: xScoreSlots[LRN[65]], y: -80 * 131 },
+              { x: xScoreSlots[LRN[66]], y: -80 * 133 },
+              { x: xScoreSlots[LRN[67]], y: -80 * 135 },
+              { x: xScoreSlots[LRN[68]], y: -80 * 137 },
+              { x: xScoreSlots[LRN[69]], y: -80 * 139 },
+              //70
+              { x: xScoreSlots[LRN[70]], y: -80 * 141 },
+              { x: xScoreSlots[LRN[71]], y: -80 * 143 },
+              { x: xScoreSlots[LRN[72]], y: -80 * 145 },
+              { x: xScoreSlots[LRN[73]], y: -80 * 147 },
+              { x: xScoreSlots[LRN[74]], y: -80 * 149 },
+              { x: xScoreSlots[LRN[75]], y: -80 * 151 },
+              { x: xScoreSlots[LRN[76]], y: -80 * 153 },
+              { x: xScoreSlots[LRN[77]], y: -80 * 155 },
+              { x: xScoreSlots[LRN[78]], y: -80 * 157 },
+              { x: xScoreSlots[LRN[79]], y: -80 * 159 },
+              //80
+            ];
+            rightScorePositions = [
+              { x: xScoreSlots[RRN[0]], y: -80 * 2 },
+              { x: xScoreSlots[RRN[1]], y: -80 * 4 },
+              { x: xScoreSlots[RRN[2]], y: -80 * 6 },
+              { x: xScoreSlots[RRN[3]], y: -80 * 8 },
+              { x: xScoreSlots[RRN[4]], y: -80 * 10 },
+              { x: xScoreSlots[RRN[5]], y: -80 * 12 },
+              { x: xScoreSlots[RRN[6]], y: -80 * 14 },
+              { x: xScoreSlots[RRN[7]], y: -80 * 16 },
+              { x: xScoreSlots[RRN[8]], y: -80 * 18 },
+              { x: xScoreSlots[RRN[9]], y: -80 * 20 },
+              //10
+              { x: xScoreSlots[RRN[10]], y: -80 * 22 },
+              { x: xScoreSlots[RRN[11]], y: -80 * 24 },
+              { x: xScoreSlots[RRN[12]], y: -80 * 26 },
+              { x: xScoreSlots[RRN[13]], y: -80 * 28 },
+              { x: xScoreSlots[RRN[14]], y: -80 * 30 },
+              { x: xScoreSlots[RRN[15]], y: -80 * 32 },
+              { x: xScoreSlots[RRN[16]], y: -80 * 34 },
+              { x: xScoreSlots[RRN[17]], y: -80 * 36 },
+              { x: xScoreSlots[RRN[18]], y: -80 * 38 },
+              { x: xScoreSlots[RRN[19]], y: -80 * 40 },
+              //20
+              { x: xScoreSlots[RRN[20]], y: -80 * 42 },
+              { x: xScoreSlots[RRN[21]], y: -80 * 44 },
+              { x: xScoreSlots[RRN[22]], y: -80 * 46 },
+              { x: xScoreSlots[RRN[23]], y: -80 * 48 },
+              { x: xScoreSlots[RRN[24]], y: -80 * 50 },
+              { x: xScoreSlots[RRN[25]], y: -80 * 52 },
+              { x: xScoreSlots[RRN[26]], y: -80 * 54 },
+              { x: xScoreSlots[RRN[27]], y: -80 * 56 },
+              { x: xScoreSlots[RRN[28]], y: -80 * 58 },
+              { x: xScoreSlots[RRN[29]], y: -80 * 60 },
+              //30
+              { x: xScoreSlots[RRN[30]], y: -80 * 62 },
+              { x: xScoreSlots[RRN[31]], y: -80 * 64 },
+              { x: xScoreSlots[RRN[32]], y: -80 * 66 },
+              { x: xScoreSlots[RRN[33]], y: -80 * 68 },
+              { x: xScoreSlots[RRN[34]], y: -80 * 70 },
+              { x: xScoreSlots[RRN[35]], y: -80 * 72 },
+              { x: xScoreSlots[RRN[36]], y: -80 * 74 },
+              { x: xScoreSlots[RRN[37]], y: -80 * 76 },
+              { x: xScoreSlots[RRN[38]], y: -80 * 78 },
+              { x: xScoreSlots[RRN[39]], y: -80 * 80 },
+              //40
+              { x: xScoreSlots[RRN[40]], y: -80 * 82 },
+              { x: xScoreSlots[RRN[41]], y: -80 * 84 },
+              { x: xScoreSlots[RRN[42]], y: -80 * 86 },
+              { x: xScoreSlots[RRN[43]], y: -80 * 88 },
+              { x: xScoreSlots[RRN[44]], y: -80 * 90 },
+              { x: xScoreSlots[RRN[45]], y: -80 * 92 },
+              { x: xScoreSlots[RRN[46]], y: -80 * 94 },
+              { x: xScoreSlots[RRN[47]], y: -80 * 96 },
+              { x: xScoreSlots[RRN[48]], y: -80 * 98 },
+              { x: xScoreSlots[RRN[49]], y: -80 * 100 },
+              //50
+              { x: xScoreSlots[RRN[50]], y: -80 * 102 },
+              { x: xScoreSlots[RRN[51]], y: -80 * 104 },
+              { x: xScoreSlots[RRN[52]], y: -80 * 106 },
+              { x: xScoreSlots[RRN[53]], y: -80 * 108 },
+              { x: xScoreSlots[RRN[54]], y: -80 * 110 },
+              { x: xScoreSlots[RRN[55]], y: -80 * 112 },
+              { x: xScoreSlots[RRN[56]], y: -80 * 114 },
+              { x: xScoreSlots[RRN[57]], y: -80 * 116 },
+              { x: xScoreSlots[RRN[58]], y: -80 * 118 },
+              { x: xScoreSlots[RRN[59]], y: -80 * 120 },
+              //60
+              { x: xScoreSlots[RRN[60]], y: -80 * 122 },
+              { x: xScoreSlots[RRN[61]], y: -80 * 124 },
+              { x: xScoreSlots[RRN[62]], y: -80 * 126 },
+              { x: xScoreSlots[RRN[63]], y: -80 * 128 },
+              { x: xScoreSlots[RRN[64]], y: -80 * 130 },
+              { x: xScoreSlots[RRN[65]], y: -80 * 132 },
+              { x: xScoreSlots[RRN[66]], y: -80 * 134 },
+              { x: xScoreSlots[RRN[67]], y: -80 * 136 },
+              { x: xScoreSlots[RRN[68]], y: -80 * 138 },
+              { x: xScoreSlots[RRN[69]], y: -80 * 140 },
+              //70
+              { x: xScoreSlots[RRN[70]], y: -80 * 142 },
+              { x: xScoreSlots[RRN[71]], y: -80 * 144 },
+              { x: xScoreSlots[RRN[72]], y: -80 * 146 },
+              { x: xScoreSlots[RRN[73]], y: -80 * 148 },
+              { x: xScoreSlots[RRN[74]], y: -80 * 150 },
+              { x: xScoreSlots[RRN[75]], y: -80 * 152 },
+              { x: xScoreSlots[RRN[76]], y: -80 * 154 },
+              { x: xScoreSlots[RRN[77]], y: -80 * 156 },
+              { x: xScoreSlots[RRN[78]], y: -80 * 158 },
+              { x: xScoreSlots[RRN[79]], y: -80 * 160 },
+              //80
+            ];
+          };
+          //The reset function is to reset the necessary variables to be able to run the game again. If none of the variables were to change then the code would use the scored tiles from the previous game and nothing would change.
+
+          var displayStartMenu = function () {
+            //Start-Up Menu
+            background(255, 255, 255);
+            for (var i = 0; i < 10; i++) {
+              noStroke();
+              fill(
+                lerpColor(color(255, 255, 255), color(255, 153, 0), i * 0.05)
+              );
+              rect(45 - 5 * i, 0, 5, 400);
+              rect(350 + 5 * i, 0, 5, 400);
+            }
+            strokeWeight(2);
+            stroke(0, 0, 0);
+            fill(leftTileColour);
+            rect(236, 67, 50, 70);
+            textLabels(10, "Originally Written By: Leander Rodrigues", 100, 10);
+            textLabels(50, "Concentr A tion", 200, 100);
+
+            //THE 'How to Play' BUTTON
+            //Enlarging the 'How to Play' Button
+            if (mouseX > 130 && mouseX < 270 && mouseY > 160 && mouseY < 200) {
+              fill(255, 255, 255);
+              noStroke();
+              rect(150, 235, 100, 30);
+              fill(0, 0, 0);
+              textSize(23);
+            } else {
+              fill(255, 255, 255);
+              noStroke();
+              rect(130, 160, 140, 40);
+              fill(0, 0, 0);
+              textSize(18);
+            }
+            text("How to Play", 200, 180);
+
+            //Clicking the 'How to Play' Button
+            if (
+              mouseX > 130 &&
+              mouseX < 270 &&
+              mouseY > 160 &&
+              mouseY < 200 &&
+              mouseIsPressed
+            ) {
+              instructions = true;
+            }
+
+            //THE 'Play Game' BUTTON
+            // Enlarging the 'Play Game' Button
+            if (mouseX > 130 && mouseX < 270 && mouseY > 210 && mouseY < 250) {
+              fill(255, 255, 255);
+              noStroke();
+              rect(130, 210, 140, 40);
+              fill(0, 0, 0);
+              textSize(23);
+            } else {
+              fill(255, 255, 255);
+              noStroke();
+              rect(130, 210, 140, 40);
+              fill(0, 0, 0);
+              textSize(18);
+            }
+            text("Play Game", 200, 229);
+            textLabels(10, "(ENTER)", 200, 247);
+
+            //Clicking the 'Play Game' Button
+            if (
+              (mouseX > 130 &&
+                mouseX < 270 &&
+                mouseY > 210 &&
+                mouseY < 250 &&
+                mouseIsPressed) ||
+              (keyIsPressed && key.code === 10)
+            ) {
+              if (speed !== 0) {
+                reset();
+                gameStart = true;
+                strokeWeight(2);
+              } else {
+                fill(255, 0, 0);
+                textAlign(CENTER, CENTER);
+                textSize(12);
+                text("Please select a difficulty before playing.", 200, 380);
+              }
+            }
+          };
+          //function to simplify displaying the start menu
+
+          var pauseGame = function () {
+            //fade to white
+            fill(255, 255, 255, 5);
+            noStroke();
+            rect(0, 0, 400, 400);
+
+            //THE 'Resume' BUTTON
+            //Enlarging the 'Resume' Button
+            if (mouseY > 70 && mouseY < 110) {
+              fill(255, 255, 255);
+              noStroke();
+              rect(0, 70, 400, 40);
+              fill(0, 0, 0);
+              textSize(23);
+            } else {
+              fill(255, 255, 255);
+              noStroke();
+              rect(0, 70, 400, 40);
+              fill(0, 0, 0);
+              textSize(18);
+            }
+            text("Resume (SPACE)", 200, 90);
+
+            //Clicking the 'Resume' Button
+            if (
+              (mouseY > 70 && mouseY < 110 && mouseIsPressed) ||
+              (keyIsPressed && key.code === 32)
+            ) {
+              pause = false;
+              gameStart = true;
+            }
+
+            //THE 'Restart' BUTTON
+            //Enlarging the 'Restart' Button
+            if (mouseY > 140 && mouseY < 180) {
+              fill(255, 255, 255);
+              noStroke();
+              rect(0, 140, 400, 40);
+              fill(0, 0, 0);
+              textSize(23);
+            } else {
+              fill(255, 255, 255);
+              noStroke();
+              rect(0, 140, 400, 40);
+              fill(0, 0, 0);
+              textSize(18);
+            }
+            text("Restart (R)", 200, 160);
+
+            //Clicking the 'Restart' Button
+            if (
+              (mouseY > 140 && mouseY < 180 && mouseIsPressed) ||
+              (keyIsPressed && key.code === 114)
+            ) {
+              pause = false;
+              reset();
+              gameStart = true;
+            }
+
+            //THE 'Menu' BUTTON
+            //Enlarging the 'Menu' Button
+            if (mouseY > 210 && mouseY < 250) {
+              fill(255, 255, 255);
+              noStroke();
+              rect(0, 210, 400, 40);
+              fill(0, 0, 0);
+              textSize(23);
+            } else {
+              fill(255, 255, 255);
+              noStroke();
+              rect(0, 210, 400, 40);
+              fill(0, 0, 0);
+              textSize(18);
+            }
+            text("Menu (M)", 200, 230);
+
+            //Clicking the 'Menu' Button
+            if (
+              (mouseY > 210 && mouseY < 250 && mouseIsPressed) ||
+              (keyIsPressed && key.code === 109)
+            ) {
+              pause = false;
+              reset();
+              gameStart = false;
+            }
+          };
+          //function to simplify displaying the pause menu
+
+          var displayDifficultyChoices = function () {
+            if (difficulty === 0) {
+              //EASY
+              fill(rightTileColour);
+              stroke(0, 0, 0);
+              rect(120, 316, 77, 20);
+              speed = 2.5;
+              scoreReq = 300;
+            } else if (difficulty === 1) {
+              //MEDIUM
+              fill(rightTileColour);
+              stroke(0, 0, 0);
+              rect(203, 316, 77, 20);
+              speed = 5;
+              scoreReq = 270;
+            } else if (difficulty === 2) {
+              //HARD
+              fill(rightTileColour);
+              stroke(0, 0, 0);
+              rect(120, 341, 77, 20);
+              speed = 10;
+              scoreReq = 240;
+            } else if (difficulty === 3) {
+              //WIZARD
+              fill(rightTileColour);
+              stroke(0, 0, 0);
+              rect(203, 341, 77, 20);
+              speed = 20;
+              scoreReq = 160;
+              fill(255, 0, 0);
+              textAlign(CENTER, CENTER);
+              textSize(20);
+              text("2 PLAYERS HIGHLY RECOMMENDED", 200, 380);
+            }
+
+            //DIFFICULTY LABELS
+            textLabels(15, "Difficulty:", 200, 290);
+            textLabels(
+              10,
+              "(You can use the first letters for a shortcut)",
+              200,
+              304
+            );
+            textLabels(15, "Easy", 160, 325);
+            textLabels(15, "Medium", 240, 325);
+            textLabels(15, "Hard", 160, 350);
+            textLabels(15, "Wizard", 240, 350);
+          };
+          //function that simplifies displaying the difficulty options on the start menu
+
+          ////////////////////////////////////////////////////////////
+          //                                                        //
+          //     THE START OF THE DRAW FUNCTION - INFINITE LOOP     //
+          //      (comments will preceed the code from now on)      //
+          //                                                        //
+          ////////////////////////////////////////////////////////////
+
+          var draw = function () {
+            //This code will display the interactive pause screen
+            if (pause) {
+              //to pause the game
+              pauseGame();
+            } else {
+              if (gameOver) {
+                //This code will display the game over screen
+                //declaring the difficulty
+                if (difficulty === 0) {
+                  gameOverText = "EASY";
+                } else if (difficulty === 1) {
+                  gameOverText = "MEDIUM";
+                } else if (difficulty === 2) {
+                  gameOverText = "HARD";
+                } else if (difficulty === 3) {
+                  gameOverText = "WIZARD";
+                }
+
+                if (score <= scoreReq) {
+                  //Losing Screen
+                  //fade to red
+                  fadeTo(255, 0, 0);
+                  //text
+                  whiteTextLabels(50, "GAME OVER", 200, 50);
+                  whiteTextLabels(90, score, 200, 165);
+                  whiteTextLabels(20, "points on " + gameOverText, 200, 220);
+
+                  //If the user has a score that is less than half of the required score
+                  if (score < scoreReq / 2) {
+                    whiteTextLabels(
+                      10,
+                      "P.S. You should actually try to play next time.",
+                      200,
+                      350
+                    );
+                    //If the user has a score that is less than the required score
+                  } else {
+                    whiteTextLabels(
+                      10,
+                      "P.S. You should try to get a score higher than " +
+                        score +
+                        ".",
+                      200,
+                      350
+                    );
+                  }
+
+                  //THE 'Main Menu' BUTTON
+                  //Enlarging the 'Main Menu' Button
+                  if (mouseY > 270 && mouseY < 310) {
+                    fill(255, 255, 255);
+                    noStroke();
+                    rect(0, 270, 400, 40);
+                    fill(255, 0, 0);
+                    textSize(23);
+                  } else {
+                    fill(255, 255, 255);
+                    noStroke();
+                    rect(0, 270, 400, 40);
+                    fill(255, 0, 0);
+                    textSize(18);
+                  }
+                  text("Main Menu", 200, 285);
+                  textSize(10);
+                  text("(SPACE)", 200, 300);
+                } else if (score > scoreReq) {
+                  //Winning Screen
+
+                  //fade to green
+                  fadeTo(0, 240, 0);
+                  //text
+                  whiteTextLabels(90, score, 200, 165);
+                  whiteTextLabels(20, "points on " + gameOverText, 200, 220);
+                  whiteTextLabels(
+                    10,
+                    "Wow. " + score + " points. Brag about it.",
+                    200,
+                    350
+                  );
+
+                  //If the user wins with a perfect score
+                  if (score >= 320) {
+                    whiteTextLabels(50, "PERFECTION!", 200, 50);
+                    whiteTextLabels(
+                      10,
+                      "No seriously. Brag about it. That's pretty amazing that you got perfect.",
+                      200,
+                      365
+                    );
+                    whiteTextLabels(
+                      10,
+                      "(I could still do better though)",
+                      200,
+                      380
+                    );
+
+                    //If the user wins with less than a perfect score
+                  } else {
+                    whiteTextLabels(50, "YOU WIN", 200, 50);
+                    whiteTextLabels(
+                      10,
+                      "Try for 320, then I'll be impressed.",
+                      200,
+                      365
+                    );
+                  }
+
+                  //THE 'Main Menu' BUTTON
+                  //Enlarging the 'Main Menu' Button
+                  if (mouseY > 270 && mouseY < 310) {
+                    fill(255, 255, 255);
+                    noStroke();
+                    rect(0, 270, 400, 40);
+                    fill(0, 255, 0);
+                    textSize(23);
+                  } else {
+                    fill(255, 255, 255);
+                    noStroke();
+                    rect(0, 270, 400, 40);
+                    fill(0, 255, 0);
+                    textSize(18);
+                  }
+                  text("Main Menu", 200, 285);
+                  textSize(10);
+                  text("(SPACE)", 200, 300);
+                }
+
+                //Clicking the 'Main Menu' Button
+                if (
+                  (mouseY > 270 && mouseY < 310 && mouseIsPressed) ||
+                  (keyIsPressed && key.code === 32)
+                ) {
+                  gameOver = false;
+                  reset();
+                  gameStart = false;
+                  resetCount = -1;
+                }
+
+                //Reset Count
+                whiteTextLabels(
+                  20,
+                  "You reset " + resetCount + " times to get a score of",
+                  200,
+                  110
+                );
+
+                //Best Score
+                if (score > bestScore[difficulty]) {
+                  bestScore[difficulty] = score;
+                }
+                fill(255, 255, 0);
+                textSize(15);
+                text("Best Score: " + bestScore[difficulty], 200, 250);
+              } else {
+                if (instructions) {
+                  //to display the instructions
+                  displayInstructions();
+                } else {
+                  if (gameStart) {
+                    //When the game starts
+
+                    //background
+                    background(255, 255, 255);
+                    noStroke();
+                    for (var i = 0; i < 20; i++) {
+                      noStroke();
+                      fill(
+                        lerpColor(rightTileColour, leftTileColour, i * 0.05)
+                      );
+                      rect(245 - 5 * i, 0, 5, 400);
+                    }
+
+                    //HUD
+                    textLabels(20, "Score:", 200, 110);
+                    textLabels(40, score, 200, 140);
+                    textLabels(20, "Best:", 200, 30);
+                    if (score > bestScore[difficulty]) {
+                      textLabels(40, score, 200, 60);
+                    } else {
+                      textLabels(40, bestScore[difficulty], 200, 60);
+                    }
+                    textLabels(16, "Pause (P)", 200, 380);
+
+                    //left field
+                    fill(215, 240, 255);
+                    scroll(leftPositions);
+
+                    //right field
+                    fill(255, 230, 190);
+                    scroll(rightPositions);
+
+                    //key labels
+                    keyText(color(85, 190, 255, 120), "A", 25);
+                    keyText(color(85, 190, 255, 120), "S", 75);
+                    keyText(color(85, 190, 255, 120), "D", 125);
+                    keyText(color(255, 165, 50, 150), "J", 275);
+                    keyText(color(255, 165, 50, 150), "K", 325);
+                    keyText(color(255, 165, 50, 150), "L", 375);
+
+                    //falling scored tiles
+                    //left
+                    fill(leftTileColour);
+                    scoreScroll(leftScorePositions);
+                    //right
+                    fill(rightTileColour);
+                    scoreScroll(rightScorePositions);
+
+                    //Controls
+                    //A Key Pressed
+                    if (keyIsPressed && key.code === 97) {
+                      keyText(color(85, 190, 255, 250), "A", 25);
+                    }
+
+                    //S Key Pressed
+                    if (keyIsPressed && key.code === 115) {
+                      keyText(color(85, 190, 255, 250), "S", 75);
+                    }
+
+                    //D Key Pressed
+                    if (keyIsPressed && key.code === 100) {
+                      keyText(color(85, 190, 255, 250), "D", 125);
+                    }
+
+                    //J Key Pressed
+                    if (keyIsPressed && key.code === 106) {
+                      keyText(color(255, 165, 50, 250), "J", 275);
+                    }
+
+                    //K Key Pressed
+                    if (keyIsPressed && key.code === 107) {
+                      keyText(color(255, 165, 50, 250), "K", 325);
+                    }
+
+                    //L Key Pressed
+                    if (keyIsPressed && key.code === 108) {
+                      keyText(color(255, 165, 50, 250), "L", 375);
+                    }
+
+                    //Pausing the Game
+                    if (
+                      (mouseIsPressed &&
+                        mouseX > 160 &&
+                        mouseX < 240 &&
+                        mouseY > 370 &&
+                        mouseY < 392) ||
+                      (keyIsPressed && key.code === 112)
+                    ) {
+                      pause = true;
+                    }
+
+                    //Game Over Check
+                    if (
+                      leftScorePositions[79].y > 450 &&
+                      rightScorePositions[79].y > 450
+                    ) {
+                      gameOver = true;
+                    }
+                  } else {
+                    displayStartMenu();
+
+                    //SET DIFFICULTY TO EASY
+                    if (
+                      (mouseIsPressed &&
+                        mouseY > 316 &&
+                        mouseY < 336 &&
+                        mouseX > 120 &&
+                        mouseX < 197) ||
+                      (keyIsPressed && key.code === 101)
+                    ) {
+                      difficulty = 0;
+                    }
+
+                    //SET DIFFICULTY TO MEDIUM
+                    if (
+                      (mouseIsPressed &&
+                        mouseY > 316 &&
+                        mouseY < 336 &&
+                        mouseX > 203 &&
+                        mouseX < 280) ||
+                      (keyIsPressed && key.code === 109)
+                    ) {
+                      difficulty = 1;
+                    }
+
+                    //SET DIFFICULTY TO HARD
+                    if (
+                      (mouseIsPressed &&
+                        mouseY > 341 &&
+                        mouseY < 361 &&
+                        mouseX > 120 &&
+                        mouseX < 197) ||
+                      (keyIsPressed && key.code === 104)
+                    ) {
+                      difficulty = 2;
+                    }
+
+                    //SET DIFFICULTY TO WIZARD
+                    if (
+                      (mouseIsPressed &&
+                        mouseY > 341 &&
+                        mouseY < 361 &&
+                        mouseX > 203 &&
+                        mouseX < 280) ||
+                      (keyIsPressed && key.code === 119)
+                    ) {
+                      difficulty = 3;
+                    }
+
+                    displayDifficultyChoices();
+                  } //if (gameStart) closing
+                } //if (instructions) closing
+              } //if (gameOver) closing
+            } //if (pause) closing
+          }; //var draw = function()  closing
+        }
+        if (typeof draw !== "undefined") processing.draw = draw;
+      });
+    </script>
+  </body>
+</html>

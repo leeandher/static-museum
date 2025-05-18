@@ -37,29 +37,17 @@ const SEOBundle = ({
 
           {/* Iconography */}
           <meta name="theme-color" content={theme.shade.darkest} />
-          <link rel="manifest" href={withPrefix("site.webmanifest")} />
           <link
             rel="icon"
             type="image/png"
             sizes="32x32"
-            href={withPrefix("favicon-32x32.png")}
+            href="/icons/favicon-32x32.png"
           />
           <link
             rel="icon"
             type="image/png"
             sizes="16x16"
-            href={withPrefix("favicon-16x16.png")}
-          />
-          <meta name="msapplication-TileColor" content={theme.accent} />
-          <link
-            rel="apple-touch-icon"
-            sizes="180x180"
-            href={withPrefix("icons/apple-touch-icon.png")}
-          />
-          <link
-            rel="mask-icon"
-            href={withPrefix("icons/safari-pinned-tab.svg")}
-            color={theme.accent}
+            href="/icons/favicon-16x16.png"
           />
         </Helmet>
       )}

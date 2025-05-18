@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JavaScript</title>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/processing.js/1.4.8/processing.min.js"></script>
+    <link rel="icon" type="image/png" href="./favicon.png" />
+  </head>
+  <style>
+    body {
+      overflow: hidden;
+      height: 100vh;
+      background: linear-gradient(
+        to bottom,
+        rgba(255, 135, 135),
+        rgba(255, 243, 107),
+        rgba(122, 255, 142),
+        rgba(150, 218, 255)
+      );
+    }
+    canvas {
+      margin: 100px auto 0;
+      display: block;
+      height: 400px !important;
+      width: 400px !important;
+    }
+  </style>
+  <body>
+    <canvas id="canvas"></canvas>
+    <script>
+      var canvas = document.getElementById("canvas");
+      var processing = new Processing(canvas, function (processing) {
+        processing.size(400, 400);
+        processing.background(0xfff);
+
+        var mouseIsPressed = false;
+        processing.mousePressed = function () {
+          mouseIsPressed = true;
+        };
+        processing.mouseReleased = function () {
+          mouseIsPressed = false;
+        };
+
+        var keyIsPressed = false;
+        processing.keyPressed = function () {
+          keyIsPressed = true;
+        };
+        processing.keyReleased = function () {
+          keyIsPressed = false;
+        };
+
+        // use degrees rather than radians in rotate function
+        var rotateFn = processing.rotate;
+        processing.rotate = function (angle) {
+          rotateFn(processing.radians(angle));
+        };
+
+        with (processing) {
+          /** GLOBAL VARIABLES **/
+
+          var charX = 75;
+          //character's x position
+
+          var charY = 50;
+          //character's y position
+
+          var charR = 40;
+          //character's radius
+
+          var font = createFont("trebuchet ms");
+          //creates game font
+
+          var jumpChoice = 0;
+          //control scheme selection
+
+          var points = 0;
+          //user's point variable
+
+          var alive = true;
+          //starts the game
+
+          var gameMenu = true;
+          //loads the main menu
+
+          var showInstruct = false;
+
+          var colourChoice = 2;
+          //allows user's colour choice
+
+          var runReset = true;
+          //variable to reset game
+
+          var buttonReleased = false;
+          //checks if the mouse is clicked
+
+          /** ARRAYS AND FUNCTIONS **/
+
+          var floorRand = function (num1, num2) {
+            return floor(random(num1, num2));
+          };
+          //returns a value floored between num1 and num2
+
+          var charColour = [
+            color(255, 255, 255), //white
+            color(255, 95, 95), //red
+            color(255, 175, 30), //orange
+            color(255, 255, 97), //yellow
+            color(177, 255, 76), //yellowish green
+            color(61, 227, 78), //green
+            color(0, 214, 161), //greenish blue
+            color(0, 153, 255), //blue
+            color(0, 135, 207), //dark blue
+            color(181, 54, 181), //dark purple
+            color(231, 97, 255), //purple
+            color(255, 166, 251), //pink
+            color(200, 200, 200), //grey
+          ];
+          //all possible character colours
+
+          var obstacleHeights = [0, 95, 195, 295];
+          //all possible obstacle heights
+
+          var obstaclePositions = [];
+
+          var loopCount = 0;
+          while (loopCount < 150) {
+            if (loopCount < 25) {
+              //Level 1
+              obstaclePositions.push({
+                x: 500 + 150 * loopCount,
+                y: obstacleHeights[floorRand(0, obstacleHeights.length)],
+                y2: obstacleHeights[floorRand(0, obstacleHeights.length)],
+                y3: obstacleHeights[floorRand(0, obstacleHeights.length)],
+                pointGet: true,
+              });
+            } else if (loopCount < 50) {
+              //Level 2
+              obstaclePositions.push({
+                x: 500 + 125 * (loopCount - 25),
+                y: obstacleHeights[floorRand(0, obstacleHeights.length)],
+                y2: obstacleHeights[floorRand(0, obstacleHeights.length)],
+                y3: obstacleHeights[floorRand(0, obstacleHeights.length)],
+                pointGet: true,
+              });
+            } else if (loopCount < 75) {
+              //Level 3
+              obstaclePositions.push({
+                x: 500 + 150 * (loopCount - 50),
+                y: obstacleHeights[floorRand(0, obstacleHeights.length)],
+                y2: obstacleHeights[floorRand(0, obstacleHeights.length)],
+                y3: obstacleHeights[floorRand(0, obstacleHeights.length)],
+                pointGet: true,
+              });
+            } else if (loopCount < 100) {
+              //Level 4
+              obstaclePositions.push({
+                x: 500 + 150 * (loopCount - 75),
+                y: obstacleHeights[floorRand(0, obstacleHeights.length)],
+                y2: obstacleHeights[floorRand(0, obstacleHeights.length)],
+                y3: obstacleHeights[floorRand(0, obstacleHeights.length)],
+                pointGet: true,
+              });
+            } else if (loopCount < 150) {
+              //Level 5
+              obstaclePositions.push({
+                x: 500 + 200 * (loopCount - 100),
+                y: obstacleHeights[floorRand(0, obstacleHeights.length)],
+                y2: obstacleHeights[floorRand(0, obstacleHeights.length)],
+                y3: obstacleHeights[floorRand(0, obstacleHeights.length)],
+                pointGet: true,
+              });
+            }
+            loopCount++;
+          }
+
+          /*
+for (var i = 0; i<150; i++) {
+    if (i<25) { //Level 1
+        obstaclePositions.push(
+            {
+                x:500+(150*i), 
+                y:obstacleHeights[floorRand(0, obstacleHeights.length)],
+                y2:obstacleHeights[floorRand(0, obstacleHeights.length)],
+                y3:obstacleHeights[floorRand(0, obstacleHeights.length)],
+                pointGet:true
+            }
+        );
+    } else if (i<50) { //Level 2
+        obstaclePositions.push(
+            {
+                x:500+(125*(i-25)), 
+                y:obstacleHeights[floorRand(0, obstacleHeights.length)],
+                y2:obstacleHeights[floorRand(0, obstacleHeights.length)],
+                y3:obstacleHeights[floorRand(0, obstacleHeights.length)],
+                pointGet:true
+            }
+        );
+    } else if (i<75) { //Level 3
+        obstaclePositions.push(
+            {
+                x:500+(150*(i-50)), 
+                y:obstacleHeights[floorRand(0, obstacleHeights.length)],
+                y2:obstacleHeights[floorRand(0, obstacleHeights.length)],
+                y3:obstacleHeights[floorRand(0, obstacleHeights.length)],
+                pointGet:true
+            }
+        );
+    } else if (i<100) { //Level 4
+        obstaclePositions.push(
+            {
+                x:500+(150*(i-75)), 
+                y:obstacleHeights[floorRand(0, obstacleHeights.length)],
+                y2:obstacleHeights[floorRand(0, obstacleHeights.length)],
+                y3:obstacleHeights[floorRand(0, obstacleHeights.length)],
+                pointGet:true
+            }
+        );
+    } else if (i<150) { //Level 5
+        obstaclePositions.push(
+            {
+                x:500+(200*(i-100)), 
+                y:obstacleHeights[floorRand(0, obstacleHeights.length)],
+                y2:obstacleHeights[floorRand(0, obstacleHeights.length)],
+                y3:obstacleHeights[floorRand(0, obstacleHeights.length)],
+                pointGet:true
+            }
+        );
+    }
+}
+*/
+
+          /** METHODS **/
+
+          //IN-GAME
+
+          var obstacleDraw = function (speed1, speed2, speed3, speed4, speed5) {
+            fill(0);
+            //Level 1
+            if (points < 25) {
+              for (var i = 0; i < 25; i++) {
+                rect(obstaclePositions[i].x, obstaclePositions[i].y, 10, 100);
+                rect(obstaclePositions[i].x, obstaclePositions[i].y2, 10, 100);
+                rect(obstaclePositions[i].x, obstaclePositions[i].y3, 10, 100);
+
+                obstaclePositions[i].x -= speed1;
+
+                if (
+                  obstaclePositions[i].x < charX &&
+                  obstaclePositions[i].pointGet
+                ) {
+                  points++;
+                  obstaclePositions[i].pointGet = false;
+                }
+              }
+              //Level 2
+            } else if (points < 50) {
+              charX = 100;
+              for (var i = 25; i < 50; i++) {
+                rect(obstaclePositions[i].x, obstaclePositions[i].y, 10, 100);
+                rect(obstaclePositions[i].x, obstaclePositions[i].y2, 10, 100);
+                rect(obstaclePositions[i].x, obstaclePositions[i].y3, 10, 100);
+
+                obstaclePositions[i].x -= speed2;
+
+                if (
+                  obstaclePositions[i].x < charX &&
+                  obstaclePositions[i].pointGet
+                ) {
+                  points++;
+                  obstaclePositions[i].pointGet = false;
+                }
+              }
+              // Level 3
+            } else if (points < 75) {
+              charX = 125;
+              for (var i = 50; i < 75; i++) {
+                rect(obstaclePositions[i].x, obstaclePositions[i].y, 10, 100);
+                rect(obstaclePositions[i].x, obstaclePositions[i].y2, 10, 100);
+                rect(obstaclePositions[i].x, obstaclePositions[i].y3, 10, 100);
+
+                obstaclePositions[i].x -= speed3;
+
+                if (
+                  obstaclePositions[i].x < charX &&
+                  obstaclePositions[i].pointGet
+                ) {
+                  points++;
+                  obstaclePositions[i].pointGet = false;
+                }
+              }
+              //Level 4
+            } else if (points < 100) {
+              charX = 150;
+              for (var i = 75; i < 100; i++) {
+                rect(obstaclePositions[i].x, obstaclePositions[i].y, 10, 100);
+                rect(obstaclePositions[i].x, obstaclePositions[i].y2, 10, 100);
+                rect(obstaclePositions[i].x, obstaclePositions[i].y3, 10, 100);
+
+                obstaclePositions[i].x -= speed4;
+
+                if (
+                  obstaclePositions[i].x < charX &&
+                  obstaclePositions[i].pointGet
+                ) {
+                  points++;
+                  obstaclePositions[i].pointGet = false;
+                }
+              }
+              //Level 5
+            } else if (points < 150) {
+              charX = 175;
+              for (var i = 100; i < 150; i++) {
+                rect(obstaclePositions[i].x, obstaclePositions[i].y, 10, 100);
+                rect(obstaclePositions[i].x, obstaclePositions[i].y2, 10, 100);
+                rect(obstaclePositions[i].x, obstaclePositions[i].y3, 10, 100);
+
+                obstaclePositions[i].x -= speed5;
+
+                if (
+                  obstaclePositions[i].x < charX &&
+                  obstaclePositions[i].pointGet
+                ) {
+                  points++;
+                  obstaclePositions[i].pointGet = false;
+                }
+              }
+            } else {
+              charX = 200;
+              alive = false;
+            }
+          };
+          //sends the obstacles towards the player
+
+          var checkForDeath = function () {
+            for (var i = 0; i < obstaclePositions.length; i++) {
+              if (
+                charX + charR / 2 >= obstaclePositions[i].x &&
+                charX - charR / 2 <= obstaclePositions[i].x
+              ) {
+                if (
+                  charY + charR / 2 >= obstaclePositions[i].y + 50 &&
+                  charY - charR / 2 <= obstaclePositions[i].y + 50
+                ) {
+                  alive = false;
+                } else if (
+                  charY + charR / 2 >= obstaclePositions[i].y2 + 50 &&
+                  charY - charR / 2 <= obstaclePositions[i].y2 + 50
+                ) {
+                  alive = false;
+                } else if (
+                  charY + charR / 2 >= obstaclePositions[i].y3 + 50 &&
+                  charY - charR / 2 <= obstaclePositions[i].y3 + 50
+                ) {
+                  alive = false;
+                }
+              }
+            }
+          };
+          //checks if user has lost the game
+
+          var template = function () {
+            noStroke();
+
+            //red background
+            fill(255, 135, 135);
+            rect(0, 0, width, 100);
+
+            //yellow background
+            fill(255, 243, 107);
+            rect(0, 100, width, 100);
+
+            //green background
+            fill(122, 255, 142);
+            rect(0, 200, width, 100);
+
+            //blue background
+            fill(150, 218, 255);
+            rect(0, 300, width, 100);
+
+            //black bars
+            fill(0, 0, 0);
+            rect(0, 0, width, 10);
+            rect(0, 90, width, 10);
+            rect(0, 190, width, 10);
+            rect(0, 290, width, 10);
+            rect(0, 390, width, 10);
+
+            //labels
+            if (jumpChoice === 1) {
+              textAlign(CENTER, CENTER);
+              textSize(25);
+              text("1", 30, 50);
+              text("2", 30, 145);
+              text("3", 30, 245);
+              text("4", 30, 345);
+            }
+          };
+          //draws the background in-game
+
+          var drawChar = function (x) {
+            //display character
+            fill(charColour[x]);
+            strokeWeight(3.5);
+            stroke(0);
+            ellipse(charX, charY, charR, charR);
+
+            //point display
+            textFont(font, 20);
+            textAlign(CENTER, CENTER);
+            fill(0);
+            text(points, charX, charY);
+          };
+          //draws the user's character
+
+          var jumpMouse = function () {
+            //actual jump
+            if (mouseY < 100) {
+              charY = 50;
+            } else if (mouseY < 200) {
+              charY = 145;
+            } else if (mouseY < 300) {
+              charY = 245;
+            } else if (mouseY < 400) {
+              charY = 345;
+            }
+          };
+          //user-control with the mouse
+
+          var jumpKey = function () {
+            if (keyIsPressed && key.code === 49) {
+              //Row 1
+              charY = 50;
+            } else if (keyIsPressed && key.code === 50) {
+              //Row 2
+              charY = 145;
+            } else if (keyIsPressed && key.code === 51) {
+              //Row 3
+              charY = 245;
+            } else if (keyIsPressed && key.code === 52) {
+              //Row 4
+              charY = 345;
+            }
+          };
+          //user-control with keys
+
+          var gameReset = function () {
+            if (runReset) {
+              points = 0;
+              alive = true;
+              runReset = false;
+            }
+          };
+          //resets the game
+
+          //MAIN MENU
+
+          var backingMain = function () {
+            if (colourChoice === 0) {
+              background(0, 0, 0);
+              fill(255, 255, 255);
+            } else {
+              fill(0, 0, 0);
+              background(255, 255, 255);
+            }
+
+            textAlign(CENTER, CENTER);
+            textFont(font, 65);
+            text("RAINBOW", width / 2, 50);
+            text("ROADBLOCK", width / 2, 105);
+          };
+          //draws title for the main menu
+
+          var selectCharColour = function (x, y, r) {
+            if (
+              mouseIsPressed &&
+              buttonReleased &&
+              mouseX >= x - r / 2 &&
+              mouseX <= x + r / 2 &&
+              mouseY >= y - r / 2 &&
+              mouseY <= y + r / 2
+            ) {
+              colourChoice++;
+              if (colourChoice === charColour.length) {
+                colourChoice = 0;
+              }
+              buttonReleased = false;
+            }
+
+            fill(charColour[colourChoice]);
+            stroke(0);
+            strokeWeight(3);
+            ellipse(x, y, r, r);
+          };
+          //allows for user to select colour
+
+          var selectControl = function () {
+            if (colourChoice === 0) {
+              fill(255, 255, 255);
+            } else {
+              fill(0, 0, 0);
+            }
+            textSize(16);
+            text("Control Scheme:", width / 2, 355);
+
+            noFill();
+            strokeWeight(2);
+
+            if (
+              mouseIsPressed &&
+              buttonReleased &&
+              mouseX >= 115 &&
+              mouseX <= 195 &&
+              mouseY >= 365 &&
+              mouseY <= 390
+            ) {
+              jumpChoice = 1;
+              buttonReleased = false;
+            } else if (
+              mouseIsPressed &&
+              buttonReleased &&
+              mouseX >= 205 &&
+              mouseX <= 285 &&
+              mouseY >= 365 &&
+              mouseY <= 390
+            ) {
+              jumpChoice = 2;
+              buttonReleased = false;
+            }
+
+            strokeWeight(2);
+
+            if (jumpChoice === 1) {
+              stroke(charColour[colourChoice]);
+              rect(115, 365, 80, 25);
+            } else if (jumpChoice === 2) {
+              stroke(charColour[colourChoice]);
+              rect(205, 365, 80, 25);
+            }
+
+            textSize(14);
+
+            if (colourChoice === 0) {
+              fill(255, 255, 255);
+            } else {
+              fill(0, 0, 0);
+            }
+            text("Keyboard", 155, 377.5);
+            text("Mouse", 245, 377.5);
+          };
+          //allows for user to select control scheme
+
+          var launchGame = function () {
+            textSize(30);
+            if (
+              mouseX >= 100 &&
+              mouseX <= 300 &&
+              mouseY >= 255 &&
+              mouseY <= 290
+            ) {
+              fill(charColour[colourChoice]);
+              text("P L A Y  G A M E", width / 2 - 3, 274);
+              if (
+                (mouseIsPressed && buttonReleased && jumpChoice === 1) ||
+                (mouseIsPressed && buttonReleased && jumpChoice === 2)
+              ) {
+                alive = true;
+                gameMenu = false;
+                buttonReleased = false;
+              } else if (mouseIsPressed) {
+                fill(0);
+                textSize(14);
+                text(
+                  "Please select a Control Scheme",
+                  width / 2 - 40,
+                  height / 2 - 55,
+                  80,
+                  100
+                );
+              }
+            }
+            if (colourChoice === 0) {
+              fill(255, 255, 255);
+            } else {
+              fill(0, 0, 0);
+            }
+            textSize(30);
+            text("P L A Y  G A M E", width / 2, 275);
+          };
+          //start game button
+
+          var instructButton = function () {
+            if (
+              mouseX >= 70 &&
+              mouseX <= 330 &&
+              mouseY >= 305 &&
+              mouseY <= 335
+            ) {
+              fill(charColour[colourChoice]);
+              text("H O W  T O  P L A Y", width / 2 - 2, 319);
+              if (mouseIsPressed && buttonReleased) {
+                showInstruct = true;
+                gameMenu = false;
+                buttonReleased = false;
+              }
+            }
+            if (colourChoice === 0) {
+              fill(255, 255, 255);
+            } else {
+              fill(0, 0, 0);
+            }
+            textSize(30);
+            text("H O W  T O  P L A Y", width / 2, 320);
+          };
+          //instructions for the user
+
+          var instruct = function () {
+            if (colourChoice === 0) {
+              background(255, 255, 255);
+              fill(0);
+              rect(10, 10, 380, 380);
+              fill(255, 255, 255);
+            } else {
+              background(charColour[colourChoice]);
+              fill(255, 255, 255);
+              rect(10, 10, 380, 380);
+              fill(0);
+            }
+            textSize(15);
+            text("The objective of the game is simple.", width / 2, 80);
+            text("Get to 150 points to win.", width / 2, 100);
+            text("Dodge the vertical black walls.", width / 2, 120);
+            text("You are the ball with the number on it.", width / 2, 140);
+            text("The number indicates your point total", width / 2, 160);
+            text("Choose your colour from the main menu.", width / 2, 180);
+            text("It may seem easy at first...", width / 2, 220);
+
+            if (
+              mouseX >= 150 &&
+              mouseX <= 250 &&
+              mouseY >= 305 &&
+              mouseY <= 335
+            ) {
+              fill(charColour[colourChoice]);
+              textSize(30);
+              text("B A C K", width / 2 - 2, 319);
+              if (mouseIsPressed && buttonReleased) {
+                gameMenu = true;
+                showInstruct = false;
+                buttonReleased = false;
+              }
+            }
+            if (colourChoice === 0) {
+              fill(255, 255, 255);
+            } else {
+              fill(0, 0, 0);
+            }
+            textSize(30);
+            text("B A C K", width / 2, 320);
+          };
+          //calls for the instructions to display
+
+          var mainMenu = function () {
+            backingMain();
+            selectCharColour(width / 2, height / 2, 100);
+            selectControl();
+            launchGame();
+            instructButton();
+          };
+          //draws the entire main menu
+
+          //GAME OVER
+
+          var backingEnd = function () {
+            noStroke();
+            background(charColour[colourChoice]);
+
+            if (colourChoice === 0) {
+              fill(0);
+            } else {
+              fill(255, 255, 255);
+            }
+
+            rect(10, 10, 380, 380);
+
+            if (colourChoice === 0) {
+              fill(255, 255, 255);
+            } else {
+              fill(0);
+            }
+
+            textFont(font, 70);
+            if (points < 150) {
+              text("GAME   VER", width / 2, 50);
+              selectCharColour(234, 50, 50);
+            } else {
+              text("Y   U WIN!", width / 2, 50);
+              selectCharColour(110, 50, 50);
+            }
+          };
+          //draws the background of the endgame screen
+
+          var mainMenuButton = function () {
+            textSize(25);
+            if (
+              mouseX >= 105 &&
+              mouseX <= 290 &&
+              mouseY >= 345 &&
+              mouseY <= 370
+            ) {
+              fill(charColour[colourChoice]);
+              text("M A I N  M E N U", width / 2 - 2, 359);
+              if (mouseIsPressed && buttonReleased) {
+                Program.restart();
+                buttonReleased = false;
+              }
+            }
+            if (colourChoice === 0) {
+              fill(255, 255, 255);
+            } else {
+              fill(0);
+            }
+            text("M A I N  M E N U", width / 2, 360);
+          };
+          //draws the main menu button
+
+          var finalDisplay = function () {
+            //points number
+            if (colourChoice === 0) {
+              fill(255, 255, 255);
+            } else {
+              fill(0);
+            }
+            textSize(80);
+            text(points, width / 2, 135);
+
+            //points text
+            textSize(15);
+            if (points === 1) {
+              text("point", width / 2, 175);
+            } else {
+              text("points", width / 2, 175);
+            }
+
+            //rank
+            text("Rank:", width / 2, 230);
+            textSize(30);
+            if (points < 25) {
+              text("Kindergartener", 50, 150, 300, 200);
+            } else if (points < 50) {
+              text("Swift Turtle", 50, 150, 300, 200);
+            } else if (points < 75) {
+              text("Average Joe", 50, 150, 300, 200);
+            } else if (points < 100) {
+              text("Agile Fox", 50, 150, 300, 200);
+            } else if (points < 150) {
+              textSize(20);
+              fill(charColour[floorRand(0, charColour.length)]);
+              text(
+                "Rainbow Roadblock Champion Ninja Man of the World",
+                55,
+                160,
+                300,
+                200
+              );
+            } else if (points >= 150) {
+              textSize(29);
+              fill(floorRand(75, 255), 0, 0);
+              text("Insane Asylum Escapee", 50, 150, 300, 200);
+            }
+          };
+          //displays the user's points
+
+          var gameOver = function () {
+            backingEnd();
+            finalDisplay();
+            //mainMenuButton();
+          };
+          //draws the entire endgame screen
+
+          draw = function () {
+            if (!mouseIsPressed) {
+              buttonReleased = true;
+            }
+
+            if (gameMenu) {
+              mainMenu();
+            } else if (showInstruct) {
+              instruct();
+            } else {
+              if (alive) {
+                gameReset();
+
+                if (jumpChoice === 1) {
+                  jumpKey();
+                } else if (jumpChoice === 2) {
+                  jumpMouse();
+                }
+
+                template();
+
+                obstacleDraw(3, 3, 4, 5, 7);
+
+                drawChar(colourChoice);
+
+                checkForDeath();
+              } else if (!alive) {
+                gameOver();
+              }
+            }
+          };
+        }
+        if (typeof draw !== "undefined") processing.draw = draw;
+      });
+    </script>
+  </body>
+</html>
