@@ -137,7 +137,7 @@ export const INITIAL_LINKS = [
   },
   {
     description: "Show HN: I preserved the first webpage I ever made",
-    url: "https://v0.leander.xyz/projects/",
+    url: "https://v0.leander.xyz/portfolio/tribute/",
     postedBy: { id: "1", name: "leander" },
     votes: [
       { user: { id: "2", name: "Anonymous" } },
@@ -313,21 +313,6 @@ export const INITIAL_LINKS = [
     ],
   },
   {
-    description: "Looking for critiques on my LinkedIn profile",
-    url: "https://www.linkedin.com/in/leander-rodrigues/",
-    postedBy: { id: "1", name: "leander" },
-    votes: [
-      { user: { id: "2", name: "Anonymous" } },
-      { user: { id: "3", name: "Anonymous" } },
-      { user: { id: "4", name: "Anonymous" } },
-      { user: { id: "5", name: "Anonymous" } },
-      { user: { id: "6", name: "Anonymous" } },
-      { user: { id: "7", name: "Anonymous" } },
-      { user: { id: "8", name: "Anonymous" } },
-      { user: { id: "9", name: "Anonymous" } },
-    ],
-  },
-  {
     description:
       "I published a web interface for my programming notes. They are out of date.",
     url: "https://leander.xyz/notes",
@@ -363,7 +348,6 @@ export const INITIAL_LINKS = [
       { user: { id: "5", name: "Anonymous" } },
     ],
   },
-
   {
     description:
       "Show HN: For Sentry.io's 2024 HackWeek, I won by building in-app notifications",
@@ -378,6 +362,45 @@ export const INITIAL_LINKS = [
       { user: { id: "7", name: "Anonymous" } },
       { user: { id: "8", name: "Anonymous" } },
       { user: { id: "9", name: "Anonymous" } },
+    ],
+  },
+  {
+    description: "Khan Academy Graduate: First time I ever used JavaScript",
+    url: "https://v0.leander.xyz/portfolio/concentration/",
+    postedBy: { id: "1", name: "leander" },
+    votes: [
+      { user: { id: "2", name: "Anonymous" } },
+      { user: { id: "3", name: "Anonymous" } },
+      { user: { id: "4", name: "Anonymous" } },
+      { user: { id: "5", name: "Anonymous" } },
+      { user: { id: "6", name: "Anonymous" } },
+      { user: { id: "7", name: "Anonymous" } },
+      { user: { id: "8", name: "Anonymous" } },
+      { user: { id: "9", name: "Anonymous" } },
+    ],
+  },
+  {
+    description: "Designing Explosion Graphics with Vanilla JS",
+    url: "https://v0.leander.xyz/portfolio/inversion/",
+    postedBy: { id: "1", name: "leander" },
+    votes: [
+      { user: { id: "2", name: "Anonymous" } },
+      { user: { id: "3", name: "Anonymous" } },
+      { user: { id: "4", name: "Anonymous" } },
+      { user: { id: "5", name: "Anonymous" } },
+    ],
+  },
+  {
+    description: "A winnable browser-game built by a high-schooler",
+    url: "https://v0.leander.xyz/portfolio/rainbow/",
+    postedBy: { id: "1", name: "leander" },
+    votes: [
+      { user: { id: "2", name: "Anonymous" } },
+      { user: { id: "3", name: "Anonymous" } },
+      { user: { id: "4", name: "Anonymous" } },
+      { user: { id: "5", name: "Anonymous" } },
+      { user: { id: "6", name: "Anonymous" } },
+      { user: { id: "7", name: "Anonymous" } },
     ],
   },
 ];
