@@ -74,14 +74,6 @@ export default {
         ignore: [`**/*\.js`],
       },
     },
-    {
-      resolve: `gatsby-plugin-copy-files-enhanced`,
-      options: {
-        source: join(__dirname, `../_shared`),
-        destination: join(__dirname, `static/shared`),
-      },
-    },
-
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-pnpm`,
   ],
