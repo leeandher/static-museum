@@ -75,10 +75,10 @@ export default {
       },
     },
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: `gatsby-plugin-copy-files-enhanced`,
       options: {
-        name: `shared`,
-        path: join(__dirname, `../_shared`),
+        source: join(__dirname, `../_shared`),
+        destination: join(__dirname, `static/shared`),
       },
     },
 

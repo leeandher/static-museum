@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { useStaticQuery, graphql } from "gatsby";
 
 export default function HTML(props) {
   const {
@@ -11,14 +10,6 @@ export default function HTML(props) {
     body,
     postBodyComponents,
   } = props;
-
-  const data = useStaticQuery(graphql`
-    query DOCK_QUERY {
-      file(base: { eq: "dock.js" }) {
-        publicURL
-      }
-    }
-  `);
 
   return (
     <html {...htmlAttributes} style={{ background: "#0F0F0F" }} lang="en">
@@ -50,7 +41,7 @@ export default function HTML(props) {
         />
         {postBodyComponents}
       </body>
-      <script src={data.file.publicURL} data-leander-xyz-version="v2"></script>
+      <script src="/shared/dock.js" data-leander-xyz-version="v2"></script>
     </html>
   );
 }
