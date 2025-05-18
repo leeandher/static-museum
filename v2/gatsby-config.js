@@ -71,6 +71,13 @@ export default {
         ignore: [`**/*\.js`],
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `shared`,
+        path: join(__dirname, `../_shared`),
+      },
+    },
 
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-pnpm`,

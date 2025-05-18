@@ -105,14 +105,8 @@ class Contact extends React.Component {
                 __html: marked(contactData["hit-me-up"]),
               }}
             />
-            <Form
-              name="contact"
-              method="post"
-              data-netlify="true"
-              data-netlify-honeypot="bot-field"
-              action="/contact/success"
-            >
-              <input type="hidden" name="form-name" value="contact" />
+            <Form name="contact" method="post" disabled>
+              <input type="hidden" name="form-name" value="contact" disabled />
               <label htmlFor="name">
                 Name:
                 <input
@@ -121,6 +115,7 @@ class Contact extends React.Component {
                   id="name"
                   placeholder={contactData.placeholders.name}
                   required
+                  disabled
                 />
               </label>
               <label htmlFor="email">
@@ -131,6 +126,7 @@ class Contact extends React.Component {
                   id="email"
                   placeholder={contactData.placeholders.email}
                   required
+                  disabled
                 />
               </label>
               <label htmlFor="subject">
@@ -141,6 +137,7 @@ class Contact extends React.Component {
                   id="subject"
                   placeholder={contactData.placeholders.subject}
                   required
+                  disabled
                 />
               </label>
               <label htmlFor="message">
@@ -151,9 +148,12 @@ class Contact extends React.Component {
                   rows="5"
                   placeholder={contactData.placeholders.message}
                   required
+                  disabled
                 />
               </label>
-              <Button type="submit">Send</Button>
+              <Button type="submit" disabled>
+                Send
+              </Button>
             </Form>
           </ContactForm>
         </ContactFormWrapper>

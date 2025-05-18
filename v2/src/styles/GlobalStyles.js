@@ -1,5 +1,5 @@
-import { createGlobalStyle } from "styled-components"
-import { media, themer } from "./helpers"
+import { createGlobalStyle } from "styled-components";
+import { media, themer } from "./helpers";
 
 const GlobalStyles = createGlobalStyle`
   html {
@@ -54,6 +54,9 @@ const GlobalStyles = createGlobalStyle`
     background: ${themer("accent")};
     background: ${themer("accent")}88;
   }
+  .bg-accent {
+    background: ${themer("accent")};
+  }
   .md-base {
     margin: 0 auto;
     padding: 1rem ;
@@ -96,6 +99,6 @@ const GlobalStyles = createGlobalStyle`
       margin: 0;
     }
   }
-`
+`;
 
-export default GlobalStyles
+export default GlobalStyles;

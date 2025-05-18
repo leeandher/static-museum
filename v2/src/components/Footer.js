@@ -1,17 +1,17 @@
-import React from "react"
-import styled from "styled-components"
-import { FaGithub, FaLinkedin } from "react-icons/fa"
+import React from "react";
+import styled from "styled-components";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 
-import { getCopyrightYearsFrom } from "../helpers"
-import AnchorLink from "./AnchorLink"
+import { getCopyrightYearsFrom } from "../helpers";
+import AnchorLink from "./AnchorLink";
 
-import { themer } from "../styles/helpers"
+import { themer } from "../styles/helpers";
 
 const StyledAnchorLink = styled(AnchorLink)`
   display: inline-block;
   padding: 1.75rem;
   margin: 2rem;
-`
+`;
 
 const StyledFooter = styled.footer`
   padding: 5rem;
@@ -48,19 +48,19 @@ const StyledFooter = styled.footer`
   small a {
     font-size: 1.25rem;
   }
-`
+`;
 
 const IconWrapper = styled.div`
   margin: 0 auto;
   flex: 1;
-`
+`;
 
 const Easter = styled.small`
   text-align: right;
-`
+`;
 
 const Footer = ({ handleToggle, showSideBar }) => {
-  const copyrightYears = getCopyrightYearsFrom(2019)
+  const copyrightYears = getCopyrightYearsFrom(2019);
   return (
     <StyledFooter>
       <h5>Find me online</h5>
@@ -112,7 +112,7 @@ const Footer = ({ handleToggle, showSideBar }) => {
         </AnchorLink>
       </Easter>
     </StyledFooter>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

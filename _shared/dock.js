@@ -67,8 +67,8 @@ function attachVersionDock() {
   }
 
   if (version === "v2") {
+    dock.classList.add("bg-accent");
     dock.style.transform = "skew(-5deg)";
-    dock.style.backgroundColor = "rgb(77, 204, 176)";
     dock.style.color = "rgb(13,13,13)";
     linkElements.forEach((linkElement) => {
       linkElement.addEventListener("mouseover", () => {
