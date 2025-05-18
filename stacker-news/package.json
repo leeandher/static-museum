@@ -3,19 +3,15 @@
   "version": "1.0.0",
   "dependencies": {
     "react": "16.7.0",
-    "react-apollo": "2.3.3",
     "react-dom": "16.7.0",
     "react-router": "4.3.1",
     "react-router-dom": "4.3.1",
-    "react-scripts": "3.0.1"
+    "react-scripts": "5.0.1"
   },
   "scripts": {
     "start": "SKIP_PREFLIGHT_CHECK=true react-scripts --openssl-legacy-provider start",
     "build": "SKIP_PREFLIGHT_CHECK=true react-scripts --openssl-legacy-provider build",
     "eject": "SKIP_PREFLIGHT_CHECK=true react-scripts --openssl-legacy-provider eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
   },
   "browserslist": [
     ">0.2%",
