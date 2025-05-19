@@ -16,8 +16,7 @@ exports.dump = (obj) => JSON.stringify(obj, null, 2);
 exports.icon = (name) => fs.readFileSync(`./public/images/icons/${name}.svg`);
 
 // getting an image from an s3
-exports.getImageUrl = (imageId) =>
-  `https://${process.env.IMG_S3_BUCKET_NAME}.s3.amazonaws.com/uploads/${imageId}`;
+exports.getImageUrl = (imageId) => `/images/photos/${imageId}`;
 
 // Some details about the site
 exports.siteName = `Now That's Delicious!`;
