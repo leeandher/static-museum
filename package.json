@@ -30,11 +30,7 @@
     "v2:dev": "pnpm --filter v2 dev",
     "v2:build": "pnpm --filter v2 build",
     "delicious:dev": "pnpm --filter delicious dev",
-    "delicious:build": "pnpm --filter delicious build",
-    "offline:dev": "pnpm --filter offline dev",
-    "offline:build": "pnpm --filter offline build",
-    "del:dev": "pnpm --filter del dev",
-    "del:build": "pnpm --filter del build"
+    "delicious:build": "pnpm --filter delicious build"
   },
   "type": "module",
   "pnpm": {
