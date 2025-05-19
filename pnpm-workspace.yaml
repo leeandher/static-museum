@@ -11,8 +11,6 @@ packages:
   - stacker-news
   - v2
   - delicious
-  - offline
-  - del
 onlyBuiltDependencies:
   - '@parcel/watcher'
   - core-js

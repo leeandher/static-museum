@@ -1,0 +1,3 @@
+[build]
+command = "pnpm run delicious:build"
+publish = "delicious/build"
