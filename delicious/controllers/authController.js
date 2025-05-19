@@ -12,7 +12,7 @@ exports.login = passport.authenticate("local", {
   failureRedirect: "/login",
   failureFlash: "Failed Login!",
   successRedirect: "/",
-  successFlash: "You are now logged in!"
+  successFlash: "You are now logged in!",
 });
 
 exports.logout = (req, res) => {
@@ -51,14 +51,12 @@ exports.forgot = async (req, res) => {
   await user.save();
 
   //3. Send them an email with the token
-  const resetURL = `http://${req.headers.host}/account/reset/${
-    user.resetPasswordToken
-  }`;
+  const resetURL = `http://${req.headers.host}/account/reset/${user.resetPasswordToken}`;
   await mail.send({
     user,
     resetURL,
     subject: "Password Reset",
-    template: "password-reset"
+    template: "password-reset",
   });
   req.flash("success", `You have been sent a password reset link.`);
 
@@ -70,7 +68,7 @@ exports.verifyResetToken = async (req, res, next) => {
   //Find the user if the token is valid, and not expired
   const user = await User.findOne({
     resetPasswordToken: req.params.token,
-    resetPasswordExpires: { $gt: Date.now() }
+    resetPasswordExpires: { $gt: Date.now() },
   });
   if (!user) {
     req.flash(

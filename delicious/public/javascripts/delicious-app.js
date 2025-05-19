@@ -1,15 +1,16 @@
 import "../sass/style.scss";
 
-import { $, $$ } from "./modules/bling";
-import autocomplete from "./modules/autocomplete";
 import typeAhead from "./modules/typeAhead";
-import makeMap from "./modules/map";
 import ajaxHeart from "./modules/heart";
 
-autocomplete($("#address"), $("#lat"), $("#lng"));
+autocomplete(
+  document.querySelector("#address"),
+  document.querySelector("#lat"),
+  document.querySelector("#lng")
+);
 
-typeAhead($(".search"));
+typeAhead(document.querySelector(".search"));
 
-makeMap($("#map"));
-
-$$("form.heart").on("submit", ajaxHeart);
+document.querySelectorAll("form.heart").forEach((form) => {
+  form.addEventListener("submit", ajaxHeart);
+});

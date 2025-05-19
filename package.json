@@ -28,7 +28,9 @@
     "stacker:dev": "pnpm --filter stacker-news start",
     "stacker:build": "pnpm --filter stacker-news build",
     "v2:dev": "pnpm --filter v2 dev",
-    "v2:build": "pnpm --filter v2 build"
+    "v2:build": "pnpm --filter v2 build",
+    "delicious:dev": "pnpm --filter delicious dev",
+    "delicious:build": "pnpm --filter delicious build"
   },
   "type": "module"
 }

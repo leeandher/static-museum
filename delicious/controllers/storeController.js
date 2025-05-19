@@ -22,7 +22,7 @@ const multerOptions = {
     } else {
       next({ message: "That filetype isn't allowed!" }, false);
     }
-  }
+  },
 };
 
 exports.homePage = (req, res) => {
@@ -62,11 +62,11 @@ exports.uploadToS3 = async (req, res, next) => {
   s3.putObject({
     Body: res.locals.uploadPhoto,
     Bucket: process.env.IMG_S3_BUCKET_NAME,
-    Key: `uploads/${req.body.photo}`
+    Key: `uploads/${req.body.photo}`,
   })
     .promise()
-    .then(data => console.log("Image has been uploaded to S3 successfully!"))
-    .catch(err => console.log(err, err.stack));
+    .then((data) => console.log("Image has been uploaded to S3 successfully!"))
+    .catch((err) => console.log(err, err.stack));
 
   next();
 };
@@ -78,9 +78,7 @@ exports.createStore = async (req, res) => {
   const store = await new Store(req.body).save();
   req.flash(
     "success",
-    `Successfully Created <strong>${
-      store.name
-    }</strong>. Care to leave a review?`
+    `Successfully Created <strong>${store.name}</strong>. Care to leave a review?`
   );
 
   res.redirect(`/stores/${store.slug}`);
@@ -151,8 +149,8 @@ exports.getStoresByTag = async (req, res, next) => {
 exports.getStoresByHearts = async (req, res, next) => {
   const stores = await Store.find({
     _id: {
-      $in: req.user.hearts
-    }
+      $in: req.user.hearts,
+    },
   });
   res.render("stores", { title: "Hearted Stores", stores });
 };
@@ -182,14 +180,12 @@ exports.updateStore = async (req, res) => {
   //.findOneAndUpdate(query, update, {...options})
   const store = await Store.findOneAndUpdate({ _id: req.params.id }, req.body, {
     new: true, //Return the new store, not the old one
-    runValidators: true //Run the required validators against the model
+    runValidators: true, //Run the required validators against the model
   }).exec();
   //3. Redirect them to the store edit page, telling them it worked
   req.flash(
     "success",
-    `Successfully updated <strong>${store.name}</strong>. <a href="/stores/${
-      store.slug
-    }">View Store →</a>`
+    `Successfully updated <strong>${store.name}</strong>. <a href="/stores/${store.slug}">View Store →</a>`
   );
   res.redirect(`/stores/${store._id}/edit`);
 };
@@ -200,61 +196,32 @@ exports.searchStores = async (req, res) => {
     .find(
       {
         $text: {
-          $search: req.query.q
-        }
+          $search: req.query.q,
+        },
       },
       //Create a projection
       { score: { $meta: "textScore" } }
     )
     //Sort them by the projection
     .sort({
-      score: { $meta: "textScore" }
+      score: { $meta: "textScore" },
     })
     //Limit to only five results
     .limit(5);
   res.json(stores);
 };
 
-exports.mapStores = async (req, res) => {
-  //MongoDB uses coordinates as [longitude, latitude]
-  const coordinates = [req.query.lng, req.query.lat].map(parseFloat);
-
-  //Using MongoDB operators to do calculations
-  const q = {
-    location: {
-      $near: {
-        $geometry: {
-          type: "Point",
-          coordinates
-        },
-        $maxDistance: 10000 //10km
-      }
-    }
-  };
-
-  //Limit the overhead content in the AJAX request
-  const stores = await Store.find(q)
-    .select("name slug description location photo")
-    .limit(10);
-
-  res.json(stores);
-};
-
-exports.mapPage = (req, res) => {
-  res.render("map", { title: "Map" });
-};
-
 //When the user 'hearts' a store
 exports.heartStore = async (req, res) => {
   //Get their list of hearts
-  const hearts = req.user.hearts.map(obj => obj.toString());
+  const hearts = req.user.hearts.map((obj) => obj.toString());
   //Decide whether to add/remove this stroe
   const operator = hearts.includes(req.params.id) ? "$pull" : "$addToSet";
   //Update
   const userHearts = await User.findOneAndUpdate(
     { _id: req.user._id },
     {
-      [operator]: { hearts: req.params.id }
+      [operator]: { hearts: req.params.id },
     },
     { new: true }
   ).select("hearts");

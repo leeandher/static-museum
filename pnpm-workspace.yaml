@@ -10,6 +10,7 @@ packages:
   - catch-of-the-day
   - stacker-news
   - v2
+  - delicious
 onlyBuiltDependencies:
   - '@parcel/watcher'
   - core-js
