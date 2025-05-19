@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { ctx, getStores, reviews } from "$lib/data.svelte";
   import { page } from "$app/state";
+  import { ctx, getStores, reviews } from "$lib/data.svelte";
   const store = $derived(
     getStores().find((store) => store.slug === page.params.storeSlug)
   );
@@ -30,8 +30,8 @@
       <div class="single__hero">
         <img
           class="single__image"
-          src="/images/photos/loaf.jpg"
-          alt="Artisan Loaf"
+          src="/images/photos/{store.photo}"
+          alt={store.name}
         />
         <h2 class="title title--single">
           <a href="/stores/{store.slug}">{store.name}</a>

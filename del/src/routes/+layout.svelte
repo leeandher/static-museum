@@ -1,8 +1,18 @@
 <script lang="ts">
   import { page } from "$app/state";
-  import { ctx } from "$lib/data.svelte";
+  import { ctx, users, getStores } from "$lib/data.svelte";
   import type { LayoutProps } from "./$types";
   let { children, data }: LayoutProps = $props();
+  const user = $derived(users.find((user) => user._id === ctx.user?._id));
+  let search = $state("");
+  const searchResults = $derived.by(() => {
+    if (!search) return [];
+    return getStores().filter(
+      (store) =>
+        store.name.toLowerCase().includes(search.toLowerCase()) ||
+        store.description.toLowerCase().includes(search.toLowerCase())
+    );
+  });
 </script>
 
 <svelte:head>
@@ -175,7 +185,7 @@
         >
       </li>
       <li class="nav__item">
-        <a class="nav__link" href="#"
+        <a class="nav__link" href="/add"
           ><svg
             xmlns:dc="http://purl.org/dc/elements/1.1/"
             xmlns:cc="http://creativecommons.org/ns#"
@@ -200,7 +210,7 @@
         >
       </li>
       <li class="nav__item">
-        <a class="nav__link" href="#"
+        <a class="nav__link" href="/map"
           ><svg
             xmlns:dc="http://purl.org/dc/elements/1.1/"
             xmlns:cc="http://creativecommons.org/ns#"
@@ -232,8 +242,24 @@
           type="text"
           placeholder="Coffee, beer..."
           name="search"
+          bind:value={search}
         />
-        <div class="search__results"></div>
+        <div class="search__results">
+          {#if searchResults.length === 0 && search}
+            <div class="search__result">
+              Sorry, <i>{search}</i> returned no search results.
+            </div>
+          {/if}
+          {#each searchResults as store}
+            <a
+              href="/stores/{store.slug}"
+              class="search__result"
+              onclick={() => (search = "")}
+            >
+              <strong>{store.name}</strong>
+            </a>
+          {/each}
+        </div>
       </div>
     </div>
     <div class="nav__section nav__section--user">
@@ -255,14 +281,20 @@
                 color="#000"
               /></svg
             >
-            <span class="heart-count">{ctx.user.hearts.length}</span>
+            <span class="heart-count">{user.hearts.length}</span>
           </a>
         </li>
         <li class="nav__item">
           <a
             class="nav__link"
-            href="/logout"
-            class:nav__link--active={page.url.pathname.includes("logout")}
+            onclick={() => {
+              ctx.user = null;
+              ctx.flash = {
+                type: "success",
+                message: "👋 You are now logged out! 👋",
+              };
+            }}
+            href="/"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"

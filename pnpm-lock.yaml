@@ -97,26 +97,29 @@ importers:
   del:
     devDependencies:
       '@sveltejs/adapter-auto':
-        specifier: ^6.0.0
+        specifier: 6.0.1
         version: 6.0.1(@sveltejs/kit@2.21.1(@sveltejs/vite-plugin-svelte@5.0.3(svelte@5.30.2)(vite@6.3.5(@types/node@22.15.18)(jiti@1.21.7)(less@3.9.0)(sass@1.89.0)(terser@5.39.2)(tsx@4.19.0)(yaml@2.8.0)))(svelte@5.30.2)(vite@6.3.5(@types/node@22.15.18)(jiti@1.21.7)(less@3.9.0)(sass@1.89.0)(terser@5.39.2)(tsx@4.19.0)(yaml@2.8.0)))
       '@sveltejs/kit':
-        specifier: ^2.16.0
+        specifier: 2.21.1
         version: 2.21.1(@sveltejs/vite-plugin-svelte@5.0.3(svelte@5.30.2)(vite@6.3.5(@types/node@22.15.18)(jiti@1.21.7)(less@3.9.0)(sass@1.89.0)(terser@5.39.2)(tsx@4.19.0)(yaml@2.8.0)))(svelte@5.30.2)(vite@6.3.5(@types/node@22.15.18)(jiti@1.21.7)(less@3.9.0)(sass@1.89.0)(terser@5.39.2)(tsx@4.19.0)(yaml@2.8.0))
       '@sveltejs/vite-plugin-svelte':
-        specifier: ^5.0.0
+        specifier: 5.0.3
         version: 5.0.3(svelte@5.30.2)(vite@6.3.5(@types/node@22.15.18)(jiti@1.21.7)(less@3.9.0)(sass@1.89.0)(terser@5.39.2)(tsx@4.19.0)(yaml@2.8.0))
       svelte:
-        specifier: ^5.0.0
+        specifier: 5.30.2
         version: 5.30.2
       svelte-check:
-        specifier: ^4.0.0
+        specifier: 4.2.1
         version: 4.2.1(picomatch@4.0.2)(svelte@5.30.2)(typescript@5.8.3)
       typescript:
-        specifier: ^5.0.0
+        specifier: 5.8.3
         version: 5.8.3
       vite:
-        specifier: ^6.2.6
+        specifier: 6.3.5
         version: 6.3.5(@types/node@22.15.18)(jiti@1.21.7)(less@3.9.0)(sass@1.89.0)(terser@5.39.2)(tsx@4.19.0)(yaml@2.8.0)
+      vite-plugin-css-sourcemap:
+        specifier: 1.0.2
+        version: 1.0.2(vite@6.3.5(@types/node@22.15.18)(jiti@1.21.7)(less@3.9.0)(sass@1.89.0)(terser@5.39.2)(tsx@4.19.0)(yaml@2.8.0))
 
   delicious:
     dependencies:
@@ -312,21 +315,6 @@ importers:
       vue-template-compiler:
         specifier: 2.6.10
         version: 2.6.10
-
-  offline:
-    dependencies:
-      '@11ty/eleventy':
-        specifier: 3.1.0
-        version: 3.1.0
-      react:
-        specifier: 19.1.0
-        version: 19.1.0
-      react-dom:
-        specifier: 19.1.0
-        version: 19.1.0(react@19.1.0)
-      tsx:
-        specifier: 4.19.0
-        version: 4.19.0
 
   reduxstagram:
     dependencies:
@@ -13542,11 +13530,6 @@ packages:
     peerDependencies:
       react: ^18.2.0
 
-  react-dom@19.1.0:
-    resolution: {integrity: sha512-Xs1hdnE+DyKgeHJeJznQmYMIBG3TKIHJJT95Q58nHLSrElKlGQqDTR2HQ9fx5CN/Gk6Vh/kupBTDLU11/nDk/g==}
-    peerDependencies:
-      react: ^19.1.0
-
   react-error-overlay@5.1.4:
     resolution: {integrity: sha512-fp+U98OMZcnduQ+NSEiQa4s/XMsbp+5KlydmkbESOw4P69iWZ68ZMFM5a2BuE0FgqPBKApJyRuYHR95jM8lAmg==}
 
@@ -13782,10 +13765,6 @@ packages:
 
   react@18.2.0:
     resolution: {integrity: sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==}
-    engines: {node: '>=0.10.0'}
-
-  react@19.1.0:
-    resolution: {integrity: sha512-FS+XFBNvn3GTAWq26joslQgWNoFu08F4kl0J4CgdNKADkdSGXQyTCnKteIAJy96Br6YbpEU1LSzV5dYtjMkMDg==}
     engines: {node: '>=0.10.0'}
 
   read-cache@1.0.0:
@@ -14391,9 +14370,6 @@ packages:
 
   scheduler@0.25.0:
     resolution: {integrity: sha512-xFVuu11jh+xcO7JOAGJNOXld8/TcEHK/4CituBUeUb5hqxJLj9YuemAEuvm9gQ/+pgXYfbQuqAkiYu+u7YEsNA==}
-
-  scheduler@0.26.0:
-    resolution: {integrity: sha512-NlHwttCI/l5gCPR3D1nNXtWABUmBwvZpEQiD4IXSbIDq8BzLIK/7Ir5gTFSGZDUu37K5cMNp0hFtzO38sC7gWA==}
 
   schema-utils@0.4.7:
     resolution: {integrity: sha512-v/iwU6wvwGK8HbU9yi3/nhGzP0yGSuhQMzL6ySiec1FSrZZDkhm4noOSWzrNFo/jEc+SJY6jRTwuwbSXJPDUnQ==}
@@ -16001,6 +15977,11 @@ packages:
 
   vfile@4.2.1:
     resolution: {integrity: sha512-O6AE4OskCG5S1emQ/4gl8zK586RqA3srz3nfK/Viy0UPToBc5Trp9BVFb1u0CjsKrAWwnpr4ifM/KBXPWwJbCA==}
+
+  vite-plugin-css-sourcemap@1.0.2:
+    resolution: {integrity: sha512-2HnN7kRh8GFLqlL11glgNp62AnSf2s2QNHRKU6ldDIuVWFbQiyPcsxiT4UHlcIU2s/QiEf3iUrwORCIalx9NmA==}
+    peerDependencies:
+      vite: ^5.0.0 || ^6.0.0
 
   vite-plugin-vue2@2.0.3:
     resolution: {integrity: sha512-t3Tu93GWsMHbpeIv66MTO5e/rRAo8/+/eWoUtFYuAdKDMyEnn1dqsrXh+CfG+SJAlxJvcTP8U0eXkzhLjKNyMg==}
@@ -26441,6 +26422,7 @@ snapshots:
       '@esbuild/win32-arm64': 0.23.1
       '@esbuild/win32-ia32': 0.23.1
       '@esbuild/win32-x64': 0.23.1
+    optional: true
 
   esbuild@0.24.2:
     optionalDependencies:
@@ -28557,6 +28539,7 @@ snapshots:
   get-tsconfig@4.10.0:
     dependencies:
       resolve-pkg-maps: 1.0.0
+    optional: true
 
   get-value@2.0.6: {}
 
@@ -35519,11 +35502,6 @@ snapshots:
       react: 18.2.0
       scheduler: 0.23.2
 
-  react-dom@19.1.0(react@19.1.0):
-    dependencies:
-      react: 19.1.0
-      scheduler: 0.26.0
-
   react-error-overlay@5.1.4: {}
 
   react-error-overlay@6.1.0: {}
@@ -36180,8 +36158,6 @@ snapshots:
     dependencies:
       loose-envify: 1.4.0
 
-  react@19.1.0: {}
-
   read-cache@1.0.0:
     dependencies:
       pify: 2.3.0
@@ -36579,7 +36555,8 @@ snapshots:
 
   resolve-pathname@3.0.0: {}
 
-  resolve-pkg-maps@1.0.0: {}
+  resolve-pkg-maps@1.0.0:
+    optional: true
 
   resolve-url-loader@3.1.1:
     dependencies:
@@ -36922,8 +36899,6 @@ snapshots:
       loose-envify: 1.4.0
 
   scheduler@0.25.0: {}
-
-  scheduler@0.26.0: {}
 
   schema-utils@0.4.7:
     dependencies:
@@ -38444,6 +38419,7 @@ snapshots:
       get-tsconfig: 4.10.0
     optionalDependencies:
       fsevents: 2.3.3
+    optional: true
 
   tty-browserify@0.0.0: {}
 
@@ -38867,6 +38843,11 @@ snapshots:
       is-buffer: 2.0.5
       unist-util-stringify-position: 2.0.3
       vfile-message: 2.0.4
+
+  vite-plugin-css-sourcemap@1.0.2(vite@6.3.5(@types/node@22.15.18)(jiti@1.21.7)(less@3.9.0)(sass@1.89.0)(terser@5.39.2)(tsx@4.19.0)(yaml@2.8.0)):
+    dependencies:
+      merge-source-map: 1.1.0
+      vite: 6.3.5(@types/node@22.15.18)(jiti@1.21.7)(less@3.9.0)(sass@1.89.0)(terser@5.39.2)(tsx@4.19.0)(yaml@2.8.0)
 
   vite-plugin-vue2@2.0.3(babel-core@6.26.3)(ejs@3.1.10)(handlebars@4.7.8)(lodash@4.17.15)(nunjucks@3.2.4(chokidar@3.6.0))(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(underscore@1.13.7)(vite@6.0.6(@types/node@22.15.18)(jiti@1.21.7)(less@3.9.0)(sass@1.89.0)(terser@5.39.2)(tsx@4.19.0)(yaml@2.8.0))(vue-template-compiler@2.6.10)(vue@2.6.10):
     dependencies:

@@ -655,8 +655,8 @@ const STORES: Store[] = [
 const USERS: User[] = [
   {
     _id: "58c039018060197ca0b52d4c",
-    email: "wes@example.com",
-    name: "Wes Bos",
+    email: "leander@example.com",
+    name: "Leander",
     hearts: ["58c039938060197ca0b52d4d", "58c03a428060197ca0b52d4f"],
   },
   {
@@ -667,8 +667,8 @@ const USERS: User[] = [
   },
   {
     _id: "58c08bbed1d97c276fd56ce3",
-    email: "you@example.com",
-    name: "You",
+    email: "beau@example.com",
+    name: "Beau",
     hearts: ["58c061518060197ca0b52d5e"],
   },
 ];
@@ -683,7 +683,7 @@ let storesWithReviews = $derived(
       .filter((review) => review.store === store._id)
       .map((review) => {
         const user = users.find((user) => user._id === review.author);
-        return { ...review, user };
+        return { ...review, user: user! };
       });
     return { ...store, reviews: reviewsWithUsers };
   })
@@ -715,6 +715,13 @@ const ctx = $state<{
     message: string;
     type: "error" | "success";
   } | null;
-}>({ user: null, flash: null });
+}>({
+  user: users[0],
+  flash: {
+    message:
+      "✌️ Heads up! This is a static project, so it can still be explored, but refreshing will clear state! ✌️",
+    type: "error",
+  },
+});
 
 export { getStores, getTags, getUserData, stores, reviews, users, ctx };
