@@ -1,7 +1,7 @@
 <script lang="ts">
-  import { storesWithReviews } from "$lib/data";
+  import { getStores } from "$lib/data.svelte";
   import { page } from "$app/state";
-  const store = storesWithReviews.find(
+  const store = getStores().find(
     (store) => store.slug === page.params.storeSlug
   );
 </script>

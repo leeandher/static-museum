@@ -1,26 +1,26 @@
 <script lang="ts">
   import { page } from "$app/state";
-  import { storesWithReviews } from "$lib/data";
+  import { getTags } from "$lib/data.svelte";
   import StoreCard from "../../stores/storeCard.svelte";
 
-  const allTags = storesWithReviews.flatMap((store) => store.tags).sort();
-
-  const storesWithTag = storesWithReviews.filter((store) =>
-    store.tags.includes(page.data.tag)
-  );
+  const tags = getTags();
+  const storesWithTag = $derived(tags[page.params.tag]);
 </script>
 
 <div class="content">
   <div class="inner">
     <h2>{page.data.tag}</h2>
     <ul class="tags">
-      {#each allTags as tag}
+      {#each Object.entries(tags) as [tag, stores]}
         <li class="tag">
           <a
-            class={["tag__link", tag === page.data.tag && "tag__link--active"]}
+            class={[
+              "tag__link",
+              tag === page.params.tag && "tag__link--active",
+            ]}
             href={`/tags/${tag}`}
             ><span class="tag__text">{tag}</span><span class="tag__count"
-              >7</span
+              >{stores.length}</span
             ></a
           >
         </li>

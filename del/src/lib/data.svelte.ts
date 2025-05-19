@@ -649,14 +649,32 @@ const USERS = [
   },
 ];
 
-const storesWithReviews = STORES.map((store) => {
-  const reviewsWithUsers = REVIEWS.filter(
-    (review) => review.store === store._id
-  ).map((review) => {
-    const user = USERS.find((user) => user._id === review.author);
-    return { ...review, user };
-  });
-  return { ...store, reviews: reviewsWithUsers };
-});
+let stores = $state(STORES);
+let reviews = $state(REVIEWS);
+let users = $state(USERS);
 
-export { storesWithReviews };
+let storesWithReviews = $derived(
+  stores.map((store) => {
+    const reviewsWithUsers = reviews
+      .filter((review) => review.store === store._id)
+      .map((review) => {
+        const user = users.find((user) => user._id === review.author);
+        return { ...review, user };
+      });
+    return { ...store, reviews: reviewsWithUsers };
+  })
+);
+let tagsCount = $derived(
+  storesWithReviews
+    .flatMap((store) => store.tags.map((tag) => ({ tag, store })))
+    .reduce<Record<string, any[]>>((acc, { tag, store }) => {
+      if (!acc[tag]) acc[tag] = [];
+      acc[tag].push(store);
+      return acc;
+    }, {})
+);
+
+const getStores = () => storesWithReviews;
+const getTags = () => tagsCount;
+
+export { getStores, getTags, stores, reviews, users };

@@ -1,26 +1,28 @@
 <script lang="ts">
   import { page } from "$app/state";
-  import { storesWithReviews } from "$lib/data";
+  import { getStores, getTags } from "$lib/data.svelte";
   import StoreCard from "../stores/storeCard.svelte";
-  const allTags = storesWithReviews.flatMap((store) => store.tags).sort();
+
+  const stores = getStores();
+  const tags = getTags();
 </script>
 
 <div class="content">
   <div class="inner">
     <h2>{page.data.tag}</h2>
     <ul class="tags">
-      {#each allTags as tag}
+      {#each Object.entries(tags) as [tag, stores]}
         <li class="tag">
           <a class="tag__link" href={`/tags/${tag}`}
             ><span class="tag__text">{tag}</span><span class="tag__count"
-              >7</span
+              >{stores.length}</span
             ></a
           >
         </li>
       {/each}
     </ul>
     <div class="stores">
-      {#each storesWithReviews as store}
+      {#each stores as store}
         <StoreCard {store} />
       {/each}
     </div>

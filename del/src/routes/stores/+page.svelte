@@ -1,12 +1,12 @@
 <script lang="ts">
-  import { storesWithReviews } from "$lib/data";
+  import { getStores } from "$lib/data.svelte";
 </script>
 
 <div class="content">
   <div class="inner">
     <h2>Stores</h2>
     <div class="stores">
-      {#each storesWithReviews as store}
+      {#each getStores() as store}
         <div class="store">
           <div class="store__hero">
             <div class="store__actions">

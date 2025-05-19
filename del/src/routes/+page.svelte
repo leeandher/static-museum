@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { storesWithReviews } from "$lib/data";
+  import { getStores } from "$lib/data.svelte";
   import StoreCard from "./stores/storeCard.svelte";
 </script>
 
@@ -7,7 +7,7 @@
   <div class="inner">
     <h2>Stores</h2>
     <div class="stores">
-      {#each storesWithReviews as store}
+      {#each getStores() as store}
         <StoreCard {store} />
       {/each}
     </div>
