@@ -1,6 +1,6 @@
 <script lang="ts">
   import { getStores } from "$lib/data.svelte";
-  import StoreCard from "./stores/storeCard.svelte";
+  import StoreCard from "../lib/storeCard.svelte";
 </script>
 
 <div class="content">

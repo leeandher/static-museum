@@ -1,7 +1,7 @@
 <script lang="ts">
   import { page } from "$app/state";
   import { getStores, getTags } from "$lib/data.svelte";
-  import StoreCard from "../stores/storeCard.svelte";
+  import StoreCard from "../../lib/storeCard.svelte";
 
   const stores = getStores();
   const tags = getTags();
