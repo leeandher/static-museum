@@ -21,7 +21,7 @@
     "description": "A cozy bakery specializing in flaky croissants, buttery pastries, and artisanal breads. Watch our bakers at work through the open kitchen while enjoying your morning coffee.",
     "author": "58c039018060197ca0b52d4c",
     "photo": "bakery.jpg",
-    "tags": ["Wifi", "Family Friendly", "Takeout"],
+    "tags": ["Family Friendly", "Takeout"],
     "created": "2024-03-08T17:05:50.134Z",
     "location": {
       "address": "45 Queen Street West, Toronto, ON, Canada",
@@ -126,7 +126,7 @@
     "description": "Elevated toast creations with artisanal bread and creative toppings. A modern take on the classic breakfast favorite.",
     "author": "58c039018060197ca0b52d4c",
     "photo": "toast.jpg",
-    "tags": ["Wifi", "Vegetarian", "Takeout"],
+    "tags": ["Vegetarian", "Takeout"],
     "created": "2024-03-08T19:31:44.389Z",
     "location": {
       "address": "78 Wellington Street West, Toronto, ON, Canada",
