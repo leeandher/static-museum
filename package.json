@@ -1,6 +1,7 @@
 {
   "name": "static-museum",
   "private": true,
+  "type": "module",
   "packageManager": "pnpm@10.7.1",
   "engines": {
     "pnpm": "10.7.1",
@@ -9,33 +10,58 @@
   "scripts": {
     "v0:dev": "pnpm --filter v0 dev",
     "v0:build": "pnpm --filter v0 build",
+    "v0:deploy": "netlify deploy --filter v0 --prod",
     "v1:dev": "pnpm --filter v1 dev",
     "v1:build": "pnpm --filter v1 build",
+    "v1:deploy": "netlify deploy --filter v1 --prod",
     "redux:dev": "pnpm --filter reduxstagram start",
     "redux:build": "pnpm --filter reduxstagram build",
+    "redux:deploy": "netlify deploy --filter reduxstagram --prod",
     "conway:dev": "pnpm --filter conway start",
     "conway:build": "pnpm --filter conway build",
+    "conway:deploy": "netlify deploy --filter conway --prod",
     "md:dev": "pnpm --filter md-prevuer dev",
     "md:build": "pnpm --filter md-prevuer build",
+    "md:deploy": "netlify deploy --filter md-prevuer --prod",
     "bgcg:dev": "pnpm --filter bgcg start",
     "bgcg:build": "pnpm --filter bgcg build",
+    "bgcg:deploy": "netlify deploy --filter bgcg --prod",
     "fyi:dev": "pnpm --filter fyi dev",
     "fyi:build": "pnpm --filter fyi build",
+    "fyi:deploy": "netlify deploy --filter fyi --prod",
     "space:dev": "pnpm --filter space-shooter dev",
     "space:build": "pnpm --filter space-shooter build",
+    "space:deploy": "netlify deploy --filter space-shooter --prod",
     "catch:dev": "pnpm --filter catch-of-the-day dev",
     "catch:build": "pnpm --filter catch-of-the-day build",
+    "catch:deploy": "netlify deploy --filter catch-of-the-day --prod",
     "stacker:dev": "pnpm --filter stacker-news start",
     "stacker:build": "pnpm --filter stacker-news build",
+    "stacker:deploy": "netlify deploy --filter stacker-news --prod",
     "v2:dev": "pnpm --filter v2 dev",
     "v2:build": "pnpm --filter v2 build",
+    "v2:deploy": "netlify deploy --filter v2 --prod",
     "delicious:dev": "pnpm --filter delicious dev",
-    "delicious:build": "pnpm --filter delicious build"
+    "delicious:build": "pnpm --filter delicious build",
+    "delicious:deploy": "netlify deploy --filter delicious --prod"
   },
-  "type": "module",
   "pnpm": {
     "onlyBuiltDependencies": [
-      "esbuild"
+      "@parcel/watcher",
+      "core-js",
+      "core-js-pure",
+      "ejs",
+      "es5-ext",
+      "esbuild",
+      "fsevents",
+      "gatsby",
+      "gatsby-cli",
+      "gatsby-telemetry",
+      "styled-components",
+      "yorkie"
     ]
+  },
+  "devDependencies": {
+    "netlify-cli": "21.5.0"
   }
 }

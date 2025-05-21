@@ -16,5 +16,7 @@ v2/public/
 # unity 
 !space-shooter/Build/
 
+# netlify
+.netlify/
 # mac
 .DS_Store
