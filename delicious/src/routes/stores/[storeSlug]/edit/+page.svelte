@@ -2,6 +2,7 @@
   import { page } from "$app/state";
   import { goto } from "$app/navigation";
   import { getTags, stores, ctx } from "$lib/data.svelte";
+  import Title from "$lib/title.svelte";
   const storeIndex = stores.findIndex(
     (store) => store.slug === page.params.storeSlug
   );
@@ -38,6 +39,8 @@
 </script>
 
 {#if store}
+  <Title title={`Edit ${store.name}`} />
+
   <div class="content">
     <div class="inner">
       <h2>Edit {store.name}</h2>

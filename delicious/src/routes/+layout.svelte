@@ -1,8 +1,7 @@
 <script lang="ts">
   import { page } from "$app/state";
   import { ctx, users, getStores } from "$lib/data.svelte";
-  import type { LayoutProps } from "./$types";
-  let { children, data }: LayoutProps = $props();
+  let { children } = $props();
   const user = $derived(users.find((user) => user._id === ctx.user?._id));
   let search = $state("");
   const searchResults = $derived.by(() => {
@@ -16,13 +15,8 @@
 </script>
 
 <svelte:head>
-  <title>{data.title} | Now That's Delicious!</title>
   <link rel="stylesheet" href="/style.css" />
-  <link
-    rel="shortcut icon"
-    type="image/png"
-    href="/images/icons/doughnut.png"
-  />
+  <link rel="shortcut icon" type="image/png" href="/images/icons/donut.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 </svelte:head>
 

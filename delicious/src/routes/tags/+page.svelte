@@ -1,11 +1,14 @@
 <script lang="ts">
   import { page } from "$app/state";
   import { getStores, getTags } from "$lib/data.svelte";
+  import Title from "$lib/title.svelte";
   import StoreCard from "../../lib/storeCard.svelte";
 
   const stores = getStores();
   const tags = getTags();
 </script>
+
+<Title title="Tags" />
 
 <div class="content">
   <div class="inner">

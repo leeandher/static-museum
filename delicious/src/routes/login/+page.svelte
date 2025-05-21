@@ -1,6 +1,7 @@
 <script lang="ts">
   import { ctx, users } from "$lib/data.svelte";
   import { goto } from "$app/navigation";
+  import Title from "$lib/title.svelte";
 
   let email = $state("");
   async function onsubmit(e: Event) {
@@ -21,6 +22,8 @@
     };
   }
 </script>
+
+<Title title="Login" />
 
 <div class="content">
   <div class="inner">

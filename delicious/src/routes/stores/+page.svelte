@@ -1,7 +1,10 @@
 <script lang="ts">
   import { getStores } from "$lib/data.svelte";
+  import Title from "$lib/title.svelte";
   import StoreCard from "../../lib/storeCard.svelte";
 </script>
+
+<Title title="Stores" />
 
 <div class="content">
   <div class="inner">

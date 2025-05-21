@@ -1,6 +1,7 @@
 <script lang="ts">
   import { ctx, users } from "$lib/data.svelte";
   import { goto } from "$app/navigation";
+  import Title from "$lib/title.svelte";
 
   let formData = $state<{ name: string; email: string }>({
     name: "",
@@ -32,6 +33,8 @@
     };
   }
 </script>
+
+<Title title="Register" />
 
 <div class="content">
   <div class="inner">

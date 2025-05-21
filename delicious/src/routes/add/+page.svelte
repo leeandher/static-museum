@@ -1,6 +1,7 @@
 <script lang="ts">
   import { goto } from "$app/navigation";
   import { getTags, stores, ctx } from "$lib/data.svelte";
+  import Title from "$lib/title.svelte";
 
   const tags = getTags();
   const formData = $state({
@@ -35,6 +36,8 @@
     };
   }
 </script>
+
+<Title title="Add Store" />
 
 <div class="content">
   <div class="inner">

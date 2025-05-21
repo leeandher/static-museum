@@ -1,12 +1,15 @@
 <script lang="ts">
   import { ctx, getUserData } from "$lib/data.svelte";
   import StoreCard from "$lib/storeCard.svelte";
+  import Title from "$lib/title.svelte";
   const userData = $derived(getUserData());
   const heartedStores = $derived(
     userData.find((user) => user._id === ctx.user?._id)?.heartedStores || []
   );
   $inspect(userData, ctx);
 </script>
+
+<Title title="Hearted Stores" />
 
 {#if ctx.user}
   <div class="content">

@@ -1,6 +1,7 @@
 <script lang="ts">
   import { page } from "$app/state";
   import { ctx, getStores, reviews } from "$lib/data.svelte";
+  import Title from "$lib/title.svelte";
   const store = $derived(
     getStores().find((store) => store.slug === page.params.storeSlug)
   );
@@ -25,6 +26,7 @@
 </script>
 
 {#if store}
+  <Title title={store.name} />
   <div class="content">
     <div class="single">
       <div class="single__hero">

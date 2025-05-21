@@ -1,5 +1,6 @@
 <script lang="ts">
   import { ctx, users } from "$lib/data.svelte";
+  import Title from "$lib/title.svelte";
 
   let formData = $state<{ name: string; email: string }>({
     name: ctx.user?.name || "",
@@ -20,6 +21,8 @@
     };
   }
 </script>
+
+<Title title="Account" />
 
 <div class="content">
   <div class="inner">

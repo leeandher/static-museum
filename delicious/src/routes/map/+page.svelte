@@ -1,7 +1,10 @@
 <script>
   import StoreCard from "$lib/storeCard.svelte";
   import { getStores } from "$lib/data.svelte";
+  import Title from "$lib/title.svelte";
 </script>
+
+<Title title="Map" />
 
 <div class="content">
   <div class="inner">
