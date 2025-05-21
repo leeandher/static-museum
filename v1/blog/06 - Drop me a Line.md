@@ -1,12 +1,11 @@
 ---
-type: blog
-archive: true
-showcase: false
-slug: drop-me-a-line
+layout: blogTemplate.liquid
+permalink: /blog/drop-me-a-line/
 title: Drop me a Line
 description: I definitely wouldn't be this far along if I couldn't make mistakes.
-image: /assets/blog__default.jpg
 tags:
+  - blog
+displayTags: 
   - project
   - coding
 date: '2018-04-16'

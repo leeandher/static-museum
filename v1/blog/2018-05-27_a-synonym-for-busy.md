@@ -1,13 +1,12 @@
 ---
-type: blog
-archive: true
-showcase: false
-slug: a-synonym-for-busy
+layout: blogTemplate.liquid
+permalink: /blog/a-synonym-for-busy/
 date: 2018-05-27T22:46:30.135Z
 title: A Synonym For Busy
 description: I'm sure in some cosmic sense everything cancelled out...
-image: /assets/blog__default.jpg
 tags:
+  - blog
+displayTags: 
   - personal
 ---
 

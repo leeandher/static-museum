@@ -30,6 +30,8 @@
   -webkit-box-shadow: 0 0 15px var(--dark) inset;
   box-shadow: 0 0 15px var(--dark) inset;
   margin: 15px;
+  font-size: 24px;
+  background-color: var(--light);
 }
 
 #archive .blog .title, #archive .note .title {
@@ -50,7 +52,7 @@
 }
 
 .blog .title {
-  font-size: 35%;
+  font-size: 32px;
 }
 
 .blog .date {
@@ -59,10 +61,12 @@
 
 .blog .summary {
   font-weight: var(--thin);
+  font-size: 22px;
 }
 
 .blog .tags {
   margin-top: 5px;
+  font-size: 20px;
   font-weight: var(--reg);
 }
 

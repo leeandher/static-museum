@@ -1,14 +1,15 @@
 ---
 type: blog
-archive: true
+archive: false
 showcase: false
-slug: feeling-ashamed-of-empathy
-title: feeling ashamed of empathy?
+slug: navigating-empathy
+title: navigating empathy
 description: just offloading some random thoughts out of my brain and into the internet
 image: /assets/blog__feeling-ashamed-of-empathy.jpg
 tags:
   - thoughts
-  - philosophy
+  - work
+  - life
 date: 2022-04-21T06:57:54.012Z
 ---
 Preface: These thoughts aren't entirely coherant or organized into a beginning, middle and end. There isn't a great throughline other than the guilt of not doing enough, and how that manifests in the way we talk to each other and supress emotion/discussion.

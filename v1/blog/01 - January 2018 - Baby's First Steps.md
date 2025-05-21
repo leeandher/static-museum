@@ -1,13 +1,12 @@
 ---
-type: blog
-archive: true
-showcase: false
-slug: babys-first-steps
+layout: blogTemplate.liquid
+permalink: /blog/babys-first-steps/
 date: "2018-02-02"
 title: January 2018 - Baby's First Steps
 description: I had to build a tribute page.
-image: /assets/blog__default.jpg
 tags:
+  - blog
+displayTags:
   - personal
   - announcement
 ---

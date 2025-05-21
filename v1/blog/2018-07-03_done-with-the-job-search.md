@@ -1,13 +1,12 @@
 ---
-type: blog
-archive: true
-showcase: false
-slug: done-with-the-job-search
+layout: blogTemplate.liquid
+permalink: /blog/done-with-the-job-search/
 date: 2018-07-03T23:30:23.005Z
 title: June 2018 - Done With the Job Search
 description: "So this is it, my written statement of dedication."
-image: /assets/blog__default.jpg
 tags:
+  - blog
+displayTags: 
   - update
   - personal
 ---

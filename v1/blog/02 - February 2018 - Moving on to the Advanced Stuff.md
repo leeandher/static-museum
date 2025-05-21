@@ -1,13 +1,12 @@
 ---
-type: blog
-archive: true
-showcase: false
-slug: moving-on-to-the-adv-stuff
+layout: blogTemplate.liquid
+permalink: /blog/moving-on-to-the-adv-stuff/
 date: "2018-03-01"
 title: February 2018 - Moving on to the Advanced Stuff
 description: Guess that's what the real world is like for web development.
-image: /assets/blog__default.jpg
 tags:
+  - blog
+displayTags: 
   - update
   - coding
 ---

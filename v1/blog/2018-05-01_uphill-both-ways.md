@@ -1,13 +1,12 @@
 ---
-type: blog
-archive: true
-showcase: false
-slug: uphill-both-ways
+layout: blogTemplate.liquid
+permalink: /blog/uphill-both-ways/
 date: 2018-05-01T22:35:00.993Z
 title: April 2018 - Uphill Both Ways
 description: "But that's life, I guess."
-image: /assets/blog__default.jpg
 tags:
+  - blog
+displayTags: 
   - personal
   - update
 ---

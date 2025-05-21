@@ -1,13 +1,12 @@
 ---
-type: blog
-archive: true
-showcase: false
-slug: landing-that-dev-coop
+layout: blogTemplate.liquid
+permalink: /blog/landing-that-dev-coop/
 date: 2018-06-04T22:46:30.135Z
 title: May 2018 - Landing That Dev Co-op
 description: I've gotten a few interviews!
-image: /assets/blog__default.jpg
 tags:
+  - blog
+displayTags: 
   - personal
   - update
 ---

@@ -2,7 +2,7 @@
 <html>
   <head>
     <!--TITLE-->
-    <title>Blog - Leander Rodrigues</title>
+    <title>{{title}} - Leander Rodrigues</title>
 
     <!--META-->
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -17,107 +17,113 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="../resources/css/base.processed.css"
+      href="/resources/css/base.processed.css"
     />
 
     <!--PAGE SPECIFIC STYLESHEET-->
     <link
       rel="stylesheet"
       type="text/css"
-      href="../resources/css/media.processed.css"
+      href="/resources/css/media.processed.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/resources/css/post.processed.css"
     />
 
     <!--FAVICON SETTINGS-->
     <link
       rel="apple-touch-icon"
       sizes="57x57"
-      href="../resources/favicons/apple-icon-57x57.png"
+      href="/resources/favicons/apple-icon-57x57.png"
     />
     <link
       rel="apple-touch-icon"
       sizes="60x60"
-      href="../resources/favicons/apple-icon-60x60.png"
+      href="/resources/favicons/apple-icon-60x60.png"
     />
     <link
       rel="apple-touch-icon"
       sizes="72x72"
-      href="../resources/favicons/apple-icon-72x72.png"
+      href="/resources/favicons/apple-icon-72x72.png"
     />
     <link
       rel="apple-touch-icon"
       sizes="76x76"
-      href="../resources/favicons/apple-icon-76x76.png"
+      href="/resources/favicons/apple-icon-76x76.png"
     />
     <link
       rel="apple-touch-icon"
       sizes="114x114"
-      href="../resources/favicons/apple-icon-114x114.png"
+      href="/resources/favicons/apple-icon-114x114.png"
     />
     <link
       rel="apple-touch-icon"
       sizes="120x120"
-      href="../resources/favicons/apple-icon-120x120.png"
+      href="/resources/favicons/apple-icon-120x120.png"
     />
     <link
       rel="apple-touch-icon"
       sizes="144x144"
-      href="../resources/favicons/apple-icon-144x144.png"
+      href="/resources/favicons/apple-icon-144x144.png"
     />
     <link
       rel="apple-touch-icon"
       sizes="152x152"
-      href="../resources/favicons/apple-icon-152x152.png"
+      href="/resources/favicons/apple-icon-152x152.png"
     />
     <link
       rel="apple-touch-icon"
       sizes="180x180"
-      href="../resources/favicons/apple-icon-180x180.png"
+      href="/resources/favicons/apple-icon-180x180.png"
     />
     <link
       rel="icon"
       type="image/png"
       sizes="192x192"
-      href="../resources/favicons/android-icon-192x192.png"
+      href="/resources/favicons/android-icon-192x192.png"
     />
     <link
       rel="icon"
       type="image/png"
       sizes="32x32"
-      href="../resources/favicons/favicon-32x32.png"
+      href="/resources/favicons/favicon-32x32.png"
     />
     <link
       rel="icon"
       type="image/png"
       sizes="96x96"
-      href="../resources/favicons/favicon-96x96.png"
+      href="/resources/favicons/favicon-96x96.png"
     />
     <link
       rel="icon"
       type="image/png"
       sizes="16x16"
-      href="../resources/favicons/favicon-16x16.png"
+      href="/resources/favicons/favicon-16x16.png"
     />
-    <link rel="manifest" href="../resources/favicons/manifest.json" />
+    <link rel="manifest" href="/resources/favicons/manifest.json" />
     <meta name="msapplication-TileColor" content="#FCFCFC" />
     <meta
       name="msapplication-TileImage"
-      content="../resources/favicons/ms-icon-144x144.png"
+      content="/resources/favicons/ms-icon-144x144.png"
     />
     <meta name="theme-color" content="#FCFCFC" />
   </head>
   <link
     rel="stylesheet"
     type="text/css"
-    href="../resources/css/post.processed.css"
+    href="/resources/css/post.processed.css"
   />
 
   <body>
+    <!--NAVIGATION-->
     <!--NAVIGATION-->
     <nav>
       <ul>
         <li id="logo">
           <a href="../#home">
-            <img src="../resources/images/nav-logo.png" alt="My Logo" />
+            <img src="/resources/images/nav-logo.png" alt="My Logo" />
           </a>
           <div id="toggler">
             <div id="holder">
@@ -139,30 +145,37 @@
         </div>
       </ul>
     </nav>
+
+
+
     <!--TITLE SECTION-->
-    <div class="section dark" id="head">
+    <div class="section dark" id="post-head">
       <div class="content">
-        <div class="center" id="page-title">Blogs</div>
+        <div id="post-title">{{title}}</div>
+        <div id="post-quote">
+          
+        {{description}}</div>
       </div>
     </div>
-    <!--FILTER SECTION-->
-    <div class="text-small" id="utility">
-      <button class="btn-tag">announcement</button>
-      <button class="btn-tag">project</button>
-      <button class="btn-tag">review</button>
-      <button class="btn-tag">personal</button>
-      <button class="btn-tag">technology</button>
-      <button class="btn-tag">coding</button>
-      <button class="btn-tag">games</button>
-      <button class="btn-tag">tv/movies</button>
-    </div>
-    <!--ARTICLE SECTION-->
-    <div class="section" id="archive">
-      <div class="content">
-        <div class="flex-group"></div>
-        <div id="error">No results, sorry!</div>
+
+    <!--RETURN SECTION-->
+    <a class="text-small light" id="page-return" href="/blog"
+      ><i class="fas fa-arrow-left"></i> Back to Archive</a
+    >
+
+    <!--POST SECTION-->
+    <div class="section" id="post-content">
+      <div class="content light">
+        <div id="post-text">{{content}}</div>
+        <div id="post-share">
+          <a href="https://twitter.com/intent/post" target="_blank" rel="noopener" class="fab fa-twitter"></a>
+          <a href="https://www.facebook.com/share_channel" target="_blank" rel="noopener" class="fab fa-facebook-f"></a>
+          <a href="https://www.linkedin.com/shareArticle" target="_blank" rel="noopener" class="fab fa-linkedin-in"></a>
+          <a href="mailto:" target="_blank" rel="noopener" class="far fa-envelope"></a>
+        </div>
       </div>
     </div>
+
     <!--FOOTER SECTION-->
     <footer class="section dark">
       <div class="content">
@@ -207,10 +220,9 @@
     <!--jQuery-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!--Navigation Bar-->
-    <script src="../resources/js/navbar.js"></script>
+    <script src="/resources/js/navbar.js"></script>
     <!--Page Specific-->
-    <script src="../resources/js/media.js"></script>
+    <script src="/resources/js/media.js"></script>
     <script src="/resources/js/post.js"></script>
-    <script src="/shared/dock.js" data-leander-xyz-version="v1"></script>
   </body>
 </html>

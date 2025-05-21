@@ -1,13 +1,12 @@
 ---
-type: blog
-archive: true
-showcase: false
-slug: a-new-direction
+layout: blogTemplate.liquid
+permalink: /blog/a-new-direction/
 date: 2018-04-20T04:00:00.000Z
 title: A New Direction
 description: "...personalize it, and make it more about what describes me."
-image: /assets/blog__default.jpg
 tags:
+  - blog
+displayTags: 
   - personal
   - announcement
 ---

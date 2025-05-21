@@ -1,13 +1,12 @@
 ---
-type: blog
-archive: true
-showcase: false
-slug: memail
+layout: blogTemplate.liquid
+permalink: /blog/memail/
 date: "2018-04-08"
 title: MEmail
 description: I can't wait for the site to be public.
-image: /assets/blog__default.jpg
 tags:
+  - blog
+displayTags: 
   - project
   - coding
 ---

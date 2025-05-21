@@ -52,10 +52,11 @@ body {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  min-height: 20vh;
-  margin: 0;
+
+  margin-top: 20px;
   line-height: 1;
   padding: 10px;
+  font-size: 20px;
   font-weight: var(--thin);
   font-style: italic;
 }

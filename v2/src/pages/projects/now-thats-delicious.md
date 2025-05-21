@@ -6,7 +6,7 @@ title: Now That's Delicious
 description: "A catalog of delicious restaurants for you to view, review and add to! It's built with Node, and serves templated views directly from the server! \U0001F374\U0001F957Hope you're hungry\U0001F95E\U0001F357"
 image: /assets/project__now-thats-delicious.png
 repo: 'https://github.com/leeandher/Now-Thats-Delicious/'
-link: 'https://now-thats-delicious-leeandher.herokuapp.com/'
+link: 'https://delicious.leander.xyz/'
 tech:
   - node
   - express pug

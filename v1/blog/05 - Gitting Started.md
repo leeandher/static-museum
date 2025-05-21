@@ -1,12 +1,11 @@
 ---
-type: blog
-archive: true
-showcase: false
-slug: gitting-started
+layout: blogTemplate.liquid
+permalink: /blog/gitting-started/
 title: Gitting Started
 description: I now see just how powerful a tool git really is!
-image: /assets/blog__default.jpg
 tags:
+  - blog
+displayTags: 
   - coding
 date: '2018-04-14'
 ---
