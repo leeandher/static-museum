@@ -9,15 +9,6 @@
   </header>
 </template>
 
-<script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
-
-@Component
-class Header extends Vue {}
-
-export default Header;
-</script>
-
 <style scoped lang="scss">
 h1 {
   font-size: 5rem;

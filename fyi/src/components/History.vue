@@ -1,3 +1,20 @@
+<script setup lang="ts">
+import HistoryLink from "@/components/HistoryLink.vue";
+
+const props = defineProps<{
+  refresh: () => void;
+  links: any[];
+}>();
+
+const emit = defineEmits<{
+  (e: "delete", id: string): void;
+}>();
+
+const handleDelete = (id: string) => {
+  emit("delete", id);
+};
+</script>
+
 <template>
   <div class="history">
     <div class="header-row">
@@ -7,32 +24,11 @@
       <p class="header">Clicks</p>
       <p class="header">Delete</p>
     </div>
-    <template v-for="link in links">
-      <HistoryLink :key="link._id" :link="link" :refresh="refresh" />
+    <template v-for="link in links" :key="link._id">
+      <HistoryLink :link="link" :refresh="() => handleDelete(link._id)" />
     </template>
   </div>
 </template>
-
-<script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
-import HistoryLink from "@/components/HistoryLink.vue";
-import { ILink } from "@/utils";
-
-@Component({
-  components: {
-    HistoryLink
-  }
-})
-class History extends Vue {
-  @Prop({ required: true }) public refresh!: () => void;
-  @Prop({ required: true }) private links!: ILink[];
-  private created() {
-    this.$props.refresh();
-  }
-}
-
-export default History;
-</script>
 
 <style scoped lang="scss">
 .history {

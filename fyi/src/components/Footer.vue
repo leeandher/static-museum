@@ -15,15 +15,6 @@
   </footer>
 </template>
 
-<script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
-
-@Component
-class Footer extends Vue {}
-
-export default Footer;
-</script>
-
 <style scoped lang="scss">
 p {
   font-size: 1.25rem;

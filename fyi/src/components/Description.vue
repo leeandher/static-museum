@@ -1,3 +1,8 @@
+<script setup lang="ts">
+import { ref } from "vue";
+const year = ref(new Date().getFullYear());
+</script>
+
 <template>
   <div class="description">
     <p>
@@ -5,7 +10,7 @@
         <span>Let's get real</span>
         <span class="red">.</span>
         It's
-        <em>{{year}}</em>
+        <em>{{ year }}</em>
       </span>
       <span class="red">.</span>
     </p>
@@ -32,7 +37,10 @@
         <span class="red">.</span>
       </p>
       <p>
-        <span>This project has reached its end of life since, I'm lazy and don't want to spend 💸 to keep it up</span>
+        <span
+          >This project has reached its end of life since, I'm lazy and don't
+          want to spend 💸 to keep it up</span
+        >
         <span class="red">.</span>
       </p>
       <p>
@@ -43,21 +51,6 @@
     <hr />
   </div>
 </template>
-
-<script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
-
-@Component({
-  data() {
-    return {
-      year: new Date().getFullYear()
-    };
-  }
-})
-class Description extends Vue {}
-
-export default Description;
-</script>
 
 <style scoped lang="scss">
 .description {

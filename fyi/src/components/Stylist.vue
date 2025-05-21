@@ -4,16 +4,6 @@
   </main>
 </template>
 
-
-<script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
-
-@Component
-class Stylist extends Vue {}
-
-export default Stylist;
-</script>
-
 <style lang="scss">
 html {
   background: #2f2e41;

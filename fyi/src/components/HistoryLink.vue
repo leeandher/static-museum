@@ -1,10 +1,29 @@
+<script setup lang="ts">
+import { computed } from "vue";
+import { CLIENT_URL, SUPER_MEGA_SECRET_ULTRA_KEY, API_URL } from "@/utils";
+
+const props = defineProps<{
+  refresh: () => void;
+  link: any;
+}>();
+
+const shortLink = computed(() => `lgr.fyi/${props.link.suffix}`);
+const shortLinkText = computed(() => `lgr.fyi/${props.link.suffix}`);
+
+const deleteItem = (id: string): void => {
+  props.refresh();
+};
+
+const copyLink = (): void => {
+  navigator.clipboard.writeText(shortLink.value);
+};
+</script>
+
 <template>
   <div class="item-row">
-    <button type="button" class="copy item" v-clipboard:copy="shortLink">
-      🔗
-    </button>
+    <button type="button" class="copy item" @click="copyLink">🔗</button>
     <p class="suffix item">
-      <a :href="shortLink">{{ shortLinkText }}</a>
+      <a title="FYI: These links won't work!">{{ shortLinkText }}</a>
     </p>
     <p class="origin item">{{ link.origin }}</p>
     <p class="clicks item">{{ link.clicks }}</p>
@@ -13,45 +32,6 @@
     </button>
   </div>
 </template>
-
-<script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
-import {
-  CLIENT_URL,
-  CLIENT_URL_SHORT,
-  SUPER_MEGA_SECRET_ULTRA_KEY,
-  ILink,
-} from "@/utils";
-
-@Component({
-  data() {
-    return {
-      shortLink: `${CLIENT_URL}/${this.$props.link.suffix}`,
-      shortLinkText: `${CLIENT_URL_SHORT}/${this.$props.link.suffix}`,
-    };
-  },
-})
-class HistoryLink extends Vue {
-  @Prop({ required: true }) public refresh!: () => void;
-  @Prop({ required: true }) private link!: ILink;
-
-  private deleteItem(id: string): void {
-    const oldHistory = JSON.parse(
-      localStorage.getItem(SUPER_MEGA_SECRET_ULTRA_KEY) || "[]"
-    );
-    const newHistory = oldHistory.filter(
-      ({ _id }: { _id: string }) => id !== _id
-    );
-    localStorage.setItem(
-      SUPER_MEGA_SECRET_ULTRA_KEY,
-      JSON.stringify(newHistory)
-    );
-    this.$props.refresh();
-  }
-}
-
-export default HistoryLink;
-</script>
 
 <style scoped lang="scss">
 button {

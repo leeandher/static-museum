@@ -31,130 +31,87 @@
       </fieldset>
     </form>
     <template v-if="history.length">
-      <History :links="history" :refresh="loadHistory" />
+      <History :links="history" :refresh="loadHistory" @delete="handleDelete" />
     </template>
   </div>
 </template>
-
-<script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
-import { findIndex } from "lodash";
+<script setup lang="ts">
+import { ref, onMounted } from "vue";
 import History from "@/components/History.vue";
-import {
-  SUPER_MEGA_SECRET_ULTRA_KEY,
-  API_URL,
-  ILink,
-  IError,
-} from "@/utils";
 
-@Component({
-  components: {
-    History,
+const props = defineProps<{
+  disabled?: boolean;
+}>();
+const origin = ref("");
+const suffix = ref("");
+const history = ref<any[]>([
+  {
+    _id: "2",
+    origin: "https://www.example.com/hyper-text-markup-language",
+    suffix: "html-🌐",
+    clicks: 133,
   },
-  data() {
-    return {
-      origin: "",
-      suffix: "",
-      history: [],
-      loading: false,
-      error: {
-        message: "",
-        type: "",
-      },
-    };
+  {
+    _id: "1",
+    origin: "https://www.example.com/dungeons-and-dragons",
+    suffix: "dnd-⚔️",
+    clicks: 42,
   },
-})
-class Linker extends Vue {
+  {
+    _id: "3",
+    origin: "https://www.example.com/i-wish-this-link-was-shorter",
+    suffix: "wow-✨",
+    clicks: 256,
+  },
+  {
+    _id: "4",
+    origin: "https://www.example.com/do-they-all-need-to-have-emojis",
+    suffix: "nope",
+    clicks: 89,
+  },
+]);
+const loading = ref(false);
+const error = ref<{ message: string; type: string }>({
+  message: "",
+  type: "",
+});
 
-  @Prop({ default: false })
-  private disabled?: boolean;
+const clearError = (): void => {
+  error.value = {
+    message: "",
+    type: "",
+  };
+};
 
-  public async loadHistory(): Promise<void> {
-    // Load whatevers in localStorage
-    const oldHistory: string =
-      localStorage.getItem(SUPER_MEGA_SECRET_ULTRA_KEY) || "[]";
-    this.$data.history = JSON.parse(oldHistory) || [];
-    // Fetch an update on clicks
-    const bodyArray: string[] = this.$data.history.map(
-      ({ suffix }: { suffix: string }) => suffix
-    );
-    const body = JSON.stringify({ suffixes: bodyArray });
-    const res = await fetch(`${API_URL}/history`, {
-      headers: { "Content-Type": "application/json" },
-      method: "POST",
-      body,
-    });
-    const data = await res.json();
-    const links: ILink[] = data.map((link: ILink) => ({
-      _id: link._id,
-      origin: link.origin,
-      suffix: link.suffix,
-      clicks: link.clicks,
-    }));
-    this.$data.history = links;
-    links.forEach(this.loadIntoHistory);
-  }
-  private created() {
-    this.loadHistory();
-  }
-  private async onSubmit(): Promise<void> {
-    // Set the loading state and clear the error
-    this.$data.loading = true;
-    this.clearError();
+const onSubmit = (): void => {
+  // Set the loading state and clear the error
+  loading.value = true;
+  clearError();
 
-    // Submit the request
-    const { origin, suffix } = this.$data;
-    const body: string = JSON.stringify({ origin, suffix });
-    const res = await fetch(API_URL, {
-      headers: { "Content-Type": "application/json" },
-      method: "POST",
-      body,
-    });
-    const data = await res.json();
+  // Create a new link
+  const newLink = {
+    _id: Date.now().toString(), // Generate a unique ID
+    origin: origin.value,
+    suffix: suffix.value,
+    clicks: 0,
+  };
 
-    // Update the loading state, and display the response
-    this.$data.loading = false;
-    return data.error ? this.displayError(data) : this.loadIntoHistory(data);
-  }
-  private loadIntoHistory(data: ILink): void {
-    // Extract the link
-    const link = {
-      _id: data._id,
-      origin: data.origin,
-      suffix: data.suffix,
-      clicks: data.clicks,
-    };
-    const history = this.$data.history || [];
+  // Add to history
+  history.value = [newLink, ...history.value];
 
-    const linkIndex = findIndex(history, link);
-    if (linkIndex > -1) {
-      // If in history, update the item
-      history[linkIndex] = link;
-    } else {
-      // Otherwise, add it
-      history.unshift(link);
-    }
+  // Clear the form
+  origin.value = "";
+  suffix.value = "";
+  loading.value = false;
+};
 
-    // Update history
-    this.$data.history = history;
-    localStorage.setItem(
-      SUPER_MEGA_SECRET_ULTRA_KEY,
-      JSON.stringify(this.$data.history)
-    );
-  }
-  private displayError(data: IError): void {
-    const error = {
-      message: data.message,
-      type: data.type,
-    };
-    this.$data.error = error;
-  }
-  private clearError(): void {
-    this.$data.error = {};
-  }
-}
+const handleDelete = (id: string): void => {
+  history.value = history.value.filter((link) => link._id !== id);
+};
 
-export default Linker;
+onMounted(() => {
+  loadHistory();
+});
 </script>
 
 <style scoped lang="scss">

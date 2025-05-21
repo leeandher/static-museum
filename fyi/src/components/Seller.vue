@@ -4,13 +4,14 @@
       <img alt="Social influencer" src="../assets/social_influencer.svg" />
       <p>
         Get some
-        <span class="red">more followers</span> with some convenient shorter links
+        <span class="red">more followers</span> with some convenient shorter
+        links
       </p>
     </div>
     <div class="grid-item">
       <p class="right">
-        <span class="red">Finally learn to skateboard</span>, with
-        all that time you'll save
+        <span class="red">Finally learn to skateboard</span>, with all that time
+        you'll save
       </p>
       <img alt="Skateboarding" src="../assets/skateboard.svg" />
     </div>
@@ -23,7 +24,8 @@
     </div>
     <div class="grid-item">
       <p class="right">
-        <span class="red">Get out of your comfort zone</span>, there's a whole world out there
+        <span class="red">Get out of your comfort zone</span>, there's a whole
+        world out there
       </p>
       <img alt="Taking a trip" src="../assets/teleport.svg" />
     </div>
@@ -36,21 +38,13 @@
     </div>
     <div class="grid-item">
       <p class="right">
-        <span class="red">Hustle that grind</span>, and beat your competition to market
+        <span class="red">Hustle that grind</span>, and beat your competition to
+        market
       </p>
       <img alt="The hustle" src="../assets/hustle.svg" />
     </div>
   </section>
 </template>
-
-<script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
-
-@Component
-class Seller extends Vue {}
-
-export default Seller;
-</script>
 
 <style scoped lang="scss">
 .grid-item {
