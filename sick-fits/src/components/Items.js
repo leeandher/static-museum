@@ -1,29 +1,11 @@
-import React, { Component } from "react";
-import { Query } from "react-apollo";
-import gql from "graphql-tag";
 import styled from "styled-components";
 import Link from "next/link";
 
-import Item from "./Item";
-import Pagination from "./Pagination";
-
+import Item from "@/components/Item";
+import Pagination from "@/components/Pagination";
+import { useStore } from "@/backend/context";
 import { PER_PAGE } from "@/config";
-
-const ALL_ITEMS_QUERY = gql`
-  query ALL_ITEMS_QUERY(
-    $skip: Int = 0,
-    $first: Int = ${PER_PAGE}
-  ) {
-    items(first: $first, skip: $skip, orderBy: createdAt_DESC) {
-      id
-      title
-      price
-      description
-      image
-      largeImage
-    }
-  }
-`;
+import Page from "@/components/Page";
 
 const Center = styled.div`
   text-align: center;
@@ -51,55 +33,41 @@ const MainWrap = styled.div`
   }
 `;
 
-class Items extends Component {
-  render() {
-    const { page } = this.props;
-    return (
+export default function Items({ page }) {
+  const { state } = useStore();
+  const { items, loading, error } = state;
+
+  const paginatedItems = items.slice((page - 1) * PER_PAGE, page * PER_PAGE);
+  return (
+    <Page>
       <Center>
         <Pagination page={page} />
-        <Query
-          query={ALL_ITEMS_QUERY}
-          variables={{
-            skip: (page - 1) * PER_PAGE,
-            first: PER_PAGE,
-          }}
-        >
-          {({ data, error, loading }) => {
-            if (loading)
-              return (
-                <p>
-                  ⚡ Loading (I'm on a free Heroku dyno, so this may initially
-                  take around 45s, but then it'll be speedy!)... ⚡
-                </p>
-              );
-            if (error) return <p>❌ Error ❌: {error.message}</p>;
-            return (
-              <MainWrap>
-                {data.items.length === 0 && (
-                  <h2>
-                    There aren't any items in the shop right now!
-                    <br />
-                    <Link href="/sell">
-                      <a>
-                        <span>Selling something?</span>
-                      </a>
-                    </Link>
-                  </h2>
-                )}
-                <ItemsList>
-                  {data.items.map((item) => (
-                    <Item key={item.id} item={item} />
-                  ))}
-                </ItemsList>
-              </MainWrap>
-            );
-          }}
-        </Query>
+        {loading && (
+          <p>
+            ⚡ Loading (not really, this is all static data, but imagine!)... ⚡
+          </p>
+        )}
+        {error && <p>❌ Error ❌: {error.message}</p>}
+        <MainWrap>
+          {items.length === 0 && (
+            <h2>
+              There aren't any items in the shop right now!
+              <br />
+              <Link href="/sell">
+                <a>
+                  <span>Selling something?</span>
+                </a>
+              </Link>
+            </h2>
+          )}
+          <ItemsList>
+            {paginatedItems.map((item) => (
+              <Item key={item.id} item={item} />
+            ))}
+          </ItemsList>
+        </MainWrap>
         <Pagination page={page} />
       </Center>
-    );
-  }
+    </Page>
+  );
 }
-
-export default Items;
-export { ALL_ITEMS_QUERY };

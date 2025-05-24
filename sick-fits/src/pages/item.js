@@ -1,11 +1,10 @@
-import React from "react";
-
 import SingleItem from "@/components/SingleItem";
+import Page from "@/components/Page";
 
 const ItemPage = ({ query }) => (
-  <div>
+  <Page>
     <SingleItem id={query.id} />
-  </div>
+  </Page>
 );
 
 export default ItemPage;

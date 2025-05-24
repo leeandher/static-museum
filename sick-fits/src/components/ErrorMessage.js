@@ -1,7 +1,5 @@
-import styled from "styled-components"
-import React from "react"
-
-import PropTypes from "prop-types"
+import styled from "styled-components";
+import React from "react";
 
 const ErrorStyles = styled.div`
   padding: 2rem;
@@ -16,10 +14,10 @@ const ErrorStyles = styled.div`
   strong {
     margin-right: 1rem;
   }
-`
+`;
 
 const DisplayError = ({ error }) => {
-  if (!error || !error.message) return null
+  if (!error || !error.message) return null;
   if (
     error.networkError &&
     error.networkError.result &&
@@ -31,7 +29,7 @@ const DisplayError = ({ error }) => {
           <strong>Shoot!</strong> {error.message.replace("GraphQL error: ", "")}
         </p>
       </ErrorStyles>
-    ))
+    ));
   }
   return (
     <ErrorStyles>
@@ -40,15 +38,7 @@ const DisplayError = ({ error }) => {
         {error.message.replace("GraphQL error: ", "")}
       </p>
     </ErrorStyles>
-  )
-}
+  );
+};
 
-DisplayError.defaultProps = {
-  error: {}
-}
-
-DisplayError.propTypes = {
-  error: PropTypes.object
-}
-
-export default DisplayError
+export default DisplayError;

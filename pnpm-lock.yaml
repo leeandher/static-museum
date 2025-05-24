@@ -196,38 +196,11 @@ importers:
         specifier: 4.0.1
         version: 4.0.1
 
-  sf:
-    dependencies:
-      next:
-        specifier: 15.1.8
-        version: 15.1.8(@babel/core@7.27.1)(@opentelemetry/api@1.8.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.89.0)
-      react:
-        specifier: ^19.0.0
-        version: 19.1.0
-      react-dom:
-        specifier: ^19.0.0
-        version: 19.1.0(react@19.1.0)
-
   sick-fits:
     dependencies:
-      babel-core:
-        specifier: 7.0.0-bridge.0
-        version: 7.0.0-bridge.0(@babel/core@7.27.1)
-      babel-plugin-styled-components:
-        specifier: 1.7.1
-        version: 1.7.1(styled-components@6.1.18(react-dom@19.1.0(react@19.1.0))(react@19.1.0))
-      date-fns:
-        specifier: 4.1.0
-        version: 4.1.0
-      downshift:
-        specifier: 9.0.9
-        version: 9.0.9(react@19.1.0)
-      lodash.debounce:
-        specifier: 4.0.8
-        version: 4.0.8
       next:
         specifier: 15.1.8
-        version: 15.1.8(@babel/core@7.27.1)(@opentelemetry/api@1.8.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.89.0)
+        version: 15.1.8(@opentelemetry/api@1.8.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.89.0)
       nprogress:
         specifier: 0.2.0
         version: 0.2.0
@@ -237,22 +210,9 @@ importers:
       react-dom:
         specifier: 19.1.0
         version: 19.1.0(react@19.1.0)
-      react-transition-group:
-        specifier: 4.4.5
-        version: 4.4.5(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       styled-components:
         specifier: 6.1.18
         version: 6.1.18(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
-    devDependencies:
-      babel-jest:
-        specifier: 23.6.0
-        version: 23.6.0(babel-core@7.0.0-bridge.0(@babel/core@7.27.1))
-      babel-plugin-module-resolver:
-        specifier: 3.1.1
-        version: 3.1.1
-      casual:
-        specifier: 1.5.19
-        version: 1.5.19
 
   space-shooter:
     dependencies:
@@ -5188,10 +5148,6 @@ packages:
     resolution: {integrity: sha512-Cg7TFGpIr01vOQNODXOOaGz2NpCU5gl8x1qJFbb6hbZxR7XrcE2vtbAsTAbJ7/xwJtUuJEw8K8Zr/AE0LHlesg==}
     engines: {node: '>=10', npm: '>=6'}
 
-  babel-plugin-module-resolver@3.1.1:
-    resolution: {integrity: sha512-1Q77Al4ydp6nYApJ7sQ2fmgz30WuQgJZegIYuyOdbdpxenB/bSezQ3hDPsumIXGlUS4vUIv+EwFjzzXZNWtARw==}
-    engines: {node: '>= 4.0.0'}
-
   babel-plugin-named-asset-import@0.3.8:
     resolution: {integrity: sha512-WXiAc++qo7XcJ1ZnTYGtLxmBCVbddAml3CEXgWaBzNzLNoxtQ8AiGEFDMOhot9XjTCQbvP5E77Fj9Gk924f00Q==}
     peerDependencies:
@@ -5218,11 +5174,6 @@ packages:
     peerDependencies:
       '@babel/core': ^7.0.0
       gatsby: ^5.0.0-next
-
-  babel-plugin-styled-components@1.7.1:
-    resolution: {integrity: sha512-pLRCnT8jW4D8QToGFNj8IxJCTnvcBk03qE2K0FMrTX/mMp23Hg5di6F6/lQaCLVjb8jyS39WBI29ouulrHfUCQ==}
-    peerDependencies:
-      styled-components: '>= 2'
 
   babel-plugin-styled-components@2.1.4:
     resolution: {integrity: sha512-Xgp9g+A/cG47sUyRwwYxGM4bR/jDRg5N6it/8+HxCnbT5XNKSKDT9xm4oag/osgqjC2It/vH0yXsomOG6k558g==}
@@ -5707,9 +5658,6 @@ packages:
   caseless@0.12.0:
     resolution: {integrity: sha512-4tYFyifaFfGacoiObjJegolkwSU4xQNGbVgUiNYVUxbQ2x2lUsFvY4hVgVzGiIe6WLOPqycWXA40l+PWsxthUw==}
 
-  casual@1.5.19:
-    resolution: {integrity: sha512-zMWzIs7y4grU0mkb6ZAWyHVJFHRZ2V/zi9GTrVv9v9PcS4Ur3AHaKocl4DLjhLR0J5LnMhMsMiAjGooqYo2t1Q==}
-
   ccount@1.1.0:
     resolution: {integrity: sha512-vlNK021QdI7PNeiUh/lKkC/mNHHfV0m/Ad5JoI0TYtlBnJAslM/JIkm/tGC88bkLIwO6OQ5uV6ztS6kVAtCDlg==}
 
@@ -6090,9 +6038,6 @@ packages:
   compression@1.8.0:
     resolution: {integrity: sha512-k6WLKfunuqCYD3t6AsuPGvQWaKwuLLh2/xHNcX4qE+vIfDNXpSqnrhwA7O53R7WVQUnt8dVAIW+YHr7xTgOgGA==}
     engines: {node: '>= 0.8.0'}
-
-  compute-scroll-into-view@3.1.1:
-    resolution: {integrity: sha512-VRhuHOLoKYOy4UbilLbUzbYg93XLjv2PncJC50EuTWPA3gaja1UjBsUP/D/9/juV3vQFr6XBEzn9KCAHdUvOHw==}
 
   concat-map@0.0.1:
     resolution: {integrity: sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==}
@@ -6977,9 +6922,6 @@ packages:
     resolution: {integrity: sha512-fnULvOpxnC5/Vg3NCiWelDsLiUc9bRwAPs/+LfTLNvetFCtCTN+yQz15C/fs4AwX1R9K5GLtLfn8QW+dWisaAw==}
     engines: {node: '>=0.11'}
 
-  date-fns@4.1.0:
-    resolution: {integrity: sha512-Ukq0owbQXxa/U3EGtsdVBkR1w7KOQ5gIBqdH2hkvknzZPYvBxb/aa6E8L7tmjFtkwZBu3UXBbjIgPo/Ez4xaNg==}
-
   de-indent@1.0.2:
     resolution: {integrity: sha512-e/1zu3xH5MQryN2zdVaF0OrdNLUbvWxzMbi+iNA6Bky7l1RoP8a2fIbRocyHclXt/arDrrR6lL3TqFD9pMQTsg==}
 
@@ -7320,9 +7262,6 @@ packages:
   dom-helpers@3.4.0:
     resolution: {integrity: sha512-LnuPJ+dwqKDIyotW1VzmOZ5TONUN7CwkCR5hrgawTUbkBGYdeoNLZo6nNfGkCrjtE1nXXaj7iMMpDa8/d9WoIA==}
 
-  dom-helpers@5.2.1:
-    resolution: {integrity: sha512-nRCa7CK3VTrM2NmGkIy4cbK7IZlgBE/PYMn55rrXefr5xXDP0LdtfPnblFDoVdcAfslJ7or6iqAUnx0CCGIWQA==}
-
   dom-matches@2.0.0:
     resolution: {integrity: sha512-2VI856xEDCLXi19W+4BechR5/oIS6bKCKqcf16GR8Pg7dGLJ/eBOWVbCmQx2ISvYH6wTNx5Ef7JTOw1dRGRx6A==}
 
@@ -7422,11 +7361,6 @@ packages:
   dotenv@8.6.0:
     resolution: {integrity: sha512-IrPdXQsk2BbzvCBGBOTmmSH5SodmqZNt4ERAZDmW4CT+tL8VtvinqywuANaFu4bOMWki16nqf0e4oC0QIaDr/g==}
     engines: {node: '>=10'}
-
-  downshift@9.0.9:
-    resolution: {integrity: sha512-ygOT8blgiz5liDuEFAIaPeU4dDEa+w9p6PHVUisPIjrkF5wfR59a52HpGWAVVMoWnoFO8po2mZSScKZueihS7g==}
-    peerDependencies:
-      react: '>=16.12.0'
 
   draft-js@0.10.5:
     resolution: {integrity: sha512-LE6jSCV9nkPhfVX2ggcRLA4FKs6zWq9ceuO/88BpXdNCS7mjRTgs0NsV6piUCJX9YxMsB9An33wnkMmU2sD2Zg==}
@@ -8441,10 +8375,6 @@ packages:
   finalhandler@1.3.1:
     resolution: {integrity: sha512-6BN9trH7bp3qvnrRyzsBz+g3lZxTNZTbVO2EV1CS0WIcDbawYVdYvGflME/9QP0h0pYlCDBCTjYa9nZzMDpyxQ==}
     engines: {node: '>= 0.8'}
-
-  find-babel-config@1.2.2:
-    resolution: {integrity: sha512-oK59njMyw2y3yxto1BCfVK7MQp/OYf4FleHu0RgosH3riFJ1aOuo/7naLDLAObfrgn3ueFhw5sAT/cp0QuJI3Q==}
-    engines: {node: '>=4.0.0'}
 
   find-cache-dir@0.1.1:
     resolution: {integrity: sha512-Z9XSBoNE7xQiV6MSgPuCfyMokH2K7JdpRkOYE1+mu3d4BFJtx3GW+f6Bo4q8IX6rlf5MYbLBKW0pjl2cWdkm2A==}
@@ -11610,9 +11540,6 @@ packages:
   merge@1.2.1:
     resolution: {integrity: sha512-VjFo4P5Whtj4vsLzsYBu5ayHhoHJ0UqNm7ibvShmbmoz7tGi0vXaoJbGdB+GmDMLUdg8DpQXEIeVDAe8MaABvQ==}
 
-  mersenne-twister@1.1.0:
-    resolution: {integrity: sha512-mUYWsMKNrm4lfygPkL3OfGzOPTR2DBlTkBNHM//F6hGp8cLThY897crAlk3/Jo17LEOOjQUrNAx6DvgO77QJkA==}
-
   methods@1.1.2:
     resolution: {integrity: sha512-iclAHeNqNm68zFtnZ0e+1L2yUIdvzNoauKU4WBA3VvH/vPFieF7qfRlwUZU+DA9P9bPXIS90ulxoUoCH23sV2w==}
     engines: {node: '>= 0.6'}
@@ -14301,9 +14228,6 @@ packages:
   react-is@17.0.2:
     resolution: {integrity: sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==}
 
-  react-is@18.2.0:
-    resolution: {integrity: sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==}
-
   react-is@18.3.1:
     resolution: {integrity: sha512-/LLMVyas0ljjAtoYiPqYiL8VWXzUUdThrmU5+n20DZv+a+ClRoevUzw5JxU+Ieh5/c87ytoTBV9G1FiKfNJdmg==}
 
@@ -14461,12 +14385,6 @@ packages:
     peerDependencies:
       react: '>=15.0.0'
       react-dom: '>=15.0.0'
-
-  react-transition-group@4.4.5:
-    resolution: {integrity: sha512-pZcd1MCJoiKiBR2NRxeCRg13uCXbydPnmB4EOeRrY7480qNWO8IIgQG6zlDkm6uRMsURXPuKq0GWtiM59a5Q6g==}
-    peerDependencies:
-      react: '>=16.6.0'
-      react-dom: '>=16.6.0'
 
   react-typist@2.0.5:
     resolution: {integrity: sha512-iZCkeqeegO0TlkTMiH2JD1tvMtY9RrXkRylnAI6m8aCVAUUwNzoWTVF7CKLij6THeOMcUDCznLDDvNp55s+YZA==}
@@ -14778,9 +14696,6 @@ packages:
 
   requires-port@1.0.0:
     resolution: {integrity: sha512-KigOCHcocU3XODJxsu8i/j8T9tzT4adHiecwORRQ0ZZFcp7ahwXuRU1m+yuO90C5ZUyGeGfocHDI14M3L3yDAQ==}
-
-  reselect@3.0.1:
-    resolution: {integrity: sha512-b/6tFZCmRhtBMa4xGqiiRp9jh9Aqi2A687Lo265cN0/QohJQEBPiQ52f4QB6i0eF3yp3hmLL21LSGBcML2dlxA==}
 
   resize-observer-polyfill@1.5.1:
     resolution: {integrity: sha512-LwZrotdHOo12nQuZlHEmtuXdqGoOD0OhaxopaNFxWzInpEgaLWoVuAMbTzixuosCx2nEG58ngzW3vxdWoxIgdg==}
@@ -24528,10 +24443,6 @@ snapshots:
     dependencies:
       '@babel/core': 7.2.2
 
-  babel-core@7.0.0-bridge.0(@babel/core@7.27.1):
-    dependencies:
-      '@babel/core': 7.27.1
-
   babel-eslint@10.1.0(eslint@7.32.0):
     dependencies:
       '@babel/code-frame': 7.27.1
@@ -24600,14 +24511,6 @@ snapshots:
   babel-jest@23.6.0(babel-core@7.0.0-bridge.0(@babel/core@7.2.2)):
     dependencies:
       babel-core: 7.0.0-bridge.0(@babel/core@7.2.2)
-      babel-plugin-istanbul: 4.1.6
-      babel-preset-jest: 23.2.0
-    transitivePeerDependencies:
-      - supports-color
-
-  babel-jest@23.6.0(babel-core@7.0.0-bridge.0(@babel/core@7.27.1)):
-    dependencies:
-      babel-core: 7.0.0-bridge.0(@babel/core@7.27.1)
       babel-plugin-istanbul: 4.1.6
       babel-preset-jest: 23.2.0
     transitivePeerDependencies:
@@ -24792,14 +24695,6 @@ snapshots:
       cosmiconfig: 7.1.0
       resolve: 1.22.10
 
-  babel-plugin-module-resolver@3.1.1:
-    dependencies:
-      find-babel-config: 1.2.2
-      glob: 7.2.3
-      pkg-up: 2.0.0
-      reselect: 3.0.1
-      resolve: 1.22.10
-
   babel-plugin-named-asset-import@0.3.8(@babel/core@7.2.2):
     dependencies:
       '@babel/core': 7.2.2
@@ -24843,12 +24738,6 @@ snapshots:
       '@babel/types': 7.27.1
       gatsby: 5.12.7(@types/webpack@4.41.40)(babel-eslint@10.1.0(eslint@7.32.0))(encoding@0.1.13)(eslint-plugin-jest@24.7.0(@typescript-eslint/eslint-plugin@5.62.0(@typescript-eslint/parser@5.62.0(eslint@7.32.0)(typescript@5.8.3))(eslint@7.32.0)(typescript@5.8.3))(eslint@7.32.0)(typescript@5.8.3))(eslint-plugin-testing-library@3.10.2(eslint@7.32.0)(typescript@5.8.3))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sockjs-client@1.6.1)(type-fest@4.41.0)(typescript@5.8.3)(vue-template-compiler@2.6.10)(webpack-dev-server@4.15.2(webpack@5.99.8))(webpack-hot-middleware@2.26.1)
       gatsby-core-utils: 4.14.0
-
-  babel-plugin-styled-components@1.7.1(styled-components@6.1.18(react-dom@19.1.0(react@19.1.0))(react@19.1.0)):
-    dependencies:
-      '@babel/helper-annotate-as-pure': 7.27.1
-      lodash: 4.17.21
-      styled-components: 6.1.18(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
 
   babel-plugin-styled-components@2.1.4(@babel/core@7.27.1)(styled-components@6.1.18(react-dom@18.2.0(react@18.2.0))(react@18.2.0)):
     dependencies:
@@ -25694,11 +25583,6 @@ snapshots:
 
   caseless@0.12.0: {}
 
-  casual@1.5.19:
-    dependencies:
-      mersenne-twister: 1.1.0
-      moment: 2.30.1
-
   ccount@1.1.0: {}
 
   chain-function@1.0.1: {}
@@ -26181,8 +26065,6 @@ snapshots:
       vary: 1.1.2
     transitivePeerDependencies:
       - supports-color
-
-  compute-scroll-into-view@3.1.1: {}
 
   concat-map@0.0.1: {}
 
@@ -26892,8 +26774,6 @@ snapshots:
     dependencies:
       '@babel/runtime': 7.27.1
 
-  date-fns@4.1.0: {}
-
   de-indent@1.0.2: {}
 
   debug@2.6.9(supports-color@5.5.0):
@@ -27266,11 +27146,6 @@ snapshots:
     dependencies:
       '@babel/runtime': 7.27.1
 
-  dom-helpers@5.2.1:
-    dependencies:
-      '@babel/runtime': 7.27.1
-      csstype: 3.1.3
-
   dom-matches@2.0.0: {}
 
   dom-scroll-into-view@1.2.1: {}
@@ -27365,15 +27240,6 @@ snapshots:
   dotenv@8.2.0: {}
 
   dotenv@8.6.0: {}
-
-  downshift@9.0.9(react@19.1.0):
-    dependencies:
-      '@babel/runtime': 7.27.1
-      compute-scroll-into-view: 3.1.1
-      prop-types: 15.8.1
-      react: 19.1.0
-      react-is: 18.2.0
-      tslib: 2.8.1
 
   draft-js@0.10.5(react-dom@16.6.3(react@16.6.3))(react@16.6.3):
     dependencies:
@@ -29065,11 +28931,6 @@ snapshots:
       unpipe: 1.0.0
     transitivePeerDependencies:
       - supports-color
-
-  find-babel-config@1.2.2:
-    dependencies:
-      json5: 1.0.2
-      path-exists: 3.0.0
 
   find-cache-dir@0.1.1:
     dependencies:
@@ -33713,8 +33574,6 @@ snapshots:
 
   merge@1.2.1: {}
 
-  mersenne-twister@1.1.0: {}
-
   methods@1.1.2: {}
 
   metro-babel-transformer@0.82.3:
@@ -34467,7 +34326,7 @@ snapshots:
 
   next-tick@1.1.0: {}
 
-  next@15.1.8(@babel/core@7.27.1)(@opentelemetry/api@1.8.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.89.0):
+  next@15.1.8(@opentelemetry/api@1.8.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.89.0):
     dependencies:
       '@next/env': 15.1.8
       '@swc/counter': 0.1.3
@@ -34477,7 +34336,7 @@ snapshots:
       postcss: 8.4.31
       react: 19.1.0
       react-dom: 19.1.0(react@19.1.0)
-      styled-jsx: 5.1.6(@babel/core@7.27.1)(react@19.1.0)
+      styled-jsx: 5.1.6(react@19.1.0)
     optionalDependencies:
       '@next/swc-darwin-arm64': 15.1.8
       '@next/swc-darwin-x64': 15.1.8
@@ -37425,8 +37284,6 @@ snapshots:
 
   react-is@17.0.2: {}
 
-  react-is@18.2.0: {}
-
   react-is@18.3.1: {}
 
   react-konami@0.6.2(react@18.2.0):
@@ -37993,15 +37850,6 @@ snapshots:
       react-dom: 16.3.0-alpha.1(react@16.3.0-alpha.1)
       warning: 3.0.0
 
-  react-transition-group@4.4.5(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
-    dependencies:
-      '@babel/runtime': 7.27.1
-      dom-helpers: 5.2.1
-      loose-envify: 1.4.0
-      prop-types: 15.8.1
-      react: 19.1.0
-      react-dom: 19.1.0(react@19.1.0)
-
   react-typist@2.0.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
       prop-types: 15.8.1
@@ -38424,8 +38272,6 @@ snapshots:
   require-package-name@2.0.1: {}
 
   requires-port@1.0.0: {}
-
-  reselect@3.0.1: {}
 
   resize-observer-polyfill@1.5.1: {}
 
@@ -39853,12 +39699,10 @@ snapshots:
       stylis: 4.3.2
       tslib: 2.6.2
 
-  styled-jsx@5.1.6(@babel/core@7.27.1)(react@19.1.0):
+  styled-jsx@5.1.6(react@19.1.0):
     dependencies:
       client-only: 0.0.1
       react: 19.1.0
-    optionalDependencies:
-      '@babel/core': 7.27.1
 
   stylehacks@4.0.3:
     dependencies:

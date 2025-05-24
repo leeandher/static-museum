@@ -1,21 +1,11 @@
-import Link from "next/link"
-import styled from "styled-components"
-import Router from "next/router"
-import NProgress from "nprogress"
+import Link from "next/link";
+import styled from "styled-components";
+import NProgress from "nprogress";
+import { useRouter } from "next/router";
 
-import Nav from "./Nav"
-import Cart from "./Cart"
-import Search from "./Search"
-
-Router.onRouteChangeStart = () => {
-  NProgress.start()
-}
-Router.onRouteChangeComplete = () => {
-  NProgress.done()
-}
-Router.onRouteChangeError = () => {
-  NProgress.done()
-}
+import Nav from "@/components/Nav";
+import Cart from "@/components/Cart";
+import Search from "@/components/Search";
 
 const Logo = styled.h1`
   font-size: 4rem;
@@ -34,7 +24,7 @@ const Logo = styled.h1`
     margin: 0;
     text-align: center;
   }
-`
+`;
 const StyledHeader = styled.header`
   .bar {
     border-bottom: 10px solid ${({ theme }) => theme.black};
@@ -52,23 +42,29 @@ const StyledHeader = styled.header`
     grid-template-columns: 1fr auto;
     border-bottom: 1px solid ${({ theme }) => theme.lightGrey};
   }
-`
+`;
 
-const Header = () => (
-  <StyledHeader>
-    <div className="bar">
-      <Logo>
-        <Link href="/">
-          <a>Sick Fits</a>
-        </Link>
-      </Logo>
-      <Nav />
-    </div>
-    <div className="sub-bar">
-      <Search />
-    </div>
-    <Cart />
-  </StyledHeader>
-)
+export default function Header() {
+  const router = useRouter();
 
-export default Header
+  router.onRouteChangeStart = () => NProgress.start();
+  router.onRouteChangeComplete = () => NProgress.done();
+  router.onRouteChangeError = () => NProgress.done();
+
+  return (
+    <StyledHeader>
+      <div className="bar">
+        <Logo>
+          <Link href="/">
+            <a>Sick Fits</a>
+          </Link>
+        </Logo>
+        <Nav />
+      </div>
+      <div className="sub-bar">
+        <Search />
+      </div>
+      <Cart />
+    </StyledHeader>
+  );
+}

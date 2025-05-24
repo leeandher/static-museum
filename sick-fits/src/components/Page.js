@@ -1,20 +1,20 @@
-import React, { Component } from 'react'
-import styled, { ThemeProvider, injectGlobal } from 'styled-components'
+import React, { Component } from "react";
+import styled, { ThemeProvider, injectGlobal } from "styled-components";
 
-import Header from './Header'
-import Meta from './Meta'
-import theme from './styles/_palette'
+import Header from "@/components/Header";
+import Meta from "@/components/Meta";
+import theme from "@/components/styles/_palette";
 
 const StyledPage = styled.div`
   background: white;
   color: ${({ theme }) => theme.black};
-`
+`;
 
 const Inner = styled.div`
   max-width: ${({ theme }) => theme.maxWidth};
   margin: 0 auto;
   padding: 2rem;
-`
+`;
 
 injectGlobal`
   @font-face {
@@ -44,7 +44,7 @@ injectGlobal`
   button:hover {
     cursor: pointer;
   }
-`
+`;
 
 class Page extends Component {
   render() {
@@ -56,8 +56,8 @@ class Page extends Component {
           <Inner>{this.props.children}</Inner>
         </StyledPage>
       </ThemeProvider>
-    )
+    );
   }
 }
 
-export default Page
+export default Page;

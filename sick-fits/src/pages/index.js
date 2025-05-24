@@ -1,3 +1,3 @@
-import Items from './items'
+import Items from "@/pages/items";
 
-export default Items
+export default Items;

@@ -1,9 +1,6 @@
-import React from "react";
-import PropTypes from "prop-types";
 import styled from "styled-components";
 
-import RemoveFromCart from "./RemoveFromCart";
-
+import RemoveFromCart from "@/components/RemoveFromCart";
 import formatMoney from "@/lib/formatMoney";
 
 const CartItemStyles = styled.li`
@@ -27,7 +24,7 @@ const CartItemStyles = styled.li`
   }
 `;
 
-const CartItem = ({ cartItem: { id, item, quantity } }) => {
+export default function CartItem({ cartItem: { id, item, quantity } }) {
   if (!item) {
     return (
       <CartItemStyles>
@@ -57,10 +54,4 @@ const CartItem = ({ cartItem: { id, item, quantity } }) => {
       <RemoveFromCart id={id} />
     </CartItemStyles>
   );
-};
-
-CartItem.propTypes = {
-  cartItem: PropTypes.object.isRequired,
-};
-
-export default CartItem;
+}

@@ -1,5 +1,5 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react";
+import styled from "styled-components";
 
 const Wrapper = styled.div`
   border: 3px solid white;
@@ -19,7 +19,7 @@ const Wrapper = styled.div`
     display: grid;
     max-width: 350px;
   }
-`
+`;
 const DemoSignupMessage = () => (
   <Wrapper>
     <p>
@@ -34,6 +34,6 @@ const DemoSignupMessage = () => (
       <span className="standout">pines</span>
     </div>
   </Wrapper>
-)
+);
 
-export default DemoSignupMessage
+export default DemoSignupMessage;
