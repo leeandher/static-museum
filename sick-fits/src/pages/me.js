@@ -1,14 +1,10 @@
-import React from "react";
-
 import PleaseSignIn from "@/components/PleaseSignIn";
 import Profile from "@/components/Profile";
 
-const ProfilePage = ({ query }) => (
+export default function ProfilePage() {
   <div>
     <PleaseSignIn>
       <Profile />
     </PleaseSignIn>
-  </div>
-);
-
-export default ProfilePage;
+  </div>;
+}

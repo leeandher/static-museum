@@ -4,7 +4,6 @@ import dynamic from "next/dynamic";
 import Header from "@/components/Header";
 import Meta from "@/components/Meta";
 import theme from "@/components/styles/_palette";
-import { StoreProvider } from "@/backend/context";
 
 const StyledPage = styled.div`
   background: white;
@@ -27,15 +26,13 @@ const Themer = dynamic(
 class Page extends Component {
   render() {
     return (
-      <StoreProvider>
-        <Themer theme={theme}>
-          <StyledPage>
-            <Meta />
-            <Header />
-            <Inner>{this.props.children}</Inner>
-          </StyledPage>
-        </Themer>
-      </StoreProvider>
+      <Themer theme={theme}>
+        <StyledPage>
+          <Meta />
+          <Header />
+          <Inner>{this.props.children}</Inner>
+        </StyledPage>
+      </Themer>
     );
   }
 }

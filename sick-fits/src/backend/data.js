@@ -284,8 +284,8 @@ USER.orders = [
       items: [],
       total: 0,
       charge: "ch_1",
-      createdAt: new Date(),
-      updatedAt: new Date(),
+      createdAt: new Date(Date.now() - 30 * 24 * 60 * 60 * 1000),
+      updatedAt: new Date(Date.now() - 30 * 24 * 60 * 60 * 1000),
     }
   ),
   ITEMS.slice(8, 14).reduce(
@@ -299,12 +299,12 @@ USER.orders = [
       return acc;
     },
     {
-      id: "order1",
+      id: "order2",
       items: [],
       total: 0,
-      charge: "ch_1",
-      createdAt: new Date(),
-      updatedAt: new Date(),
+      charge: "ch_2",
+      createdAt: new Date(Date.now() - 2 * 30 * 24 * 60 * 60 * 1000),
+      updatedAt: new Date(Date.now() - 2 * 30 * 24 * 60 * 60 * 1000),
     }
   ),
 ];

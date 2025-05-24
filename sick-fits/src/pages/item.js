@@ -1,10 +1,12 @@
 import SingleItem from "@/components/SingleItem";
-import Page from "@/components/Page";
+import { useSearchParams } from "next/navigation";
 
-const ItemPage = ({ query }) => (
-  <Page>
-    <SingleItem id={query.id} />
-  </Page>
-);
-
-export default ItemPage;
+export default function ItemPage() {
+  const searchParams = useSearchParams();
+  const id = searchParams.get("id");
+  return (
+    <div>
+      <SingleItem id={id} />
+    </div>
+  );
+}

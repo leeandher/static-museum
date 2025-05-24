@@ -5,13 +5,12 @@ import Form from "@/components/styles/Form";
 import { useStore } from "@/backend/context";
 import { USER } from "@/backend/data";
 
-export default function SignIn({ header, samePage }) {
+export default function SignIn({ header, samePage = false }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const router = useRouter();
   const { state, dispatch } = useStore();
 
-  const { header, samePage } = this.props;
   return (
     <Form
       method="post"

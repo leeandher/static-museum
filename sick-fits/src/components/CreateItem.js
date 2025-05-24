@@ -1,5 +1,8 @@
 import Form from "@/components/styles/Form";
 import ErrorMessage from "@/components/ErrorMessage";
+import { useStore } from "@/backend/context";
+import { useRouter } from "next/router";
+import { useState } from "react";
 
 export default function CreateItem() {
   const router = useRouter();
@@ -18,6 +21,7 @@ export default function CreateItem() {
   };
 
   const { title, description, image, price } = state;
+  const { error, loading } = storeState;
 
   return (
     <Form

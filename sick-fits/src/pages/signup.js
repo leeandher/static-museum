@@ -1,6 +1,4 @@
-import React from "react";
 import styled from "styled-components";
-
 import SignUp from "@/components/SignUp";
 import SignIn from "@/components/SignIn";
 import RequestReset from "@/components/RequestReset";
@@ -12,15 +10,15 @@ const Columns = styled.div`
   grid-gap: 20px;
 `;
 
-const SignUpPage = (props) => (
-  <>
-    <DemoSignupMessage />
-    <Columns>
-      <SignUp />
-      <SignIn />
-      <RequestReset />
-    </Columns>
-  </>
-);
-
-export default SignUpPage;
+export default function SignUpPage() {
+  return (
+    <>
+      <DemoSignupMessage />
+      <Columns>
+        <SignUp />
+        <SignIn />
+        <RequestReset />
+      </Columns>
+    </>
+  );
+}
