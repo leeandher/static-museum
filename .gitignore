@@ -18,5 +18,9 @@ v2/public/
 
 # netlify
 .netlify/
+
+# next
+.next/
+
 # mac
 .DS_Store

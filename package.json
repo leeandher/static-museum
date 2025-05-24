@@ -43,7 +43,10 @@
     "v2:deploy": "netlify deploy --filter v2 --prod",
     "delicious:dev": "pnpm --filter delicious dev",
     "delicious:build": "pnpm --filter delicious build",
-    "delicious:deploy": "netlify deploy --filter delicious --prod"
+    "delicious:deploy": "netlify deploy --filter delicious --prod",
+    "sick:dev": "pnpm --filter sick-fits dev",
+    "sick:build": "pnpm --filter sick-fits build",
+    "sick:deploy": "netlify deploy --filter sick-fits --prod"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
@@ -57,6 +60,7 @@
       "gatsby",
       "gatsby-cli",
       "gatsby-telemetry",
+      "sharp",
       "styled-components",
       "yorkie"
     ]

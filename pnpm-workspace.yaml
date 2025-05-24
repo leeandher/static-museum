@@ -11,6 +11,7 @@ packages:
   - stacker-news
   - v2
   - delicious
+  - sick-fits
 onlyBuiltDependencies:
   - '@parcel/watcher'
   - core-js
