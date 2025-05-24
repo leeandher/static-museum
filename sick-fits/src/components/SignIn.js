@@ -1,93 +1,56 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import gql from 'graphql-tag'
-import { Mutation } from 'react-apollo'
-import Router from 'next/router'
+import { useState } from "react";
+import { useRouter } from "next/router";
 
-import ErrorMessage from './ErrorMessage'
-import Form from './styles/Form'
+import Form from "@/components/styles/Form";
+import { useStore } from "@/backend/context";
+import { USER } from "@/backend/data";
 
-import { CURRENT_USER_QUERY } from './User'
+export default function SignIn({ header, samePage }) {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const router = useRouter();
+  const { state, dispatch } = useStore();
 
-const SIGN_IN_MUTATION = gql`
-  mutation SIGN_IN_MUTATION($email: String!, $password: String!) {
-    signIn(email: $email, password: $password) {
-      id
-      name
-      email
-    }
-  }
-`
-
-class SignIn extends Component {
-  static propTypes = {
-    header: PropTypes.string,
-    samePage: PropTypes.bool
-  }
-  state = {
-    email: '',
-    password: ''
-  }
-  saveToState = e => {
-    const { value, name } = e.target
-    this.setState({ [name]: value })
-  }
-  render() {
-    const { header, samePage } = this.props
-    const { email, password } = this.state
-    return (
-      <Mutation
-        mutation={SIGN_IN_MUTATION}
-        variables={this.state}
-        refetchQueries={[{ query: CURRENT_USER_QUERY }]}
-      >
-        {(signIn, { error, loading }) => {
-          return (
-            <Form
-              method="post"
-              onSubmit={async e => {
-                e.preventDefault()
-                await signIn()
-                this.setState({
-                  email: '',
-                  name: '',
-                  password: ''
-                })
-                if (!samePage) Router.push('/')
-              }}
-            >
-              <fieldset disabled={loading} aria-busy={loading}>
-                <h2>{header ? header : 'Already have an account?'}</h2>
-                <ErrorMessage error={error} />
-                <label htmlFor="email">
-                  Email
-                  <input
-                    type="text"
-                    name="email"
-                    placeholder="e.g. kanye@west.com"
-                    value={email}
-                    onChange={this.saveToState}
-                  />
-                </label>
-                <label htmlFor="password">
-                  Password
-                  <input
-                    type="password"
-                    name="password"
-                    placeholder="e.g. y33zy"
-                    value={password}
-                    onChange={this.saveToState}
-                  />
-                </label>
-                <button type="submit">Sign In!</button>
-              </fieldset>
-            </Form>
-          )
-        }}
-      </Mutation>
-    )
-  }
+  const { header, samePage } = this.props;
+  return (
+    <Form
+      method="post"
+      onSubmit={async (e) => {
+        e.preventDefault();
+        dispatch({
+          type: "UPDATE_USER",
+          user: { ...USER, ...state.user, email, password },
+        });
+        if (!samePage) {
+          router.push("/");
+        }
+      }}
+    >
+      <fieldset disabled={loading} aria-busy={loading}>
+        <h2>{header ? header : "Already have an account?"}</h2>
+        <ErrorMessage error={error} />
+        <label htmlFor="email">
+          Email
+          <input
+            type="text"
+            name="email"
+            placeholder="e.g. kanye@west.com"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </label>
+        <label htmlFor="password">
+          Password
+          <input
+            type="password"
+            name="password"
+            placeholder="e.g. y33zy"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </label>
+        <button type="submit">Sign In!</button>
+      </fieldset>
+    </Form>
+  );
 }
-
-export default SignIn
-export { SIGN_IN_MUTATION }

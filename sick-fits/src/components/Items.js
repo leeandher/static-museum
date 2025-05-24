@@ -5,7 +5,6 @@ import Item from "@/components/Item";
 import Pagination from "@/components/Pagination";
 import { useStore } from "@/backend/context";
 import { PER_PAGE } from "@/config";
-import Page from "@/components/Page";
 
 const Center = styled.div`
   text-align: center;
@@ -39,35 +38,31 @@ export default function Items({ page }) {
 
   const paginatedItems = items.slice((page - 1) * PER_PAGE, page * PER_PAGE);
   return (
-    <Page>
-      <Center>
-        <Pagination page={page} />
-        {loading && (
-          <p>
-            ⚡ Loading (not really, this is all static data, but imagine!)... ⚡
-          </p>
+    <Center>
+      <Pagination page={page} />
+      {loading && (
+        <p>
+          ⚡ Loading (not really, this is all static data, but imagine!)... ⚡
+        </p>
+      )}
+      {error && <p>❌ Error ❌: {error.message}</p>}
+      <MainWrap>
+        {items.length === 0 && (
+          <h2>
+            There aren't any items in the shop right now!
+            <br />
+            <Link href="/sell">
+              <span>Selling something?</span>
+            </Link>
+          </h2>
         )}
-        {error && <p>❌ Error ❌: {error.message}</p>}
-        <MainWrap>
-          {items.length === 0 && (
-            <h2>
-              There aren't any items in the shop right now!
-              <br />
-              <Link href="/sell">
-                <a>
-                  <span>Selling something?</span>
-                </a>
-              </Link>
-            </h2>
-          )}
-          <ItemsList>
-            {paginatedItems.map((item) => (
-              <Item key={item.id} item={item} />
-            ))}
-          </ItemsList>
-        </MainWrap>
-        <Pagination page={page} />
-      </Center>
-    </Page>
+        <ItemsList>
+          {paginatedItems.map((item) => (
+            <Item key={item.id} item={item} />
+          ))}
+        </ItemsList>
+      </MainWrap>
+      <Pagination page={page} />
+    </Center>
   );
 }

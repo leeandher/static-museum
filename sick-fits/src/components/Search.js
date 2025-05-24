@@ -1,117 +1,59 @@
-import React, { Component } from "react"
-import Downshift, { resetIdCounter } from "downshift"
-import Router from "next/router"
-import { ApolloConsumer } from "react-apollo"
-import gql from "graphql-tag"
-import debounce from "lodash.debounce"
+import {
+  DropDown,
+  DropDownItem,
+  SearchStyles,
+} from "@/components/styles/DropDown";
+import { useRouter } from "next/router";
+import { useState } from "react";
+import { useStore } from "@/backend/context";
 
-import { DropDown, DropDownItem, SearchStyles } from "./styles/DropDown"
+export default function Search() {
+  const router = useRouter();
+  const { state } = useStore();
+  const [searchTerm, setSearchTerm] = useState("");
 
-const SEARCH_ITEMS_QUERY = gql`
-  query SEARCH_ITEMS_QUERY($searchTerm: String!) {
-    items(
-      where: {
-        OR: [
-          { title_contains: $searchTerm }
-          { description_contains: $searchTerm }
-        ]
-      }
-    ) {
-      id
-      image
-      title
-    }
-  }
-`
-
-class Search extends Component {
-  state = {
-    items: [],
-    loading: false
-  }
-
-  handleSearch = debounce(async (searchTerm, client) => {
-    // 1. Set the loading state to true
-    await this.setState({ loading: true })
-    // 2. Manually query the apollo client
-    const res = await client.query({
-      query: SEARCH_ITEMS_QUERY,
-      variables: { searchTerm }
-    })
-    // 3. Set the loading state to false, and parse the items
-    this.setState({
-      items: res.data.items,
-      loading: false
-    })
-  }, 350)
-
-  routeToItem({ id }) {
-    Router.push({
-      pathname: "/item",
-      query: {
-        id
-      }
-    })
-  }
-
-  render() {
-    const { items, loading } = this.state
-    resetIdCounter()
-    return (
-      <SearchStyles>
-        <Downshift
-          onChange={this.routeToItem}
-          itemToString={item => (item === null ? "" : item.title)}
-        >
-          {({
-            getInputProps,
-            getItemProps,
-            isOpen,
-            inputValue,
-            highlightedIndex
-          }) => (
-            <div>
-              <ApolloConsumer>
-                {client => (
-                  <input
-                    {...getInputProps({
-                      type: "search",
-                      placeholder: "Search!",
-                      id: "search",
-                      className: loading ? "loading" : "",
-                      onChange: e => {
-                        e.persist()
-                        this.handleSearch(e.target.value, client)
-                      }
-                    })}
-                  />
-                )}
-              </ApolloConsumer>
-              {isOpen && (
-                <DropDown>
-                  {items.map((item, i) => (
-                    <DropDownItem
-                      {...getItemProps({ item })}
-                      key={item.id}
-                      highlighted={i === highlightedIndex}
-                    >
-                      <img width="50" src={item.image} alt={item.title} />
-                      {item.title}
-                    </DropDownItem>
-                  ))}
-                  {items.length === 0 && !loading && (
-                    <DropDownItem>
-                      Nothing found for '{inputValue}'
-                    </DropDownItem>
-                  )}
-                </DropDown>
-              )}
-            </div>
-          )}
-        </Downshift>
-      </SearchStyles>
+  const items = state.items
+    .filter(
+      (item) =>
+        item.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        item.description.toLowerCase().includes(searchTerm.toLowerCase())
     )
-  }
-}
+    .slice(0, 5);
 
-export default Search
+  return (
+    <SearchStyles>
+      <div>
+        <input
+          type="search"
+          placeholder="Search!"
+          id="search"
+          value={searchTerm}
+          onChange={(e) => {
+            setSearchTerm(e.target.value);
+          }}
+        />
+        {searchTerm.length > 0 && (
+          <DropDown>
+            {items.map((item, i) => (
+              <DropDownItem
+                key={item.id}
+                onClick={() => {
+                  router.push({
+                    pathname: "/item",
+                    query: { id: item.id },
+                  });
+                }}
+              >
+                <img width="50" src={item.image} alt={item.title} />
+                {item.title}
+              </DropDownItem>
+            ))}
+            {items.length === 0 && (
+              <DropDownItem>Nothing found for '{searchTerm}'</DropDownItem>
+            )}
+          </DropDown>
+        )}
+      </div>
+    </SearchStyles>
+  );
+}

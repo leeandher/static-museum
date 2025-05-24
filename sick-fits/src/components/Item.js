@@ -7,6 +7,7 @@ import DeleteItem from "@/components/DeleteItem";
 import AddToCart from "@/components/AddToCart";
 
 import formatMoney from "@/lib/formatMoney";
+import { useStore } from "@/backend/context";
 
 export default function Item({ item }) {
   const { state } = useStore();
@@ -16,12 +17,10 @@ export default function Item({ item }) {
       <PriceTag>{formatMoney(price)}</PriceTag>
 
       <Link href={{ pathname: "item", query: { id: id } }}>
-        <a>{image && <img src={image} alt={title} />}</a>
+        {image && <img src={image} alt={title} />}
       </Link>
       <Title>
-        <Link href={{ pathname: "item", query: { id: id } }}>
-          <a>{title}</a>
-        </Link>
+        <Link href={{ pathname: "item", query: { id: id } }}>{title}</Link>
       </Title>
       <p>{description}</p>
       {state.user && (

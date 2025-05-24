@@ -119,24 +119,22 @@ export default function Profile() {
             query: { id: order.id },
           }}
         >
-          <a>
-            <OrderSummary>
-              <p className="field">
-                <span>ID</span>
-                <span>{order.id}</span>
-              </p>
-              <p className="field">
-                <span>Date</span>
-                <span>
-                  {format(Date.parse(order.createdAt), "MMMM d, YYY h:mm a")}
-                </span>
-              </p>
-              <p className="field">
-                <span>Total</span>
-                <span>{formatMoney(order.total)}</span>
-              </p>
-            </OrderSummary>
-          </a>
+          <OrderSummary>
+            <p className="field">
+              <span>ID</span>
+              <span>{order.id}</span>
+            </p>
+            <p className="field">
+              <span>Date</span>
+              <span>
+                {format(Date.parse(order.createdAt), "MMMM d, YYY h:mm a")}
+              </span>
+            </p>
+            <p className="field">
+              <span>Total</span>
+              <span>{formatMoney(order.total)}</span>
+            </p>
+          </OrderSummary>
         </Link>
       ))}
     </ProfileWrapper>

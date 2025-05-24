@@ -7,6 +7,7 @@ import SickButton from "@/components/styles/SickButton";
 
 import calcTotalPrice from "@/lib/calcTotalPrice";
 import formatMoney from "@/lib/formatMoney";
+import { useStore } from "@/backend/context";
 
 export default function Cart() {
   const { state, dispatch } = useStore();

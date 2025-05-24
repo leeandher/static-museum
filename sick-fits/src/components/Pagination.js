@@ -7,15 +7,16 @@ import PaginationStyles from "@/components/styles/PaginationStyles";
 import { PER_PAGE } from "@/config";
 import { useStore } from "@/backend/context";
 
-const StylishAnchor = styled.a`
+const StylishSpan = styled.span`
   color: ${({ theme }) => theme.black};
   cursor: pointer;
 `;
 
 export default function Pagination({ page }) {
   const { state } = useStore();
-  const pages = Math.ceil(state.items.length / PER_PAGE);
-  if (state.items.length === 0) return null;
+  const count = state.items.length;
+  const pages = Math.ceil(count / PER_PAGE);
+  if (count === 0) return null;
   return (
     <PaginationStyles data-test="pagination">
       <Head>
@@ -30,9 +31,9 @@ export default function Pagination({ page }) {
           query: { page: page - 1 },
         }}
       >
-        <StylishAnchor className="prev" aria-disabled={page <= 1}>
+        <StylishSpan className="prev" aria-disabled={page <= 1}>
           ← Prev
-        </StylishAnchor>
+        </StylishSpan>
       </Link>
       <p>
         Page {page} of {pages}
@@ -45,9 +46,9 @@ export default function Pagination({ page }) {
           query: { page: page + 1 },
         }}
       >
-        <StylishAnchor className="next" aria-disabled={page >= pages}>
+        <StylishSpan className="next" aria-disabled={page >= pages}>
           Next →
-        </StylishAnchor>
+        </StylishSpan>
       </Link>
     </PaginationStyles>
   );

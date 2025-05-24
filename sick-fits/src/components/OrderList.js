@@ -75,34 +75,32 @@ class OrderList extends Component {
                       href={{ pathname: "order", query: { id: order.id } }}
                       key={order.id}
                     >
-                      <a>
-                        <div className="order-meta">
-                          <p>
-                            {itemCount(order)} Item
-                            {itemCount(order) !== 1 && "s"}
-                          </p>
-                          <p>
-                            {productCount(order)} Product
-                            {productCount(order) !== 1 && "s"}
-                          </p>
-                          <p>
-                            {formatDistance(
-                              Date.parse(order.createdAt),
-                              new Date()
-                            )}
-                          </p>
-                          <p>{formatMoney(order.total)}</p>
-                        </div>
-                        <div className="images">
-                          {order.items.map((item) => (
-                            <img
-                              src={item.image}
-                              alt={item.title}
-                              key={item.id}
-                            />
-                          ))}
-                        </div>
-                      </a>
+                      <div className="order-meta">
+                        <p>
+                          {itemCount(order)} Item
+                          {itemCount(order) !== 1 && "s"}
+                        </p>
+                        <p>
+                          {productCount(order)} Product
+                          {productCount(order) !== 1 && "s"}
+                        </p>
+                        <p>
+                          {formatDistance(
+                            Date.parse(order.createdAt),
+                            new Date()
+                          )}
+                        </p>
+                        <p>{formatMoney(order.total)}</p>
+                      </div>
+                      <div className="images">
+                        {order.items.map((item) => (
+                          <img
+                            src={item.image}
+                            alt={item.title}
+                            key={item.id}
+                          />
+                        ))}
+                      </div>
                     </Link>
                   </OrderItemStyles>
                 ))}

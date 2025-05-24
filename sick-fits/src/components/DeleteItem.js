@@ -1,3 +1,5 @@
+import { useStore } from "@/backend/context";
+
 export default function DeleteItem({ children, id }) {
   const { state, dispatch } = useStore();
   return (

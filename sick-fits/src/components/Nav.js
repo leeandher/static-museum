@@ -2,7 +2,6 @@ import Link from "next/link";
 import SignOut from "@/components/SignOut";
 import CartCount from "@/components/CartCount";
 import NavStyles from "@/components/styles/NavStyles";
-
 import { useStore } from "@/backend/context";
 
 export default function Nav() {
@@ -10,20 +9,12 @@ export default function Nav() {
   const { user: me } = state;
   return (
     <NavStyles data-test="nav">
-      <Link href="/items">
-        <a>Shop</a>
-      </Link>
+      <Link href="/items">Shop</Link>
       {me && (
         <>
-          <Link href="/sell">
-            <a>Sell</a>
-          </Link>
-          <Link href="/orders">
-            <a>Orders</a>
-          </Link>
-          <Link href="/me">
-            <a>Account</a>
-          </Link>
+          <Link href="/sell">Sell</Link>
+          <Link href="/orders">Orders</Link>
+          <Link href="/me">Account</Link>
           <SignOut />
           <button onClick={() => dispatch({ type: "TOGGLE_CART" })}>
             My Cart
@@ -37,11 +28,7 @@ export default function Nav() {
           </button>
         </>
       )}
-      {!me && (
-        <Link href="/signup">
-          <a>Sign In</a>
-        </Link>
-      )}
+      {!me && <Link href="/signup">Sign In</Link>}
     </NavStyles>
   );
 }
