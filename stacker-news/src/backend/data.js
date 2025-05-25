@@ -403,4 +403,13 @@ export const INITIAL_LINKS = [
       { user: { id: "7", name: "Anonymous" } },
     ],
   },
+  {
+    description: "Buying clothes online but they change price when you refresh",
+    url: "https://sick-fits.leander.xyz",
+    postedBy: { id: "1", name: "leander" },
+    votes: [
+      { user: { id: "2", name: "Anonymous" } },
+      { user: { id: "3", name: "Anonymous" } },
+    ],
+  },
 ];
