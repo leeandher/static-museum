@@ -52,16 +52,19 @@
 }
 
 .blog .title {
-  font-size: 32px;
+  font-size: 28px;
 }
 
 .blog .date {
   font-weight: var(--reg);
+  font-size: 20px;
+  font-style: italic;
 }
 
 .blog .summary {
   font-weight: var(--thin);
-  font-size: 22px;
+  font-size: 20px;
+
 }
 
 .blog .tags {

@@ -160,7 +160,7 @@
     <div class="section" id="archive">
       <div class="content">
         <div class="flex-group media">
-        {%- for post in collections.blog -%}
+        {%- for post in collections.blog reversed -%}
           <a class="blog" id="blog-{{ forloop.index }}" href="{{ post.url }}">
               <div class="title">{{ post.data.title }}</div>
               <div class="date">{{ post.data.date | date: "%B %d, %Y" }}</div>
