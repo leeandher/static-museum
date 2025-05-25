@@ -1,0 +1,3 @@
+[build]
+command = "pnpm run sick:build"
+# Requires nextjs build plugin -> https://app.netlify.com/plugins/@netlify/plugin-nextjs/install

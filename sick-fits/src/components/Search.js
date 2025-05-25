@@ -38,6 +38,7 @@ export default function Search() {
               <DropDownItem
                 key={item.id}
                 onClick={() => {
+                  setSearchTerm("");
                   router.push({
                     pathname: "/item",
                     query: { id: item.id },
