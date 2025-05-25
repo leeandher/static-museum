@@ -1,6 +1,5 @@
 import Link from "next/link";
 import styled from "styled-components";
-import NProgress from "nprogress";
 import { useRouter } from "next/router";
 
 import Nav from "@/components/Nav";
@@ -45,24 +44,21 @@ const StyledHeader = styled.header`
 `;
 
 export default function Header() {
-  const router = useRouter();
-
-  router.onRouteChangeStart = () => NProgress.start();
-  router.onRouteChangeComplete = () => NProgress.done();
-  router.onRouteChangeError = () => NProgress.done();
-
   return (
-    <StyledHeader>
-      <div className="bar">
-        <Logo>
-          <Link href="/">Sick Fits</Link>
-        </Logo>
-        <Nav />
-      </div>
-      <div className="sub-bar">
-        <Search />
-      </div>
-      <Cart />
-    </StyledHeader>
+    <>
+      <StyledHeader>
+        <div className="bar">
+          <Logo>
+            <Link href="/">Sick Fits</Link>
+          </Logo>
+
+          <Nav />
+        </div>
+        <div className="sub-bar">
+          <Search />
+        </div>
+        <Cart />
+      </StyledHeader>
+    </>
   );
 }

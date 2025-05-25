@@ -3,11 +3,17 @@ import Head from "next/head";
 import formatMoney from "@/lib/formatMoney";
 import ErrorMessage from "@/components/ErrorMessage";
 import OrderStyles from "@/components/styles/OrderStyles";
+import { useStore } from "@/backend/context";
+import { useRouter } from "next/router";
 
 export default function Order({ id }) {
   const { state } = useStore();
-  const { error, loading } = state;
-  const order = state.orders.find((order) => order.id === id);
+  const router = useRouter();
+  const { error, loading, user } = state;
+  const order = user.orders.find((order) => order.id === id);
+  if (!order) {
+    router.push("/");
+  }
 
   if (loading) return <p>⚡ Loading... ⚡</p>;
   if (error) return <ErrorMessage error={error} />;

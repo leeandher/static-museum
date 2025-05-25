@@ -1,11 +1,11 @@
+import Profile from "@/components/Profile";
 import PleaseSignIn from "@/components/PleaseSignIn";
-import Order from "@/components/Order";
 
-export default function OrderPage({ query }) {
+export default function ProfilePage() {
   return (
     <div>
       <PleaseSignIn>
-        <Order id={query.id} />
+        <Profile />
       </PleaseSignIn>
     </div>
   );

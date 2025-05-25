@@ -38,22 +38,12 @@ export default function Cart() {
         ))}
       </ul>
       {me.cart.length ? (
-        <>
-          <p>
-            Credit Card shy? This bad boi is powered using Stripe's Test
-            Environment, so just go ahead and uses{" "}
-            <span style={{ borderBottom: "3px solid red" }}>
-              4242 4242 4242 4242
-            </span>{" "}
-            as your CC number (anything as CVC/Exp) 👌👌
-          </p>
-          <footer>
-            <p>{formatMoney(calcTotalPrice(me.cart))}</p>
-            <Merchant>
-              <SickButton>Checkout</SickButton>
-            </Merchant>
-          </footer>
-        </>
+        <footer>
+          <p>{formatMoney(calcTotalPrice(me.cart))}</p>
+          <Merchant>
+            <SickButton>Checkout</SickButton>
+          </Merchant>
+        </footer>
       ) : null}
     </CartStyles>
   );

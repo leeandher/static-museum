@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { USER } from "@/backend/data";
 
 const Wrapper = styled.div`
   border: 3px solid white;
@@ -20,20 +21,21 @@ const Wrapper = styled.div`
     max-width: 350px;
   }
 `;
-const DemoSignupMessage = () => (
-  <Wrapper>
-    <p>
-      Yo dawg, this is really just a demo so you can use these creds if you
-      don't wanna make an account:
-    </p>
-    <br />
-    <div className="grid">
-      <p>Email:</p>
-      <span className="standout">chris@email.com</span>
-      <p>Password:</p>
-      <span className="standout">pines</span>
-    </div>
-  </Wrapper>
-);
 
-export default DemoSignupMessage;
+export default function DemoSignupMessage() {
+  return (
+    <Wrapper>
+      <p>
+        Yo dawg, this is really just a demo so you can use these creds if you
+        don't wanna make an account:
+      </p>
+      <br />
+      <div className="grid">
+        <p>Email:</p>
+        <span className="standout">{USER.email}</span>
+        <p>Password:</p>
+        <span className="standout">{USER.password}</span>
+      </div>
+    </Wrapper>
+  );
+}

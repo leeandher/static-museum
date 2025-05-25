@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { useStore } from "@/backend/context";
 
 import { format, formatDistance } from "date-fns";
 import Head from "next/head";
@@ -75,7 +76,6 @@ export default function Profile() {
     );
   };
 
-  if (!me) return <p>⚡ Loading... ⚡</p>;
   return (
     <ProfileWrapper>
       <Head>

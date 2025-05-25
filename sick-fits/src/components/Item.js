@@ -26,7 +26,7 @@ export default function Item({ item }) {
       {state.user && (
         <div className="buttonList">
           <Link href={{ pathname: "update", query: { id: id } }}>
-            <button>🔨 Edit 🔨</button>
+            🔨 Edit 🔨
           </Link>
           <AddToCart id={item.id} />
           <DeleteItem id={item.id}>🔥 Delete Item 🔥</DeleteItem>

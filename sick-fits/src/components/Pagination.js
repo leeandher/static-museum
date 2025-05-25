@@ -10,6 +10,10 @@ import { useStore } from "@/backend/context";
 const StylishSpan = styled.span`
   color: ${({ theme }) => theme.black};
   cursor: pointer;
+  &[aria-disabled="true"] {
+    color: grey;
+    pointer-events: none;
+  }
 `;
 
 export default function Pagination({ page }) {
@@ -30,6 +34,7 @@ export default function Pagination({ page }) {
           pathname: "items",
           query: { page: page - 1 },
         }}
+        aria-disabled={page <= 1}
       >
         <StylishSpan className="prev" aria-disabled={page <= 1}>
           ← Prev
@@ -45,6 +50,7 @@ export default function Pagination({ page }) {
           pathname: "items",
           query: { page: page + 1 },
         }}
+        aria-disabled={page >= pages}
       >
         <StylishSpan className="next" aria-disabled={page >= pages}>
           Next →

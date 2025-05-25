@@ -1,7 +1,12 @@
 import { useStore } from "@/backend/context";
+import { useRouter } from "next/router";
 
 export default function DeleteItem({ children, id }) {
   const { state, dispatch } = useStore();
+  const router = useRouter();
+  if (!state.user) {
+    return null;
+  }
   return (
     <button
       onClick={() => {
@@ -9,6 +14,9 @@ export default function DeleteItem({ children, id }) {
           dispatch({
             type: "UPDATE_ITEMS",
             items: state.items.filter((item) => item.id !== id),
+          });
+          router.push({
+            pathname: "/items",
           });
         }
       }}

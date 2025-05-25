@@ -14,7 +14,7 @@ export default function Nav() {
         <>
           <Link href="/sell">Sell</Link>
           <Link href="/orders">Orders</Link>
-          <Link href="/me">Account</Link>
+          <Link href="/profile">Account</Link>
           <SignOut />
           <button onClick={() => dispatch({ type: "TOGGLE_CART" })}>
             My Cart

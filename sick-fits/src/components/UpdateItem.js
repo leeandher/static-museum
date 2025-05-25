@@ -1,139 +1,87 @@
-import gql from 'graphql-tag'
-import React, { Component } from 'react'
-import Form from './styles/Form'
-import { Mutation, Query } from 'react-apollo'
-import Router from 'next/router'
+import Form from "@/components/styles/Form";
+import { useStore } from "@/backend/context";
+import { useRouter } from "next/router";
+import { useState } from "react";
 
-import ErrorMessage from './ErrorMessage'
+export default function UpdateItem({ id }) {
+  const router = useRouter();
+  const { state, dispatch } = useStore();
+  const { items } = state;
+  const item = items.find((item) => item.id === parseInt(id));
 
-const SINGLE_ITEM_QUERY = gql`
-  query SINGLE_ITEM_QUERY($id: ID!) {
-    item(where: { id: $id }) {
-      title
-      description
-      price
-      image
-      largeImage
-    }
-  }
-`
+  const [formData, setFormData] = useState({
+    title: item.title,
+    description: item.description,
+    price: item.price,
+  });
 
-const UPDATE_ITEM_MUTATION = gql`
-  mutation UPDATE_ITEM_MUTATION(
-    $id: ID!
-    $title: String
-    $description: String
-    $price: Int
-  ) {
-    updateItem(
-      id: $id
-      title: $title
-      description: $description
-      price: $price
-    ) {
-      id
-      title
-      description
-      price
-    }
-  }
-`
-
-class UpdateItem extends Component {
-  state = {}
-
-  handleChange = ({ target: { name, type, value } }) => {
-    const stateValue = type === 'number' ? parseFloat(value) : value
-    this.setState({ [name]: stateValue })
-  }
-
-  handleSubmit = async (e, updateItem) => {
-    const { id } = this.props
-    e.preventDefault()
-    await updateItem({
-      variables: {
-        id,
-        ...this.state,
-      },
-    })
-  }
-
-  render() {
-    const { id } = this.props
-    return (
-      <Query query={SINGLE_ITEM_QUERY} variables={{ id }}>
-        {({ data: { item }, loading }) => {
-          if (loading) return <p>⚡ Loading... ⚡</p>
-          if (!item) return <p>🤷‍♀️ No Item Found! 🤷‍♂️</p>
-          return (
-            <Mutation mutation={UPDATE_ITEM_MUTATION} variables={this.state}>
-              {(updateItem, { loading, error }) => (
-                <Form
-                  onSubmit={async e => {
-                    e.preventDefault()
-                    Router.push({
-                      pathname: '/item',
-                      query: { id },
-                    })
-                  }}
-                  onSubmit={e => this.handleSubmit(e, updateItem)}
-                >
-                  <ErrorMessage error={error} />
-                  <fieldset disabled={loading} aria-busy={loading}>
-                    {/* TODO: Implement image editing */}
-                    <label htmlFor="title">
-                      Title
-                      <input
-                        type="text"
-                        id="title"
-                        name="title"
-                        placeholder="Title"
-                        maxLength={100}
-                        defaultValue={item.title}
-                        onChange={this.handleChange}
-                        required
-                      />
-                    </label>
-                    <label htmlFor="price">
-                      Price (US Cents)
-                      <input
-                        type="number"
-                        id="price"
-                        name="price"
-                        min={0}
-                        max={1000000}
-                        placeholder="Price"
-                        defaultValue={item.price}
-                        onChange={this.handleChange}
-                        required
-                      />
-                    </label>
-                    <label htmlFor="description">
-                      Description
-                      <textarea
-                        id="description"
-                        name="description"
-                        placeholder="Enter a Description"
-                        defaultValue={item.description}
-                        onChange={this.handleChange}
-                        style={{ boxShadow: 'none', resize: 'vertical' }}
-                        maxLength={400}
-                        required
-                      />
-                    </label>
-                    <button type="submit">
-                      Sav{loading ? 'ing...' : 'e Changes'}
-                    </button>
-                  </fieldset>
-                </Form>
-              )}
-            </Mutation>
-          )
-        }}
-      </Query>
-    )
-  }
+  if (!item) return <p>🤷‍♀️ No Item Found! 🤷‍♂️</p>;
+  return (
+    <Form
+      onSubmit={(e) => {
+        e.preventDefault();
+        dispatch({
+          type: "UPDATE_ITEMS",
+          items: state.items.map((item) =>
+            item.id === parseInt(id) ? { ...item, ...formData } : item
+          ),
+        });
+        router.push({
+          pathname: "/item",
+          query: { id },
+        });
+      }}
+    >
+      <fieldset>
+        {/* TODO: Implement image editing */}
+        <label htmlFor="title">
+          Title
+          <input
+            type="text"
+            id="title"
+            name="title"
+            placeholder="Title"
+            maxLength={100}
+            defaultValue={item.title}
+            onChange={(e) =>
+              setFormData({ ...formData, title: e.target.value })
+            }
+            required
+          />
+        </label>
+        <label htmlFor="price">
+          Price (US Cents)
+          <input
+            type="number"
+            id="price"
+            name="price"
+            min={0}
+            max={1000000}
+            placeholder="Price"
+            defaultValue={item.price}
+            onChange={(e) =>
+              setFormData({ ...formData, price: e.target.value })
+            }
+            required
+          />
+        </label>
+        <label htmlFor="description">
+          Description
+          <textarea
+            id="description"
+            name="description"
+            placeholder="Enter a Description"
+            defaultValue={item.description}
+            onChange={(e) =>
+              setFormData({ ...formData, description: e.target.value })
+            }
+            style={{ boxShadow: "none", resize: "vertical" }}
+            maxLength={400}
+            required
+          />
+        </label>
+        <button type="submit">Save Changes</button>
+      </fieldset>
+    </Form>
+  );
 }
-
-export default UpdateItem
-export { UPDATE_ITEM_MUTATION }

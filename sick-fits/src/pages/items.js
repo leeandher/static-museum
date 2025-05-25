@@ -1,11 +1,9 @@
-import React from "react";
-
 import Items from "@/components/Items";
 
-export default function ItemsPage() {
+export default function ItemsPage({ query }) {
   return (
     <div>
-      <Items page={1} />
+      <Items page={parseInt(query.page) || 1} />
     </div>
   );
 }

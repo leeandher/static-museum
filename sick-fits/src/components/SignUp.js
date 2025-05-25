@@ -1,118 +1,94 @@
-import React, { Component } from 'react'
-import gql from 'graphql-tag'
-import { Mutation } from 'react-apollo'
-import Router from 'next/router'
+import { useStore } from "@/backend/context";
+import { useRouter } from "next/router";
+import { useState } from "react";
+import { USER } from "@/backend/data";
 
-import ErrorMessage from './ErrorMessage'
-import Form from './styles/Form'
-import { CURRENT_USER_QUERY } from './User'
+import Form from "@/components/styles/Form";
 
-const SIGN_UP_MUTATION = gql`
-  mutation SIGN_UP_MUTATION(
-    $email: String!
-    $name: String!
-    $password: String!
-    $confirmPassword: String!
-  ) {
-    signUp(
-      email: $email
-      name: $name
-      password: $password
-      confirmPassword: $confirmPassword
-    ) {
-      id
-      email
-      name
-    }
-  }
-`
-
-class SignUp extends Component {
-  state = {
-    email: '',
-    name: '',
-    password: '',
-    confirmPassword: ''
-  }
-  saveToState = e => {
-    const { value, name } = e.target
-    this.setState({ [name]: value })
-  }
-  render() {
-    const { email, name, password, confirmPassword } = this.state
-    return (
-      <Mutation
-        mutation={SIGN_UP_MUTATION}
-        variables={this.state}
-        refetchQueries={[{ query: CURRENT_USER_QUERY }]}
-      >
-        {(signUp, { error, loading }) => {
-          return (
-            <Form
-              method="post"
-              onSubmit={async e => {
-                e.preventDefault()
-                await signUp()
-                this.setState({
-                  email: '',
-                  name: '',
-                  password: ''
-                })
-                Router.push('/')
-              }}
-            >
-              <fieldset disabled={loading} aria-busy={loading}>
-                <h2>Sign Up for an Account</h2>
-                <ErrorMessage error={error} />
-                <label htmlFor="email">
-                  Email
-                  <input
-                    type="text"
-                    name="email"
-                    placeholder="e.g. kanye@west.com"
-                    value={email}
-                    onChange={this.saveToState}
-                  />
-                </label>
-                <label htmlFor="name">
-                  Name
-                  <input
-                    type="text"
-                    name="name"
-                    placeholder="e.g. Kanye West"
-                    value={name}
-                    onChange={this.saveToState}
-                  />
-                </label>
-                <label htmlFor="password">
-                  Password
-                  <input
-                    type="password"
-                    name="password"
-                    placeholder="e.g. y33zy"
-                    value={password}
-                    onChange={this.saveToState}
-                  />
-                </label>
-                <label htmlFor="confirmPassword">
-                  Confirm Password
-                  <input
-                    type="password"
-                    name="confirmPassword"
-                    placeholder="e.g. y33zy"
-                    value={confirmPassword}
-                    onChange={this.saveToState}
-                  />
-                </label>
-                <button type="submit">Sign Up!</button>
-              </fieldset>
-            </Form>
-          )
-        }}
-      </Mutation>
-    )
-  }
+export default function SignUp() {
+  const router = useRouter();
+  const { dispatch } = useStore();
+  const [formData, setFormData] = useState({
+    email: "",
+    name: "",
+    password: "",
+    confirmPassword: "",
+  });
+  return (
+    <Form
+      method="post"
+      onSubmit={async (e) => {
+        e.preventDefault();
+        dispatch({
+          type: "UPDATE_USER",
+          user: {
+            ...USER,
+            email: formData.email,
+            name: formData.name,
+          },
+        });
+        setFormData({
+          email: "",
+          name: "",
+          password: "",
+          confirmPassword: "",
+        });
+        router.push("/");
+      }}
+    >
+      <fieldset>
+        <h2>Sign Up for an Account</h2>
+        <label htmlFor="email">
+          Email
+          <input
+            type="text"
+            name="email"
+            placeholder="e.g. jane@example.com"
+            value={formData.email}
+            onChange={(e) =>
+              setFormData({ ...formData, email: e.target.value })
+            }
+          />
+        </label>
+        <label htmlFor="name">
+          Name
+          <input
+            type="text"
+            name="name"
+            placeholder="e.g. Jane Doe"
+            value={formData.name}
+            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+          />
+        </label>
+        <label htmlFor="password">
+          Password
+          <input
+            type="password"
+            name="password"
+            placeholder="e.g. jane-doe-rae-me"
+            value={formData.password}
+            onChange={(e) =>
+              setFormData({ ...formData, password: e.target.value })
+            }
+          />
+        </label>
+        <label htmlFor="confirmPassword">
+          Confirm Password
+          <input
+            type="password"
+            name="confirmPassword"
+            placeholder="e.g. jane-doe-rae-me"
+            value={formData.confirmPassword}
+            onChange={(e) =>
+              setFormData({
+                ...formData,
+                confirmPassword: e.target.value,
+              })
+            }
+          />
+        </label>
+        <button type="submit">Sign Up!</button>
+      </fieldset>
+    </Form>
+  );
 }
-
-export default SignUp
-export { SIGN_UP_MUTATION }

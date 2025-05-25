@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import SignUp from "@/components/SignUp";
 import SignIn from "@/components/SignIn";
-import RequestReset from "@/components/RequestReset";
 import DemoSignupMessage from "@/components/DemoSignupMessage";
 
 const Columns = styled.div`
@@ -17,7 +16,6 @@ export default function SignUpPage() {
       <Columns>
         <SignUp />
         <SignIn />
-        <RequestReset />
       </Columns>
     </>
   );

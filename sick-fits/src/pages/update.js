@@ -1,12 +1,9 @@
 import UpdateItem from "@/components/UpdateItem";
-import { useSearchParams } from "next/navigation";
 
-export default function UpdatePage() {
-  const searchParams = useSearchParams();
-  const id = searchParams.get("id");
+export default function UpdatePage({ query }) {
   return (
     <div>
-      <UpdateItem id={id} />
+      <UpdateItem id={query.id} />
     </div>
   );
 }

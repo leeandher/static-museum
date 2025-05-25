@@ -1,31 +1,12 @@
-import React, { Component } from "react";
 import Head from "next/head";
-import gql from "graphql-tag";
-import { Query } from "react-apollo";
 import styled from "styled-components";
 import Link from "next/link";
 
 import formatMoney from "@/lib/formatMoney";
-import ErrorMessage from "./ErrorMessage";
-import DeleteItem from "./DeleteItem";
-import AddToCart from "./AddToCart";
-
-const SINGLE_ITEM_QUERY = gql`
-  query SINGLE_ITEM_QUERY($id: ID!) {
-    item(where: { id: $id }) {
-      id
-      title
-      description
-      largeImage
-      price
-      createdAt
-      updatedAt
-      user {
-        id
-      }
-    }
-  }
-`;
+import ErrorMessage from "@/components/ErrorMessage";
+import DeleteItem from "@/components/DeleteItem";
+import AddToCart from "@/components/AddToCart";
+import { useStore } from "@/backend/context";
 
 const SingleItemStyles = styled.div`
   text-align: center;
@@ -79,43 +60,47 @@ const SingleItemStyles = styled.div`
   }
 `;
 
-class SingleItem extends Component {
-  render() {
-    const { id } = this.props;
-    return (
-      <Query query={SINGLE_ITEM_QUERY} variables={{ id }}>
-        {({ data: { item }, error, loading }) => {
-          if (loading) return <p>⚡ Loading... ⚡</p>;
-          if (error) return <ErrorMessage error={error} />;
-          if (!item) return <p>🤷‍♀️ No Item Found! 🤷‍♂️</p>;
-          return (
-            <SingleItemStyles>
-              <Head>
-                <title> Sick Fits | {item.title}</title>
-              </Head>
-              <img src={item.largeImage} alt={item.title} />
-              <div className="details">
-                <h2>{item.title}</h2>
-                <p> {item.description}</p>
-                <p className="stylish big">
-                  <span>{formatMoney(item.price)}</span>
-                </p>
-              </div>
+export default function SingleItem({ id }) {
+  const { state } = useStore();
+  const { error, loading, items } = state;
+  const item = items.find((item) => item.id === parseInt(id));
 
-              <div className="buttonList">
-                <Link href={{ pathname: "update", query: { id: id } }}>
-                  <button>🔨 Edit 🔨</button>
-                </Link>
-                <AddToCart id={item.id} />
-                <DeleteItem id={item.id}>🔥 Delete Item 🔥</DeleteItem>
-              </div>
-            </SingleItemStyles>
-          );
-        }}
-      </Query>
-    );
+  if (loading) {
+    return <p>⚡ Loading... ⚡</p>;
   }
-}
+  if (error) {
+    return <ErrorMessage error={error} />;
+  }
+  if (!item) {
+    return <p>🤷‍♀️ No Item Found! 🤷‍♂️</p>;
+  }
 
-export default SingleItem;
-export { SINGLE_ITEM_QUERY };
+  return (
+    <SingleItemStyles>
+      <Head>
+        <title> Sick Fits | {item.title}</title>
+      </Head>
+      <img src={item.largeImage} alt={item.title} />
+      <div className="details">
+        <h2>{item.title}</h2>
+        <p> {item.description}</p>
+        <p className="stylish big">
+          <span>{formatMoney(item.price)}</span>
+        </p>
+      </div>
+      {state.user ? (
+        <div className="buttonList">
+          <Link href={{ pathname: "update", query: { id: id } }}>
+            🔨 Edit 🔨
+          </Link>
+          <AddToCart id={item.id} />
+          <DeleteItem id={item.id}>🔥 Delete Item 🔥</DeleteItem>
+        </div>
+      ) : (
+        <div className="buttonList">
+          <Link href="/signup">🔐 Sign in to Add 2 Cart 🛒</Link>
+        </div>
+      )}
+    </SingleItemStyles>
+  );
+}

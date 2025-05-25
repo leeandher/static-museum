@@ -15,11 +15,6 @@ export default function CreateItem() {
     price: 0,
   });
 
-  const handleChange = ({ target: { name, type, value } }) => {
-    const stateValue = type === "number" ? parseFloat(value) : value;
-    setState({ [name]: stateValue });
-  };
-
   const { title, description, image, price } = state;
   const { error, loading } = storeState;
 
@@ -29,9 +24,10 @@ export default function CreateItem() {
       onSubmit={async (e) => {
         e.preventDefault();
         const newItem = {
-          id: storeState.items.length,
+          id: storeState.items.length + 1,
           user: storeState.user,
           ...state,
+          largeImage: state.image,
         };
         dispatch({
           type: "UPDATE_ITEMS",
@@ -53,7 +49,7 @@ export default function CreateItem() {
             name="image"
             placeholder="Image URL"
             value={image}
-            onChange={handleChange}
+            onChange={(e) => setState({ ...state, image: e.target.value })}
             required
           />
           {image.length > 0 && (
@@ -77,7 +73,7 @@ export default function CreateItem() {
             placeholder="Title"
             maxLength={100}
             value={title}
-            onChange={handleChange}
+            onChange={(e) => setState({ ...state, title: e.target.value })}
             required
           />
         </label>
@@ -91,7 +87,7 @@ export default function CreateItem() {
             max={1000000}
             placeholder="Price"
             value={price}
-            onChange={handleChange}
+            onChange={(e) => setState({ ...state, price: e.target.value })}
             required
           />
         </label>
@@ -102,7 +98,9 @@ export default function CreateItem() {
             name="description"
             placeholder="Enter a Description"
             value={description}
-            onChange={handleChange}
+            onChange={(e) =>
+              setState({ ...state, description: e.target.value })
+            }
             style={{ boxShadow: "none", resize: "vertical" }}
             maxLength={400}
             required

@@ -1,7 +1,7 @@
 import SignIn from "@/components/SignIn";
 import { useStore } from "@/backend/context";
 
-function PleaseSignIn({ children }) {
+export default function PleaseSignIn({ children }) {
   const { state } = useStore();
   const { user } = state;
 
@@ -14,5 +14,3 @@ function PleaseSignIn({ children }) {
     </div>
   );
 }
-
-export default PleaseSignIn;

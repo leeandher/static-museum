@@ -1,53 +1,60 @@
 import { useRouter } from "next/router";
-import NProgress from "nprogress";
 import { useStore } from "@/backend/context";
-
+import styled from "styled-components";
 import calcTotalPrice from "@/lib/calcTotalPrice";
+
+const SubmitButton = styled.button`
+  font-family: "radnika_next";
+  outline: none;
+  border: none;
+  background: ${(props) => props.theme.red};
+  color: white;
+  display: inline-block;
+  padding: 4px 5px;
+  transform: skew(-3deg);
+  margin: 0;
+  font-size: 2rem;
+`;
 
 export default function Merchant({ children }) {
   const router = useRouter();
-  const { state } = useStore();
+  const { state, dispatch } = useStore();
   const { user: me } = state;
-  const totalItems = (cart) => {
-    return me.cart.reduce((total, cartItem) => total + cartItem.quantity, 0);
-  };
-  const onToken = async ({ id }, createOrder) => {
-    NProgress.start();
-    // Parse the stripe ID and send it server side to perform the transaction
-    const { data } = await createOrder({
-      variables: { token: id },
-    }).catch((err) => alert(err.message));
-    router.push({
-      pathname: "/order",
-      query: { id: data.createOrder.id },
-    });
-  };
 
   if (!me) return null;
 
   return (
-    <div>StripeCheckout</div>
-    // <Mutation
-    //   mutation={CREATE_ORDER_MUTATION}
-    //   refetchQueries={[
-    //     { query: CURRENT_USER_QUERY },
-    //     { query: USER_ORDERS_QUERY },
-    //   ]}
-    // >
-    //   {(createOrder) => (
-    //     <StripeCheckout
-    //       amount={calcTotalPrice(me.cart)}
-    //       name="Sick Fits"
-    //       description={`Order of ${this.totalItems(me.cart)} sick items!`}
-    //       image={me.cart.length && me.cart[0].item && me.cart[0].item.image}
-    //       stripeKey={STRIPE_KEY}
-    //       currency="USD"
-    //       email={me.email}
-    //       token={(res) => this.onToken(res, createOrder)}
-    //     >
-    //       {children}
-    //     </StripeCheckout>
-    //   )}
-    // </Mutation>
+    <SubmitButton
+      onClick={() => {
+        const newOrder = {
+          items: me.cart.map(({ item, ...cartItem }) => ({
+            ...cartItem,
+            ...item,
+          })),
+          total: calcTotalPrice(me.cart),
+          createdAt: new Date(),
+          id: `SICK-FITS-${me.orders.length + 1}`,
+          charge: `ch_${me.orders.length + 1}`,
+        };
+        dispatch({
+          type: "UPDATE_USER",
+          user: {
+            ...me,
+            orders: [...me.orders, newOrder],
+            cart: [],
+          },
+        });
+        dispatch({
+          type: "TOGGLE_CART",
+        });
+
+        router.push({
+          pathname: "/order",
+          query: { id: newOrder.id },
+        });
+      }}
+    >
+      BUY BUY BUY
+    </SubmitButton>
   );
 }

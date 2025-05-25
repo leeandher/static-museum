@@ -25,15 +25,14 @@ export default function SignIn({ header, samePage = false }) {
         }
       }}
     >
-      <fieldset disabled={loading} aria-busy={loading}>
+      <fieldset>
         <h2>{header ? header : "Already have an account?"}</h2>
-        <ErrorMessage error={error} />
         <label htmlFor="email">
           Email
           <input
             type="text"
             name="email"
-            placeholder="e.g. kanye@west.com"
+            placeholder="e.g. jane@example.com"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
@@ -43,7 +42,7 @@ export default function SignIn({ header, samePage = false }) {
           <input
             type="password"
             name="password"
-            placeholder="e.g. y33zy"
+            placeholder="e.g. jane-doe-rae-me"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
