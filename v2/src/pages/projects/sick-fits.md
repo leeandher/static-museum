@@ -11,7 +11,7 @@ description: >
   👚Stay Fresh👗
 image: /assets/project__sick-fits.png
 repo: https://github.com/leeandher/Sick-Fits
-link: https://sick-fits.leanderr.vercel.app/
+link: https://sick-fits.leander.xyz
 tech:
   - react
   - apollo
