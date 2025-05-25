@@ -1,3 +1,4 @@
 [build]
 command = "pnpm run sick:build"
+publish = "sick-fits/.next"
 # Requires nextjs build plugin -> https://app.netlify.com/plugins/@netlify/plugin-nextjs/install
