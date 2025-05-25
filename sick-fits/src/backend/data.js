@@ -17,167 +17,127 @@ const USER = {
 
 const ITEMS = [
   {
-    title: "Teal Tactical Cargos",
+    title: "Teal Blockers",
     description:
-      "Stylish teal cargo pants with multiple pockets. Perfect for both street style and functionality.",
+      "Gonna recommend a plain shirt with these ones, they're pretty loud.",
     image: "/images/teal-pants.jpg",
     largeImage: "/images/teal-pants.jpg",
   },
   {
-    title: "Urban Explorer Backpack",
+    title: "Dopepack",
     description:
-      "Urban backpack with modern design and ample storage. Essential for the street-savvy.",
+      "NOTE: Does not come with anything illegal, but store what you want lmao",
     image: "/images/dope-backpack.jpg",
     largeImage: "/images/dope-backpack.jpg",
   },
   {
-    title: "Minimalist Street Tote",
-    description:
-      "Clean and simple tote bag for everyday use. Perfect for shopping or carrying essentials.",
+    title: "Total Tote",
+    description: "It's like twice as big on the inside, probably.",
     image: "/images/bag.jpg",
     largeImage: "/images/bag.jpg",
   },
   {
     id: 4,
-    title: "Skeleton Crew Hoodie",
-    description:
-      "Edgy skeleton print hoodie for those who like to make a statement.",
+    title: "Skeleton Crew Sweater",
+    description: "Don't you want to rep the skateboarding skeleton?",
     image: "/images/skeleton-hoodie.jpg",
     largeImage: "/images/skeleton-hoodie.jpg",
   },
   {
     id: 5,
-    title: "Vintage Explorer Satchel",
+    title: "Classic Satch",
     description:
-      "Classic leather satchel with modern touches. Perfect for work or casual outings.",
+      "Is this satchel old, or just rugged? We know the answer and will not tell you.",
     image: "/images/satchel.jpg",
     largeImage: "/images/satchel.jpg",
   },
   {
-    title: "Cropped Street Fighter Hoodie",
+    title: "Magazine Cropping",
     description:
-      "Trendy cropped hoodie perfect for layering. Modern street style essential.",
+      "Cut out letters from magazines, and also the bottom half of a bigger sweater.",
     image: "/images/crop-hoodie.jpg",
     largeImage: "/images/crop-hoodie.jpg",
   },
   {
-    title: "Enemies of the State Cap",
+    title: "E·N·E·M·I·E·S",
     description:
-      "Bold statement hat with unique design. Stand out from the crowd.",
+      "A unique never-before-seen design that is entirely original and makes no references to existing materials.",
     image: "/images/enemies-hat.jpg",
     largeImage: "/images/enemies-hat.jpg",
   },
   {
-    title: "Distressed Street Denim",
+    title: "Long Board Shorts",
     description:
-      "Artfully distressed jeans with modern cut. Perfect for street style.",
+      "Does the 'long' modify the 'board' or the 'shorts'? Only one way to find out.",
     image: "/images/cut-jeans.jpg",
     largeImage: "/images/cut-jeans.jpg",
   },
   {
-    title: "Clean Slate Hoodie",
-    description:
-      "Minimalist white hoodie for everyday wear. Essential streetwear piece.",
+    title: "Keep it Simple",
+    description: "Comes with pants I think, most of this is drop shipped.",
     image: "/images/white-hoodie.jpg",
     largeImage: "/images/white-hoodie.jpg",
   },
   {
-    title: "Premium Street Cap",
+    title: "Jurassick Shirt",
     description:
-      "High-quality cap with premium materials. Street style essential.",
-    image: "/images/p-hat.jpg",
-    largeImage: "/images/p-hat.jpg",
-  },
-  {
-    title: "Jurassic Street Tee",
-    description:
-      "Fun dinosaur graphic t-shirt. Perfect for casual street style.",
+      "It's pretty cute, but I think they were much more horrifying when they were around.",
     image: "/images/dino-shirt.jpg",
     largeImage: "/images/dino-shirt.jpg",
   },
   {
-    title: "Street Classic Sneakers",
-    description: "Timeless sneakers for everyday wear. Comfort meets style.",
+    title: "Spilled Paint",
+    description:
+      "Somehow finding the perfect balance of both too many colours and too few.",
     image: "/images/sneakers.jpg",
     largeImage: "/images/sneakers.jpg",
   },
   {
-    title: "Urban Lens Tee",
-    description: "Unique photography-inspired t-shirt. Stand out in the crowd.",
+    title: "Unsplash Inc. Tee",
+    description: "Yeah the photography is free, but this shirt sure isn't.",
     image: "/images/unsplash.jpg",
     largeImage: "/images/unsplash.jpg",
   },
   {
-    title: "Nautical Street Tee",
+    title: '"woof"',
     description:
-      "Maritime-inspired t-shirt with ship design. Perfect for casual wear.",
-    image: "/images/ship-tee.jpg",
-    largeImage: "/images/ship-tee.jpg",
-  },
-  {
-    title: "Paws & Claws Tee",
-    description: "Cute dog-themed t-shirt for animal lovers. Casual and fun.",
+      "Dog not included, but man do I wish it was. Look at that lil' guy.",
     image: "/images/woof-dog.jpg",
     largeImage: "/images/woof-dog.jpg",
   },
   {
-    title: "Feline Street Backpack",
-    description: "Adorable cat-themed backpack. Perfect for cat lovers.",
-    image: "/images/cat-backpack.jpg",
-    largeImage: "/images/cat-backpack.jpg",
-  },
-  {
-    title: "Teal Street Fighter Tee",
-    description: "Vibrant teal t-shirt for everyday street style.",
-    image: "/images/teal-tee.jpg",
-    largeImage: "/images/teal-tee.jpg",
-  },
-  {
-    title: "Street Warrior Boots",
-    description: "Timeless boots for any occasion. Durable and stylish.",
+    title: "the basics",
+    description:
+      "I really hope the model is okay, they took quite the tumble it would seem.",
     image: "/images/boots.jpg",
     largeImage: "/images/boots.jpg",
   },
   {
-    title: "Urban Elegance Blouse",
-    description: "Elegant blouse perfect for casual or formal occasions.",
+    title: "The Blue Blouse",
+    description:
+      "The matching accessories are sold separately, at some other store.",
     image: "/images/blouse.jpg",
     largeImage: "/images/blouse.jpg",
   },
+
   {
-    title: "Hydration Street Pack",
-    description: "Practical backpack with drink holder. Perfect for on-the-go.",
-    image: "/images/drink-backpack.jpg",
-    largeImage: "/images/drink-backpack.jpg",
-  },
-  {
-    title: "Sunset Street Boots",
+    title: "Billionaire's Bifold",
     description:
-      "Bold yellow boots to make a statement. Perfect for street style.",
-    image: "/images/yellow-boots.jpg",
-    largeImage: "/images/yellow-boots.jpg",
-  },
-  {
-    title: "Street Minimalist Wallet",
-    description: "Sleek and simple wallet for everyday use.",
+      "Note: You can still buy this if you're not a billionaire, we don't judge.",
     image: "/images/wallet.jpg",
     largeImage: "/images/wallet.jpg",
   },
   {
-    title: "Urban Elegance Purse",
-    description: "Elegant purse perfect for any occasion.",
+    title: "Yllw // Pnk",
+    description:
+      "We took out the vowels so we could pass the savings on to you.",
     image: "/images/purse.jpg",
     largeImage: "/images/purse.jpg",
   },
   {
-    title: "Tokyo Street Fighter Hoodie",
-    description: "Japanese-inspired hoodie with unique design.",
-    image: "/images/tokyo-hoodie.jpg",
-    largeImage: "/images/tokyo-hoodie.jpg",
-  },
-  {
-    title: "Summer Street Romper",
-    description: "Stylish romper perfect for summer days.",
+    title: "A Summer Romp",
+    description:
+      "I think people usually use this to describe movies, but it's a pretty good pun so it stays.",
     image: "/images/romper.jpg",
     largeImage: "/images/romper.jpg",
   },
