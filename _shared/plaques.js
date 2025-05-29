@@ -1,7 +1,21 @@
-function attachDock() {
-  if (document.querySelector("[data-static-museum-plaques]")) {
+const allPlaqueData = {
+  v0: {
+    title: "A Real Website",
+    date: "1998",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.",
+  },
+};
+
+function attachPlaque() {
+  const slug = document.querySelector("[data-sm-plaque-slug]").dataset
+    .smPlaqueSlug;
+  const plaqueData = allPlaqueData[slug];
+
+  if (document.querySelector("[data-static-museum-plaques]") || !plaqueData) {
     return;
   }
+
   const plaque = document.createElement("div");
   plaque.setAttribute("data-static-museum-plaques", "");
   plaque.style.cssText = `
@@ -9,15 +23,13 @@ function attachDock() {
     position: fixed;
     bottom: 20px;
     left: 20px;
-    max-width: 300px;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    padding: 8px 16px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: grid;
+    grid-template-columns: 270px 30px;
+    grid-row-gap: 4px;
     z-index: 9999;
     transition: all 0.2s;
     border: 1px solid transparent;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 2px 4px rgba(0, 0, 0, 0.1);
 `;
 
   const prefersDarkMode = window.matchMedia(
@@ -34,71 +46,71 @@ function attachDock() {
     plaque.style.borderColor = "#421d06";
   }
 
-  const plaqueTitleContainer = document.createElement("div");
-  plaqueTitleContainer.style.cssText = `
-    display: flex;
-    gap: 4px;
-    align-items: flex-end;
-    font-size: 18px;
-    font-style: italic;
-    line-height: 1.5;
-  `;
-  plaque.appendChild(plaqueTitleContainer);
-
-  const plaqueTitle = document.createElement("p");
-  plaqueTitle.textContent = '"A Real Website"';
-  plaqueTitle.style.cssText = `
-    font-weight: bold;
-  `;
-  plaqueTitleContainer.appendChild(plaqueTitle);
-
-  const plaqueDate = document.createElement("div");
-  plaqueDate.textContent = ", c.1998";
-  plaqueTitleContainer.appendChild(plaqueDate);
-
-  const plaqueContent = document.createElement("p");
-  plaqueContent.textContent =
-    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.";
+  const plaqueContent = document.createElement("div");
   plaqueContent.style.cssText = `
-    font-size: 16px;
-    line-height: 1.4;
+    padding: 8px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    line-height: 1.3;
   `;
   plaque.appendChild(plaqueContent);
 
-  let isToggleHidden = false;
+  const plaqueTitle = document.createElement("div");
+  plaqueTitle.innerHTML = `<b>"${plaqueData.title}"</b>, c. ${plaqueData.date}`;
+  plaqueTitle.style.cssText = `
+    font-size: 20px;
+    font-style: italic;
+  `;
+  plaqueContent.appendChild(plaqueTitle);
+
+  const plaqueDescription = document.createElement("div");
+  plaqueDescription.innerHTML = plaqueData.description;
+  plaqueDescription.style.cssText = `
+    font-size: 16px;
+  `;
+  plaqueContent.appendChild(plaqueDescription);
+
+  let isToggleHidden =
+    localStorage.getItem("static-museum-plaque-hidden") === "true";
   const toggle = document.createElement("button");
-  toggle.setAttribute("aria-label", "Hide static-museum plaque");
-  toggle.textContent = "×";
+  plaque.appendChild(toggle);
+
+  function setToggle(newToggleValue) {
+    isToggleHidden = newToggleValue;
+    localStorage.setItem("static-museum-plaque-hidden", isToggleHidden);
+    const currentText = `${
+      isToggleHidden ? "Show" : "Hide"
+    } static-museum plaque`;
+    toggle.setAttribute("aria-label", currentText);
+    toggle.title = currentText;
+    toggle.textContent = isToggleHidden ? "⋮" : "×";
+    plaque.style.transform = isToggleHidden
+      ? "translateX(calc(-100% + 10px))"
+      : "translateX(0)";
+  }
+
+  setToggle(isToggleHidden);
+
   toggle.style.cssText = `
     position: absolute;
     right: 0;
     top: 0;
     bottom: 0;
-    border-left: 1px solid;
-    border-color: inherit;
-    background: ${prefersDarkMode ? "#124f47" : "#fbf2ca"};
-    border: none;
     font-size: 20px;
     width: 30px;
     cursor: pointer;
-    padding: 4px 8px;
+    outline: 0;
+    border: none;
+    border-left: 1px solid transparent;
+    border-color: inherit;
     color: inherit;
+    background: ${prefersDarkMode ? "#124f47" : "#fbf2ca"};
   `;
-  plaque.appendChild(toggle);
 
-  let isHidden = false;
-  toggle.addEventListener("click", () => {
-    isHidden = !isHidden;
-    const currentText = `${isHidden ? "Show" : "Hide"} static-museum plaque`;
-    plaque.style.transform = isHidden
-      ? "translateX(calc(-100% + 10px))"
-      : "translateX(0)";
-    toggle.setAttribute("aria-label", currentText);
-    toggle.title = currentText;
-    toggle.textContent = isHidden ? "⋮" : "×";
-  });
+  toggle.addEventListener("click", () => setToggle(!isToggleHidden));
 
   document.body.appendChild(plaque);
 }
 
-attachDock();
+attachPlaque();
