@@ -1,5 +1,10 @@
-function attachVersionDock() {
+function attachDock() {
+  if (document.querySelector("[data-static-museum-dock]")) {
+    return;
+  }
+
   const dock = document.createElement("div");
+  dock.setAttribute("data-static-museum-dock", "");
   dock.style.cssText = `
     position: fixed;
     bottom: 20px;
@@ -83,8 +88,4 @@ function attachVersionDock() {
   document.body.appendChild(dock);
 }
 
-if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", attachVersionDock);
-} else {
-  attachVersionDock();
-}
+attachDock();

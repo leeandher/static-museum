@@ -41,7 +41,11 @@ export default function HTML(props) {
         />
         {postBodyComponents}
       </body>
-      <script src="/shared/dock.js" data-leander-xyz-version="v2"></script>
+      <script
+        src="/shared/dock.js"
+        data-leander-xyz-version="v2"
+        defer
+      ></script>
     </html>
   );
 }
