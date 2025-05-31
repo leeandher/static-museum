@@ -1,9 +1,37 @@
 const allPlaqueData = {
   v0: {
-    title: "A Real Website",
-    date: "1998",
+    title: "v0: A Structured Joke",
+    date: "2018",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.",
+      "Pretty self-deprecating, but that was my humour at the time I suppose. I remember being very proud of the mobile nav hamburger animation, it made its way to v2 as well. This didn't used to have projects, but I decided to put some high-school projects here along with the first webpage I ever authored.",
+  },
+  concentration: {
+    title: "Concentration",
+    date: "2014",
+    description:
+      "Originally built in Khan Academy for my Grade 10 Computer Sciences course, which I only took because I thought it was robotics (but I was mistaken). I remember choosing the colours because of Portal 2, and the idea for gameplay probably came from Piano Tiles or Tap Tap Revenge, idk.",
+    sourceSite: "/",
+  },
+  inversion: {
+    title: "Inversion",
+    date: "2015",
+    description:
+      "I was so proud of the graphics in this one, trying to make explosions and space ships out of primitive shapes. It's still fun to play, and the style has something to it. There's a bug where you can get over 100% accuracy, but the more I think about it, it might be a feature.",
+    sourceSite: "/",
+  },
+  rainbow: {
+    title: "Rainbow Roadblock",
+    date: "2015",
+    description:
+      "Pretty simple game, but I remember finding it fun to create this ramping difficulty, and an ending at 150 points! Two control schemes as well, I personally like keyboard more but mouse is definitely easier. I remember I got a very good mark for this as my Grade 10 CPT submission.",
+    sourceSite: "/",
+  },
+  tribute: {
+    title: "Build a Tribute Page",
+    date: "2015",
+    description:
+      "So the assignment was to make a tribute page, but I had a color scheme in mind and so I picked some characters from Hotline Miami. Re-evaluating that decision today, I can see how having a tribute page to some violent murderous characters from an arcade-y video game might make me look, but the CSS is still cool.",
+    sourceSite: "/",
   },
 };
 
@@ -24,7 +52,7 @@ function attachPlaque() {
     bottom: 20px;
     left: 20px;
     display: grid;
-    grid-template-columns: 270px 30px;
+    grid-template-columns: 330px 30px;
     grid-row-gap: 4px;
     z-index: 9999;
     transition: all 0.2s;
@@ -48,10 +76,10 @@ function attachPlaque() {
 
   const plaqueContent = document.createElement("div");
   plaqueContent.style.cssText = `
-    padding: 8px 16px;
+    padding: 12px 16px;
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 8px;
     line-height: 1.3;
   `;
   plaque.appendChild(plaqueContent);
@@ -70,6 +98,19 @@ function attachPlaque() {
     font-size: 16px;
   `;
   plaqueContent.appendChild(plaqueDescription);
+
+  if (plaqueData.sourceSite) {
+    const plaqueSource = document.createElement("a");
+    plaqueSource.href = plaqueData.sourceSite;
+    plaqueSource.textContent = "back to main site";
+    plaqueSource.style.cssText = `
+      font-size: 14px;
+      align-self: flex-end;
+      font-style: italic;
+      color: ${prefersDarkMode ? "#f0fdf9" : "#421d06"};
+    `;
+    plaqueContent.appendChild(plaqueSource);
+  }
 
   let isToggleHidden =
     localStorage.getItem("static-museum-plaque-hidden") === "true";
