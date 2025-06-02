@@ -1,228 +1,53 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <!--TITLE-->
-    <title>{{title}} - Leander Rodrigues</title>
+---
+layout: pageTemplate.liquid
+filename: post
+---
 
-    <!--META-->
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- TITLE SECTION -->
+<div class="section dark" id="post-head">
+  <div class="content">
+    <div id="post-title">{{ title }}</div>
+    <div id="post-quote">
 
-    <!--STYLESHEETS-->
-    <!--Font Awesome-->
-    <link
-      rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.0.8/css/all.css"
-    />
-    <!--Site Default-->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="/resources/css/base.processed.css"
-    />
+      {{ description }}</div>
+  </div>
+</div>
 
-    <!--PAGE SPECIFIC STYLESHEET-->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="/resources/css/media.processed.css"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="/resources/css/post.processed.css"
-    />
+<!-- RETURN SECTION -->
+<a
+  class="text-small light"
+  id="page-return"
+  href="/blog">
+  <i class="fas fa-arrow-left"></i>
+  Back to Archive</a>
 
-    <!--FAVICON SETTINGS-->
-    <link
-      rel="apple-touch-icon"
-      sizes="57x57"
-      href="/resources/favicons/apple-icon-57x57.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="60x60"
-      href="/resources/favicons/apple-icon-60x60.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="72x72"
-      href="/resources/favicons/apple-icon-72x72.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="76x76"
-      href="/resources/favicons/apple-icon-76x76.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="114x114"
-      href="/resources/favicons/apple-icon-114x114.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="120x120"
-      href="/resources/favicons/apple-icon-120x120.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="144x144"
-      href="/resources/favicons/apple-icon-144x144.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="152x152"
-      href="/resources/favicons/apple-icon-152x152.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="/resources/favicons/apple-icon-180x180.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="192x192"
-      href="/resources/favicons/android-icon-192x192.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="/resources/favicons/favicon-32x32.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="96x96"
-      href="/resources/favicons/favicon-96x96.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="/resources/favicons/favicon-16x16.png"
-    />
-    <link rel="manifest" href="/resources/favicons/manifest.json" />
-    <meta name="msapplication-TileColor" content="#FCFCFC" />
-    <meta
-      name="msapplication-TileImage"
-      content="/resources/favicons/ms-icon-144x144.png"
-    />
-    <meta name="theme-color" content="#FCFCFC" />
-  </head>
-  <link
-    rel="stylesheet"
-    type="text/css"
-    href="/resources/css/post.processed.css"
-  />
-
-  <body>
-    <!--NAVIGATION-->
-    <!--NAVIGATION-->
-    <nav>
-      <ul>
-        <li id="logo">
-          <a href="../#home">
-            <img src="/resources/images/nav-logo.png" alt="My Logo" />
-          </a>
-          <div id="toggler">
-            <div id="holder">
-              <div class="bar" id="bar-1"></div>
-              <div class="bar" id="bar-2"></div>
-              <div class="bar" id="bar-3"></div>
-            </div>
-          </div>
-        </li>
-        <div id="collapse-nav">
-          <a href="../"><li class="nav-link">Home</li></a>
-          <a href="../#about"><li class="nav-link">About</li></a>
-          <a href="../projects/"><li class="nav-link">Projects</li></a>
-          <a href="../#media"><li class="nav-link">Media</li></a>
-          <a href="../#contact"><li class="nav-link">Contact</li></a>
-          <a href="../resume/" class="round" id="hire"
-            ><li class="nav-link">Hire Me</li></a
-          >
-        </div>
-      </ul>
-    </nav>
-
-
-
-    <!--TITLE SECTION-->
-    <div class="section dark" id="post-head">
-      <div class="content">
-        <div id="post-title">{{title}}</div>
-        <div id="post-quote">
-          
-        {{description}}</div>
-      </div>
+<!-- POST SECTION -->
+<div class="section" id="post-content">
+  <div class="content light">
+    <div id="post-text">{{ content }}</div>
+    <div id="post-share">
+      <a
+        href="https://twitter.com/intent/post"
+        target="_blank"
+        rel="noopener"
+        class="fab fa-twitter"></a>
+      <a
+        href="https://www.facebook.com/share_channel"
+        target="_blank"
+        rel="noopener"
+        class="fab fa-facebook-f"></a>
+      <a
+        href="https://www.linkedin.com/shareArticle"
+        target="_blank"
+        rel="noopener"
+        class="fab fa-linkedin-in"></a>
+      <a
+        href="mailto:"
+        target="_blank"
+        rel="noopener"
+        class="far fa-envelope"></a>
     </div>
+  </div>
+</div>
 
-    <!--RETURN SECTION-->
-    <a class="text-small light" id="page-return" href="/blog"
-      ><i class="fas fa-arrow-left"></i> Back to Archive</a
-    >
-
-    <!--POST SECTION-->
-    <div class="section" id="post-content">
-      <div class="content light">
-        <div id="post-text">{{content}}</div>
-        <div id="post-share">
-          <a href="https://twitter.com/intent/post" target="_blank" rel="noopener" class="fab fa-twitter"></a>
-          <a href="https://www.facebook.com/share_channel" target="_blank" rel="noopener" class="fab fa-facebook-f"></a>
-          <a href="https://www.linkedin.com/shareArticle" target="_blank" rel="noopener" class="fab fa-linkedin-in"></a>
-          <a href="mailto:" target="_blank" rel="noopener" class="far fa-envelope"></a>
-        </div>
-      </div>
-    </div>
-
-    <!--FOOTER SECTION-->
-    <footer class="section dark">
-      <div class="content">
-        <div class="subheading">Find me online</div>
-        <div id="links">
-          <a class="fab fa-github" href="https://github.com/leeandher"></a>
-          <a
-            class="fas fa-heading"
-            href="https://www.hackerrank.com/leeandher"
-          ></a>
-          <a
-            class="fab fa-linkedin-in"
-            href="https://www.linkedin.com/in/leander-rodrigues"
-          ></a>
-          <a class="far fa-envelope" href="mailto:me@leander.xyz"></a>
-          <a class="fab fa-codepen" href="https://codepen.io/leeandher"></a>
-          <a
-            class="fab fa-free-code-camp"
-            href="https://www.freecodecamp.org/leeandher"
-          ></a>
-        </div>
-        <div class="text-small" id="sitemap">
-          <ul>
-            <a href="../">Home</a>
-            |
-            <a href="../projects/">Projects</a>
-            |
-            <a href="../blog/">Blog</a>
-            |
-            <a href="https://github.com/leeandher/programming-notes">Notes</a>
-            |
-            <a href="../resume/">Resume</a>
-          </ul>
-        </div>
-        <p class="text-small" style="">
-          Hand coded by: <span class="emphasis">yours truly</span> :)
-        </p>
-      </div>
-    </footer>
-
-    <!--SCRIPTS-->
-    <!--jQuery-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!--Navigation Bar-->
-    <script src="/resources/js/navbar.js"></script>
-    <!--Page Specific-->
-    <script src="/resources/js/media.js"></script>
-    <script src="/resources/js/post.js"></script>
-  </body>
-</html>
+<script src="/resources/js/media.js"></script>
