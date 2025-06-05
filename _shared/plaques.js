@@ -39,6 +39,21 @@ const allPlaqueData = {
     description:
       "The first time any of my code had been deployed to the internet. Very janky and had many antipatterns, but it worked! PHPMyAdmin, cPanel, and FileZilla were all new to me, but that's what it took on SiteGround at the time. Pretty cool how much it built up from v0.",
   },
+  v1_projects: {
+    title: "v1: freeCodeCamp Gallery",
+    date: "2018",
+    description: "Refine description here",
+  },
+  v1_blog: {
+    title: "v1: Dear Diary",
+    date: "2018",
+    description: "Refine description here",
+  },
+  v1_resume: {
+    title: "v1: Accordions",
+    date: "2018",
+    description: "Refine description here",
+  },
 };
 
 function attachPlaque() {
