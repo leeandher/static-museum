@@ -33,6 +33,12 @@ const allPlaqueData = {
       "So the assignment was to make a tribute page, but I had a color scheme in mind and so I picked some characters from Hotline Miami. Re-evaluating that decision today, I can see how having a tribute page to some violent murderous characters from an arcade-y video game might make me look, but the CSS is still cool.",
     sourceSite: "/",
   },
+  v1: {
+    title: "v1: It's (a)LIVE",
+    date: "2018",
+    description:
+      "The first time any of my code had been deployed to the internet. Very janky and had many antipatterns, but it worked! PHPMyAdmin, cPanel, and FileZilla were all new to me, but that's what it took on SiteGround at the time. Pretty cool how much it built up from v0.",
+  },
 };
 
 function attachPlaque() {

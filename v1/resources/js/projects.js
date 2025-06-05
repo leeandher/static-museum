@@ -20,7 +20,7 @@ var Project = function (
   this.languages = languages;
   this.additional = additional;
   this.concepts = concepts;
-  this.bg = 'url("../resources/images/projects/' + linkUrl + '.JPG")';
+  this.bg = 'url("/resources/images/projects/' + linkUrl + '.JPG")';
   this.link = linkUrl;
 };
 
@@ -28,7 +28,7 @@ function applyProject(proj, order) {
   $("#directory a:nth-child(" + (order + 1) + ")").text(proj.title);
   var projId = "#proj-" + order;
   $(projId + " .proj-title").text(proj.title);
-  $(projId + " .live").prop("href", "./" + proj.link);
+  $(projId + " .live").prop("href", "/" + proj.link);
   $(projId + " .source").prop(
     "href",
     "https://github.com/leeandher/leeandher.github.io/tree/master/projects/" +
