@@ -28,31 +28,40 @@ const allPlaqueData = {
   },
   tribute: {
     title: "Build a Tribute Page",
-    date: "2015",
+    date: "2018",
     description:
       "So the assignment was to make a tribute page, but I had a color scheme in mind and so I picked some characters from Hotline Miami. Re-evaluating that decision today, I can see how having a tribute page to some violent murderous characters from an arcade-y video game might make me look, but the CSS is still cool.",
     sourceSite: "/",
   },
   v1: {
-    title: "v1: It's (a)LIVE",
+    title: "It's (a)LIVE",
     date: "2018",
     description:
-      "The first time any of my code had been deployed to the internet. Very janky and had many antipatterns, but it worked! PHPMyAdmin, cPanel, and FileZilla were all new to me, but that's what it took on SiteGround at the time. Pretty cool how much it built up from v0.",
+      "The first time any of my code had been deployed to the internet. Very janky and had many anti-patterns, but it worked! PHPMyAdmin, cPanel, and FileZilla were all new to me, but that's what it took on SiteGround at the time. Pretty cool how much it built up from v0.",
   },
   v1_projects: {
-    title: "v1: freeCodeCamp Gallery",
+    title: "Legacy freeCodeCamp Gallery",
     date: "2018",
-    description: "Refine description here",
+    description:
+      "All a part of the legacy freeCodeCamp curriculum. As 'apps', they're totally a mixed bag, but do remember that I never started the next project without being proud of the the previous. They're probably a large reason for my comprehension of CSS.",
   },
   v1_blog: {
-    title: "v1: Dear Diary",
+    title: "Dear Diary",
     date: "2018",
-    description: "Refine description here",
+    description:
+      "Like literally diary entries. At this time in my life, I spent so much time coding, and learning about coding so the fact that there are even blog posts <i>not</i> about code, is a massive success.",
   },
   v1_resume: {
-    title: "v1: Accordions",
+    title: "Accordions",
     date: "2018",
-    description: "Refine description here",
+    description:
+      "Weird way to display sections of a resume, probably a reason it didn't make it into v2. Having to unfold each section feels a bit odd by I do like the transition a fair bit! Content-wise, I find it pretty embarrassing, but it did get me my first development job!",
+  },
+  v1_calculator: {
+    title: "Calculator",
+    date: "2018",
+    description:
+      "I guess it kinda works, but only to a few decimal places and it has a limit for the number of digits. I tried to use this one time and my numbers were too large, so I think it's never been used practically ever. Why is there an off button?",
   },
 };
 

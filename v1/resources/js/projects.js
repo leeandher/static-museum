@@ -28,7 +28,7 @@ function applyProject(proj, order) {
   $("#directory a:nth-child(" + (order + 1) + ")").text(proj.title);
   var projId = "#proj-" + order;
   $(projId + " .proj-title").text(proj.title);
-  $(projId + " .live").prop("href", "/" + proj.link);
+  $(projId + " .live").prop("href", "/projects/" + proj.link);
   $(projId + " .source").prop(
     "href",
     "https://github.com/leeandher/leeandher.github.io/tree/master/projects/" +
