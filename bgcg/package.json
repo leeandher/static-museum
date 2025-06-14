@@ -2,38 +2,26 @@
   "name": "bgcg",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "engines": {
     "pnpm": "10.7.1",
     "node": "23.10.0"
   },
-  "dependencies": {
-    "@testing-library/jest-dom": "4.2.4",
-    "@testing-library/react": "9.3.3",
-    "@testing-library/user-event": "7.1.2",
-    "react": "16.12.0",
-    "react-dom": "16.12.0",
-    "react-scripts": "3.4.1",
-    "styled-components": "4.4.1"
-  },
   "scripts": {
-    "start": "SKIP_PREFLIGHT_CHECK=true react-scripts --openssl-legacy-provider start",
-    "build": "SKIP_PREFLIGHT_CHECK=true react-scripts --openssl-legacy-provider build",
-    "test": "SKIP_PREFLIGHT_CHECK=true react-scripts --openssl-legacy-provider test",
-    "eject": "SKIP_PREFLIGHT_CHECK=true react-scripts --openssl-legacy-provider eject"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
-  "eslintConfig": {
-    "extends": "react-app"
+  "dependencies": {
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "styled-components": "6.1.19"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "devDependencies": {
+    "@types/react": "19.1.2",
+    "@types/react-dom": "19.1.2",
+    "@vitejs/plugin-react": "4.4.1",
+    "globals": "16.0.0",
+    "vite": "6.3.5"
   }
 }

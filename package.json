@@ -23,7 +23,7 @@
     "md:dev": "pnpm --filter md-prevuer dev",
     "md:build": "pnpm --filter md-prevuer build",
     "md:deploy": "netlify deploy --filter md-prevuer --prod",
-    "bgcg:dev": "pnpm --filter bgcg start",
+    "bgcg:dev": "pnpm --filter bgcg dev",
     "bgcg:build": "pnpm --filter bgcg build",
     "bgcg:deploy": "netlify deploy --filter bgcg --prod",
     "fyi:dev": "pnpm --filter fyi dev",
