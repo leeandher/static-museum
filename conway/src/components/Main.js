@@ -7,7 +7,7 @@ import Game from "./Game";
 
 class Main extends React.Component {
   state = {
-    gameTimer: null
+    gameTimer: null,
   };
 
   componentDidMount() {

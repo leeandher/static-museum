@@ -12,20 +12,15 @@
     "react-dom": "16.6.3",
     "react-redux": "6.0.0",
     "react-scripts": "2.1.8",
-    "redux": "4.0.1"
+    "redux": "4.0.1",
+    "eslint": "5.16.0"
   },
   "devDependencies": {
-    "babel-plugin-import": "1.11.0",
-    "customize-cra": "0.2.12",
-    "less": "3.9.0",
-    "less-loader": "4.1.0",
-    "sass": "1.89.0",
-    "react-app-rewired": "2.1.1"
+    "babel-plugin-import": "1.11.0"
   },
   "scripts": {
-    "sass": "node ./scripts/sass-reduce.js && sass --watch src/styles/scss:src/styles/css",
-    "start": "SKIP_PREFLIGHT_CHECK=true react-app-rewired --openssl-legacy-provider start",
-    "build": "SKIP_PREFLIGHT_CHECK=true react-app-rewired --openssl-legacy-provider build",
+    "start": "SKIP_PREFLIGHT_CHECK=true react-scripts --openssl-legacy-provider start",
+    "build": "SKIP_PREFLIGHT_CHECK=true react-scripts --openssl-legacy-provider build",
     "eject": "SKIP_PREFLIGHT_CHECK=true react-scripts --openssl-legacy-provider eject"
   },
   "eslintConfig": {

@@ -19,7 +19,7 @@
     "redux:deploy": "netlify deploy --filter reduxstagram --prod",
     "conway:dev": "pnpm --filter conway start",
     "conway:build": "pnpm --filter conway build",
-    "conway:deploy": "netlify deploy --filter conway --prod",
+    "conway:deploy": "netlify deploy --filter conway",
     "md:dev": "pnpm --filter md-prevuer dev",
     "md:build": "pnpm --filter md-prevuer build",
     "md:deploy": "netlify deploy --filter md-prevuer --prod",
@@ -60,9 +60,14 @@
       "gatsby",
       "gatsby-cli",
       "gatsby-telemetry",
-      "sharp",
+      "netlify-cli",
       "styled-components",
       "yorkie"
+    ],
+    "ignoredBuiltDependencies": [
+      "lmdb",
+      "msgpackr-extract",
+      "unix-dgram"
     ]
   },
   "devDependencies": {
