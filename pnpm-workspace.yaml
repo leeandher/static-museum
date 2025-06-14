@@ -1,17 +1,17 @@
 packages:
+  - bgcg
+  - catch-of-the-day
+  - conway
+  - delicious
+  - fyi
+  - md-prevuer
+  - reduxstagram
+  - sick-fits
+  - space-shooter
+  - stacker-news
   - v0
   - v1
-  - reduxstagram
-  - conway
-  - md-prevuer
-  - bgcg
-  - fyi
-  - space-shooter
-  - catch-of-the-day
-  - stacker-news
   - v2
-  - delicious
-  - sick-fits
 onlyBuiltDependencies:
   - '@parcel/watcher'
   - core-js
