@@ -57,57 +57,57 @@ const allPlaqueData = {
     description:
       "Weird way to display sections of a resume, probably a reason it didn't make it into v2. Having to unfold each section feels a bit odd by I do like the transition a fair bit! Content-wise, I find it pretty embarrassing, but it did get me my first development job!",
   },
-  v1_calculator: {
+  calculator: {
     title: "Calculator",
     date: "2018",
     description:
       "I guess it kinda works, but only to a few decimal places and it has a limit for the number of digits. I tried to use this one time and my numbers were too large, so I think it's never been used practically ever. Why is there an off button?",
     sourceSite: "/",
   },
-  v1_fuelgauge: {
+  fuelgauge: {
     title: "Productivity Fuel Gauge",
     date: "2018",
     description:
       "A pomodoro timer with a bit of a theme to it. I do actually like the intent behind this design though, it makes it obvious how much 'energy' you have left to spend in a recognizable format. Good job me.",
     sourceSite: "/",
   },
-  v1_liveontwitch: {
+  liveontwitch: {
     title: "Live on Twitch",
     date: "2018",
     description:
       "So this really doesn't work. There used to be a public passthrough for the entire Twitch API, but now it's limited to a handful of accounts so adding streamers is hit or miss. Was very proud of this originally though, first time using real data.",
     sourceSite: "/",
   },
-  v1_quotes: {
+  quotes: {
     title: "TinDirectory",
     date: "2018",
     description:
       "IIRC this was the first real JS project I had done on freeCodeCamp, and it was literally just to make a random quote appear. I thought I'd do extra credit and have it cycle even more data, like names, locations and backgrounds. All in the theme of an tinder, an app I've never used that might have spawned a venture-backed industry eroding the modern relationship.",
     sourceSite: "/",
   },
-  v1_simon: {
+  simon: {
     title: "Simon Says",
     date: "2018",
     description:
       "Revisiting this to put in the museum, it just appears like a boring Simon Says app to start. Mashing 'Remix' a few times, and then 'Spin', and it's kinda cute. I really like older projects like these because no one asked me to do this weird stuff, it's just the result of 'playing' with 'toys'.",
     sourceSite: "/",
   },
-  v1_tictactoe: {
+  tictactoe: {
     title: "Tic Tac Toe",
     date: "2018",
     description:
       "Cleaner design than any of my other apps at the time, and to be honest -- still impressive! I know it's just an algorithm, but the bot actually can't be beat! The difficulty selections are tangible, the UI is pleasant and the you can even play against a human.",
     sourceSite: "/",
   },
-  v1_weather: {
+  weather: {
     title: "Outside from the Inside",
     date: "2018",
     description:
       "It's super simple, but I still find this one charming with its changing backgrounds, and excess information. I can tell I was desperate to be adding stuff to make it cool rather than just display a number on screen after the user 'accepts' the location request.",
     sourceSite: "/",
   },
-  v1_wikiview: {
-    title: "Wikiview",
+  wikiview: {
+    title: "WikiView",
     date: "2018",
     description:
       "I'm still impressed with the level of free access to the Wikipedia API. It's been ages and this thing still works as I built it, which means all kinds of bugs I never noticed back then. Regardless I do remember feeling very proud of the UI, and that opening animation is pretty clean.",
