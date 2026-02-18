@@ -113,6 +113,13 @@ const allPlaqueData = {
       "I'm still impressed with the level of free access to the Wikipedia API. It's been ages and this thing still works as I built it, which means all kinds of bugs I never noticed back then. Regardless I do remember feeling very proud of the UI, and that opening animation is pretty clean.",
     sourceSite: "/",
   },
+  "catch-of-the-day": {
+    title: "Catch of the Day",
+    date: "2018",
+    description:
+      "My first ever time using React, in all it's class based component, life cycle method glory. Literally all crimes these days, but still a perfectly functional weird fish market.",
+    sourceSite: "https://v2.leander.xyz/projects/catch-of-the-day/",
+  },
 };
 
 function attachPlaque() {
@@ -141,7 +148,7 @@ function attachPlaque() {
 `;
 
   const prefersDarkMode = window.matchMedia(
-    "(prefers-color-scheme: dark)"
+    "(prefers-color-scheme: dark)",
   ).matches;
 
   if (prefersDarkMode) {

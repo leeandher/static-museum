@@ -1,6 +1,6 @@
 # Static Museum
 
-A public archive for my works whose existence should be recognized even if their quality greatly varies. Consider these small static sites like you would historical art pieces, it's hard to interpret what was the intention, but we keep them around to immortalize progression. It's my own little archive.org.
+A public archive for my works whose existence should be recognized even if their quality greatly varies. Consider these small static sites like you would historical art pieces. Modern lenses may disagree with the artistic choices, and its intention eludes us, but we keep them around to immortalize those before us. Shows progression, in some small way. It's my own little archive.org, but with tiny plaques
 
 These are a whole bunch of projects I've built over time, sorted by age descending. Click around, play with them, go crazy -- most of the links should be working and functionality should actually work, if I've done my job as a curator.
 
@@ -52,6 +52,15 @@ To add a new exhibit:
 - [ ] Add a `_redirects` if it's a single page app, and `netlify.toml` regardless
 - [ ] Add the build commands to the root `package.json`
 - [ ] Add a plaque script import, and dock if necessary to help with navigating.
+
+## Shared Files
+
+Some files are shared across the project to enable the plaques and dock. The lowest common denominator for these projects is pure JS, so the easiest way to get these in each app is dropping it right in as a script tag, but how this happens varies a little per project.
+
+- Eleventy will pick up changes in dev and build.
+  - Applies to `v0`, `v1`
+- For most other apps, a new `setup-shared` script: `mkdir -p [static-dir] && cp -R ../_shared [static-dir]`, and run it before `dev` and `build` commands
+  - Applies with `public` dir to `catch-of-the-day`
 
 ### Troubleshooting
 

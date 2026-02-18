@@ -23,9 +23,10 @@ function attachDock() {
     { text: "v0", url: "https://v0.leander.xyz", version: "v0" },
   ];
 
-  const version = document
-    .querySelector("[data-leander-xyz-version]")
-    .getAttribute("data-leander-xyz-version");
+  const loader = document.querySelector("[data-leander-xyz-version]");
+  const version = loader
+    ? loader.getAttribute("data-leander-xyz-version")
+    : null;
 
   const linkElements = links.map((link) => {
     const linkElement = document.createElement("a");
@@ -34,7 +35,7 @@ function attachDock() {
       text-decoration: none;
       padding: 0 12px;
       transition: all 0.2s;
-      font-size: 18px;
+      font-size: 16px;
     `;
     if (version === link.version) {
       linkElement.style.textDecoration = "underline";
@@ -46,43 +47,44 @@ function attachDock() {
     dock.appendChild(linkElement);
     return linkElement;
   });
-
-  if (version === "v0") {
-    dock.style.borderColor = "rgb(77, 204, 176)";
-    dock.style.backgroundColor = "rgb(206, 244, 235)";
-    linkElements.forEach((linkElement) => {
-      linkElement.style.color = "rgb(6, 16, 14)";
-    });
-  }
-
-  if (version === "v1") {
-    dock.style.animation = "rainbow 5s linear infinite";
-    dock.style.borderColor = "rgb(77, 204, 176)";
-    dock.style.backgroundColor = "rgb(13,13,13)";
-    dock.style.borderRadius = "4px";
-    dock.style.color = "rgb(253, 253, 253)";
-    linkElements.forEach((linkElement) => {
-      linkElement.addEventListener("mouseover", () => {
-        linkElement.style.color = "rgb(77, 204, 176)";
+  switch (version) {
+    case "v0":
+      dock.style.borderColor = "rgb(77, 204, 176)";
+      dock.style.backgroundColor = "rgb(206, 244, 235)";
+      linkElements.forEach((linkElement) => {
+        linkElement.style.color = "rgb(6, 16, 14)";
       });
-      linkElement.addEventListener("mouseout", () => {
-        linkElement.style.color = "rgb(253, 253, 253)";
+      break;
+    case "v1":
+      dock.style.animation = "rainbow 5s linear infinite";
+      dock.style.borderColor = "rgb(77, 204, 176)";
+      dock.style.backgroundColor = "rgb(13,13,13)";
+      dock.style.borderRadius = "4px";
+      dock.style.color = "rgb(253, 253, 253)";
+      linkElements.forEach((linkElement) => {
+        linkElement.addEventListener("mouseover", () => {
+          linkElement.style.color = "rgb(77, 204, 176)";
+        });
+        linkElement.addEventListener("mouseout", () => {
+          linkElement.style.color = "rgb(253, 253, 253)";
+        });
       });
-    });
-  }
-
-  if (version === "v2") {
-    dock.classList.add("bg-accent");
-    dock.style.transform = "skew(-5deg)";
-    dock.style.color = "rgb(13,13,13)";
-    linkElements.forEach((linkElement) => {
-      linkElement.addEventListener("mouseover", () => {
-        linkElement.style.backgroundColor = "rgb(253, 253, 253)";
+      break;
+    case "v2":
+      dock.classList.add("bg-accent");
+      dock.style.transform = "skew(-5deg)";
+      dock.style.color = "rgb(13,13,13)";
+      linkElements.forEach((linkElement) => {
+        linkElement.addEventListener("mouseover", () => {
+          linkElement.style.backgroundColor = "rgb(253, 253, 253)";
+        });
+        linkElement.addEventListener("mouseout", () => {
+          linkElement.style.backgroundColor = "transparent";
+        });
       });
-      linkElement.addEventListener("mouseout", () => {
-        linkElement.style.backgroundColor = "transparent";
-      });
-    });
+      break;
+    default:
+      break;
   }
 
   document.body.appendChild(dock);

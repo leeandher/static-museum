@@ -4,6 +4,10 @@ node_modules/
 .pnp.cjs
 .pnp.loader.mjs
 
+# copies of _shared files
+**/_shared/
+
+
 # vite
 dist/
 
