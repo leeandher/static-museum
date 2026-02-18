@@ -16,6 +16,7 @@ const SEOBundle = ({
   const seoTitle = title != null ? title : seo[profile].title;
   const seoDescription =
     description != null ? description : seo[profile].description;
+  const plaqueSlug = seo[profile].plaqueSlug;
   return (
     <Location>
       {({ location: { href: url } }) => (
@@ -48,6 +49,11 @@ const SEOBundle = ({
             sizes="16x16"
             href="/icons/favicon-16x16.png"
           />
+          <script
+            src="/_shared/plaques.js"
+            data-sm-plaque-slug={plaqueSlug}
+            defer
+          ></script>
         </Helmet>
       )}
     </Location>

@@ -4,8 +4,9 @@ node_modules/
 .pnp.cjs
 .pnp.loader.mjs
 
-# copies of _shared files
-**/_shared/
+# copies of _shared files (ignore nested, not root)
+_shared/
+!/_shared/
 
 
 # vite

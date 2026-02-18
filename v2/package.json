@@ -7,11 +7,11 @@
   },
   "version": "2.0.0",
   "scripts": {
-    "dev": "gatsby develop",
-    "build": "gatsby build",
+    "setup-shared": "mkdir -p static/_shared && cp -R ../_shared static",
+    "dev": "pnpm run setup-shared && gatsby develop",
+    "build": "pnpm run setup-shared && gatsby build",
     "serve": "gatsby serve",
-    "clean": "gatsby clean",
-    "redock": "mkdir -p static/shared && cp ../_shared/dock.js static/shared/"
+    "clean": "gatsby clean"
   },
   "dependencies": {
     "@gatsbyjs/reach-router": "2.0.1",
