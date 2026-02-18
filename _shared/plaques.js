@@ -120,6 +120,14 @@ const allPlaqueData = {
       "My first ever time using React, in all it's class based component, life cycle method glory. Literally all crimes these days, but still a perfectly functional weird fish market.",
     sourceSite: "https://v2.leander.xyz/projects/catch-of-the-day/",
   },
+  bgcg: {
+    title: "B.G.C.G.",
+    date: "2026",
+    description:
+      "I know most people say, 'oh I just got bored of studying' and then showcase some gorgeous hand-drawn realistic pencil sketch of their bay window, but this is the shit that I did. I'm glad I got screenshots of the origin story, it somewhat insulates me from the 'rawr xd' cringe of it all.",
+    sourceSite:
+      "https://v2.leander.xyz/projects/best-grilled-cheese-generator/",
+  },
 };
 
 function attachPlaque() {
