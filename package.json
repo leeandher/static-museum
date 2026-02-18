@@ -69,7 +69,10 @@
       "lmdb",
       "msgpackr-extract",
       "unix-dgram"
-    ]
+    ],
+    "overrides": {
+      "postcss-flexbugs-fixes": "4.2.1"
+    }
   },
   "devDependencies": {
     "netlify-cli": "21.5.0"
