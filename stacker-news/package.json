@@ -14,8 +14,9 @@
     "eslint": "6.2.0"
   },
   "scripts": {
-    "start": "SKIP_PREFLIGHT_CHECK=true react-scripts --openssl-legacy-provider start",
-    "build": "SKIP_PREFLIGHT_CHECK=true react-scripts --openssl-legacy-provider build",
+    "setup-shared": "mkdir -p public/_shared && cp -R ../_shared public",
+    "start": "pnpm run setup-shared && SKIP_PREFLIGHT_CHECK=true react-scripts --openssl-legacy-provider start",
+    "build": "pnpm run setup-shared && SKIP_PREFLIGHT_CHECK=true react-scripts --openssl-legacy-provider build",
     "eject": "SKIP_PREFLIGHT_CHECK=true react-scripts --openssl-legacy-provider eject"
   },
   "browserslist": [

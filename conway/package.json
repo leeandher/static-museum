@@ -23,8 +23,9 @@
     "react-app-rewired": "2.1.1"
   },
   "scripts": {
-    "start": "SKIP_PREFLIGHT_CHECK=true react-app-rewired --openssl-legacy-provider start",
-    "build": "SKIP_PREFLIGHT_CHECK=true react-app-rewired --openssl-legacy-provider build"
+    "setup-shared": "mkdir -p public/_shared && cp -R ../_shared public",
+    "start": "pnpm run setup-shared && SKIP_PREFLIGHT_CHECK=true react-app-rewired --openssl-legacy-provider start",
+    "build": "pnpm run setup-shared && SKIP_PREFLIGHT_CHECK=true react-app-rewired --openssl-legacy-provider build"
   },
   "eslintConfig": {
     "extends": "react-app"

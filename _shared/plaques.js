@@ -122,11 +122,59 @@ const allPlaqueData = {
   },
   bgcg: {
     title: "B.G.C.G.",
-    date: "2026",
+    date: "2018",
     description:
       "I know most people say, 'oh I just got bored of studying' and then showcase some gorgeous hand-drawn realistic pencil sketch of their bay window, but this is the shit that I did. I'm glad I got screenshots of the origin story, it somewhat insulates me from the 'rawr xd' cringe of it all.",
     sourceSite:
       "https://v2.leander.xyz/projects/best-grilled-cheese-generator/",
+  },
+  conway: {
+    title: "Conway's Game of Life",
+    date: "2018",
+    description: "Replace this description",
+    sourceSite: "https://v2.leander.xyz/projects/conway/",
+  },
+  delicious: {
+    title: "Now That's Delicious!",
+    date: "2018",
+    description: "Replace this description",
+    sourceSite: "https://v2.leander.xyz/projects/now-thats-delicious/",
+  },
+  reduxstagram: {
+    title: "Reduxstagram",
+    date: "2018",
+    description: "Replace this description",
+    sourceSite: "https://v2.leander.xyz/projects/reduxstagram/",
+  },
+  fyi: {
+    title: "lgr.fyi",
+    date: "2019",
+    description: "Replace this description",
+    sourceSite: "https://v2.leander.xyz/projects/lgr-fyi/",
+  },
+  "sick-fits": {
+    title: "Sick Fits",
+    date: "2019",
+    description: "Replace this description",
+    sourceSite: "https://v2.leander.xyz/projects/sick-fits/",
+  },
+  "stacker-news": {
+    title: "Stacker News",
+    date: "2019",
+    description: "Replace this description",
+    sourceSite: "https://v2.leander.xyz/projects/stacker-news/",
+  },
+  "md-prevuer": {
+    title: "Markdown Previewer",
+    date: "2019",
+    description: "Replace this description",
+    sourceSite: "https://v2.leander.xyz/projects/md-prevuer/",
+  },
+  "space-shooter": {
+    title: "Space Shooter",
+    date: "2018",
+    description: "Replace this description",
+    sourceSite: "https://v2.leander.xyz/projects/space-shooter/",
   },
 };
 

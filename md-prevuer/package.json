@@ -7,8 +7,9 @@
     "node": "23.10.0"
   },
   "scripts": {
-    "dev": "vite",
-    "build": "vite build"
+    "setup-shared": "mkdir -p public/_shared && cp -R ../_shared public",
+    "dev": "pnpm run setup-shared && vite",
+    "build": "pnpm run setup-shared && vite build"
   },
   "dependencies": {
     "core-js": "2.6.5",
