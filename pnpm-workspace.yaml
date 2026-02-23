@@ -1,6 +1,8 @@
 packages:
   - bgcg
   - catch-of-the-day
+  # Need to keep conway for netlify deploy commands to work, even if it uses yarn
+  - conway
   - delicious
   - fyi
   - md-prevuer

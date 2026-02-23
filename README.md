@@ -4,21 +4,21 @@ A public archive for my works whose existence should be recognized even if their
 
 These are a whole bunch of projects I've built over time, sorted by age descending. Click around, play with them, go crazy -- most of the links should be working and functionality should actually work, if I've done my job as a curator.
 
-| Exhibit              | Description                                    | Deployed URL                         | Command Format    |
-| -------------------- | ---------------------------------------------- | ------------------------------------ | ----------------- |
-| **v0**               | A joke version of my first portfolio site      | https://v0.leander.xyz               | `v0:[cmd]`        |
-| **v1**               | The portfolio site that got me my first job    | https://v1.leander.xyz               | `v1:[cmd]`        |
-| **catch-of-the-day** | An over-engineered fish store menu             | https://catch-of-the-day.leander.xyz | `catch:[cmd]`     |
-| **delicious**        | Colourful little app for restaurant reviews    | https://delicious.leander.xyz        | `delicious:[cmd]` |
-| **reduxstagram**     | Instagram clone from when instagram was simple | https://reduxstagram.leander.xyz     | `redux:[cmd]`     |
-| **v2**               | First ground-up rewrite of my personal site    | https://v2.leander.xyz               | `v2:[cmd]`        |
-| **conway**           | Data visualization for Conway's Game of Life   | https://conway.leander.xyz           | `conway:[cmd]`    |
-| **space-shooter**    | A space shooter game from a Unity Tutorial     | https://space-shooter.leander.xyz    | `space:[cmd]`     |
-| **stacker-news**     | Hacker News clone with similar data to this    | https://stacker-news.leander.xyz     | `stacker:[cmd]`   |
-| **md-prevuer**       | Markdown Previewer built in Vue.js (get it)    | https://md-prevuer.leander.xyz       | `md:[cmd]`        |
-| **sick-fits**        | Online store with 'dynamic' (random) pricing   | https://sick-fits.leander.xyz        | `sick:[cmd]`      |
-| **fyi**              | Used to be a nice URL shortener                | https://fyi.leander.xyz              | `fyi:[cmd]`       |
-| **bgcg**             | Best Grilled Cheese Sandwich                   | https://bgcg.leander.xyz             | `bgcg:[cmd]`      |
+| Exhibit              | Description                                    | Deployed URL                         | Project     |
+| -------------------- | ---------------------------------------------- | ------------------------------------ | ----------- |
+| **v0**               | A joke version of my first portfolio site      | https://v0.leander.xyz               | `v0`        |
+| **v1**               | The portfolio site that got me my first job    | https://v1.leander.xyz               | `v1`        |
+| **catch-of-the-day** | An over-engineered fish store menu             | https://catch-of-the-day.leander.xyz | `catch`     |
+| **delicious**        | Colourful little app for restaurant reviews    | https://delicious.leander.xyz        | `delicious` |
+| **reduxstagram**     | Instagram clone from when instagram was simple | https://reduxstagram.leander.xyz     | `redux`     |
+| **v2**               | First ground-up rewrite of my personal site    | https://v2.leander.xyz               | `v2`        |
+| **conway**           | Data visualization for Conway's Game of Life   | https://conway.leander.xyz           | `conway`    |
+| **space-shooter**    | A space shooter game from a Unity Tutorial     | https://space-shooter.leander.xyz    | `space`     |
+| **stacker-news**     | Hacker News clone with similar data to this    | https://stacker-news.leander.xyz     | `stacker`   |
+| **md-prevuer**       | Markdown Previewer built in Vue.js (get it)    | https://md-prevuer.leander.xyz       | `md`        |
+| **sick-fits**        | Online store with 'dynamic' (random) pricing   | https://sick-fits.leander.xyz        | `sick`      |
+| **fyi**              | Used to be a nice URL shortener                | https://fyi.leander.xyz              | `fyi`       |
+| **bgcg**             | Best Grilled Cheese Sandwich                   | https://bgcg.leander.xyz             | `bgcg`      |
 
 These projects were originally built on KhanAcademy and CodePen, so it's their first time on the internet. These precede any of the above projects
 
@@ -39,7 +39,14 @@ These projects were originally built on KhanAcademy and CodePen, so it's their f
 
 ## Development
 
-Each project uses the following commands, though see the troubleshooting below for exceptions.
+```
+make dev [project]     # Start dev server
+make deploy [project]  # Build and deploy to Netlify
+```
+
+Using the `[project]` from the exhibit table (e.g. `make dev catch`, `make deploy v2`). Run `make` to see all available projects as well.
+
+The makefile uses `pnpm` commands under the hood:
 
 - `pnpm [project]:dev` - Start project's development server
 - `pnpm [project]:build` - Build the project for production
