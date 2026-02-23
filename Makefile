@@ -13,6 +13,7 @@ VALID_PROJECTS := bgcg catch conway delicious fyi md redux sick space stacker v0
 help:
 	@printf "$(BOLD)Usage:$(RESET)\n"
 	@printf "  $(CYAN)make dev$(RESET) [project]     Start dev server for a project\n"
+	@printf "  $(CYAN)make build$(RESET) [project]   Only build a project\n"
 	@printf "  $(CYAN)make deploy$(RESET) [project]  Build and deploy a project\n"
 	@printf "\n"
 	@printf "$(BOLD)Projects:$(RESET) $(VALID_PROJECTS)\n"
@@ -24,6 +25,14 @@ dev:
 		exit 1; \
 	fi
 	pnpm run $(word 2,$(MAKECMDGOALS)):dev
+
+build:
+	@if [ -z "$(filter $(word 2,$(MAKECMDGOALS)),$(VALID_PROJECTS))" ]; then \
+		echo "Usage: make build [project]"; \
+		echo "Valid projects: $(VALID_PROJECTS)"; \
+		exit 1; \
+	fi
+	pnpm run $(word 2,$(MAKECMDGOALS)):build
 
 deploy:
 	@if [ -z "$(filter $(word 2,$(MAKECMDGOALS)),$(VALID_PROJECTS))" ]; then \

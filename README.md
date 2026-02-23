@@ -40,11 +40,11 @@ These projects were originally built on KhanAcademy and CodePen, so it's their f
 ## Development
 
 ```
-make dev [project]     # Start dev server
-make deploy [project]  # Build and deploy to Netlify
+make dev [project]     # Start dev server for a project
+make deploy [project]  # Build and deploy to production
 ```
 
-Using the `[project]` from the exhibit table (e.g. `make dev catch`, `make deploy v2`). Run `make` to see all available projects as well.
+Using the `[project]` from the exhibit table (e.g. `make dev catch`, `make deploy v2`). Run `make` to see all available projects and commands as well.
 
 The makefile uses `pnpm` commands under the hood:
 
