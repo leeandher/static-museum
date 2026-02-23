@@ -17,7 +17,7 @@ function attachDock() {
   `;
 
   const links = [
-    { text: "v3", url: "https://v3.leander.xyz", version: "v3" },
+    // { text: "v3", url: "https://v3.leander.xyz", version: "v3" },
     { text: "v2", url: "https://v2.leander.xyz", version: "v2" },
     { text: "v1", url: "https://v1.leander.xyz", version: "v1" },
     { text: "v0", url: "https://v0.leander.xyz", version: "v0" },

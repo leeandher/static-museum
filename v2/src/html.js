@@ -42,7 +42,7 @@ export default function HTML(props) {
         {postBodyComponents}
       </body>
       <script
-        src="/shared/dock.js"
+        src="/_shared/dock.js"
         data-leander-xyz-version="v2"
         defer
       ></script>
