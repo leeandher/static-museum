@@ -11,13 +11,13 @@ These are a whole bunch of projects I've built over time, sorted by age descendi
 | **catch-of-the-day** | An over-engineered fish store menu             | https://catch-of-the-day.leander.xyz | `catch`     |
 | **delicious**        | Colourful little app for restaurant reviews    | https://delicious.leander.xyz        | `delicious` |
 | **reduxstagram**     | Instagram clone from when instagram was simple | https://reduxstagram.leander.xyz     | `redux`     |
-| **v2**               | First ground-up rewrite of my personal site    | https://v2.leander.xyz               | `v2`        |
 | **conway**           | Data visualization for Conway's Game of Life   | https://conway.leander.xyz           | `conway`    |
 | **space-shooter**    | A space shooter game from a Unity Tutorial     | https://space-shooter.leander.xyz    | `space`     |
-| **stacker-news**     | Hacker News clone with similar data to this    | https://stacker-news.leander.xyz     | `stacker`   |
+| **stacker-news**     | Hacker News clone on a GraphQL stack (get it)  | https://stacker-news.leander.xyz     | `stacker`   |
 | **md-prevuer**       | Markdown Previewer built in Vue.js (get it)    | https://md-prevuer.leander.xyz       | `md`        |
 | **sick-fits**        | Online store with 'dynamic' (random) pricing   | https://sick-fits.leander.xyz        | `sick`      |
 | **fyi**              | Used to be a nice URL shortener                | https://fyi.leander.xyz              | `fyi`       |
+| **v2**               | First ground-up rewrite of my personal site    | https://v2.leander.xyz               | `v2`        |
 | **bgcg**             | Best Grilled Cheese Sandwich                   | https://bgcg.leander.xyz             | `bgcg`      |
 
 These projects were originally built on KhanAcademy and CodePen, so it's their first time on the internet. These precede any of the above projects
