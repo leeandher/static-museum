@@ -116,49 +116,57 @@ function attachPlaque() {
     },
     v2: {
       title: "v2",
-      date: "2018",
-      description: "Replace this description",
-    },
-    v2_projects: {
-      title: "Projects - v2",
-      date: "2018",
-      description: "Replace this description",
-    },
-    v2_blog: {
-      title: "Blog - v2",
-      date: "2018",
-      description: "Replace this description",
-    },
-    v2_notes: {
-      title: "Notes - v2",
-      date: "2018",
-      description: "Replace this description",
+      date: "2019",
+      description:
+        "I was so SO proud of this version. When I published it I remember trying to show it off absolute everywhere. All the pages had a vibe, and I remember sketching out the idea, I adored the way it shifted colours. I even added an easter egg! 🥚",
     },
     v2_about: {
-      title: "About - v2",
-      date: "2018",
-      description: "Replace this description",
+      title: "All About [Someone Else]",
+      date: "2019",
+      description:
+        "Oh god It's actually hard for me to re-read these details, why did I talk like that. It's got such a voice, lmao. And an FAQs section! I'm sure I was struggling to fit space to make this page earn it's place in the sidebar. I also think I stole '🔥 picks' from Syntax' treats thing.",
+    },
+    v2_projects: {
+      title: "Projects.Why",
+      date: "2019",
+      description:
+        "Just so incredibly impractical as a page, but I thought framer motion was the coolest thing. I remember barely even understanding what I'd built but it did kinda work, so I shipped it. I wish I'd centered the project photos, but it has a certain amateur charm.",
+    },
+    v2_blog: {
+      title: "MyBlog.md",
+      date: "2019",
+      description:
+        "It feels mandatory for people building their first personal sites to include a blog, even if they never really have a plan for what they're gonna talk about. I kind of admire that, it's just kindled by a burning passion to share something -- regardless of quality (in my case) lol.",
+    },
+    v2_notes: {
+      title: "Taking Note",
+      date: "2019",
+      description:
+        "If you peek at the code here, I remember being oh-so-proud of the fact that every one of these note pages are powered by simple markdown files. Like not even with frontmatter, just a README.md for the directory pages. All that work, for what are now, EXTREMELY outdated notes.",
     },
     v2_contact: {
-      title: "Contact - v2",
-      date: "2018",
-      description: "Replace this description",
+      title: "(Don't) Reach Out",
+      date: "2019",
+      description:
+        "One of those things that honestly might be kinda dated today, people usually just link their social media now. That said, I had an email automation to tag and format these responses, and I remember being so excited to see them! It almost felt like receiving hand written letters 💌.",
     },
     v2_resume: {
-      title: "Resume - v2",
-      date: "2018",
-      description: "Replace this description",
+      title: "Hire Me",
+      date: "2019",
+      description:
+        "A pretty massive improvement over v1. I remember specifically trying to make it mobile friendly because I figured hiring managers must just be that busy. I also remember thinking that paper resumes had to only be a page, but my own site can scroll forever, so why not include literally everything in excrutiating detail.",
     },
     v2_404: {
-      title: "404 - v2",
-      date: "2018",
-      description: "Replace this description",
+      title: "404",
+      date: "2019",
+      description:
+        "Okay like all things considered, I know this site is such heavy coder-boy CS kid energy but I still think this 404 page has a bit of charm.",
     },
     "catch-of-the-day": {
       title: "Catch of the Day",
       date: "2018",
       description:
-        "My first ever time using React, in all it's class based component, life cycle method glory. Literally all crimes these days, but still a perfectly functional weird fish market.",
+        "From my first course (and time) using React, in all it's class-based component, lifecycle method glory. Literally all crimes these days, but still a perfectly functional weird fish market.",
       sourceSite: "https://v2.leander.xyz/projects/catch-of-the-day/",
     },
     bgcg: {
@@ -172,49 +180,57 @@ function attachPlaque() {
     conway: {
       title: "Conway's Game of Life",
       date: "2018",
-      description: "Replace this description",
+      description:
+        "Still pretty fascinating to watch, it's mesmerizing, the vibrant colours, design library and silly caption. I still vaguely recall watching the first few runs when I just got the code wired up and feeling a wave of pride. I also love that the 'dark mode' just inverts all colours on the page, big brain move.",
       sourceSite: "https://v2.leander.xyz/projects/conway/",
     },
     delicious: {
       title: "Now That's Delicious!",
       date: "2018",
-      description: "Replace this description",
+      description:
+        "From a Node course way back when. There's still something that personally appeals to me whenever I see a well-used gradient. I also adore the idea of small purpose built sites, and even though this one is artificial, the idea of building a personal review store is kinda cute. Name is pretty bad though.",
       sourceSite: "https://v2.leander.xyz/projects/now-thats-delicious/",
     },
     reduxstagram: {
       title: "Reduxstagram",
       date: "2018",
-      description: "Replace this description",
+      description:
+        "Interestingly enough, this site is from a course originally sponsored by Sentry long before I ever worked there. It was one of the first times I'd heard of it, and seeing a familiar name in job listings definitely played a role in my applying. Also, remember when instagram actually did look like this?",
       sourceSite: "https://v2.leander.xyz/projects/reduxstagram/",
     },
     fyi: {
       title: "lgr.fyi",
       date: "2019",
-      description: "Replace this description",
+      description:
+        "All because I splurged and bought a domain (which I have since let lapse). I think URL shortening might be one of the best beginner backend projects. It's simple to start, but you can add more and more complexity as you go. I mean I never did, I got cheap and shuttered the whole thing at my first <i>DigitalOcean</i> bill, but someone can.",
       sourceSite: "https://v2.leander.xyz/projects/lgr-fyi/",
     },
     "sick-fits": {
       title: "Sick Fits",
       date: "2019",
-      description: "Replace this description",
+      description:
+        "The vibe of this course site definitely influenced the aesthetic for v2 of my personal site. It was the last project before I started working on it, and I remember thinking the bold red text background was extremely eye-catching. Skews and high-contrast as well!",
       sourceSite: "https://v2.leander.xyz/projects/sick-fits/",
     },
     "stacker-news": {
       title: "Stacker News",
       date: "2019",
-      description: "Replace this description",
+      description:
+        "Kinda feels like cosplaying since I've never been someone who reads <i>HackerNews</> (and probably never will). I know that GraphQL was hot at the time, and it just so happened to be the subject of a tutorial I used to put this together. I still think it's crazy that it's near identical to the real one with like 8 lines of CSS.",
       sourceSite: "https://v2.leander.xyz/projects/stacker-news/",
     },
     "md-prevuer": {
       title: "Markdown Previewer",
       date: "2019",
-      description: "Replace this description",
+      description:
+        "Back when I used to get excited about something new in JavaScript. I had heard so much about Vue, but never tried it and figured it'd be useful to build some experience. A very simple app, but probably one of my most directly useful.",
       sourceSite: "https://v2.leander.xyz/projects/md-prevuer/",
     },
     "space-shooter": {
       title: "Space Shooter",
       date: "2018",
-      description: "Replace this description",
+      description:
+        "I took an interest to Unity at one point, and was pretty surprised when I found out you can build it for web. Game development has always been something I mean to get around too, and I do remember enjoying this tutorial project. Maybe some day though.",
       sourceSite: "https://v2.leander.xyz/projects/space-shooter/",
     },
   };
