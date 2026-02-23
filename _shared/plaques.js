@@ -4,13 +4,13 @@ function attachPlaque() {
       title: "A Structured Joke",
       date: "2018",
       description:
-        "It's pretty self-deprecating, but honestly, that was accurate to my humour at the time. I was very proud of the mobile nav hamburger animation, it made its way to <code>v1</code> as well, and even <code>v2</code>. Originally, the projects section was a placeholder, but I decided to put some old-school projects here, including high-school assignments and my first webpage.",
+        "It's pretty self-deprecating, but honestly, that was accurate to my humour at the time. I was very proud of the mobile nav hamburger animation, it made its way to v1 as well, and even v2. Originally, the projects section was a placeholder, but I decided to put some old-school projects here, including high-school assignments and my first webpage.",
     },
     concentration: {
       title: "Concentration",
       date: "2014",
       description:
-        "Originally built in Khan Academy for my first CS course in Grade 10 (which I only took because I thought that meant robotics). I remember choosing the colours because of Portal 2, and the idea for gameplay probably came from Piano Tiles or Tap Tap Revenge, idk.",
+        "Originally built in <i>Khan Academy</i> for my first CS course in Grade 10 (which I only took because I thought CS meant robotics). I remember choosing the colours because of <i>Portal 2</i>, and the idea for gameplay probably came from <i>Piano Tiles</i> or <i>Tap Tap Revenge</i>, idk.",
       sourceSite: "https://v0.leander.xyz/#portfolio",
     },
     inversion: {
@@ -24,7 +24,7 @@ function attachPlaque() {
       title: "Rainbow Roadblock",
       date: "2015",
       description:
-        "Pretty simple game, but I remember finding it fun to create this ramping difficulty, and an ending at 150 points! Two control schemes as well, I personally like keyboard more but mouse is definitely easier. IIRC this did pretty well as a culminating project in Grade 10.",
+        "Pretty simple game, but I remember finding it fun to create this ramping difficulty, and an ending at 150 points. Two control schemes as well, I personally like keyboard more but mouse is definitely easier. IIRC this did pretty well as a culminating project in Grade 10.",
       sourceSite: "https://v0.leander.xyz/#portfolio",
     },
     tribute: {
@@ -38,7 +38,7 @@ function attachPlaque() {
       title: "It's (a)LIVE",
       date: "2018",
       description:
-        "The first time any of my code had been deployed to the internet. Very janky and had many anti-patterns, but it worked! <i>PHPMyAdmin</i>, <i>cPanel</i>, and <i>FileZilla</i> were all new to me, but that's what was available on the webhost I paid for at the time. Pretty cool how much it built up from v0.",
+        "The first time any of my code had been deployed to the internet. Very janky and had many anti-patterns, but it worked. <i>PHPMyAdmin</i>, <i>cPanel</i>, and <i>FileZilla</i> were all new to me, but that's what was available on the webhost I paid for at the time. Pretty cool how much it built up from v0.",
     },
     v1_projects: {
       title: "Earliest Gallery",
@@ -56,7 +56,7 @@ function attachPlaque() {
       title: "Accordions",
       date: "2018",
       description:
-        "Weird way to display sections of a resume, probably a reason it didn't make it into <code>v2</code>. Having to unfold each section kinda sucks, but I do like the transition. Content-wise, it's a mixed bag, although I'm fairly certain it landed me my first dev job.",
+        "Weird way to display sections of a resume, probably a reason it didn't make it into v2. Having to unfold each section kinda sucks, but I do like the transition. Content-wise, it's a mixed bag, although I'm fairly certain it landed me my first dev job.",
     },
     quotes: {
       title: "tinDirectory",
@@ -76,28 +76,28 @@ function attachPlaque() {
       title: "Outside from the Inside",
       date: "2018",
       description:
-        "It's super simple, but I still find this one charming with its changing backgrounds, and excess information. I can tell I was desperate to be adding stuff to make it cool rather than just display a number on screen after the user 'accepts' the location request.",
+        "It's super simple, but I still find this one charming with its changing backgrounds, and excess information. I can tell I was desperate to be adding stuff to make it cool rather than just display a number on screen after the user accepts the location request.",
       sourceSite: "https://v1.leander.xyz/projects/#proj-5",
     },
     liveontwitch: {
       title: "Live on Twitch",
       date: "2018",
       description:
-        "So this really doesn't work. There used to be a public passthrough for the entire Twitch API, but now it's limited to a handful of accounts so adding streamers is hit or miss. Was very proud of this though, it was neat seeing API data about stuff I'm semi-familiar with!",
+        "So this really doesn't work. There used to be a public passthrough for the entire Twitch API, but now it's limited to a handful of accounts so adding streamers is hit or miss. Was very proud of this though, it was neat seeing API data about stuff I'm semi-familiar with.",
       sourceSite: "https://v1.leander.xyz/projects/#proj-4",
     },
     calculator: {
       title: "Calculator",
       date: "2018",
       description:
-        "I guess it kinda works, but only to a few decimal places and digits. The one time I tried to use this intentionally, my numbers were too large, so I think to this day, it's never done a calculation with any real-world impact. Also, why is there an off button?",
+        "I guess it kinda works, but only to a few decimal places and digits. The one time I tried to use it practically, my numbers were too large. Therefore, I believe to this day, it's never done a calculation with any real-world impact. Also, why is there an off button?",
       sourceSite: "https://v1.leander.xyz/projects/#proj-3",
     },
     fuelgauge: {
       title: "Productivity Fuel Gauge",
       date: "2018",
       description:
-        "A pomodoro timer with a bit of a theme to it. I do actually like the intent behind this design though, it makes it obvious how much 'energy' you have left to spend in a recognizable format. Not really my kind of tool, but it's still charming!",
+        "A pomodoro timer with a bit of a theme to it. I do actually like the intent behind this design though, it makes it obvious how much 'energy' you have left to spend in a recognizable format. Not really my kind of tool, but it's still got a look.",
       sourceSite: "https://v1.leander.xyz/projects/#proj-2",
     },
     simon: {
@@ -111,56 +111,56 @@ function attachPlaque() {
       title: "Tic Tac Toe",
       date: "2018",
       description:
-        "Cleaner design than any of my other apps at the time, and to be honest -- still impressive! I know it's just an algorithm, but the <i>Impossible AI</i> actually can't be beat! The difficulty selections are tangible, the colour picker is a nice touch and the you can even play against a human.",
+        "Cleaner design than any of my other apps at the time, and to be honest -- still impressive IMO. I know it's just an algorithm, but the <i>Impossible AI</i> actually can't be beat. The difficulty selections are tangible, the colour picker is a nice touch and the you can even play against a human.",
       sourceSite: "https://v1.leander.xyz/projects/#proj-0",
     },
     v2: {
-      title: "v2",
+      title: "Personal Published Portfolio",
       date: "2019",
       description:
-        "I was immensely proud of this version. When I published it, I remember trying to show it off absolute everywhere that let me add a website to my profile. All the pages had a vibe, and I remember sketching out the idea, I adored the way it shifted colours. I even added an easter egg! 🥚",
+        "I put so much effort into this build, and was immensely proud. When I published it, I remember trying to show it off absolute everywhere that let me add a website to my profile. All the pages have a vibe, there are animations everywhere, and I still like the way it shifts the colour palette across pages. There's even an easter egg at the bottom of the page",
     },
     v2_about: {
       title: "All About [Someone Else]",
       date: "2019",
       description:
-        "Oh god It's actually hard for me to re-read these details, why did I talk like that. It's got such a voice, lmao. And an FAQs section! I'm sure I was struggling to fit space to make this page earn it's place in the sidebar. I also think I stole '🔥 picks' from Syntax' treats thing.",
+        "Oh god It's actually hard for me to re-read these details, why did I talk like that. It's got such a voice. And an FAQs section. I'm confident these were added to fill space to make this page earn its place in the nav. I also think I stole 'The 🔥 f' from the <i>Syntax</i> treats thing.",
     },
     v2_projects: {
       title: "Projects.Why",
       date: "2019",
       description:
-        "Just so incredibly impractical as a page, but I thought framer motion was the coolest thing. I remember barely even understanding what I'd built but it did kinda work, so I shipped it. I wish I'd centered the project photos, but it has a certain amateur charm.",
+        "Just so incredibly impractical as a page, but I thought framer motion was the coolest thing. I barely understood what I built, but it did kinda work so I shipped it. I do still wish I'd centered the project header photos, but it has a certain amateur charm.",
     },
     v2_blog: {
       title: "MyBlog.md",
       date: "2019",
       description:
-        "It feels mandatory for people building their first personal sites to include a blog, even if they never really have a plan for what they're gonna talk about. I kind of admire that, it's just kindled by a burning passion to share something -- regardless of quality (in my case) lol.",
+        "It feels mandatory for people building their first personal sites to include a blog, even if they never really have a plan for what they're gonna talk about. I kind of admire that, it's just an urge share your thoughts with the world -- regardless of quality (in my case).",
     },
     v2_notes: {
       title: "Taking Note",
       date: "2019",
       description:
-        "If you peek at the code here, I remember being oh-so-proud of the fact that every one of these note pages are powered by simple markdown files. Like not even with frontmatter, just a README.md for the directory pages. All that work, for what are now, EXTREMELY outdated notes.",
+        "If you peek at the code here, I remember being oh-so-proud of the fact that every one of these note pages are powered by simple markdown files. Like not even with frontmatter. All that work, for what are now, <i>extremely</i> outdated notes.",
     },
     v2_contact: {
       title: "(Don't) Reach Out",
       date: "2019",
       description:
-        "One of those things that honestly might be kinda dated today, people usually just link their social media now. That said, I had an email automation to tag and format these responses, and I remember being so excited to see them! It almost felt like receiving hand written letters 💌.",
+        "Do people still have contact pages on websites? I think it's been replaced with social media links, but this has more of a personal touch. I had an email automation to tag and format these responses, and I remember being so excited to see them, like receiving hand written letters.",
     },
     v2_resume: {
       title: "Hire Me",
       date: "2019",
       description:
-        "A pretty massive improvement over v1. I remember specifically trying to make it mobile friendly because I figured hiring managers must just be that busy. I also remember thinking that paper resumes had to only be a page, but my own site can scroll forever, so why not include literally everything in excrutiating detail.",
+        "A pretty massive improvement over v1. I remember specifically trying to make it mobile friendly because I figured hiring managers would be reviewing packets on their phones. I kept my paper resume to only a page, but I remember allowing myself to dump every excruciating detail onto this page since websites can scroll.",
     },
     v2_404: {
       title: "404",
       date: "2019",
       description:
-        "Okay like all things considered, I know this site is such heavy coder-boy CS kid energy but I still think this 404 page has a bit of charm.",
+        "Okay, all things considered, I still kinda like this 404 page. I know this site has such a programmer/techy vibe, and this is another example, but for whatever reason I think it works best here.",
     },
     "catch-of-the-day": {
       title: "Catch of the Day",
@@ -209,7 +209,7 @@ function attachPlaque() {
       title: "Sick Fits",
       date: "2019",
       description:
-        "The vibe of this course site definitely influenced the aesthetic for <code>v2</code> of my personal site. It was the last project before I started working on it, and I remember thinking the bold red text background was extremely eye-catching. Skews and high-contrast as well!",
+        "The vibe of this course site definitely influenced the aesthetic for v2 of my personal site. It was the last project before I started working on it, and I remember thinking the bold red text background was extremely eye-catching. Skews and high-contrast as well.",
       sourceSite: "https://v2.leander.xyz/projects/sick-fits/",
     },
     "stacker-news": {
