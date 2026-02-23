@@ -54,11 +54,12 @@ The makefile uses `pnpm` commands under the hood:
 
 To add a new exhibit:
 
-- [ ] Add it to package manager workspace via `pnpm-workspace.yaml`
-- [ ] Remove all the unnecessary files from the project
-- [ ] Add a `_redirects` if it's a single page app, and `netlify.toml` regardless
-- [ ] Add the build commands to the root `package.json`
-- [ ] Add a plaque script import, and dock if necessary to help with navigating.
+- Add it to package manager workspace via `pnpm-workspace.yaml`
+- Remove all the unnecessary files from the project
+- Add a `_redirects` if it's a single page app, and `netlify.toml` regardless
+- Add the build commands to the root `package.json`
+- Append the project to the `Makefile`
+- Add a plaque script import, and dock if necessary to help with navigating.
 
 ## Shared Files
 
